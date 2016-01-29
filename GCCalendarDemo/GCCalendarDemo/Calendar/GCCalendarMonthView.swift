@@ -15,7 +15,7 @@ public final class GCCalendarMonthView: UIView
     private let calendar: NSCalendar!
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
-    var leftConstraint, rightConstraint, widthConstraint, heightConstraint: NSLayoutConstraint!
+    var topConstraint, bottomConstraint, leftConstraint, rightConstraint, widthConstraint: NSLayoutConstraint!
     
     // MARK: - Initializers
     
