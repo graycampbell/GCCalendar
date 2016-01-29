@@ -1,6 +1,0 @@
-platform :ios, '8.0'
-use_frameworks!
-
-target 'GCCalendarDemo' do
-  pod 'GCCalendar', git: 'https://github.com/graycampbell/GCCalendar.git'
-end
