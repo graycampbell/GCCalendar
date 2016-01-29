@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2D144B21C5AF33E00543B97 /* GCCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D144B11C5AF33E00543B97 /* GCCalendarMonthView.swift */; };
 		E2EF54D91C5AA64800E93F85 /* GCCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = E2EF54D81C5AA64800E93F85 /* GCCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
 		E2EF54E51C5AA64800E93F85 /* GCCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54E41C5AA64800E93F85 /* GCCalendarTests.swift */; };
@@ -14,7 +15,6 @@
 		E2EF54F21C5AA8B300E93F85 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */; };
 		E2EF54F81C5AAB5B00E93F85 /* GCCalendarDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */; };
 		E2EF54FC1C5AE92000E93F85 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */; };
-		E2EF55381C5AEE1E00E93F85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55371C5AEE1E00E93F85 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E2D144B11C5AF33E00543B97 /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
 		E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54D81C5AA64800E93F85 /* GCCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
 		E2EF54DA1C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
 		E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDateView.swift; sourceTree = "<group>"; };
 		E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
-		E2EF55371C5AEE1E00E93F85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 				E2EF54D81C5AA64800E93F85 /* GCCalendar.h */,
 				E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */,
 				E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */,
+				E2D144B11C5AF33E00543B97 /* GCCalendarMonthView.swift */,
 				E2EF54EF1C5AA82700E93F85 /* GCCalendarView.swift */,
-				E2EF55371C5AEE1E00E93F85 /* Constants.swift */,
 				E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
@@ -209,9 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2EF55381C5AEE1E00E93F85 /* Constants.swift in Sources */,
 				E2EF54FC1C5AE92000E93F85 /* LayoutConstraint.swift in Sources */,
 				E2EF54F01C5AA82700E93F85 /* GCCalendarView.swift in Sources */,
+				E2D144B21C5AF33E00543B97 /* GCCalendarMonthView.swift in Sources */,
 				E2EF54F81C5AAB5B00E93F85 /* GCCalendarDateView.swift in Sources */,
 				E2EF54F21C5AA8B300E93F85 /* GCCalendarHeaderView.swift in Sources */,
 			);
@@ -403,6 +403,7 @@
 				E2EF54EB1C5AA64800E93F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E2EF54EC1C5AA64800E93F85 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +412,7 @@
 				E2EF54EE1C5AA64800E93F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
