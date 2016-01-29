@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E25DF3741C5B08F70040F819 /* GCCalendar in Resources */ = {isa = PBXBuildFile; fileRef = E25DF3731C5B08F70040F819 /* GCCalendar */; };
 		E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */; };
 		E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF550B1C5AEC9400E93F85 /* ViewController.swift */; };
 		E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF550D1C5AEC9400E93F85 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		931795640B64FD6871319E7B /* Pods-GCCalendarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCalendarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9891D15139191327BE4C75E4 /* Pods-GCCalendarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCalendarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCCalendar.framework; path = "Pods/../build/Debug-iphoneos/GCCalendar.framework"; sourceTree = "<group>"; };
+		E25DF3731C5B08F70040F819 /* GCCalendar */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GCCalendar; path = ../../GCCalendar/GCCalendar; sourceTree = "<group>"; };
 		E2EF55061C5AEC9400E93F85 /* GCCalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCCalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2EF550B1C5AEC9400E93F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */,
 				E2EF550B1C5AEC9400E93F85 /* ViewController.swift */,
+				E25DF3731C5B08F70040F819 /* GCCalendar */,
 				E2EF550D1C5AEC9400E93F85 /* Main.storyboard */,
 				E2EF55101C5AEC9400E93F85 /* Assets.xcassets */,
 				E2EF55121C5AEC9400E93F85 /* LaunchScreen.storyboard */,
@@ -255,6 +258,7 @@
 			files = (
 				E2EF55141C5AEC9400E93F85 /* LaunchScreen.storyboard in Resources */,
 				E2EF55111C5AEC9400E93F85 /* Assets.xcassets in Resources */,
+				E25DF3741C5B08F70040F819 /* GCCalendar in Resources */,
 				E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
