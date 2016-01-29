@@ -1,0 +1,19 @@
+PODS:
+  - GCCalendar (1.0.0)
+
+DEPENDENCIES:
+  - GCCalendar (from `https://github.com/graycampbell/GCCalendar.git`)
+
+EXTERNAL SOURCES:
+  GCCalendar:
+    :git: https://github.com/graycampbell/GCCalendar.git
+
+CHECKOUT OPTIONS:
+  GCCalendar:
+    :commit: 63413c729b9124864871e0f6945944477fb75ef0
+    :git: https://github.com/graycampbell/GCCalendar.git
+
+SPEC CHECKSUMS:
+  GCCalendar: 0ef39342d01e66ea82f9be395538970efd3d103c
+
+COCOAPODS: 0.39.0
