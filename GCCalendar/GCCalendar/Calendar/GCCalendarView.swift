@@ -12,8 +12,6 @@ public final class GCCalendarView: UIView
 {
     // MARK: - Properties
     
-    private let calendar = NSCalendar.currentCalendar()
-    
     private var headerView: GCCalendarHeaderView!
     private var monthViews: [GCCalendarMonthView] = []
     
@@ -43,7 +41,7 @@ extension GCCalendarView
     
     private func addHeaderView()
     {
-        self.headerView = GCCalendarHeaderView(calendar: self.calendar)
+        self.headerView = GCCalendarHeaderView()
         
         self.addSubview(self.headerView)
         self.addHeaderViewConstraints()
@@ -69,15 +67,15 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
-        let previousMonthView = self.getMonthView()
-        let currentMonthView = self.getMonthView()
-        let nextMonthView = self.getMonthView()
-        
-        self.monthViews = [previousMonthView, currentMonthView, nextMonthView]
-        
-        for monthView in self.monthViews
+        for var i = 0; i < 3; i++
         {
+            let monthView = GCCalendarMonthView()
+            monthView.addPanGestureRecognizer(self, action: "toggleCurrentMonth:")
+            
             self.addSubview(monthView)
+            self.monthViews.append(monthView)
+            
+            monthView.addWeekViews()
             
             monthView.topConstraint = NSLayoutConstraint(i: monthView, a: .Top, i: self.headerView, a: .Bottom)
             monthView.bottomConstraint = NSLayoutConstraint(i: monthView, a: .Bottom, i: self)
@@ -87,14 +85,6 @@ extension GCCalendarView
         }
         
         self.updateConstraintsForMonthViews()
-    }
-    
-    private func getMonthView() -> GCCalendarMonthView
-    {
-        let monthView = GCCalendarMonthView(calendar: self.calendar)
-        monthView.addPanGestureRecognizer(self, action: "toggleCurrentMonth:")
-        
-        return monthView
     }
     
     // MARK: Constraints
