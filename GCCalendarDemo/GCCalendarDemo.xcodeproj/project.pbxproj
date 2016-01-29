@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		775A6BDF7D3A0EEE70E137A3 /* Pods_GCCalendarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D9A4903E17E15D06CECE3B /* Pods_GCCalendarDemo.framework */; };
+		E2499BAE1C5AF28D00783B38 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */; };
 		E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */; };
 		E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF550B1C5AEC9400E93F85 /* ViewController.swift */; };
 		E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF550D1C5AEC9400E93F85 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		70D9A4903E17E15D06CECE3B /* Pods_GCCalendarDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GCCalendarDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		931795640B64FD6871319E7B /* Pods-GCCalendarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCalendarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9891D15139191327BE4C75E4 /* Pods-GCCalendarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCalendarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCCalendar.framework; path = "Pods/../build/Debug-iphoneos/GCCalendar.framework"; sourceTree = "<group>"; };
 		E2EF55061C5AEC9400E93F85 /* GCCalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCCalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2EF550B1C5AEC9400E93F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2499BAE1C5AF28D00783B38 /* GCCalendar.framework in Frameworks */,
 				775A6BDF7D3A0EEE70E137A3 /* Pods_GCCalendarDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +147,7 @@
 		E82CA22CD757ED2C2C0F69A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */,
 				70D9A4903E17E15D06CECE3B /* Pods_GCCalendarDemo.framework */,
 			);
 			name = Frameworks;
@@ -473,6 +477,10 @@
 			baseConfigurationReference = 9891D15139191327BE4C75E4 /* Pods-GCCalendarDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = GCCalendarDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarDemo;
@@ -485,6 +493,10 @@
 			baseConfigurationReference = 931795640B64FD6871319E7B /* Pods-GCCalendarDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = GCCalendarDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarDemo;
