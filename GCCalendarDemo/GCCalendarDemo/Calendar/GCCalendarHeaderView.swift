@@ -10,11 +10,6 @@ import UIKit
 
 public final class GCCalendarHeaderView: UIView
 {
-    // MARK: - Properties
-    
-    private let calendar: NSCalendar!
-    private var weekdayLabels: [GCCalendarWeekdayLabel] = []
-    
     // MARK: - Initializers
     
     public required init?(coder aDecoder: NSCoder)
@@ -22,10 +17,8 @@ public final class GCCalendarHeaderView: UIView
         fatalError("GCCalendar does not support NSCoding.")
     }
     
-    public init(calendar: NSCalendar)
+    public init()
     {
-        self.calendar = calendar
-        
         super.init(frame: CGRectZero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -42,15 +35,15 @@ extension GCCalendarHeaderView
     
     private func addWeekdayLabels()
     {
-        let numberOfDays = self.calendar.veryShortWeekdaySymbols.count
+        let numberOfDays = Calendar.currentCalendar.veryShortWeekdaySymbols.count
         let widthMultiplier = 1.0 / CGFloat(numberOfDays)
         
         for var i = 0; i < numberOfDays; i++
         {
-            let label = GCCalendarWeekdayLabel(text: self.calendar.veryShortWeekdaySymbols[i])
+            let label = GCCalendarWeekdayLabel(text: Calendar.currentCalendar.veryShortWeekdaySymbols[i])
             
             self.addSubview(label)
-            self.weekdayLabels.append(label)
+            Calendar.Header.weekdayLabels.append(label)
             
             if i == 0
             {
@@ -58,7 +51,7 @@ extension GCCalendarHeaderView
             }
             else
             {
-                self.addConstraintsForWeekdayLabel(label, item: self.weekdayLabels[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
+                self.addConstraintsForWeekdayLabel(label, item: Calendar.Header.weekdayLabels[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
             }
         }
     }
