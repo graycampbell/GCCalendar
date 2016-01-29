@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.9'
   s.watchos.deployment_target = '2.0'
 
-  s.source_files = 'GCCalendar/*.{h,m,swift}'
+  s.source_files = 'GCCalendar/GCCalendar/*.{h,m,swift}'
 
   s.requires_arc = true
   s.module_name = 'GCCalendar'
