@@ -10,6 +10,11 @@
 		E2EF54D91C5AA64800E93F85 /* GCCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = E2EF54D81C5AA64800E93F85 /* GCCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
 		E2EF54E51C5AA64800E93F85 /* GCCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54E41C5AA64800E93F85 /* GCCalendarTests.swift */; };
+		E2EF54F01C5AA82700E93F85 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54EF1C5AA82700E93F85 /* GCCalendarView.swift */; };
+		E2EF54F21C5AA8B300E93F85 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */; };
+		E2EF54F81C5AAB5B00E93F85 /* GCCalendarDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */; };
+		E2EF54FC1C5AE92000E93F85 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */; };
+		E2EF55381C5AEE1E00E93F85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55371C5AEE1E00E93F85 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,11 @@
 		E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54E41C5AA64800E93F85 /* GCCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCCalendarTests.swift; sourceTree = "<group>"; };
 		E2EF54E61C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2EF54EF1C5AA82700E93F85 /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
+		E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
+		E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDateView.swift; sourceTree = "<group>"; };
+		E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
+		E2EF55371C5AEE1E00E93F85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,11 @@
 			isa = PBXGroup;
 			children = (
 				E2EF54D81C5AA64800E93F85 /* GCCalendar.h */,
+				E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */,
+				E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */,
+				E2EF54EF1C5AA82700E93F85 /* GCCalendarView.swift */,
+				E2EF55371C5AEE1E00E93F85 /* Constants.swift */,
+				E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
 			path = GCCalendar;
@@ -194,6 +209,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EF55381C5AEE1E00E93F85 /* Constants.swift in Sources */,
+				E2EF54FC1C5AE92000E93F85 /* LayoutConstraint.swift in Sources */,
+				E2EF54F01C5AA82700E93F85 /* GCCalendarView.swift in Sources */,
+				E2EF54F81C5AAB5B00E93F85 /* GCCalendarDateView.swift in Sources */,
+				E2EF54F21C5AA8B300E93F85 /* GCCalendarHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +328,7 @@
 		E2EF54EA1C5AA64800E93F85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -319,6 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -326,6 +348,7 @@
 		E2EF54EB1C5AA64800E93F85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
