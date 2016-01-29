@@ -19,4 +19,9 @@ extension UIColor
         
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
+    
+    class func black(alpha: CGFloat) -> UIColor
+    {
+        return UIColor(white: 0.0, alpha: alpha)
+    }
 }
