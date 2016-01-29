@@ -30,6 +30,7 @@ public final class GCCalendarView: UIView
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
+        self.addHeaderView()
         self.addMonthViews()
     }
 }
