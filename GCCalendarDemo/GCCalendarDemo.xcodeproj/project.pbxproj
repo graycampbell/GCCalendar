@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		775A6BDF7D3A0EEE70E137A3 /* Pods_GCCalendarDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D9A4903E17E15D06CECE3B /* Pods_GCCalendarDemo.framework */; };
-		E2499BAE1C5AF28D00783B38 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */; };
 		E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */; };
 		E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF550B1C5AEC9400E93F85 /* ViewController.swift */; };
 		E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF550D1C5AEC9400E93F85 /* Main.storyboard */; };
@@ -60,8 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2499BAE1C5AF28D00783B38 /* GCCalendar.framework in Frameworks */,
-				775A6BDF7D3A0EEE70E137A3 /* Pods_GCCalendarDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,12 +156,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2EF552E1C5AEC9500E93F85 /* Build configuration list for PBXNativeTarget "GCCalendarDemo" */;
 			buildPhases = (
-				99A11B176AE6550B6C47F56C /* Check Pods Manifest.lock */,
 				E2EF55021C5AEC9400E93F85 /* Sources */,
 				E2EF55031C5AEC9400E93F85 /* Frameworks */,
 				E2EF55041C5AEC9400E93F85 /* Resources */,
-				165A364DF0B2B58142651C57 /* Embed Pods Frameworks */,
-				D6C1B24BB01598677CF425B5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,54 +274,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		165A364DF0B2B58142651C57 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99A11B176AE6550B6C47F56C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D6C1B24BB01598677CF425B5 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E2EF55021C5AEC9400E93F85 /* Sources */ = {
