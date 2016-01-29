@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E25DF3D11C5B1E070040F819 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3CA1C5B1E070040F819 /* Color.swift */; };
-		E25DF3D21C5B1E070040F819 /* GCCalendarDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3CB1C5B1E070040F819 /* GCCalendarDateView.swift */; };
-		E25DF3D31C5B1E070040F819 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3CC1C5B1E070040F819 /* GCCalendarHeaderView.swift */; };
-		E25DF3D41C5B1E070040F819 /* GCCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3CD1C5B1E070040F819 /* GCCalendarMonthView.swift */; };
-		E25DF3D51C5B1E070040F819 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3CE1C5B1E070040F819 /* GCCalendarView.swift */; };
-		E25DF3D61C5B1E070040F819 /* GCCalendarWeekdayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3CF1C5B1E070040F819 /* GCCalendarWeekdayLabel.swift */; };
-		E25DF3D71C5B1E070040F819 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3D01C5B1E070040F819 /* LayoutConstraint.swift */; };
+		E2BCA7861C5C04970018C98F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA77D1C5C04970018C98F /* Color.swift */; };
+		E2BCA7871C5C04970018C98F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA77E1C5C04970018C98F /* Constants.swift */; };
+		E2BCA7881C5C04970018C98F /* GCCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA77F1C5C04970018C98F /* GCCalendarDayView.swift */; };
+		E2BCA7891C5C04970018C98F /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7801C5C04970018C98F /* GCCalendarHeaderView.swift */; };
+		E2BCA78A1C5C04970018C98F /* GCCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7811C5C04970018C98F /* GCCalendarMonthView.swift */; };
+		E2BCA78B1C5C04970018C98F /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7821C5C04970018C98F /* GCCalendarView.swift */; };
+		E2BCA78C1C5C04970018C98F /* GCCalendarWeekdayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7831C5C04970018C98F /* GCCalendarWeekdayLabel.swift */; };
+		E2BCA78D1C5C04970018C98F /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7841C5C04970018C98F /* GCCalendarWeekView.swift */; };
+		E2BCA78E1C5C04970018C98F /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7851C5C04970018C98F /* LayoutConstraint.swift */; };
 		E2EF54D91C5AA64800E93F85 /* GCCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = E2EF54D81C5AA64800E93F85 /* GCCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
 		E2EF54E51C5AA64800E93F85 /* GCCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54E41C5AA64800E93F85 /* GCCalendarTests.swift */; };
@@ -30,13 +32,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E25DF3CA1C5B1E070040F819 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E25DF3CB1C5B1E070040F819 /* GCCalendarDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDateView.swift; sourceTree = "<group>"; };
-		E25DF3CC1C5B1E070040F819 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
-		E25DF3CD1C5B1E070040F819 /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
-		E25DF3CE1C5B1E070040F819 /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
-		E25DF3CF1C5B1E070040F819 /* GCCalendarWeekdayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekdayLabel.swift; sourceTree = "<group>"; };
-		E25DF3D01C5B1E070040F819 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
+		E2BCA77D1C5C04970018C98F /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E2BCA77E1C5C04970018C98F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E2BCA77F1C5C04970018C98F /* GCCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayView.swift; sourceTree = "<group>"; };
+		E2BCA7801C5C04970018C98F /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
+		E2BCA7811C5C04970018C98F /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
+		E2BCA7821C5C04970018C98F /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
+		E2BCA7831C5C04970018C98F /* GCCalendarWeekdayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekdayLabel.swift; sourceTree = "<group>"; };
+		E2BCA7841C5C04970018C98F /* GCCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekView.swift; sourceTree = "<group>"; };
+		E2BCA7851C5C04970018C98F /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
 		E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54D81C5AA64800E93F85 /* GCCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
 		E2EF54DA1C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,16 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E25DF3C91C5B1E070040F819 /* Calendar */ = {
+		E2BCA77C1C5C04970018C98F /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				E25DF3CA1C5B1E070040F819 /* Color.swift */,
-				E25DF3CB1C5B1E070040F819 /* GCCalendarDateView.swift */,
-				E25DF3CC1C5B1E070040F819 /* GCCalendarHeaderView.swift */,
-				E25DF3CD1C5B1E070040F819 /* GCCalendarMonthView.swift */,
-				E25DF3CE1C5B1E070040F819 /* GCCalendarView.swift */,
-				E25DF3CF1C5B1E070040F819 /* GCCalendarWeekdayLabel.swift */,
-				E25DF3D01C5B1E070040F819 /* LayoutConstraint.swift */,
+				E2BCA77D1C5C04970018C98F /* Color.swift */,
+				E2BCA77E1C5C04970018C98F /* Constants.swift */,
+				E2BCA77F1C5C04970018C98F /* GCCalendarDayView.swift */,
+				E2BCA7801C5C04970018C98F /* GCCalendarHeaderView.swift */,
+				E2BCA7811C5C04970018C98F /* GCCalendarMonthView.swift */,
+				E2BCA7821C5C04970018C98F /* GCCalendarView.swift */,
+				E2BCA7831C5C04970018C98F /* GCCalendarWeekdayLabel.swift */,
+				E2BCA7841C5C04970018C98F /* GCCalendarWeekView.swift */,
+				E2BCA7851C5C04970018C98F /* LayoutConstraint.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -100,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				E2EF54D81C5AA64800E93F85 /* GCCalendar.h */,
-				E25DF3C91C5B1E070040F819 /* Calendar */,
+				E2BCA77C1C5C04970018C98F /* Calendar */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
 			path = GCCalendar;
@@ -223,13 +229,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E25DF3D21C5B1E070040F819 /* GCCalendarDateView.swift in Sources */,
-				E25DF3D61C5B1E070040F819 /* GCCalendarWeekdayLabel.swift in Sources */,
-				E25DF3D41C5B1E070040F819 /* GCCalendarMonthView.swift in Sources */,
-				E25DF3D11C5B1E070040F819 /* Color.swift in Sources */,
-				E25DF3D51C5B1E070040F819 /* GCCalendarView.swift in Sources */,
-				E25DF3D71C5B1E070040F819 /* LayoutConstraint.swift in Sources */,
-				E25DF3D31C5B1E070040F819 /* GCCalendarHeaderView.swift in Sources */,
+				E2BCA78B1C5C04970018C98F /* GCCalendarView.swift in Sources */,
+				E2BCA7861C5C04970018C98F /* Color.swift in Sources */,
+				E2BCA78A1C5C04970018C98F /* GCCalendarMonthView.swift in Sources */,
+				E2BCA7891C5C04970018C98F /* GCCalendarHeaderView.swift in Sources */,
+				E2BCA78C1C5C04970018C98F /* GCCalendarWeekdayLabel.swift in Sources */,
+				E2BCA78E1C5C04970018C98F /* LayoutConstraint.swift in Sources */,
+				E2BCA7881C5C04970018C98F /* GCCalendarDayView.swift in Sources */,
+				E2BCA78D1C5C04970018C98F /* GCCalendarWeekView.swift in Sources */,
+				E2BCA7871C5C04970018C98F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
