@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E25DF3A41C5B18A50040F819 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF39D1C5B18A50040F819 /* Color.swift */; };
+		E25DF3A51C5B18A50040F819 /* GCCalendarDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF39E1C5B18A50040F819 /* GCCalendarDateView.swift */; };
+		E25DF3A61C5B18A50040F819 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF39F1C5B18A50040F819 /* GCCalendarHeaderView.swift */; };
+		E25DF3A71C5B18A50040F819 /* GCCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3A01C5B18A50040F819 /* GCCalendarMonthView.swift */; };
+		E25DF3A81C5B18A50040F819 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3A11C5B18A50040F819 /* GCCalendarView.swift */; };
+		E25DF3A91C5B18A50040F819 /* GCCalendarWeekdayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3A21C5B18A50040F819 /* GCCalendarWeekdayLabel.swift */; };
+		E25DF3AA1C5B18A50040F819 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3A31C5B18A50040F819 /* LayoutConstraint.swift */; };
 		E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */; };
 		E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF550B1C5AEC9400E93F85 /* ViewController.swift */; };
 		E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF550D1C5AEC9400E93F85 /* Main.storyboard */; };
@@ -38,6 +45,13 @@
 		931795640B64FD6871319E7B /* Pods-GCCalendarDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCalendarDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo.release.xcconfig"; sourceTree = "<group>"; };
 		9891D15139191327BE4C75E4 /* Pods-GCCalendarDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GCCalendarDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GCCalendarDemo/Pods-GCCalendarDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCCalendar.framework; path = "Pods/../build/Debug-iphoneos/GCCalendar.framework"; sourceTree = "<group>"; };
+		E25DF39D1C5B18A50040F819 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E25DF39E1C5B18A50040F819 /* GCCalendarDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDateView.swift; sourceTree = "<group>"; };
+		E25DF39F1C5B18A50040F819 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
+		E25DF3A01C5B18A50040F819 /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
+		E25DF3A11C5B18A50040F819 /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
+		E25DF3A21C5B18A50040F819 /* GCCalendarWeekdayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekdayLabel.swift; sourceTree = "<group>"; };
+		E25DF3A31C5B18A50040F819 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
 		E2EF55061C5AEC9400E93F85 /* GCCalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCCalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2EF550B1C5AEC9400E93F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +101,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E25DF39C1C5B18A50040F819 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				E25DF39D1C5B18A50040F819 /* Color.swift */,
+				E25DF39E1C5B18A50040F819 /* GCCalendarDateView.swift */,
+				E25DF39F1C5B18A50040F819 /* GCCalendarHeaderView.swift */,
+				E25DF3A01C5B18A50040F819 /* GCCalendarMonthView.swift */,
+				E25DF3A11C5B18A50040F819 /* GCCalendarView.swift */,
+				E25DF3A21C5B18A50040F819 /* GCCalendarWeekdayLabel.swift */,
+				E25DF3A31C5B18A50040F819 /* LayoutConstraint.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		E2EF54FD1C5AEC9400E93F85 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +142,7 @@
 			children = (
 				E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */,
 				E2EF550B1C5AEC9400E93F85 /* ViewController.swift */,
+				E25DF39C1C5B18A50040F819 /* Calendar */,
 				E2EF550D1C5AEC9400E93F85 /* Main.storyboard */,
 				E2EF55101C5AEC9400E93F85 /* Assets.xcassets */,
 				E2EF55121C5AEC9400E93F85 /* LaunchScreen.storyboard */,
@@ -280,8 +309,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25DF3A61C5B18A50040F819 /* GCCalendarHeaderView.swift in Sources */,
+				E25DF3A51C5B18A50040F819 /* GCCalendarDateView.swift in Sources */,
+				E25DF3A81C5B18A50040F819 /* GCCalendarView.swift in Sources */,
 				E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */,
+				E25DF3A71C5B18A50040F819 /* GCCalendarMonthView.swift in Sources */,
+				E25DF3AA1C5B18A50040F819 /* LayoutConstraint.swift in Sources */,
+				E25DF3A91C5B18A50040F819 /* GCCalendarWeekdayLabel.swift in Sources */,
 				E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */,
+				E25DF3A41C5B18A50040F819 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
