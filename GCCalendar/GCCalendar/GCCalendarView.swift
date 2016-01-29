@@ -8,10 +8,6 @@
 
 public final class GCCalendarView: UIScrollView
 {
-    // MARK: - Properties
-    
-    private let calendar = NSCalendar.currentCalendar()
-    
     // MARK: - Initializers
     
     public required init?(coder aDecoder: NSCoder)
