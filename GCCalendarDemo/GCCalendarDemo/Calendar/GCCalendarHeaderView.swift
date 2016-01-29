@@ -67,10 +67,11 @@ extension GCCalendarHeaderView
     
     private func addConstraintsForWeekdayLabel(weekdayLabel: GCCalendarWeekdayLabel, item: AnyObject, attribute: NSLayoutAttribute, widthMultiplier: CGFloat)
     {
-        let left = NSLayoutConstraint(i: self, a: .Left, i: item, a: attribute)
-        let width = NSLayoutConstraint(i: self, a: .Width, i: self, m: widthMultiplier)
-        let height = NSLayoutConstraint(i: self, a: .Height, i: self)
+        let top = NSLayoutConstraint(i: weekdayLabel, a: .Top, i: self)
+        let left = NSLayoutConstraint(i: weekdayLabel, a: .Left, i: item, a: attribute)
+        let width = NSLayoutConstraint(i: weekdayLabel, a: .Width, i: self, m: widthMultiplier)
+        let height = NSLayoutConstraint(i: weekdayLabel, a: .Height, i: self)
         
-        self.addConstraints([left, width, height])
+        self.addConstraints([top, left, width, height])
     }
 }
