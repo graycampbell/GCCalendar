@@ -16,8 +16,6 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
-        self.calendarView.backgroundColor = UIColor.redColor()
-        
         self.view.addSubview(self.calendarView)
         self.addCalendarViewConstraints()
     }
