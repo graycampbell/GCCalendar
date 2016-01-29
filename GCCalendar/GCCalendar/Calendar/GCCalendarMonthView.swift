@@ -6,12 +6,14 @@
 //  Copyright © 2016 Gray Campbell. All rights reserved.
 //
 
-public class GCCalendarMonthView: UIView
+import UIKit
+
+public final class GCCalendarMonthView: UIView
 {
     // MARK: - Properties
     
-    let calendar: NSCalendar!
-    let panGestureRecognizer = UIPanGestureRecognizer()
+    private let calendar: NSCalendar!
+    private let panGestureRecognizer = UIPanGestureRecognizer()
     
     var leftConstraint, rightConstraint, widthConstraint, heightConstraint: NSLayoutConstraint!
     
@@ -28,20 +30,9 @@ public class GCCalendarMonthView: UIView
         
         super.init(frame: CGRectZero)
         
-        self.addDateViews()
-    }
-}
-
-// MARK: - Constraints
-
-extension GCCalendarMonthView
-{
-    func addConstraints()
-    {
-        self.widthConstraint = NSLayoutConstraint(i: self, a: .Width, i: self.superview)
-        self.heightConstraint = NSLayoutConstraint(i: self, a: .Height, i: self.superview)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.superview!.addConstraints([self.widthConstraint, self.heightConstraint])
+        self.addDateViews()
     }
 }
 
