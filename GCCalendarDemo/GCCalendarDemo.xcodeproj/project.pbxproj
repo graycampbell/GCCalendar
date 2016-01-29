@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E25DF3E01C5B1E370040F819 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3D91C5B1E370040F819 /* Color.swift */; };
-		E25DF3E21C5B1E370040F819 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3DB1C5B1E370040F819 /* GCCalendarHeaderView.swift */; };
-		E25DF3E31C5B1E370040F819 /* GCCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3DC1C5B1E370040F819 /* GCCalendarMonthView.swift */; };
-		E25DF3E41C5B1E370040F819 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3DD1C5B1E370040F819 /* GCCalendarView.swift */; };
-		E25DF3E51C5B1E370040F819 /* GCCalendarWeekdayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3DE1C5B1E370040F819 /* GCCalendarWeekdayLabel.swift */; };
-		E25DF3E61C5B1E370040F819 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF3DF1C5B1E370040F819 /* LayoutConstraint.swift */; };
-		E2BCA7771C5BEB500018C98F /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7761C5BEB500018C98F /* GCCalendarWeekView.swift */; };
-		E2BCA7791C5BEB870018C98F /* GCCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA7781C5BEB870018C98F /* GCCalendarDayView.swift */; };
-		E2BCA77B1C5BF95D0018C98F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BCA77A1C5BF95D0018C98F /* Constants.swift */; };
+		E20CA7691C5C086100342DC3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA75F1C5C086100342DC3 /* Color.swift */; };
+		E20CA76A1C5C086100342DC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7601C5C086100342DC3 /* Constants.swift */; };
+		E20CA76B1C5C086100342DC3 /* GCCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7621C5C086100342DC3 /* GCCalendarDayView.swift */; };
+		E20CA76C1C5C086100342DC3 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7631C5C086100342DC3 /* GCCalendarHeaderView.swift */; };
+		E20CA76D1C5C086100342DC3 /* GCCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7641C5C086100342DC3 /* GCCalendarMonthView.swift */; };
+		E20CA76E1C5C086100342DC3 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7651C5C086100342DC3 /* GCCalendarView.swift */; };
+		E20CA76F1C5C086100342DC3 /* GCCalendarWeekdayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7661C5C086100342DC3 /* GCCalendarWeekdayLabel.swift */; };
+		E20CA7701C5C086100342DC3 /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7671C5C086100342DC3 /* GCCalendarWeekView.swift */; };
+		E20CA7711C5C086100342DC3 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CA7681C5C086100342DC3 /* LayoutConstraint.swift */; };
 		E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */; };
 		E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF550B1C5AEC9400E93F85 /* ViewController.swift */; };
 		E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF550D1C5AEC9400E93F85 /* Main.storyboard */; };
@@ -43,16 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E20CA75F1C5C086100342DC3 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E20CA7601C5C086100342DC3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E20CA7611C5C086100342DC3 /* GCCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
+		E20CA7621C5C086100342DC3 /* GCCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayView.swift; sourceTree = "<group>"; };
+		E20CA7631C5C086100342DC3 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
+		E20CA7641C5C086100342DC3 /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
+		E20CA7651C5C086100342DC3 /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
+		E20CA7661C5C086100342DC3 /* GCCalendarWeekdayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekdayLabel.swift; sourceTree = "<group>"; };
+		E20CA7671C5C086100342DC3 /* GCCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekView.swift; sourceTree = "<group>"; };
+		E20CA7681C5C086100342DC3 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
 		E2499BAD1C5AF28D00783B38 /* GCCalendar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCCalendar.framework; path = "Pods/../build/Debug-iphoneos/GCCalendar.framework"; sourceTree = "<group>"; };
-		E25DF3D91C5B1E370040F819 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E25DF3DB1C5B1E370040F819 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
-		E25DF3DC1C5B1E370040F819 /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
-		E25DF3DD1C5B1E370040F819 /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
-		E25DF3DE1C5B1E370040F819 /* GCCalendarWeekdayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekdayLabel.swift; sourceTree = "<group>"; };
-		E25DF3DF1C5B1E370040F819 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
-		E2BCA7761C5BEB500018C98F /* GCCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekView.swift; sourceTree = "<group>"; };
-		E2BCA7781C5BEB870018C98F /* GCCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayView.swift; sourceTree = "<group>"; };
-		E2BCA77A1C5BF95D0018C98F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2EF55061C5AEC9400E93F85 /* GCCalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCCalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2EF550B1C5AEC9400E93F85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,18 +94,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E25DF3D81C5B1E370040F819 /* Calendar */ = {
+		E20CA75E1C5C086100342DC3 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				E25DF3D91C5B1E370040F819 /* Color.swift */,
-				E2BCA77A1C5BF95D0018C98F /* Constants.swift */,
-				E2BCA7781C5BEB870018C98F /* GCCalendarDayView.swift */,
-				E25DF3DB1C5B1E370040F819 /* GCCalendarHeaderView.swift */,
-				E25DF3DC1C5B1E370040F819 /* GCCalendarMonthView.swift */,
-				E25DF3DD1C5B1E370040F819 /* GCCalendarView.swift */,
-				E25DF3DE1C5B1E370040F819 /* GCCalendarWeekdayLabel.swift */,
-				E2BCA7761C5BEB500018C98F /* GCCalendarWeekView.swift */,
-				E25DF3DF1C5B1E370040F819 /* LayoutConstraint.swift */,
+				E20CA7611C5C086100342DC3 /* GCCalendar.h */,
+				E20CA75F1C5C086100342DC3 /* Color.swift */,
+				E20CA7601C5C086100342DC3 /* Constants.swift */,
+				E20CA7621C5C086100342DC3 /* GCCalendarDayView.swift */,
+				E20CA7631C5C086100342DC3 /* GCCalendarHeaderView.swift */,
+				E20CA7641C5C086100342DC3 /* GCCalendarMonthView.swift */,
+				E20CA7651C5C086100342DC3 /* GCCalendarView.swift */,
+				E20CA7661C5C086100342DC3 /* GCCalendarWeekdayLabel.swift */,
+				E20CA7671C5C086100342DC3 /* GCCalendarWeekView.swift */,
+				E20CA7681C5C086100342DC3 /* LayoutConstraint.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -135,7 +137,7 @@
 			children = (
 				E2EF55091C5AEC9400E93F85 /* AppDelegate.swift */,
 				E2EF550B1C5AEC9400E93F85 /* ViewController.swift */,
-				E25DF3D81C5B1E370040F819 /* Calendar */,
+				E20CA75E1C5C086100342DC3 /* Calendar */,
 				E2EF550D1C5AEC9400E93F85 /* Main.storyboard */,
 				E2EF55101C5AEC9400E93F85 /* Assets.xcassets */,
 				E2EF55121C5AEC9400E93F85 /* LaunchScreen.storyboard */,
@@ -301,17 +303,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E25DF3E21C5B1E370040F819 /* GCCalendarHeaderView.swift in Sources */,
-				E2BCA77B1C5BF95D0018C98F /* Constants.swift in Sources */,
-				E25DF3E41C5B1E370040F819 /* GCCalendarView.swift in Sources */,
 				E2EF550C1C5AEC9400E93F85 /* ViewController.swift in Sources */,
-				E25DF3E31C5B1E370040F819 /* GCCalendarMonthView.swift in Sources */,
-				E2BCA7791C5BEB870018C98F /* GCCalendarDayView.swift in Sources */,
-				E25DF3E61C5B1E370040F819 /* LayoutConstraint.swift in Sources */,
-				E25DF3E51C5B1E370040F819 /* GCCalendarWeekdayLabel.swift in Sources */,
+				E20CA7711C5C086100342DC3 /* LayoutConstraint.swift in Sources */,
 				E2EF550A1C5AEC9400E93F85 /* AppDelegate.swift in Sources */,
-				E2BCA7771C5BEB500018C98F /* GCCalendarWeekView.swift in Sources */,
-				E25DF3E01C5B1E370040F819 /* Color.swift in Sources */,
+				E20CA76B1C5C086100342DC3 /* GCCalendarDayView.swift in Sources */,
+				E20CA7691C5C086100342DC3 /* Color.swift in Sources */,
+				E20CA76D1C5C086100342DC3 /* GCCalendarMonthView.swift in Sources */,
+				E20CA76A1C5C086100342DC3 /* Constants.swift in Sources */,
+				E20CA76E1C5C086100342DC3 /* GCCalendarView.swift in Sources */,
+				E20CA76F1C5C086100342DC3 /* GCCalendarWeekdayLabel.swift in Sources */,
+				E20CA7701C5C086100342DC3 /* GCCalendarWeekView.swift in Sources */,
+				E20CA76C1C5C086100342DC3 /* GCCalendarHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
