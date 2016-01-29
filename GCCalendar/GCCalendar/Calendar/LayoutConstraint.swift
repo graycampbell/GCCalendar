@@ -6,6 +6,8 @@
 //  Copyright © 2016 Gray Campbell. All rights reserved.
 //
 
+import UIKit
+
 extension NSLayoutConstraint
 {
     convenience init(i i1: AnyObject, a a1: NSLayoutAttribute, r: NSLayoutRelation = .Equal, i i2: AnyObject? = nil, var a a2: NSLayoutAttribute? = nil, m: CGFloat = 1, c: CGFloat = 0)
