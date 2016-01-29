@@ -6,7 +6,7 @@
 //  Copyright © 2016 Gray Campbell. All rights reserved.
 //
 
-class GCCalendarHeaderView: UIView
+public final class GCCalendarHeaderView: UIView
 {
     
 }
