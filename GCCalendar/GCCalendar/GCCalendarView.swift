@@ -6,7 +6,21 @@
 //  Copyright © 2016 Gray Campbell. All rights reserved.
 //
 
-class GCCalendarView: UIView
+public final class GCCalendarView: UIScrollView
 {
+    // MARK: - Properties
     
+    private let calendar = NSCalendar.currentCalendar()
+    
+    // MARK: - Initializers
+    
+    public required init?(coder aDecoder: NSCoder)
+    {
+        fatalError("GCCalendar does not support NSCoding.")
+    }
+    
+    public init()
+    {
+        super.init(frame: CGRectZero)
+    }
 }
