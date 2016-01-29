@@ -14,6 +14,7 @@
 		E2EF54F21C5AA8B300E93F85 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */; };
 		E2EF54F81C5AAB5B00E93F85 /* GCCalendarDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */; };
 		E2EF54FC1C5AE92000E93F85 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */; };
+		E2EF55381C5AEE1E00E93F85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55371C5AEE1E00E93F85 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
 		E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDateView.swift; sourceTree = "<group>"; };
 		E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
+		E2EF55371C5AEE1E00E93F85 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				E2EF54F71C5AAB5B00E93F85 /* GCCalendarDateView.swift */,
 				E2EF54F11C5AA8B300E93F85 /* GCCalendarHeaderView.swift */,
 				E2EF54EF1C5AA82700E93F85 /* GCCalendarView.swift */,
+				E2EF55371C5AEE1E00E93F85 /* Constants.swift */,
 				E2EF54FB1C5AE92000E93F85 /* LayoutConstraint.swift */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EF55381C5AEE1E00E93F85 /* Constants.swift in Sources */,
 				E2EF54FC1C5AE92000E93F85 /* LayoutConstraint.swift in Sources */,
 				E2EF54F01C5AA82700E93F85 /* GCCalendarView.swift in Sources */,
 				E2EF54F81C5AAB5B00E93F85 /* GCCalendarDateView.swift in Sources */,
