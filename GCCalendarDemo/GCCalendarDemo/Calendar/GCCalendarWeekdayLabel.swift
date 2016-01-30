@@ -22,10 +22,10 @@ public final class GCCalendarWeekdayLabel: UILabel
         super.init(frame: CGRectZero)
         
         self.text = text
-        self.textColor = UIColor(r: 146, g: 146, b: 146)
         self.textAlignment = .Center
         
-        self.font = UIFont.systemFontOfSize(10)
+        self.font = Calendar.WeekdayLabel.font
+        self.textColor = Calendar.WeekdayLabel.textColor
         
         self.translatesAutoresizingMaskIntoConstraints = false
     }
