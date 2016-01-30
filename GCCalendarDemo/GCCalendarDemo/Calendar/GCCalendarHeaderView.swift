@@ -10,6 +10,10 @@ import UIKit
 
 public final class GCCalendarHeaderView: UIView
 {
+    // MARK: - Properties
+    
+    var weekdayLabels: [GCCalendarWeekdayLabel] = []
+    
     // MARK: - Initializers
     
     public required init?(coder aDecoder: NSCoder)
@@ -20,6 +24,8 @@ public final class GCCalendarHeaderView: UIView
     public init()
     {
         super.init(frame: CGRectZero)
+        
+        Calendar.header = self
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,7 +49,7 @@ extension GCCalendarHeaderView
             let label = GCCalendarWeekdayLabel(text: Calendar.currentCalendar.veryShortWeekdaySymbols[i])
             
             self.addSubview(label)
-            Calendar.Header.weekdayLabels.append(label)
+            self.weekdayLabels.append(label)
             
             if i == 0
             {
@@ -51,7 +57,7 @@ extension GCCalendarHeaderView
             }
             else
             {
-                self.addConstraintsForWeekdayLabel(label, item: Calendar.Header.weekdayLabels[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
+                self.addConstraintsForWeekdayLabel(label, item: self.weekdayLabels[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
             }
         }
     }

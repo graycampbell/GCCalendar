@@ -26,6 +26,8 @@ public final class GCCalendarView: UIView
     {
         super.init(frame: CGRectZero)
         
+        Calendar.view = self
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addHeaderView()
