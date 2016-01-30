@@ -37,7 +37,7 @@ extension GCCalendarWeekView
     {
         let dayViewWidth: CGFloat = 35
         
-        for var i = 0; i < Calendar.Header.weekdayLabels.count; i++
+        for var i = 0; i < Calendar.header.weekdayLabels.count; i++
         {
             let dayView = GCCalendarDayView()
             
@@ -48,7 +48,7 @@ extension GCCalendarWeekView
             
             dayView.widthConstraint = NSLayoutConstraint(i: dayView, a: .Width, c: dayViewWidth)
             dayView.heightConstraint = NSLayoutConstraint(i: dayView, a: .Height, c: dayViewWidth)
-            dayView.centerXConstraint = NSLayoutConstraint(i: dayView, a: .CenterX, i: Calendar.Header.weekdayLabels[i])
+            dayView.centerXConstraint = NSLayoutConstraint(i: dayView, a: .CenterX, i: Calendar.header.weekdayLabels[i])
             dayView.centerYConstraint = NSLayoutConstraint(i: dayView, a: .CenterY, i: self)
             
             self.superview!.superview!.addConstraints([dayView.widthConstraint, dayView.heightConstraint, dayView.centerXConstraint, dayView.centerYConstraint])

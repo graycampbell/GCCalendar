@@ -22,11 +22,9 @@ class ViewController: UIViewController
     
     func addCalendarViewConstraints()
     {
-        let heightConstant = min(UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
-        
         let bottom = NSLayoutConstraint(i: self.calendarView, a: .Bottom, i: self.view)
         let width = NSLayoutConstraint(i: self.calendarView, a: .Width, i: self.view)
-        let height = NSLayoutConstraint(i: self.calendarView, a: .Height, c: heightConstant)
+        let height = NSLayoutConstraint(i: self.calendarView, a: .Height, c: 340)
         
         self.view.addConstraints([bottom, width, height])
     }
