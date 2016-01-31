@@ -16,18 +16,15 @@ public final class GCCalendarMonthView: UIView
     
     private var weekViews: [GCCalendarWeekView] = []
     
+    var startDate: NSDate!
+    
     var topConstraint, bottomConstraint, leftConstraint, rightConstraint, widthConstraint: NSLayoutConstraint!
     
     // MARK: - Initializers
     
-    public required init?(coder aDecoder: NSCoder)
+    public convenience init()
     {
-        fatalError("GCCalendar does not support NSCoding.")
-    }
-    
-    public init()
-    {
-        super.init(frame: CGRectZero)
+        self.init(frame: CGRectZero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -63,17 +60,29 @@ extension GCCalendarMonthView
 {
     func addWeekViews()
     {
-        let numberOfWeeks = 6
-        let heightMultiplier = 1.0 / CGFloat(numberOfWeeks)
+        var date: NSDate? = self.startDate
         
-        for var i = 0; i < numberOfWeeks; i++
+        var dates: [[NSDate?]] = [[NSDate?]](count: 6, repeatedValue: [nil, nil, nil, nil, nil, nil, nil])
+        
+        while date != nil
+        {
+            let dateComponents = Calendar.currentCalendar.components([.WeekOfMonth, .Weekday, .Day], fromDate: date!)
+            
+            dates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
+            
+            date = Calendar.currentCalendar.dateBySettingUnit(.Day, value: dateComponents.day + 1, ofDate: date!, options: .MatchStrictly)
+        }
+        
+        let heightMultiplier = 1.0 / CGFloat(dates.count)
+        
+        for var i = 0; i < dates.count; i++
         {
             let weekView = GCCalendarWeekView()
             
             self.addSubview(weekView)
             self.weekViews.append(weekView)
             
-            weekView.addDayViews()
+            weekView.addDayViews(dates[i])
             
             if i == 0
             {
