@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GCCalendar
 
 class ViewController: UIViewController
 {
@@ -22,9 +23,9 @@ class ViewController: UIViewController
     
     func addCalendarViewConstraints()
     {
-        let bottom = NSLayoutConstraint(i: self.calendarView, a: .Bottom, i: self.view)
-        let width = NSLayoutConstraint(i: self.calendarView, a: .Width, i: self.view)
-        let height = NSLayoutConstraint(i: self.calendarView, a: .Height, c: 340)
+        let bottom = NSLayoutConstraint(item: self.calendarView, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        let width = NSLayoutConstraint(item: self.calendarView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
+        let height = NSLayoutConstraint(item: self.calendarView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: 340)
         
         self.view.addConstraints([bottom, width, height])
     }
