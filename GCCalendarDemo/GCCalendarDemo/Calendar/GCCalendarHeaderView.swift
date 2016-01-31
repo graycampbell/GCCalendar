@@ -16,16 +16,9 @@ public final class GCCalendarHeaderView: UIView
     
     // MARK: - Initializers
     
-    public required init?(coder aDecoder: NSCoder)
+    public convenience init()
     {
-        fatalError("GCCalendar does not support NSCoding.")
-    }
-    
-    public init()
-    {
-        super.init(frame: CGRectZero)
-        
-        Calendar.header = self
+        self.init(frame: CGRectZero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
