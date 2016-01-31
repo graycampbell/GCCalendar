@@ -12,14 +12,9 @@ public final class GCCalendarWeekdayLabel: UILabel
 {
     // MARK: - Initializers
     
-    public required init?(coder aDecoder: NSCoder)
+    public convenience init(text: String)
     {
-        fatalError("GCCalendar does not support NSCoding.")
-    }
-    
-    public init(text: String)
-    {
-        super.init(frame: CGRectZero)
+        self.init(frame: CGRectZero)
         
         self.text = text
         self.textAlignment = .Center

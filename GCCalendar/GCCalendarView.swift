@@ -12,19 +12,14 @@ public final class GCCalendarView: UIView
 {
     // MARK: - Properties
     
-    private var headerView: GCCalendarHeaderView!
-    private var monthViews: [GCCalendarMonthView] = []
+    var headerView: GCCalendarHeaderView!
+    var monthViews: [GCCalendarMonthView] = []
     
     // MARK: - Initializers
     
-    public required init?(coder aDecoder: NSCoder)
+    public convenience init()
     {
-        fatalError("GCCalendar does not support NSCoding.")
-    }
-    
-    public init()
-    {
-        super.init(frame: CGRectZero)
+        self.init(frame: CGRectZero)
         
         Calendar.view = self
         
@@ -69,9 +64,16 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
+        let startDateComponents = Calendar.currentCalendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        startDateComponents.day = 1
+        
+        let startDate = Calendar.currentCalendar.dateFromComponents(startDateComponents)!
+        
         for var i = 0; i < 3; i++
         {
             let monthView = GCCalendarMonthView()
+            monthView.startDate = startDate
+            
             monthView.addPanGestureRecognizer(self, action: "toggleCurrentMonth:")
             
             self.addSubview(monthView)
