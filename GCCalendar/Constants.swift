@@ -13,7 +13,8 @@ struct Calendar
     static let currentCalendar = NSCalendar.currentCalendar()
     
     static var view: GCCalendarView!
-    static var header: GCCalendarHeaderView!
+    static var selectedDate: NSDate = NSDate()
+    static var selectedDayView: GCCalendarDayView?
     
     struct WeekdayLabel
     {
@@ -23,13 +24,9 @@ struct Calendar
     
     struct DayView
     {
-        static let enabled: Bool = true
+        static let font: UIFont = UIFont.systemFontOfSize(17)
         
-        static let enabledFont: UIFont = UIFont.systemFontOfSize(17)
-        static let enabledTextColor: UIColor = UIColor.black(0.87)
-        
-        static let disabledFont: UIFont = UIFont.systemFontOfSize(17)
-        static let disabledTextColor: UIColor = UIColor(r: 146, g: 146, b: 146)
+        static let textColor: UIColor = UIColor.black(0.87)
         
         static let selectedFont: UIFont = UIFont.boldSystemFontOfSize(17)
         static let selectedTextColor: UIColor = UIColor.whiteColor()
@@ -38,13 +35,12 @@ struct Calendar
     
     struct PastDayView
     {
-        static var enabled: Bool = Calendar.DayView.enabled
+        static var enabled: Bool = true
         
-        static var enabledFont: UIFont = Calendar.DayView.enabledFont
-        static var enabledTextColor: UIColor = Calendar.DayView.enabledTextColor
+        static var defaultFont: UIFont = Calendar.DayView.font
         
-        static var disabledFont: UIFont = Calendar.DayView.disabledFont
-        static var disabledTextColor: UIColor = Calendar.DayView.disabledTextColor
+        static var enabledTextColor: UIColor = Calendar.DayView.textColor
+        static var disabledTextColor: UIColor = UIColor(r: 146, g: 146, b: 146)
         
         static var selectedFont: UIFont = Calendar.DayView.selectedFont
         static var selectedTextColor: UIColor = Calendar.DayView.selectedTextColor
@@ -53,13 +49,8 @@ struct Calendar
     
     struct CurrentDayView
     {
-        static var enabled: Bool = Calendar.DayView.enabled
-        
-        static var enabledFont: UIFont = UIFont.boldSystemFontOfSize(17)
-        static var enabledTextColor: UIColor = Calendar.DayView.enabledTextColor
-        
-        static var disabledFont: UIFont = UIFont.boldSystemFontOfSize(17)
-        static var disabledTextColor: UIColor = Calendar.DayView.disabledTextColor
+        static var font: UIFont = UIFont.boldSystemFontOfSize(17)
+        static var textColor: UIColor = UIColor(r: 255, g: 58, b: 48)
         
         static var selectedFont: UIFont = Calendar.DayView.selectedFont
         static var selectedTextColor: UIColor = Calendar.DayView.selectedTextColor
@@ -68,13 +59,8 @@ struct Calendar
     
     struct FutureDayView
     {
-        static var enabled: Bool = Calendar.DayView.enabled
-        
-        static var enabledFont: UIFont = Calendar.DayView.enabledFont
-        static var enabledTextColor: UIColor = Calendar.DayView.enabledTextColor
-        
-        static var disabledFont: UIFont = Calendar.DayView.disabledFont
-        static var disabledTextColor: UIColor = Calendar.DayView.disabledTextColor
+        static var font: UIFont = Calendar.DayView.font
+        static var textColor: UIColor = Calendar.DayView.textColor
         
         static var selectedFont: UIFont = Calendar.DayView.selectedFont
         static var selectedTextColor: UIColor = Calendar.DayView.selectedTextColor
