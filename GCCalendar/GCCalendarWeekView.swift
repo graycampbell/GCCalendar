@@ -16,14 +16,9 @@ public final class GCCalendarWeekView: UIView
     
     // MARK: - Initializers
     
-    public required init?(coder aDecoder: NSCoder)
+    public convenience init()
     {
-        fatalError("GCCalendar does not support NSCoding.")
-    }
-    
-    public init()
-    {
-        super.init(frame: CGRectZero)
+        self.init(frame: CGRectZero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -33,13 +28,13 @@ public final class GCCalendarWeekView: UIView
 
 extension GCCalendarWeekView
 {
-    func addDayViews()
+    func addDayViews(dates: [NSDate?])
     {
         let dayViewWidth: CGFloat = 35
         
-        for var i = 0; i < Calendar.header.weekdayLabels.count; i++
+        for var i = 0; i < Calendar.view.headerView.weekdayLabels.count; i++
         {
-            let dayView = GCCalendarDayView()
+            let dayView = GCCalendarDayView(date: dates[i])
             
             self.addSubview(dayView)
             self.dayViews.append(dayView)
@@ -48,10 +43,10 @@ extension GCCalendarWeekView
             
             dayView.widthConstraint = NSLayoutConstraint(i: dayView, a: .Width, c: dayViewWidth)
             dayView.heightConstraint = NSLayoutConstraint(i: dayView, a: .Height, c: dayViewWidth)
-            dayView.centerXConstraint = NSLayoutConstraint(i: dayView, a: .CenterX, i: Calendar.header.weekdayLabels[i])
+            dayView.centerXConstraint = NSLayoutConstraint(i: dayView, a: .CenterX, i: Calendar.view.headerView.weekdayLabels[i])
             dayView.centerYConstraint = NSLayoutConstraint(i: dayView, a: .CenterY, i: self)
             
-            self.superview!.superview!.addConstraints([dayView.widthConstraint, dayView.heightConstraint, dayView.centerXConstraint, dayView.centerYConstraint])
+            Calendar.view.addConstraints([dayView.widthConstraint, dayView.heightConstraint, dayView.centerXConstraint, dayView.centerYConstraint])
         }
     }
 }
