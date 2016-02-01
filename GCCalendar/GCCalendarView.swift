@@ -23,6 +23,8 @@ public final class GCCalendarView: UIView
         
         Calendar.view = self
         
+        self.clipsToBounds = false
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addHeaderView()
@@ -64,16 +66,11 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
-        let startDateComponents = Calendar.currentCalendar.components([.Day, .Month, .Year], fromDate: NSDate())
-        startDateComponents.day = 1
-        
-        let startDate = Calendar.currentCalendar.dateFromComponents(startDateComponents)!
+        let startDates = [self.currentMonthStartDate, self.currentMonthStartDate, self.nextMonthStartDate]
         
         for var i = 0; i < 3; i++
         {
-            let monthView = GCCalendarMonthView()
-            monthView.startDate = startDate
-            
+            let monthView = GCCalendarMonthView(startDate: startDates[i])
             monthView.addPanGestureRecognizer(self, action: "toggleCurrentMonth:")
             
             self.addSubview(monthView)
@@ -97,23 +94,40 @@ extension GCCalendarView
     {
         for monthView in self.monthViews
         {
-            monthView.leftConstraint?.active = false
-            monthView.rightConstraint?.active = false
+            if monthView.leftConstraint != nil
+            {
+                self.removeConstraint(monthView.leftConstraint)
+            }
+            
+            if monthView.rightConstraint != nil
+            {
+                self.removeConstraint(monthView.rightConstraint)
+            }
         }
         
         self.updateConstraintsForPreviousMonthView()
+        self.updateConstraintsForCurrentMonthView()
+        self.updateConstraintsForNextMonthView()
     }
     
     private func updateConstraintsForPreviousMonthView()
     {
-        self.previousMonthView.rightConstraint = NSLayoutConstraint(i: self.previousMonthView, a: .Right, i: self.currentMonthView, a: .Left)
+        self.previousMonthView.rightConstraint = NSLayoutConstraint(i: self.previousMonthView, a: .Right, i: self, a: .Left)
         
         self.addConstraint(self.previousMonthView.rightConstraint)
     }
     
+    private func updateConstraintsForCurrentMonthView()
+    {
+        self.currentMonthView.leftConstraint = NSLayoutConstraint(i: self.currentMonthView, a: .Left, i: self)
+        self.currentMonthView.rightConstraint = NSLayoutConstraint(i: self.currentMonthView, a: .Right, i: self)
+        
+        self.addConstraints([self.currentMonthView.leftConstraint, self.currentMonthView.rightConstraint])
+    }
+    
     private func updateConstraintsForNextMonthView()
     {
-        self.nextMonthView.leftConstraint = NSLayoutConstraint(i: self.nextMonthView, a: .Left, i: self.currentMonthView, a: .Right)
+        self.nextMonthView.leftConstraint = NSLayoutConstraint(i: self.nextMonthView, a: .Left, i: self, a: .Right)
         
         self.addConstraint(self.nextMonthView.leftConstraint)
     }
@@ -133,5 +147,23 @@ extension GCCalendarView
     private var nextMonthView: GCCalendarMonthView {
         
         return self.monthViews[2]
+    }
+    
+    private var previousMonthStartDate: NSDate {
+     
+        return NSDate()
+    }
+    
+    private var currentMonthStartDate: NSDate {
+        
+        let currentMonthComponents = Calendar.currentCalendar.components([.Day, .Month, .Year], fromDate: NSDate())
+        currentMonthComponents.day = 1
+        
+        return Calendar.currentCalendar.dateFromComponents(currentMonthComponents)!
+    }
+    
+    private var nextMonthStartDate: NSDate {
+    
+        return Calendar.currentCalendar.nextDateAfterDate(self.currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
     }
 }
