@@ -16,15 +16,17 @@ public final class GCCalendarMonthView: UIView
     
     private var weekViews: [GCCalendarWeekView] = []
     
-    var startDate: NSDate!
+    private var startDate: NSDate!
     
     var topConstraint, bottomConstraint, leftConstraint, rightConstraint, widthConstraint: NSLayoutConstraint!
     
     // MARK: - Initializers
     
-    public convenience init()
+    public convenience init(startDate: NSDate)
     {
         self.init(frame: CGRectZero)
+        
+        self.startDate = startDate
         
         self.translatesAutoresizingMaskIntoConstraints = false
     }
