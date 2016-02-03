@@ -29,6 +29,8 @@ public final class GCCalendarMonthView: UIView
         self.startDate = startDate
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addWeekViews()
     }
 }
 
@@ -60,11 +62,11 @@ extension GCCalendarMonthView: UIGestureRecognizerDelegate
 
 extension GCCalendarMonthView
 {
-    func addWeekViews()
+    private func addWeekViews()
     {
         var date: NSDate? = self.startDate
         
-        var dates: [[NSDate?]] = [[NSDate?]](count: 6, repeatedValue: [nil, nil, nil, nil, nil, nil, nil])
+        var dates: [[NSDate?]] = [[nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil]]
         
         while date != nil
         {
@@ -79,12 +81,10 @@ extension GCCalendarMonthView
         
         for var i = 0; i < dates.count; i++
         {
-            let weekView = GCCalendarWeekView()
+            let weekView = GCCalendarWeekView(dates: dates[i])
             
             self.addSubview(weekView)
             self.weekViews.append(weekView)
-            
-            weekView.addDayViews(dates[i])
             
             if i == 0
             {

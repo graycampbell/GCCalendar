@@ -76,8 +76,6 @@ extension GCCalendarView
             self.addSubview(monthView)
             self.monthViews.append(monthView)
             
-            monthView.addWeekViews()
-            
             monthView.topConstraint = NSLayoutConstraint(i: monthView, a: .Top, i: self.headerView, a: .Bottom)
             monthView.bottomConstraint = NSLayoutConstraint(i: monthView, a: .Bottom, i: self)
             monthView.widthConstraint = NSLayoutConstraint(i: monthView, a: .Width, i: self)
@@ -112,7 +110,7 @@ extension GCCalendarView
     
     private func updateConstraintsForPreviousMonthView()
     {
-        self.previousMonthView.rightConstraint = NSLayoutConstraint(i: self.previousMonthView, a: .Right, i: self, a: .Left)
+        self.previousMonthView.rightConstraint = NSLayoutConstraint(i: self.previousMonthView, a: .Right, i: self.currentMonthView, a: .Left)
         
         self.addConstraint(self.previousMonthView.rightConstraint)
     }
@@ -127,7 +125,7 @@ extension GCCalendarView
     
     private func updateConstraintsForNextMonthView()
     {
-        self.nextMonthView.leftConstraint = NSLayoutConstraint(i: self.nextMonthView, a: .Left, i: self, a: .Right)
+        self.nextMonthView.leftConstraint = NSLayoutConstraint(i: self.nextMonthView, a: .Left, i: self.currentMonthView, a: .Right)
         
         self.addConstraint(self.nextMonthView.leftConstraint)
     }
