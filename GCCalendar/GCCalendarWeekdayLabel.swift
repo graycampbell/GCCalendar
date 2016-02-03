@@ -21,7 +21,5 @@ public final class GCCalendarWeekdayLabel: UILabel
         
         self.font = Calendar.WeekdayLabel.font
         self.textColor = Calendar.WeekdayLabel.textColor
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarHeaderView: UIView
+public final class GCCalendarHeaderView: UIStackView
 {
     // MARK: - Properties
     
@@ -19,6 +19,9 @@ public final class GCCalendarHeaderView: UIView
     public convenience init()
     {
         self.init(frame: CGRectZero)
+        
+        self.axis = .Horizontal
+        self.distribution = .FillEqually
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -34,36 +37,12 @@ extension GCCalendarHeaderView
     
     private func addWeekdayLabels()
     {
-        let numberOfDays = Calendar.currentCalendar.veryShortWeekdaySymbols.count
-        let widthMultiplier = 1.0 / CGFloat(numberOfDays)
-        
-        for var i = 0; i < numberOfDays; i++
+        for var i = 0; i < Calendar.currentCalendar.veryShortWeekdaySymbols.count; i++
         {
             let label = GCCalendarWeekdayLabel(text: Calendar.currentCalendar.veryShortWeekdaySymbols[i])
             
-            self.addSubview(label)
+            self.addArrangedSubview(label)
             self.weekdayLabels.append(label)
-            
-            if i == 0
-            {
-                self.addConstraintsForWeekdayLabel(label, item: self, attribute: .Left, widthMultiplier: widthMultiplier)
-            }
-            else
-            {
-                self.addConstraintsForWeekdayLabel(label, item: self.weekdayLabels[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
-            }
         }
-    }
-    
-    // MARK: Constraints
-    
-    private func addConstraintsForWeekdayLabel(weekdayLabel: GCCalendarWeekdayLabel, item: AnyObject, attribute: NSLayoutAttribute, widthMultiplier: CGFloat)
-    {
-        let top = NSLayoutConstraint(i: weekdayLabel, a: .Top, i: self)
-        let left = NSLayoutConstraint(i: weekdayLabel, a: .Left, i: item, a: attribute)
-        let width = NSLayoutConstraint(i: weekdayLabel, a: .Width, i: self, m: widthMultiplier)
-        let height = NSLayoutConstraint(i: weekdayLabel, a: .Height, i: self)
-        
-        self.addConstraints([top, left, width, height])
     }
 }
