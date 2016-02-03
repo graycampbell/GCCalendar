@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarWeekView: UIView
+public final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
@@ -23,7 +23,8 @@ public final class GCCalendarWeekView: UIView
         
         self.dates = dates
         
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.axis = .Horizontal
+        self.distribution = .FillEqually
         
         self.addDayViews()
     }
@@ -35,35 +36,12 @@ extension GCCalendarWeekView
 {
     private func addDayViews()
     {
-        let widthMultiplier: CGFloat = 1.0 / CGFloat(Calendar.view.headerView.weekdayLabels.count)
-        
         for var i = 0; i < Calendar.view.headerView.weekdayLabels.count; i++
         {
             let dayView = GCCalendarDayView(date: self.dates[i])
             
-            self.addSubview(dayView)
+            self.addArrangedSubview(dayView)
             self.dayViews.append(dayView)
-            
-            if i == 0
-            {
-                self.addConstraintsForDayView(dayView, item: self, attribute: .Left, widthMultiplier: widthMultiplier)
-            }
-            else
-            {
-                self.addConstraintsForDayView(dayView, item: self.dayViews[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
-            }
-            
-            dayView.addButton()
         }
-    }
-    
-    private func addConstraintsForDayView(dayView: GCCalendarDayView, item: AnyObject, attribute: NSLayoutAttribute, widthMultiplier: CGFloat)
-    {
-        let top = NSLayoutConstraint(i: dayView, a: .Top, i: self)
-        let left = NSLayoutConstraint(i: dayView, a: .Left, i: item, a: attribute)
-        let width = NSLayoutConstraint(i: dayView, a: .Width, i: self, m: widthMultiplier)
-        let height = NSLayoutConstraint(i: dayView, a: .Height, i: self)
-        
-        self.addConstraints([top, left, width, height])
     }
 }

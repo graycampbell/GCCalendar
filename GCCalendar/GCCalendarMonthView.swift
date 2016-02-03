@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarMonthView: UIView
+public final class GCCalendarMonthView: UIStackView
 {
     // MARK: - Properties
     
@@ -29,6 +29,9 @@ public final class GCCalendarMonthView: UIView
         self.startDate = startDate
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.axis = .Vertical
+        self.distribution = .FillEqually
         
         self.addWeekViews()
     }
@@ -82,33 +85,12 @@ extension GCCalendarMonthView
             }
         }
         
-        let heightMultiplier = 1.0 / CGFloat(dates.count)
-        
         for var i = 0; i < dates.count; i++
         {
             let weekView = GCCalendarWeekView(dates: dates[i])
             
-            self.addSubview(weekView)
+            self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
-            
-            if i == 0
-            {
-                self.addConstraintsForWeekView(weekView, item: self, attribute: .Top, heightMultiplier: heightMultiplier)
-            }
-            else
-            {
-                self.addConstraintsForWeekView(weekView, item: self.weekViews[i - 1], attribute: .Bottom, heightMultiplier: heightMultiplier)
-            }
         }
-    }
-    
-    private func addConstraintsForWeekView(weekView: GCCalendarWeekView, item: AnyObject, attribute: NSLayoutAttribute, heightMultiplier: CGFloat)
-    {
-        let top = NSLayoutConstraint(i: weekView, a: .Top, i: item, a: attribute)
-        let left = NSLayoutConstraint(i: weekView, a: .Left, i: self)
-        let width = NSLayoutConstraint(i: weekView, a: .Width, i: self)
-        let height = NSLayoutConstraint(i: weekView, a: .Height, i: self, m: heightMultiplier)
-        
-        self.addConstraints([top, left, width, height])
     }
 }
