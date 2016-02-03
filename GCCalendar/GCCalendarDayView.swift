@@ -64,8 +64,7 @@ extension GCCalendarDayView
     {
         self.init(frame: CGRectZero)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
+        self.addButton()
         self.addDate(date)
     }
 }
@@ -90,7 +89,7 @@ extension GCCalendarDayView
         let centerX = NSLayoutConstraint(i: self.button, a: .CenterX, i: self)
         let centerY = NSLayoutConstraint(i: self.button, a: .CenterY, i: self)
         
-        self.superview!.addConstraints([width, height, centerX, centerY])
+        self.addConstraints([width, height, centerX, centerY])
     }
 }
 
