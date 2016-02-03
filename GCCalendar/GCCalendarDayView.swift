@@ -165,7 +165,7 @@ extension GCCalendarDayView
     
     private func dayDeselected()
     {
-        self.backgroundColor = nil
+        self.button.backgroundColor = nil
         
         let font = self.isToday ? Calendar.CurrentDayView.font : Calendar.DayView.font
         let titleColor = self.isToday ? Calendar.CurrentDayView.textColor : Calendar.DayView.textColor
