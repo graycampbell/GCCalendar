@@ -105,9 +105,10 @@ extension GCCalendarMonthView
     private func addConstraintsForWeekView(weekView: GCCalendarWeekView, item: AnyObject, attribute: NSLayoutAttribute, heightMultiplier: CGFloat)
     {
         let top = NSLayoutConstraint(i: weekView, a: .Top, i: item, a: attribute)
+        let left = NSLayoutConstraint(i: weekView, a: .Left, i: self)
         let width = NSLayoutConstraint(i: weekView, a: .Width, i: self)
         let height = NSLayoutConstraint(i: weekView, a: .Height, i: self, m: heightMultiplier)
         
-        self.addConstraints([top, width, height])
+        self.addConstraints([top, left, width, height])
     }
 }

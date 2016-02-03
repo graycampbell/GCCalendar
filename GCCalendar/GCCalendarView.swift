@@ -23,8 +23,6 @@ public final class GCCalendarView: UIView
         
         Calendar.view = self
         
-        self.clipsToBounds = false
-        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addHeaderView()
