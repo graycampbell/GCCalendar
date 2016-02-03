@@ -66,15 +66,20 @@ extension GCCalendarMonthView
     {
         var date: NSDate? = self.startDate
         
-        var dates: [[NSDate?]] = [[nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil]]
+        var dates: [[NSDate?]] = [[NSDate?]](count: 6, repeatedValue: [nil, nil, nil, nil, nil, nil, nil])
         
         while date != nil
         {
-            let dateComponents = Calendar.currentCalendar.components([.WeekOfMonth, .Weekday, .Day], fromDate: date!)
+            let dateComponents = Calendar.currentCalendar.components([.Month, .WeekOfMonth, .Weekday, .Day], fromDate: date!)
             
             dates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
             
-            date = Calendar.currentCalendar.dateBySettingUnit(.Day, value: dateComponents.day + 1, ofDate: date!, options: .MatchStrictly)
+            if let newDate = Calendar.currentCalendar.dateByAddingUnit(.Day, value: 1, toDate: date!, options: .MatchStrictly)
+            {
+                let newDateComponents = Calendar.currentCalendar.components(.Month, fromDate: newDate)
+                
+                date = (newDateComponents.month == dateComponents.month) ? newDate : nil
+            }
         }
         
         let heightMultiplier = 1.0 / CGFloat(dates.count)
