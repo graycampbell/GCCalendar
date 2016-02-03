@@ -8,11 +8,13 @@
 
 import UIKit
 
-public final class GCCalendarDayView: UIButton
+public final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
     var date: NSDate?
+    let button = UIButton()
+    let buttonWidth: CGFloat = 35
     
     var isSelectedDay: Bool = false {
         
@@ -23,12 +25,10 @@ public final class GCCalendarDayView: UIButton
         
         didSet {
             
-            self.titleLabel!.font = self.defaultFont
-            self.setTitleColor(self.defaultTextColor, forState: .Normal)
+            self.button.titleLabel!.font = self.defaultFont
+            self.button.setTitleColor(self.defaultTextColor, forState: .Normal)
         }
     }
-    
-    var widthConstraint, heightConstraint, centerXConstraint, centerYConstraint: NSLayoutConstraint!
 }
 
 // MARK: Font & Text Color
@@ -64,9 +64,33 @@ extension GCCalendarDayView
     {
         self.init(frame: CGRectZero)
         
-        self.addDate(date)
-        
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addDate(date)
+    }
+}
+
+// MARK: - Button
+
+extension GCCalendarDayView
+{
+    func addButton()
+    {
+        self.button.layer.cornerRadius = self.buttonWidth / 2
+        self.button.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(self.button)
+        self.addButtonConstraints()
+    }
+    
+    private func addButtonConstraints()
+    {
+        let width = NSLayoutConstraint(i: self.button, a: .Width, c: self.buttonWidth)
+        let height = NSLayoutConstraint(i: self.button, a: .Height, c: self.buttonWidth)
+        let centerX = NSLayoutConstraint(i: self.button, a: .CenterX, i: self)
+        let centerY = NSLayoutConstraint(i: self.button, a: .CenterY, i: self)
+        
+        self.superview!.addConstraints([width, height, centerX, centerY])
     }
 }
 
@@ -74,29 +98,42 @@ extension GCCalendarDayView
 
 extension GCCalendarDayView
 {
-    func addDate(date: NSDate?)
+    private func addDate(date: NSDate?)
     {
         self.date = date
         
         if self.date != nil
         {
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = self.dateFormatter
+            
+            let title = dateFormatter.stringFromDate(self.date!)
+            
+            self.button.setTitle(title, forState: .Normal)
+            
+            self.button.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
+            
+            self.isToday = Calendar.currentCalendar.isDateInToday(self.date!)
+            self.isSelectedDay = self.isToday
+        }
+    }
+    
+    private var dateFormatter: NSDateFormatter {
+        
+        var dateFormatter: NSDateFormatter!
+        var onceToken: dispatch_once_t = 0
+        
+        dispatch_once(&onceToken) {
+         
+            dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "d"
             
             if dateFormatter.calendar != Calendar.currentCalendar
             {
                 dateFormatter.calendar = Calendar.currentCalendar
             }
-            
-            let title = dateFormatter.stringFromDate(self.date!)
-            
-            self.setTitle(title, forState: .Normal)
-            
-            self.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
-            
-            self.isToday = Calendar.currentCalendar.isDateInToday(self.date!)
-            self.isSelectedDay = self.isToday
         }
+        
+        return dateFormatter
     }
 }
 
@@ -111,17 +148,17 @@ extension GCCalendarDayView
     
     private func daySelected()
     {
-        self.enabled = false
+        self.button.enabled = false
         
         Calendar.selectedDayView?.dayDeselected()
         
         Calendar.selectedDayView = self
         
-        self.backgroundColor = Calendar.CurrentDayView.selectedBackgroundColor
+        self.button.backgroundColor = Calendar.CurrentDayView.selectedBackgroundColor
         
-        self.titleLabel!.font = Calendar.CurrentDayView.selectedFont
+        self.button.titleLabel!.font = Calendar.CurrentDayView.selectedFont
         
-        self.setTitleColor(Calendar.CurrentDayView.selectedTextColor, forState: .Normal)
+        self.button.setTitleColor(Calendar.CurrentDayView.selectedTextColor, forState: .Normal)
         
         self.animateSelection()
     }
@@ -133,11 +170,11 @@ extension GCCalendarDayView
         let font = self.isToday ? Calendar.CurrentDayView.font : Calendar.DayView.font
         let titleColor = self.isToday ? Calendar.CurrentDayView.textColor : Calendar.DayView.textColor
         
-        self.titleLabel!.font = font
+        self.button.titleLabel!.font = font
         
-        self.setTitleColor(titleColor, forState: .Normal)
+        self.button.setTitleColor(titleColor, forState: .Normal)
         
-        self.enabled = true
+        self.button.enabled = true
     }
 }
 
@@ -166,7 +203,7 @@ extension GCCalendarDayView
     {
         UIView.animateWithDuration(0.1, animations: {
             
-            self.transform = CGAffineTransformMakeScale(scale, scale)
+            self.button.transform = CGAffineTransformMakeScale(scale, scale)
             
             }, completion: completion)
     }

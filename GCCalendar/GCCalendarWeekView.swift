@@ -12,15 +12,20 @@ public final class GCCalendarWeekView: UIView
 {
     // MARK: - Properties
     
+    private var dates: [NSDate?]!
     private var dayViews: [GCCalendarDayView] = []
     
     // MARK: - Initializers
     
-    public convenience init()
+    public convenience init(dates: [NSDate?])
     {
         self.init(frame: CGRectZero)
         
+        self.dates = dates
+        
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addDayViews()
     }
 }
 
@@ -28,25 +33,37 @@ public final class GCCalendarWeekView: UIView
 
 extension GCCalendarWeekView
 {
-    func addDayViews(dates: [NSDate?])
+    private func addDayViews()
     {
-        let dayViewWidth: CGFloat = 35
+        let widthMultiplier: CGFloat = 1.0 / CGFloat(Calendar.view.headerView.weekdayLabels.count)
         
         for var i = 0; i < Calendar.view.headerView.weekdayLabels.count; i++
         {
-            let dayView = GCCalendarDayView(date: dates[i])
+            let dayView = GCCalendarDayView(date: self.dates[i])
             
             self.addSubview(dayView)
             self.dayViews.append(dayView)
             
-            dayView.layer.cornerRadius = dayViewWidth / 2
+            if i == 0
+            {
+                self.addConstraintsForDayView(dayView, item: self, attribute: .Left, widthMultiplier: widthMultiplier)
+            }
+            else
+            {
+                self.addConstraintsForDayView(dayView, item: self.dayViews[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
+            }
             
-            dayView.widthConstraint = NSLayoutConstraint(i: dayView, a: .Width, c: dayViewWidth)
-            dayView.heightConstraint = NSLayoutConstraint(i: dayView, a: .Height, c: dayViewWidth)
-            dayView.centerXConstraint = NSLayoutConstraint(i: dayView, a: .CenterX, i: Calendar.view.headerView.weekdayLabels[i])
-            dayView.centerYConstraint = NSLayoutConstraint(i: dayView, a: .CenterY, i: self)
-            
-            Calendar.view.addConstraints([dayView.widthConstraint, dayView.heightConstraint, dayView.centerXConstraint, dayView.centerYConstraint])
+            dayView.addButton()
         }
+    }
+    
+    private func addConstraintsForDayView(dayView: GCCalendarDayView, item: AnyObject, attribute: NSLayoutAttribute, widthMultiplier: CGFloat)
+    {
+        let top = NSLayoutConstraint(i: dayView, a: .Top, i: self)
+        let left = NSLayoutConstraint(i: dayView, a: .Left, i: item, a: attribute)
+        let width = NSLayoutConstraint(i: dayView, a: .Width, i: self, m: widthMultiplier)
+        let height = NSLayoutConstraint(i: dayView, a: .Height, i: self)
+        
+        self.addConstraints([top, left, width, height])
     }
 }
