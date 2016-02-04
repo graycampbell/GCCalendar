@@ -162,7 +162,7 @@ extension GCCalendarView
         }
         else if pan.state == .Ended
         {
-            if self.currentMonthView.center.x < self.currentMonthView.bounds.size.width * 0.25
+            if self.currentMonthView.center.x < 0
             {
                 UIView.animateWithDuration(0.25, animations: {
                     
@@ -177,7 +177,7 @@ extension GCCalendarView
                     self.updateCentersForMonthViews()
                 })
             }
-            else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width * 0.75
+            else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width
             {
                 UIView.animateWithDuration(0.25, animations: {
                     
