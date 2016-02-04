@@ -65,7 +65,7 @@ extension GCCalendarDayView
         self.init(frame: CGRectZero)
         
         self.addButton()
-        self.addDate(date)
+        self.update(newDate: date)
     }
 }
 
@@ -97,11 +97,19 @@ extension GCCalendarDayView
 
 extension GCCalendarDayView
 {
-    private func addDate(date: NSDate?)
+    func update(newDate newDate: NSDate?)
     {
-        self.date = date
+        self.date = newDate
         
-        if self.date != nil
+        if self.date == nil
+        {
+            self.button.setTitle(nil, forState: .Normal)
+            self.button.removeTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
+            
+            self.isToday = false
+            self.isSelectedDay = false
+        }
+        else
         {
             let dateFormatter = self.dateFormatter
             
@@ -112,7 +120,7 @@ extension GCCalendarDayView
             self.button.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
             
             self.isToday = Calendar.currentCalendar.isDateInToday(self.date!)
-            self.isSelectedDay = self.isToday
+            self.isSelectedDay = Calendar.currentCalendar.isDate(self.date!, inSameDayAsDate: Calendar.selectedDate)
         }
     }
     
