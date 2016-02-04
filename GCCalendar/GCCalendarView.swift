@@ -74,7 +74,14 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
-        let startDates = [self.currentMonthStartDate, self.currentMonthStartDate, self.nextMonthStartDate]
+        let currentMonthComponents = Calendar.currentCalendar.components([.Day, .Month, .Year], fromDate: Calendar.selectedDate)
+        currentMonthComponents.day = 1
+        
+        let currentMonthStartDate = Calendar.currentCalendar.dateFromComponents(currentMonthComponents)!
+        let previousMonthStartDate = self.previousMonthStartDate(currentMonthStartDate: currentMonthStartDate)
+        let nextMonthStartDate = self.nextMonthStartDate(currentMonthStartDate: currentMonthStartDate)
+        
+        let startDates = [previousMonthStartDate, currentMonthStartDate, nextMonthStartDate]
         
         for var i = 0; i < 3; i++
         {
@@ -120,22 +127,14 @@ extension GCCalendarView
         return self.monthViews[2]
     }
     
-    private var previousMonthStartDate: NSDate {
-     
-        return NSDate()
+    private func previousMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
+    {
+        return Calendar.currentCalendar.dateByAddingUnit(.Month, value: -1, toDate: currentMonthStartDate, options: .MatchStrictly)!
     }
     
-    private var currentMonthStartDate: NSDate {
-        
-        let currentMonthComponents = Calendar.currentCalendar.components([.Day, .Month, .Year], fromDate: NSDate())
-        currentMonthComponents.day = 1
-        
-        return Calendar.currentCalendar.dateFromComponents(currentMonthComponents)!
-    }
-    
-    private var nextMonthStartDate: NSDate {
-    
-        return Calendar.currentCalendar.nextDateAfterDate(self.currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
+    private func nextMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
+    {
+        return Calendar.currentCalendar.nextDateAfterDate(currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
     }
     
     // MARK: Toggle Current Month
@@ -171,10 +170,15 @@ extension GCCalendarView
                     
                 }, completion: { finished in
                     
+                    let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
+                    
+                    self.previousMonthView.update(newStartDate: newStartDate)
                     self.monthViews.append(self.previousMonthView)
                     self.monthViews.removeFirst()
                     
                     self.updateCentersForMonthViews()
+                    
+                    self.currentMonthView.setSelectedDate()
                 })
             }
             else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width
@@ -186,10 +190,15 @@ extension GCCalendarView
                     
                 }, completion: { finished in
                     
+                    let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
+                    
+                    self.nextMonthView.update(newStartDate: newStartDate)
                     self.monthViews.insert(self.nextMonthView, atIndex: 0)
                     self.monthViews.removeLast()
                     
                     self.updateCentersForMonthViews()
+                    
+                    self.currentMonthView.setSelectedDate()
                 })
             }
             else
