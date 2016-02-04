@@ -15,6 +15,8 @@ public final class GCCalendarView: UIView
     var headerView: GCCalendarHeaderView!
     var monthViews: [GCCalendarMonthView] = []
     
+    var panGestureStartLocation: CGFloat!
+    
     // MARK: - Initializers
     
     public convenience init()
@@ -116,9 +118,8 @@ extension GCCalendarView
     private func updateConstraintsForCurrentMonthView()
     {
         self.currentMonthView.leftConstraint = NSLayoutConstraint(i: self.currentMonthView, a: .Left, i: self)
-        self.currentMonthView.rightConstraint = NSLayoutConstraint(i: self.currentMonthView, a: .Right, i: self)
         
-        self.addConstraints([self.currentMonthView.leftConstraint, self.currentMonthView.rightConstraint])
+        self.addConstraint(self.currentMonthView.leftConstraint)
     }
     
     private func updateConstraintsForNextMonthView()
@@ -161,5 +162,49 @@ extension GCCalendarView
     private var nextMonthStartDate: NSDate {
     
         return Calendar.currentCalendar.nextDateAfterDate(self.currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
+    }
+    
+    // MARK: Toggle Current Month
+    
+    func toggleCurrentMonth(pan: UIPanGestureRecognizer)
+    {
+        if pan.state == .Began
+        {
+            self.previousMonthView.originalCenter = self.previousMonthView.center
+            self.currentMonthView.originalCenter = self.currentMonthView.center
+            self.nextMonthView.originalCenter = self.nextMonthView.center
+            
+            self.panGestureStartLocation = pan.locationInView(self).x
+        }
+        else if pan.state == .Changed
+        {
+            let changeInX = pan.locationInView(self).x - self.panGestureStartLocation
+            
+            self.previousMonthView.center.x += changeInX
+            self.currentMonthView.center.x += changeInX
+            self.nextMonthView.center.x += changeInX
+            
+            self.panGestureStartLocation = pan.locationInView(self).x
+        }
+        else if pan.state == .Ended
+        {
+            if self.currentMonthView.center.x < self.currentMonthView.bounds.size.width * 0.25
+            {
+                
+            }
+            else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width * 0.75
+            {
+                
+            }
+            else
+            {
+                UIView.animateWithDuration(0.1) {
+                    
+                    self.previousMonthView.center = self.previousMonthView.originalCenter
+                    self.currentMonthView.center = self.currentMonthView.originalCenter
+                    self.nextMonthView.center = self.nextMonthView.originalCenter
+                }
+            }
+        }
     }
 }
