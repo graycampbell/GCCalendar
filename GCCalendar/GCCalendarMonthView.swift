@@ -12,6 +12,8 @@ public final class GCCalendarMonthView: UIStackView
 {
     // MARK: - Properties
     
+    var originalCenter: CGPoint!
+    
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
     private var weekViews: [GCCalendarWeekView] = []
