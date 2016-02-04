@@ -13,9 +13,10 @@ public final class GCCalendarView: UIView
     // MARK: - Properties
     
     var headerView: GCCalendarHeaderView!
-    var monthViews: [GCCalendarMonthView] = []
     
-    var panGestureStartLocation: CGFloat!
+    private var monthViews: [GCCalendarMonthView] = []
+    
+    private var panGestureStartLocation: CGFloat!
     
     // MARK: - Initializers
     
@@ -29,6 +30,13 @@ public final class GCCalendarView: UIView
         
         self.addHeaderView()
         self.addMonthViews()
+    }
+    
+    public override func layoutSubviews()
+    {
+        super.layoutSubviews()
+        
+        self.updateCentersForMonthViews()
     }
 }
 
@@ -83,50 +91,16 @@ extension GCCalendarView
             self.addConstraints([monthView.topConstraint, monthView.bottomConstraint, monthView.widthConstraint])
         }
         
-        self.updateConstraintsForMonthViews()
+        self.updateCentersForMonthViews()
     }
     
-    // MARK: Constraints
+    // MARK: Centers
     
-    private func updateConstraintsForMonthViews()
+    private func updateCentersForMonthViews()
     {
-        for monthView in self.monthViews
-        {
-            if monthView.leftConstraint != nil
-            {
-                self.removeConstraint(monthView.leftConstraint)
-            }
-            
-            if monthView.rightConstraint != nil
-            {
-                self.removeConstraint(monthView.rightConstraint)
-            }
-        }
-        
-        self.updateConstraintsForPreviousMonthView()
-        self.updateConstraintsForCurrentMonthView()
-        self.updateConstraintsForNextMonthView()
-    }
-    
-    private func updateConstraintsForPreviousMonthView()
-    {
-        self.previousMonthView.rightConstraint = NSLayoutConstraint(i: self.previousMonthView, a: .Right, i: self.currentMonthView, a: .Left)
-        
-        self.addConstraint(self.previousMonthView.rightConstraint)
-    }
-    
-    private func updateConstraintsForCurrentMonthView()
-    {
-        self.currentMonthView.leftConstraint = NSLayoutConstraint(i: self.currentMonthView, a: .Left, i: self)
-        
-        self.addConstraint(self.currentMonthView.leftConstraint)
-    }
-    
-    private func updateConstraintsForNextMonthView()
-    {
-        self.nextMonthView.leftConstraint = NSLayoutConstraint(i: self.nextMonthView, a: .Left, i: self.currentMonthView, a: .Right)
-        
-        self.addConstraint(self.nextMonthView.leftConstraint)
+        self.previousMonthView.center.x = -(self.bounds.size.width / 2)
+        self.currentMonthView.center.x = self.bounds.size.width / 2
+        self.nextMonthView.center.x = self.bounds.size.width + (self.bounds.size.width / 2)
     }
     
     // MARK: Properties
@@ -190,15 +164,37 @@ extension GCCalendarView
         {
             if self.currentMonthView.center.x < self.currentMonthView.bounds.size.width * 0.25
             {
-                
+                UIView.animateWithDuration(0.25, animations: {
+                    
+                    self.currentMonthView.center = self.previousMonthView.originalCenter
+                    self.nextMonthView.center = self.currentMonthView.originalCenter
+                    
+                }, completion: { finished in
+                    
+                    self.monthViews.append(self.previousMonthView)
+                    self.monthViews.removeFirst()
+                    
+                    self.updateCentersForMonthViews()
+                })
             }
             else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width * 0.75
             {
-                
+                UIView.animateWithDuration(0.25, animations: {
+                    
+                    self.previousMonthView.center = self.currentMonthView.originalCenter
+                    self.currentMonthView.center = self.nextMonthView.originalCenter
+                    
+                }, completion: { finished in
+                    
+                    self.monthViews.insert(self.nextMonthView, atIndex: 0)
+                    self.monthViews.removeLast()
+                    
+                    self.updateCentersForMonthViews()
+                })
             }
             else
             {
-                UIView.animateWithDuration(0.1) {
+                UIView.animateWithDuration(0.15) {
                     
                     self.previousMonthView.center = self.previousMonthView.originalCenter
                     self.currentMonthView.center = self.currentMonthView.originalCenter
