@@ -18,9 +18,9 @@ public final class GCCalendarMonthView: UIStackView
     
     private var weekViews: [GCCalendarWeekView] = []
     
-    private var startDate: NSDate!
+    var startDate: NSDate!
     
-    var topConstraint, bottomConstraint, leftConstraint, rightConstraint, widthConstraint: NSLayoutConstraint!
+    var topConstraint, bottomConstraint, widthConstraint: NSLayoutConstraint!
     
     // MARK: - Initializers
     
@@ -69,6 +69,19 @@ extension GCCalendarMonthView
 {
     private func addWeekViews()
     {
+        let dates = self.getDates()
+        
+        for var i = 0; i < dates.count; i++
+        {
+            let weekView = GCCalendarWeekView(dates: dates[i])
+            
+            self.addArrangedSubview(weekView)
+            self.weekViews.append(weekView)
+        }
+    }
+    
+    private func getDates() -> [[NSDate?]]
+    {
         var date: NSDate? = self.startDate
         
         var dates: [[NSDate?]] = [[NSDate?]](count: 6, repeatedValue: [nil, nil, nil, nil, nil, nil, nil])
@@ -87,12 +100,31 @@ extension GCCalendarMonthView
             }
         }
         
-        for var i = 0; i < dates.count; i++
+        return dates
+    }
+    
+    func update(newStartDate newStartDate: NSDate)
+    {
+        self.startDate = newStartDate
+        
+        let dates = self.getDates()
+        
+        for var i = 0; i < self.weekViews.count; i++
         {
-            let weekView = GCCalendarWeekView(dates: dates[i])
-            
-            self.addArrangedSubview(weekView)
-            self.weekViews.append(weekView)
+            self.weekViews[i].update(newDates: dates[i])
         }
+    }
+    
+    func setSelectedDate()
+    {
+        let today = NSDate()
+        
+        let selectedDate = Calendar.currentCalendar.isDate(self.startDate, equalToDate: today, toUnitGranularity: .Month) ? today : self.startDate
+        
+        let selectedDateComponents = Calendar.currentCalendar.components([.WeekOfMonth, .Weekday], fromDate: selectedDate)
+        
+        let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
+        
+        weekView.setSelectedDate(weekday: selectedDateComponents.weekday)
     }
 }
