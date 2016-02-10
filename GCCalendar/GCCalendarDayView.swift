@@ -12,6 +12,8 @@ public final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
+    private var delegate: GCCalendarDayDelegate?
+    
     private var date: NSDate?
     private let button = UIButton()
     private let buttonWidth: CGFloat = 35
@@ -60,9 +62,11 @@ extension GCCalendarDayView
 
 extension GCCalendarDayView
 {
-    convenience init(date: NSDate?)
+    convenience init(delegate: GCCalendarDayDelegate, date: NSDate?)
     {
         self.init(frame: CGRectZero)
+        
+        self.delegate = delegate
         
         self.addButton()
         self.update(newDate: date)
@@ -156,12 +160,13 @@ extension GCCalendarDayView
         Calendar.selectedDayView?.dayDeselected()
         
         Calendar.selectedDayView = self
+        Calendar.selectedDate = self.date!
         
         self.button.backgroundColor = Calendar.CurrentDayView.selectedBackgroundColor
-        
         self.button.titleLabel!.font = Calendar.CurrentDayView.selectedFont
-        
         self.button.setTitleColor(Calendar.CurrentDayView.selectedTextColor, forState: .Normal)
+        
+        self.delegate?.dayView(self, didSelectDate: self.date!)
         
         self.animateSelection()
     }
@@ -174,7 +179,6 @@ extension GCCalendarDayView
         let titleColor = self.isToday ? Calendar.CurrentDayView.textColor : Calendar.DayView.textColor
         
         self.button.titleLabel!.font = font
-        
         self.button.setTitleColor(titleColor, forState: .Normal)
         
         self.button.enabled = true
