@@ -11,8 +11,8 @@ import GCCalendar
 
 class ViewController: UIViewController, GCCalendarDelegate
 {
-    let dateLabel = UILabel()
-    var calendarView: GCCalendarView!
+    private let dateLabel = UILabel()
+    private var calendarView: GCCalendarView!
     
     override func viewDidLoad()
     {
@@ -24,7 +24,7 @@ class ViewController: UIViewController, GCCalendarDelegate
     
     // MARK: - Date Label
     
-    func addDateLabel()
+    private func addDateLabel()
     {
         self.dateLabel.textAlignment = .Center
         self.dateLabel.font = UIFont.boldSystemFontOfSize(14)
@@ -34,7 +34,7 @@ class ViewController: UIViewController, GCCalendarDelegate
         self.addDateLabelConstraints()
     }
     
-    func addDateLabelConstraints()
+    private func addDateLabelConstraints()
     {
         let top = NSLayoutConstraint(item: self.dateLabel, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0)
         let width = NSLayoutConstraint(item: self.dateLabel, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
@@ -45,7 +45,7 @@ class ViewController: UIViewController, GCCalendarDelegate
     
     // MARK: - Calendar View
     
-    func addCalendarView()
+    private func addCalendarView()
     {
         self.calendarView = GCCalendarView(delegate: self)
         
@@ -53,7 +53,7 @@ class ViewController: UIViewController, GCCalendarDelegate
         self.addCalendarViewConstraints()
     }
     
-    func addCalendarViewConstraints()
+    private func addCalendarViewConstraints()
     {
         let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.dateLabel, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         let width = NSLayoutConstraint(item: self.calendarView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
