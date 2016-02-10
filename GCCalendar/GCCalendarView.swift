@@ -12,8 +12,7 @@ public final class GCCalendarView: UIView
 {
     // MARK: - Properties
     
-    var headerView: GCCalendarHeaderView!
-    
+    private var headerView = GCCalendarHeaderView()
     private var monthViews: [GCCalendarMonthView] = []
     
     private var panGestureStartLocation: CGFloat!
@@ -23,8 +22,6 @@ public final class GCCalendarView: UIView
     public convenience init()
     {
         self.init(frame: CGRectZero)
-        
-        Calendar.view = self
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,8 +45,6 @@ extension GCCalendarView
     
     private func addHeaderView()
     {
-        self.headerView = GCCalendarHeaderView()
-        
         self.addSubview(self.headerView)
         self.addHeaderViewConstraints()
     }
@@ -81,11 +76,9 @@ extension GCCalendarView
         let previousMonthStartDate = self.previousMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         let nextMonthStartDate = self.nextMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         
-        let startDates = [previousMonthStartDate, currentMonthStartDate, nextMonthStartDate]
-        
-        for var i = 0; i < 3; i++
+        for startDate in [previousMonthStartDate, currentMonthStartDate, nextMonthStartDate]
         {
-            let monthView = GCCalendarMonthView(startDate: startDates[i])
+            let monthView = GCCalendarMonthView(startDate: startDate)
             monthView.addPanGestureRecognizer(self, action: "toggleCurrentMonth:")
             
             self.addSubview(monthView)
@@ -110,7 +103,7 @@ extension GCCalendarView
         self.nextMonthView.center.x = self.bounds.size.width + (self.bounds.size.width / 2)
     }
     
-    // MARK: Properties
+    // MARK: Previous Month, Current Month, & Next Month
     
     private var previousMonthView: GCCalendarMonthView {
         
@@ -126,6 +119,8 @@ extension GCCalendarView
         
         return self.monthViews[2]
     }
+    
+    // MARK: Start Dates
     
     private func previousMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
     {

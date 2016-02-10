@@ -12,7 +12,6 @@ struct Calendar
 {
     static let currentCalendar = NSCalendar.currentCalendar()
     
-    static var view: GCCalendarView!
     static var selectedDate: NSDate = NSDate()
     static var selectedDayView: GCCalendarDayView?
     

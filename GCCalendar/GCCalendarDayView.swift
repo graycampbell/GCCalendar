@@ -12,16 +12,16 @@ public final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
-    var date: NSDate?
-    let button = UIButton()
-    let buttonWidth: CGFloat = 35
+    private var date: NSDate?
+    private let button = UIButton()
+    private let buttonWidth: CGFloat = 35
     
-    var isSelectedDay: Bool = false {
+    private var isSelectedDay: Bool = false {
         
         didSet { self.isSelectedDay ? self.daySelected() : self.dayDeselected() }
     }
     
-    var isToday: Bool = false {
+    private var isToday: Bool = false {
         
         didSet {
             
@@ -35,22 +35,22 @@ public final class GCCalendarDayView: UIView
 
 extension GCCalendarDayView
 {
-    var defaultFont: UIFont {
+    private var defaultFont: UIFont {
         
         return self.isToday ? Calendar.CurrentDayView.font : Calendar.DayView.font
     }
     
-    var selectedFont: UIFont {
+    private var selectedFont: UIFont {
         
         return self.isToday ? Calendar.CurrentDayView.selectedFont : Calendar.DayView.selectedFont
     }
     
-    var defaultTextColor: UIColor {
+    private var defaultTextColor: UIColor {
         
         return self.isToday ? Calendar.CurrentDayView.textColor : Calendar.DayView.textColor
     }
     
-    var selectedTextColor: UIColor {
+    private var selectedTextColor: UIColor {
         
         return self.isToday ? Calendar.CurrentDayView.selectedTextColor : Calendar.DayView.selectedTextColor
     }
@@ -60,7 +60,7 @@ extension GCCalendarDayView
 
 extension GCCalendarDayView
 {
-    public convenience init(date: NSDate?)
+    convenience init(date: NSDate?)
     {
         self.init(frame: CGRectZero)
         
@@ -73,7 +73,7 @@ extension GCCalendarDayView
 
 extension GCCalendarDayView
 {
-    func addButton()
+    private func addButton()
     {
         self.button.layer.cornerRadius = self.buttonWidth / 2
         self.button.translatesAutoresizingMaskIntoConstraints = false

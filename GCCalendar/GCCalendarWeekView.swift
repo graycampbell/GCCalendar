@@ -12,22 +12,18 @@ public final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
-    private var dates: [NSDate?]!
-    
     var dayViews: [GCCalendarDayView] = []
     
     // MARK: - Initializers
     
-    public convenience init(dates: [NSDate?])
+    convenience init(dates: [NSDate?])
     {
         self.init(frame: CGRectZero)
-        
-        self.dates = dates
         
         self.axis = .Horizontal
         self.distribution = .FillEqually
         
-        self.addDayViews()
+        self.addDayViews(dates: dates)
     }
 }
 
@@ -35,9 +31,9 @@ public final class GCCalendarWeekView: UIStackView
 
 extension GCCalendarWeekView
 {
-    private func addDayViews()
+    private func addDayViews(dates dates: [NSDate?])
     {
-        for date in self.dates
+        for date in dates
         {
             let dayView = GCCalendarDayView(date: date)
             
@@ -48,11 +44,9 @@ extension GCCalendarWeekView
     
     func update(newDates newDates: [NSDate?])
     {
-        self.dates = newDates
-        
-        for var i = 0; i < self.dayViews.count; i++
+        for (index, date) in newDates.enumerate()
         {
-            self.dayViews[i].update(newDate: newDates[i])
+            self.dayViews[index].update(newDate: date)
         }
     }
     
