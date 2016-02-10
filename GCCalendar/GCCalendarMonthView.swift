@@ -24,7 +24,7 @@ public final class GCCalendarMonthView: UIStackView
     
     // MARK: - Initializers
     
-    public convenience init(startDate: NSDate)
+    convenience init(startDate: NSDate)
     {
         self.init(frame: CGRectZero)
         
@@ -69,28 +69,31 @@ extension GCCalendarMonthView
 {
     private func addWeekViews()
     {
-        let dates = self.getDates()
-        
-        for var i = 0; i < dates.count; i++
+        for dates in self.dates
         {
-            let weekView = GCCalendarWeekView(dates: dates[i])
+            let weekView = GCCalendarWeekView(dates: dates)
             
             self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
         }
     }
     
-    private func getDates() -> [[NSDate?]]
-    {
+    private var dates: [[NSDate?]] {
+        
         var date: NSDate? = self.startDate
         
-        var dates: [[NSDate?]] = [[NSDate?]](count: 6, repeatedValue: [nil, nil, nil, nil, nil, nil, nil])
+        let numberOfWeekdays = Calendar.currentCalendar.maximumRangeOfUnit(.Weekday).length
+        let numberOfWeeks = Calendar.currentCalendar.maximumRangeOfUnit(.WeekOfMonth).length
+        
+        let week = [NSDate?](count: numberOfWeekdays, repeatedValue: nil)
+        
+        var newDates = [[NSDate?]](count: numberOfWeeks, repeatedValue: week)
         
         while date != nil
         {
             let dateComponents = Calendar.currentCalendar.components([.Month, .WeekOfMonth, .Weekday, .Day], fromDate: date!)
             
-            dates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
+            newDates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
             
             if let newDate = Calendar.currentCalendar.dateByAddingUnit(.Day, value: 1, toDate: date!, options: .MatchStrictly)
             {
@@ -100,18 +103,16 @@ extension GCCalendarMonthView
             }
         }
         
-        return dates
+        return newDates
     }
     
     func update(newStartDate newStartDate: NSDate)
     {
         self.startDate = newStartDate
         
-        let dates = self.getDates()
-        
-        for var i = 0; i < self.weekViews.count; i++
+        for (index, dates) in self.dates.enumerate()
         {
-            self.weekViews[i].update(newDates: dates[i])
+            self.weekViews[index].update(newDates: dates)
         }
     }
     

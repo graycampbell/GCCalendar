@@ -10,13 +10,9 @@ import UIKit
 
 public final class GCCalendarHeaderView: UIStackView
 {
-    // MARK: - Properties
-    
-    var weekdayLabels: [GCCalendarWeekdayLabel] = []
-    
     // MARK: - Initializers
     
-    public convenience init()
+    convenience init()
     {
         self.init(frame: CGRectZero)
         
@@ -27,22 +23,16 @@ public final class GCCalendarHeaderView: UIStackView
         
         self.addWeekdayLabels()
     }
-}
-
-// MARK: - Weekday Labels
-
-extension GCCalendarHeaderView
-{
-    // MARK: Creation
+    
+    // MARK: - Weekday Labels
     
     private func addWeekdayLabels()
     {
-        for var i = 0; i < Calendar.currentCalendar.veryShortWeekdaySymbols.count; i++
+        for weekdaySymbol in Calendar.currentCalendar.veryShortWeekdaySymbols
         {
-            let label = GCCalendarWeekdayLabel(text: Calendar.currentCalendar.veryShortWeekdaySymbols[i])
+            let label = GCCalendarWeekdayLabel(text: weekdaySymbol)
             
             self.addArrangedSubview(label)
-            self.weekdayLabels.append(label)
         }
     }
 }
