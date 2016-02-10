@@ -9,7 +9,7 @@
 import UIKit
 import GCCalendar
 
-class ViewController: UIViewController, GCCalendarViewDelegate
+class ViewController: UIViewController, GCCalendarDelegate
 {
     private let dateLabel = UILabel()
     private var calendarView: GCCalendarView!
@@ -64,7 +64,7 @@ class ViewController: UIViewController, GCCalendarViewDelegate
     
     // MARK: - GCCalendarDelegate
     
-    func calendarView(calendarView: GCCalendarView, didSelectDate date: NSDate)
+    func didSelectDate(date: NSDate)
     {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("EEEEdMMMMYYYY", options: 0, locale: NSLocale.currentLocale())
