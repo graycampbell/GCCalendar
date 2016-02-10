@@ -12,7 +12,7 @@ public final class GCCalendarView: UIView
 {
     // MARK: - Properties
     
-    private var delegate: GCCalendarDelegate?
+    private var delegate: GCCalendarViewDelegate?
     
     private var headerView = GCCalendarHeaderView()
     private var monthViews: [GCCalendarMonthView] = []
@@ -21,7 +21,7 @@ public final class GCCalendarView: UIView
     
     // MARK: - Initializers
     
-    public convenience init(delegate: GCCalendarDelegate)
+    public convenience init(delegate: GCCalendarViewDelegate?)
     {
         self.init(frame: CGRectZero)
         
@@ -242,10 +242,172 @@ extension GCCalendarView
 
 // MARK: - GCCalendarMonthDelegate
 
-extension GCCalendarView: GCCalendarMonthDelegate
+extension GCCalendarView: GCCalendarDelegate
 {
-    func monthView(monthView: GCCalendarMonthView, didSelectDate date: NSDate)
+    func didSelectDate(date: NSDate)
     {
-        self.delegate?.calenderView(self, didSelectDate: date)
+        self.delegate?.calendarView(self, didSelectDate: date)
+    }
+    
+    // MARK: Day View
+    
+    func dayViewFont() -> UIFont
+    {
+        let font = self.delegate?.dayViewFont?()
+        
+        return (font != nil) ? font! : UIFont.systemFontOfSize(17)
+    }
+    
+    func dayViewTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.dayViewTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.black(0.87)
+    }
+    
+    func dayViewSelectedFont() -> UIFont
+    {
+        let font = self.delegate?.dayViewSelectedFont?()
+        
+        return (font != nil) ? font! : UIFont.boldSystemFontOfSize(17)
+    }
+    
+    func dayViewSelectedTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.dayViewSelectedTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.whiteColor()
+    }
+    
+    func dayViewSelectedBackgroundColor() -> UIColor
+    {
+        let backgroundColor = self.delegate?.dayViewSelectedBackgroundColor?()
+        
+        return (backgroundColor != nil) ? backgroundColor! : UIColor.black(0.87)
+    }
+    
+    // MARK: Past Day View
+    
+    func pastDaysEnabled() -> Bool
+    {
+        let enabled = self.delegate?.pastDaysEnabled?()
+        
+        return (enabled != nil) ? enabled! : true
+    }
+    
+    func pastDayViewFont() -> UIFont
+    {
+        let font = self.delegate?.pastDayViewFont?()
+        
+        return (font != nil) ? font! : UIFont.systemFontOfSize(17)
+    }
+    
+    func pastDayViewEnabledTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.pastDayViewEnabledTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.black(0.87)
+    }
+    
+    func pastDayViewDisabledTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.pastDayViewDisabledTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor(r: 146, g: 146, b: 146)
+    }
+    
+    func pastDayViewSelectedFont() -> UIFont
+    {
+        let font = self.delegate?.pastDayViewSelectedFont?()
+        
+        return (font != nil) ? font! : UIFont.boldSystemFontOfSize(17)
+    }
+    
+    func pastDayViewSelectedTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.pastDayViewSelectedTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.whiteColor()
+    }
+    
+    func pastDayViewSelectedBackgroundColor() -> UIColor
+    {
+        let backgroundColor = self.delegate?.pastDayViewSelectedBackgroundColor?()
+        
+        return (backgroundColor != nil) ? backgroundColor! : UIColor.black(0.87)
+    }
+    
+    // MARK: Current Day View
+    
+    func currentDayViewFont() -> UIFont
+    {
+        let font = self.delegate?.currentDayViewFont?()
+        
+        return (font != nil) ? font! : UIFont.boldSystemFontOfSize(17)
+    }
+    
+    func currentDayViewTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.currentDayViewTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor(r: 255, g: 58, b: 48)
+    }
+    
+    func currentDayViewSelectedFont() -> UIFont
+    {
+        let font = self.delegate?.currentDayViewSelectedFont?()
+        
+        return (font != nil) ? font! : UIFont.boldSystemFontOfSize(17)
+    }
+    
+    func currentDayViewSelectedTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.currentDayViewSelectedTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.whiteColor()
+    }
+    
+    func currentDayViewSelectedBackgroundColor() -> UIColor
+    {
+        let backgroundColor = self.delegate?.currentDayViewSelectedBackgroundColor?()
+        
+        return (backgroundColor != nil) ? backgroundColor! : UIColor(r: 255, g: 58, b: 48)
+    }
+    
+    // MARK: Future Day View
+    
+    func futureDayViewFont() -> UIFont
+    {
+        let font = self.delegate?.futureDayViewFont?()
+        
+        return (font != nil) ? font! : UIFont.systemFontOfSize(17)
+    }
+    
+    func futureDayViewTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.futureDayViewTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.black(0.87)
+    }
+    
+    func futureDayViewSelectedFont() -> UIFont
+    {
+        let font = self.delegate?.futureDayViewSelectedFont?()
+        
+        return (font != nil) ? font! : UIFont.boldSystemFontOfSize(17)
+    }
+    
+    func futureDayViewSelectedTextColor() -> UIColor
+    {
+        let textColor = self.delegate?.futureDayViewSelectedTextColor?()
+        
+        return (textColor != nil) ? textColor! : UIColor.whiteColor()
+    }
+    
+    func futureDayViewSelectedBackgroundColor() -> UIColor
+    {
+        let backgroundColor = self.delegate?.futureDayViewSelectedBackgroundColor?()
+        
+        return (backgroundColor != nil) ? backgroundColor! : UIColor.black(0.87)
     }
 }
