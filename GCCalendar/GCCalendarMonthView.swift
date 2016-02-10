@@ -12,7 +12,7 @@ public final class GCCalendarMonthView: UIStackView
 {
     // MARK: - Properties
     
-    private var delegate: GCCalendarMonthDelegate?
+    private var delegate: GCCalendarDelegate!
     
     var startDate: NSDate!
     
@@ -21,7 +21,7 @@ public final class GCCalendarMonthView: UIStackView
     
     // MARK: - Initializers
     
-    convenience init(delegate: GCCalendarMonthDelegate, startDate: NSDate)
+    convenience init(delegate: GCCalendarDelegate, startDate: NSDate)
     {
         self.init(frame: CGRectZero)
         
@@ -69,7 +69,7 @@ extension GCCalendarMonthView
     {
         for dates in self.dates
         {
-            let weekView = GCCalendarWeekView(delegate: self, dates: dates)
+            let weekView = GCCalendarWeekView(delegate: self.delegate, dates: dates)
             
             self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
@@ -125,15 +125,5 @@ extension GCCalendarMonthView
         let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
         
         weekView.setSelectedDate(weekday: selectedDateComponents.weekday)
-    }
-}
-
-// MARK: - GCCalendarWeekDelegate
-
-extension GCCalendarMonthView: GCCalendarWeekDelegate
-{
-    func weekView(weekView: GCCalendarWeekView, didSelectDate date: NSDate)
-    {
-        self.delegate?.monthView(self, didSelectDate: date)
     }
 }
