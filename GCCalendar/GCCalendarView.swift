@@ -12,6 +12,8 @@ public final class GCCalendarView: UIView
 {
     // MARK: - Properties
     
+    private var delegate: GCCalendarDelegate?
+    
     private var headerView = GCCalendarHeaderView()
     private var monthViews: [GCCalendarMonthView] = []
     
@@ -19,10 +21,11 @@ public final class GCCalendarView: UIView
     
     // MARK: - Initializers
     
-    public convenience init()
+    public convenience init(delegate: GCCalendarDelegate)
     {
         self.init(frame: CGRectZero)
         
+        self.delegate = delegate
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addHeaderView()
@@ -33,7 +36,7 @@ public final class GCCalendarView: UIView
     {
         super.layoutSubviews()
         
-        self.updateCentersForMonthViews()
+        self.resetLayout()
     }
 }
 
@@ -78,7 +81,7 @@ extension GCCalendarView
         
         for startDate in [previousMonthStartDate, currentMonthStartDate, nextMonthStartDate]
         {
-            let monthView = GCCalendarMonthView(startDate: startDate)
+            let monthView = GCCalendarMonthView(delegate: self, startDate: startDate)
             monthView.addPanGestureRecognizer(self, action: "toggleCurrentMonth:")
             
             self.addSubview(monthView)
@@ -91,16 +94,31 @@ extension GCCalendarView
             self.addConstraints([monthView.topConstraint, monthView.bottomConstraint, monthView.widthConstraint])
         }
         
-        self.updateCentersForMonthViews()
+        self.resetLayout()
     }
     
-    // MARK: Centers
+    // MARK: Layout
     
-    private func updateCentersForMonthViews()
+    private func resetLayout()
     {
-        self.previousMonthView.center.x = -(self.bounds.size.width / 2)
-        self.currentMonthView.center.x = self.bounds.size.width / 2
-        self.nextMonthView.center.x = self.bounds.size.width + (self.bounds.size.width / 2)
+        self.previousMonthView.center.x = self.previousMonthViewCenter
+        self.currentMonthView.center.x = self.currentMonthViewCenter
+        self.nextMonthView.center.x = self.nextMonthViewCenter
+    }
+    
+    private var previousMonthViewCenter: CGFloat {
+        
+        return -self.currentMonthViewCenter
+    }
+    
+    private var currentMonthViewCenter: CGFloat {
+        
+        return self.bounds.size.width / 2
+    }
+    
+    private var nextMonthViewCenter: CGFloat {
+        
+        return self.bounds.size.width + self.currentMonthViewCenter
     }
     
     // MARK: Previous Month, Current Month, & Next Month
@@ -132,16 +150,12 @@ extension GCCalendarView
         return Calendar.currentCalendar.nextDateAfterDate(currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
     }
     
-    // MARK: Toggle Current Month
+    // MARK: - Toggle Current Month
     
     func toggleCurrentMonth(pan: UIPanGestureRecognizer)
     {
         if pan.state == .Began
         {
-            self.previousMonthView.originalCenter = self.previousMonthView.center
-            self.currentMonthView.originalCenter = self.currentMonthView.center
-            self.nextMonthView.originalCenter = self.nextMonthView.center
-            
             self.panGestureStartLocation = pan.locationInView(self).x
         }
         else if pan.state == .Changed
@@ -158,53 +172,80 @@ extension GCCalendarView
         {
             if self.currentMonthView.center.x < 0
             {
-                UIView.animateWithDuration(0.25, animations: {
-                    
-                    self.currentMonthView.center = self.previousMonthView.originalCenter
-                    self.nextMonthView.center = self.currentMonthView.originalCenter
-                    
-                }, completion: { finished in
-                    
-                    let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
-                    
-                    self.previousMonthView.update(newStartDate: newStartDate)
-                    self.monthViews.append(self.previousMonthView)
-                    self.monthViews.removeFirst()
-                    
-                    self.updateCentersForMonthViews()
-                    
-                    self.currentMonthView.setSelectedDate()
-                })
+                UIView.animateWithDuration(0.25, animations: self.showNextMonthView(), completion: self.nextMonthViewDidShow())
             }
             else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width
             {
-                UIView.animateWithDuration(0.25, animations: {
-                    
-                    self.previousMonthView.center = self.currentMonthView.originalCenter
-                    self.currentMonthView.center = self.nextMonthView.originalCenter
-                    
-                }, completion: { finished in
-                    
-                    let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
-                    
-                    self.nextMonthView.update(newStartDate: newStartDate)
-                    self.monthViews.insert(self.nextMonthView, atIndex: 0)
-                    self.monthViews.removeLast()
-                    
-                    self.updateCentersForMonthViews()
-                    
-                    self.currentMonthView.setSelectedDate()
-                })
+                UIView.animateWithDuration(0.25, animations: self.showPreviousMonthView(), completion: self.previousMonthViewDidShow())
             }
             else
             {
-                UIView.animateWithDuration(0.15) {
-                    
-                    self.previousMonthView.center = self.previousMonthView.originalCenter
-                    self.currentMonthView.center = self.currentMonthView.originalCenter
-                    self.nextMonthView.center = self.nextMonthView.originalCenter
-                }
+                UIView.animateWithDuration(0.15) { self.resetLayout() }
             }
         }
+    }
+    
+    // MARK: Show Next Month View
+    
+    private func showNextMonthView() -> () -> Void
+    {
+        return {
+            
+            self.currentMonthView.center.x = self.previousMonthViewCenter
+            self.nextMonthView.center.x = self.currentMonthViewCenter
+        }
+    }
+    
+    private func nextMonthViewDidShow() -> ((Bool) -> Void)?
+    {
+        return { finished in
+            
+            let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
+            
+            self.previousMonthView.update(newStartDate: newStartDate)
+            self.monthViews.append(self.previousMonthView)
+            self.monthViews.removeFirst()
+            
+            self.resetLayout()
+            
+            self.currentMonthView.setSelectedDate()
+        }
+    }
+    
+    // MARK: Show Previous Month View
+    
+    private func showPreviousMonthView() -> () -> Void
+    {
+        return {
+            
+            self.previousMonthView.center.x = self.currentMonthViewCenter
+            self.currentMonthView.center.x = self.nextMonthViewCenter
+        }
+    }
+    
+    private func previousMonthViewDidShow() -> ((Bool) -> Void)?
+    {
+        return { finished in
+         
+            let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
+            
+            self.nextMonthView.update(newStartDate: newStartDate)
+            self.monthViews.insert(self.nextMonthView, atIndex: 0)
+            self.monthViews.removeLast()
+            
+            self.resetLayout()
+            
+            self.currentMonthView.setSelectedDate()
+        }
+    }
+}
+
+// MARK: - GCCalendarMonthDelegate
+
+extension GCCalendarView: GCCalendarMonthDelegate
+{
+    func monthView(monthView: GCCalendarMonthView, didSelectDate date: NSDate)
+    {
+        self.delegate?.calenderView(self, didSelectDate: date)
     }
 }
