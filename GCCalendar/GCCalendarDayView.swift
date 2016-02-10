@@ -39,27 +39,27 @@ extension GCCalendarDayView
 {
     private var defaultFont: UIFont {
         
-        return self.isToday ? self.delegate.currentDayViewFont() : self.delegate.dayViewFont()
+        return self.isToday ? self.delegate.currentDayViewFont!() : self.delegate.dayViewFont!()
     }
     
     private var selectedFont: UIFont {
         
-        return self.isToday ? self.delegate.currentDayViewSelectedFont() : self.delegate.dayViewSelectedFont()
+        return self.isToday ? self.delegate.currentDayViewSelectedFont!() : self.delegate.dayViewSelectedFont!()
     }
     
     private var defaultTextColor: UIColor {
         
-        return self.isToday ? self.delegate.currentDayViewTextColor() : self.delegate.dayViewTextColor()
+        return self.isToday ? self.delegate.currentDayViewTextColor!() : self.delegate.dayViewTextColor!()
     }
     
     private var selectedTextColor: UIColor {
         
-        return self.isToday ? self.delegate.currentDayViewSelectedTextColor() : self.delegate.dayViewSelectedTextColor()
+        return self.isToday ? self.delegate.currentDayViewSelectedTextColor!() : self.delegate.dayViewSelectedTextColor!()
     }
     
     private var selectedBackgroundColor: UIColor {
         
-        return self.isToday ? self.delegate.currentDayViewSelectedBackgroundColor() : self.delegate.dayViewSelectedBackgroundColor()
+        return self.isToday ? self.delegate.currentDayViewSelectedBackgroundColor!() : self.delegate.dayViewSelectedBackgroundColor!()
     }
 }
 
@@ -180,8 +180,8 @@ extension GCCalendarDayView
     {
         self.button.backgroundColor = nil
         
-        let font = self.isToday ? self.delegate.currentDayViewFont() : self.delegate.dayViewFont()
-        let titleColor = self.isToday ? self.delegate.currentDayViewTextColor() : self.delegate.dayViewTextColor()
+        let font = self.isToday ? self.delegate.currentDayViewFont!() : self.delegate.dayViewFont!()
+        let titleColor = self.isToday ? self.delegate.currentDayViewTextColor!() : self.delegate.dayViewTextColor!()
         
         self.button.titleLabel!.font = font
         self.button.setTitleColor(titleColor, forState: .Normal)

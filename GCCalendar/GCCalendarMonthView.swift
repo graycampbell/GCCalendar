@@ -12,10 +12,9 @@ public final class GCCalendarMonthView: UIStackView
 {
     // MARK: - Properties
     
-    private var delegate: GCCalendarDelegate!
-    
     var startDate: NSDate!
     
+    private var delegate: GCCalendarDelegate!
     private var weekViews: [GCCalendarWeekView] = []
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
