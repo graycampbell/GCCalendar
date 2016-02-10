@@ -28,12 +28,9 @@ public final class GCCalendarWeekView: UIStackView
         
         self.addDayViews(dates: dates)
     }
-}
-
-// MARK: - Day Views
-
-extension GCCalendarWeekView
-{
+    
+    // MARK: - Day Views
+    
     private func addDayViews(dates dates: [NSDate?])
     {
         for date in dates

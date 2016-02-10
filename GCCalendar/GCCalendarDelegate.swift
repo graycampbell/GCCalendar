@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol GCCalendarDelegate
+@objc public protocol GCCalendarDelegate
 {
     func didSelectDate(date: NSDate)
     
@@ -19,40 +19,40 @@ import UIKit
     
     // MARK: - Day View
     
-    func dayViewFont() -> UIFont
-    func dayViewTextColor() -> UIColor
+    optional func dayViewFont() -> UIFont
+    optional func dayViewTextColor() -> UIColor
     
-    func dayViewSelectedFont() -> UIFont
-    func dayViewSelectedTextColor() -> UIColor
-    func dayViewSelectedBackgroundColor() -> UIColor
+    optional func dayViewSelectedFont() -> UIFont
+    optional func dayViewSelectedTextColor() -> UIColor
+    optional func dayViewSelectedBackgroundColor() -> UIColor
     
     // MARK: - Past Day View
     
-    func pastDaysEnabled() -> Bool
+    optional func pastDaysEnabled() -> Bool
     
-    func pastDayViewFont() -> UIFont
-    func pastDayViewEnabledTextColor() -> UIColor
-    func pastDayViewDisabledTextColor() -> UIColor
+    optional func pastDayViewFont() -> UIFont
+    optional func pastDayViewEnabledTextColor() -> UIColor
+    optional func pastDayViewDisabledTextColor() -> UIColor
     
-    func pastDayViewSelectedFont() -> UIFont
-    func pastDayViewSelectedTextColor() -> UIColor
-    func pastDayViewSelectedBackgroundColor() -> UIColor
+    optional func pastDayViewSelectedFont() -> UIFont
+    optional func pastDayViewSelectedTextColor() -> UIColor
+    optional func pastDayViewSelectedBackgroundColor() -> UIColor
     
     // MARK: - Current Day View
     
-    func currentDayViewFont() -> UIFont
-    func currentDayViewTextColor() -> UIColor
+    optional func currentDayViewFont() -> UIFont
+    optional func currentDayViewTextColor() -> UIColor
     
-    func currentDayViewSelectedFont() -> UIFont
-    func currentDayViewSelectedTextColor() -> UIColor
-    func currentDayViewSelectedBackgroundColor() -> UIColor
+    optional func currentDayViewSelectedFont() -> UIFont
+    optional func currentDayViewSelectedTextColor() -> UIColor
+    optional func currentDayViewSelectedBackgroundColor() -> UIColor
     
     // MARK: - Future Day View
     
-    func futureDayViewFont() -> UIFont
-    func futureDayViewTextColor() -> UIColor
+    optional func futureDayViewFont() -> UIFont
+    optional func futureDayViewTextColor() -> UIColor
     
-    func futureDayViewSelectedFont() -> UIFont
-    func futureDayViewSelectedTextColor() -> UIColor
-    func futureDayViewSelectedBackgroundColor() -> UIColor
+    optional func futureDayViewSelectedFont() -> UIFont
+    optional func futureDayViewSelectedTextColor() -> UIColor
+    optional func futureDayViewSelectedBackgroundColor() -> UIColor
 }
