@@ -111,12 +111,9 @@ extension GCCalendarDayView
         }
         else
         {
-            let dateFormatter = self.dateFormatter
-            
-            let title = dateFormatter.stringFromDate(self.date!)
+            let title = self.dateFormatter.stringFromDate(self.date!)
             
             self.button.setTitle(title, forState: .Normal)
-            
             self.button.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
             
             self.isToday = Calendar.currentCalendar.isDateInToday(self.date!)
@@ -126,21 +123,20 @@ extension GCCalendarDayView
     
     private var dateFormatter: NSDateFormatter {
         
-        var dateFormatter: NSDateFormatter!
+        var formatter: NSDateFormatter!
         var onceToken: dispatch_once_t = 0
         
         dispatch_once(&onceToken) {
          
-            dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "d"
+            formatter = NSDateFormatter(dateFormat: "d")
             
-            if dateFormatter.calendar != Calendar.currentCalendar
+            if formatter.calendar != Calendar.currentCalendar
             {
-                dateFormatter.calendar = Calendar.currentCalendar
+                formatter.calendar = Calendar.currentCalendar
             }
         }
         
-        return dateFormatter
+        return formatter
     }
 }
 
@@ -191,27 +187,15 @@ extension GCCalendarDayView
 {
     private func animateSelection()
     {
-        self.animateToScale(0.9) { finished in
-            
-            if finished
-            {
-                self.animateToScale(1.1) { finished in
-                    
-                    if finished
-                    {
-                        self.animateToScale(1.0, completion: nil)
-                    }
-                }
-            }
-        }
+        self.animateToScale(0.9) { finished in self.animateToScale(1.1) { finished in self.animateToScale(1.0) } }
     }
     
-    private func animateToScale(scale: CGFloat, completion: ((Bool) -> Void)?)
+    private func animateToScale(scale: CGFloat, completion: ((Bool) -> Void)? = nil)
     {
         UIView.animateWithDuration(0.1, animations: {
             
             self.button.transform = CGAffineTransformMakeScale(scale, scale)
             
-            }, completion: completion)
+        }, completion: completion)
     }
 }
