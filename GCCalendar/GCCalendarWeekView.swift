@@ -12,12 +12,12 @@ public final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
-    private var delegate: GCCalendarWeekDelegate?
+    private var delegate: GCCalendarDelegate!
     private var dayViews: [GCCalendarDayView] = []
     
     // MARK: - Initializers
     
-    convenience init(delegate: GCCalendarWeekDelegate, dates: [NSDate?])
+    convenience init(delegate: GCCalendarDelegate, dates: [NSDate?])
     {
         self.init(frame: CGRectZero)
         
@@ -38,7 +38,7 @@ extension GCCalendarWeekView
     {
         for date in dates
         {
-            let dayView = GCCalendarDayView(delegate: self, date: date)
+            let dayView = GCCalendarDayView(delegate: self.delegate, date: date)
             
             self.addArrangedSubview(dayView)
             self.dayViews.append(dayView)
@@ -56,15 +56,5 @@ extension GCCalendarWeekView
     func setSelectedDate(weekday weekday: Int)
     {
         self.dayViews[weekday - 1].dayPressed()
-    }
-}
-
-// MARK: - GCCalendarDayDelegate
-
-extension GCCalendarWeekView: GCCalendarDayDelegate
-{
-    func dayView(dayView: GCCalendarDayView, didSelectDate date: NSDate)
-    {
-        self.delegate?.weekView(self, didSelectDate: date)
     }
 }
