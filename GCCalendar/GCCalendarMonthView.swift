@@ -19,8 +19,6 @@ public final class GCCalendarMonthView: UIStackView
     private var weekViews: [GCCalendarWeekView] = []
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
-    var topConstraint, bottomConstraint, widthConstraint: NSLayoutConstraint!
-    
     // MARK: - Initializers
     
     convenience init(delegate: GCCalendarMonthDelegate, startDate: NSDate)

@@ -87,11 +87,11 @@ extension GCCalendarView
             self.addSubview(monthView)
             self.monthViews.append(monthView)
             
-            monthView.topConstraint = NSLayoutConstraint(i: monthView, a: .Top, i: self.headerView, a: .Bottom)
-            monthView.bottomConstraint = NSLayoutConstraint(i: monthView, a: .Bottom, i: self)
-            monthView.widthConstraint = NSLayoutConstraint(i: monthView, a: .Width, i: self)
+            let top = NSLayoutConstraint(i: monthView, a: .Top, i: self.headerView, a: .Bottom)
+            let bottom = NSLayoutConstraint(i: monthView, a: .Bottom, i: self)
+            let width = NSLayoutConstraint(i: monthView, a: .Width, i: self)
             
-            self.addConstraints([monthView.topConstraint, monthView.bottomConstraint, monthView.widthConstraint])
+            self.addConstraints([top, bottom, width])
         }
         
         self.resetLayout()
