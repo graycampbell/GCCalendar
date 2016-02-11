@@ -12,7 +12,7 @@ internal final class GCCalendarHeaderView: UIStackView
 {
     // MARK: - Properties
     
-    private var viewController: GCCalendarViewController!
+    private weak var viewController: GCCalendarViewController!
     
     // MARK: - Initializers
     

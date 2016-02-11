@@ -12,7 +12,7 @@ internal final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
-    private var viewController: GCCalendarViewController!
+    private weak var viewController: GCCalendarViewController!
     private var dayViews: [GCCalendarDayView] = []
     
     // MARK: - Initializers
