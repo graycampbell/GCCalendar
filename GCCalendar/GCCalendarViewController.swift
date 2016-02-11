@@ -10,17 +10,17 @@ import UIKit
 
 public class GCCalendarViewController: UIViewController
 {
-    let currentCalendar = NSCalendar.currentCalendar()
+    internal let currentCalendar = NSCalendar.currentCalendar()
     
-    var selectedDate: NSDate = NSDate()
-    var selectedDayView: GCCalendarDayView?
+    internal var selectedDate: NSDate = NSDate()
+    internal var selectedDayView: GCCalendarDayView?
     
     public var calendarView: GCCalendarView!
 }
 
 // MARK: - Required Functions
 
-extension GCCalendarViewController
+public extension GCCalendarViewController
 {
     // MARK: Did Select Date
     
@@ -32,7 +32,7 @@ extension GCCalendarViewController
 
 // MARK: - Optional Functions
 
-extension GCCalendarViewController
+public extension GCCalendarViewController
 {
     // MARK: Weekday Label
     

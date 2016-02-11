@@ -12,7 +12,7 @@ final class GCCalendarWeekdayLabel: UILabel
 {
     // MARK: - Initializers
     
-    convenience init(text: String)
+    internal convenience init(text: String)
     {
         self.init(frame: CGRectZero)
         

@@ -1,16 +1,16 @@
 //
-//  Color.swift
+//  GCColor.swift
 //  GCCalendar
 //
-//  Created by Gray Campbell on 1/28/16.
+//  Created by Gray Campbell on 2/10/16.
 //  Copyright © 2016 Gray Campbell. All rights reserved.
 //
 
 import UIKit
 
-extension UIColor
+internal extension UIColor
 {
-    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 100)
+    internal convenience init(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat = 100)
     {
         let red = r / 255
         let green = g / 255
@@ -20,7 +20,7 @@ extension UIColor
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    class func black(alpha: CGFloat) -> UIColor
+    internal class func black(alpha: CGFloat) -> UIColor
     {
         return UIColor(white: 0.0, alpha: alpha)
     }
