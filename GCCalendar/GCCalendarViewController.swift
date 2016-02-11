@@ -10,7 +10,7 @@ import UIKit
 
 public class GCCalendarViewController: UIViewController
 {
-    public var calendarView: GCCalendarView?
+    public var calendarView: GCCalendarView!
     
     internal var selectedDate: NSDate = NSDate()
     internal var selectedDayView: GCCalendarDayView?
