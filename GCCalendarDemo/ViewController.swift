@@ -11,7 +11,8 @@ import GCCalendar
 
 class ViewController: GCCalendarViewController
 {
-    private let dateLabel = UILabel()
+    private let monthLabel = UILabel()
+    private var selectedDate: NSDate!
     
     override func viewDidLoad()
     {
@@ -25,19 +26,19 @@ class ViewController: GCCalendarViewController
     
     private func addDateLabel()
     {
-        self.dateLabel.textAlignment = .Center
-        self.dateLabel.font = UIFont.boldSystemFontOfSize(14)
-        self.dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.monthLabel.textAlignment = .Center
+        self.monthLabel.font = UIFont.boldSystemFontOfSize(14)
+        self.monthLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        self.view.addSubview(self.dateLabel)
+        self.view.addSubview(self.monthLabel)
         self.addDateLabelConstraints()
     }
     
     private func addDateLabelConstraints()
     {
-        let top = NSLayoutConstraint(item: self.dateLabel, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0)
-        let width = NSLayoutConstraint(item: self.dateLabel, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
-        let height = NSLayoutConstraint(item: self.dateLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: 50)
+        let top = NSLayoutConstraint(item: self.monthLabel, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let width = NSLayoutConstraint(item: self.monthLabel, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
+        let height = NSLayoutConstraint(item: self.monthLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: 50)
         
         self.view.addConstraints([top, width, height])
     }
@@ -54,7 +55,7 @@ class ViewController: GCCalendarViewController
     
     private func addCalendarViewConstraints()
     {
-        let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.dateLabel, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.monthLabel, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         let width = NSLayoutConstraint(item: self.calendarView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
         let height = NSLayoutConstraint(item: self.calendarView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: 325)
         
@@ -63,12 +64,24 @@ class ViewController: GCCalendarViewController
     
     // MARK: - Override Functions
     
+    override func didDisplayMonthWithStartDate(startDate: NSDate)
+    {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMMMYYYY", options: 0, locale: NSLocale.currentLocale())
+        
+        self.monthLabel.text = dateFormatter.stringFromDate(startDate)
+    }
+    
     override func didSelectDate(date: NSDate)
     {
+        self.selectedDate = date
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("EEEEdMMMMYYYY", options: 0, locale: NSLocale.currentLocale())
         
-        self.dateLabel.text = dateFormatter.stringFromDate(date)
+        let dateString = dateFormatter.stringFromDate(date)
+        
+        print(dateString)
     }
     
     override func pastDaysEnabled() -> Bool

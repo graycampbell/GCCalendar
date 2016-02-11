@@ -96,6 +96,8 @@ extension GCCalendarView
         }
         
         self.resetLayout()
+        
+        self.viewController.didDisplayMonthWithStartDate(self.currentMonthView.startDate)
     }
     
     // MARK: Layout
@@ -209,6 +211,7 @@ extension GCCalendarView
             
             self.resetLayout()
             
+            self.viewController.didDisplayMonthWithStartDate(self.currentMonthView.startDate)
             self.currentMonthView.setSelectedDate()
         }
     }
@@ -236,6 +239,7 @@ extension GCCalendarView
             
             self.resetLayout()
             
+            self.viewController.didDisplayMonthWithStartDate(self.currentMonthView.startDate)
             self.currentMonthView.setSelectedDate()
         }
     }
