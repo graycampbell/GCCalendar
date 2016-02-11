@@ -14,7 +14,7 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
     
     internal var startDate: NSDate!
     
-    private var viewController: GCCalendarViewController!
+    private weak var viewController: GCCalendarViewController!
     private var weekViews: [GCCalendarWeekView] = []
     private let panGestureRecognizer = UIPanGestureRecognizer()
     

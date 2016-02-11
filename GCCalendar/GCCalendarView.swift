@@ -12,7 +12,7 @@ public final class GCCalendarView: UIView
 {
     // MARK: - Properties
     
-    private var viewController: GCCalendarViewController!
+    private weak var viewController: GCCalendarViewController!
     private var headerView: GCCalendarHeaderView!
     private var monthViews: [GCCalendarMonthView] = []
     
