@@ -22,7 +22,10 @@ public class GCCalendarViewController: UIViewController
 
 public extension GCCalendarViewController
 {
-    // MARK: Did Select Date
+    public func didDisplayMonthWithStartDate(startDate: NSDate)
+    {
+        fatalError("Subclass of GCCalendarViewController must override didDisplayMonthWithStartDate")
+    }
     
     public func didSelectDate(date: NSDate)
     {

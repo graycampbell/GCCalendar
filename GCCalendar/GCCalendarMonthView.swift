@@ -48,18 +48,6 @@ internal extension GCCalendarMonthView
     }
 }
 
-// MARK: - UIGestureRecognizerDelegate
-
-internal extension GCCalendarMonthView
-{
-    internal override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
-    {
-        let pan = gestureRecognizer as! UIPanGestureRecognizer
-        
-        return pan.velocityInView(pan.view!).x > pan.velocityInView(pan.view!).y
-    }
-}
-
 // MARK: - Week Views
 
 internal extension GCCalendarMonthView
