@@ -71,6 +71,11 @@ class ViewController: GCCalendarViewController
         self.dateLabel.text = dateFormatter.stringFromDate(date)
     }
     
+    override func pastDaysEnabled() -> Bool
+    {
+        return false
+    }
+    
     // MARK: - Status Bar
     
     override func prefersStatusBarHidden() -> Bool
