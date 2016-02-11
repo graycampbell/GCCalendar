@@ -125,8 +125,8 @@ extension GCCalendarDayView
             self.button.setTitle(title, forState: .Normal)
             self.button.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
             
-            self.isToday = Calendar.currentCalendar.isDateInToday(self.date!)
-            self.isSelectedDay = Calendar.currentCalendar.isDate(self.date!, inSameDayAsDate: Calendar.selectedDate)
+            self.isToday = self.viewController.currentCalendar.isDateInToday(self.date!)
+            self.isSelectedDay = self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate)
         }
     }
     
@@ -139,9 +139,9 @@ extension GCCalendarDayView
          
             formatter = NSDateFormatter(dateFormat: "d")
             
-            if formatter.calendar != Calendar.currentCalendar
+            if formatter.calendar != self.viewController.currentCalendar
             {
-                formatter.calendar = Calendar.currentCalendar
+                formatter.calendar = self.viewController.currentCalendar
             }
         }
         
@@ -162,10 +162,10 @@ extension GCCalendarDayView
     {
         self.button.enabled = false
         
-        Calendar.selectedDayView?.dayDeselected()
+        self.viewController.selectedDayView?.dayDeselected()
         
-        Calendar.selectedDayView = self
-        Calendar.selectedDate = self.date!
+        self.viewController.selectedDayView = self
+        self.viewController.selectedDate = self.date!
         
         self.button.backgroundColor = self.selectedBackgroundColor
         self.button.titleLabel!.font = self.selectedFont

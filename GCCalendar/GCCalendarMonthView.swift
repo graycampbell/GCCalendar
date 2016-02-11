@@ -79,8 +79,8 @@ extension GCCalendarMonthView
         
         var date: NSDate? = self.startDate
         
-        let numberOfWeekdays = Calendar.currentCalendar.maximumRangeOfUnit(.Weekday).length
-        let numberOfWeeks = Calendar.currentCalendar.maximumRangeOfUnit(.WeekOfMonth).length
+        let numberOfWeekdays = self.viewController.currentCalendar.maximumRangeOfUnit(.Weekday).length
+        let numberOfWeeks = self.viewController.currentCalendar.maximumRangeOfUnit(.WeekOfMonth).length
         
         let week = [NSDate?](count: numberOfWeekdays, repeatedValue: nil)
         
@@ -88,13 +88,13 @@ extension GCCalendarMonthView
         
         while date != nil
         {
-            let dateComponents = Calendar.currentCalendar.components([.Month, .WeekOfMonth, .Weekday, .Day], fromDate: date!)
+            let dateComponents = self.viewController.currentCalendar.components([.Month, .WeekOfMonth, .Weekday, .Day], fromDate: date!)
             
             newDates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
             
-            if let newDate = Calendar.currentCalendar.dateByAddingUnit(.Day, value: 1, toDate: date!, options: .MatchStrictly)
+            if let newDate = self.viewController.currentCalendar.dateByAddingUnit(.Day, value: 1, toDate: date!, options: .MatchStrictly)
             {
-                let newDateComponents = Calendar.currentCalendar.components(.Month, fromDate: newDate)
+                let newDateComponents = self.viewController.currentCalendar.components(.Month, fromDate: newDate)
                 
                 date = (newDateComponents.month == dateComponents.month) ? newDate : nil
             }
@@ -117,9 +117,9 @@ extension GCCalendarMonthView
     {
         let today = NSDate()
         
-        let selectedDate = Calendar.currentCalendar.isDate(self.startDate, equalToDate: today, toUnitGranularity: .Month) ? today : self.startDate
+        let selectedDate = self.viewController.currentCalendar.isDate(self.startDate, equalToDate: today, toUnitGranularity: .Month) ? today : self.startDate
         
-        let selectedDateComponents = Calendar.currentCalendar.components([.WeekOfMonth, .Weekday], fromDate: selectedDate)
+        let selectedDateComponents = self.viewController.currentCalendar.components([.WeekOfMonth, .Weekday], fromDate: selectedDate)
         
         let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
         

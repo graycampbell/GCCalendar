@@ -13,7 +13,7 @@ public final class GCCalendarView: UIView
     // MARK: - Properties
     
     private var viewController: GCCalendarViewController!
-    private var headerView = GCCalendarHeaderView()
+    private var headerView: GCCalendarHeaderView!
     private var monthViews: [GCCalendarMonthView] = []
     
     private var panGestureStartLocation: CGFloat!
@@ -47,6 +47,8 @@ extension GCCalendarView
     
     private func addHeaderView()
     {
+        self.headerView = GCCalendarHeaderView(viewController: self.viewController)
+        
         self.addSubview(self.headerView)
         self.addHeaderViewConstraints()
     }
@@ -71,10 +73,10 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
-        let currentMonthComponents = Calendar.currentCalendar.components([.Day, .Month, .Year], fromDate: Calendar.selectedDate)
+        let currentMonthComponents = self.viewController.currentCalendar.components([.Day, .Month, .Year], fromDate: self.viewController.selectedDate)
         currentMonthComponents.day = 1
         
-        let currentMonthStartDate = Calendar.currentCalendar.dateFromComponents(currentMonthComponents)!
+        let currentMonthStartDate = self.viewController.currentCalendar.dateFromComponents(currentMonthComponents)!
         let previousMonthStartDate = self.previousMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         let nextMonthStartDate = self.nextMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         
@@ -141,12 +143,12 @@ extension GCCalendarView
     
     private func previousMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
     {
-        return Calendar.currentCalendar.dateByAddingUnit(.Month, value: -1, toDate: currentMonthStartDate, options: .MatchStrictly)!
+        return self.viewController.currentCalendar.dateByAddingUnit(.Month, value: -1, toDate: currentMonthStartDate, options: .MatchStrictly)!
     }
     
     private func nextMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
     {
-        return Calendar.currentCalendar.nextDateAfterDate(currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
+        return self.viewController.currentCalendar.nextDateAfterDate(currentMonthStartDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
     }
     
     // MARK: - Toggle Current Month
