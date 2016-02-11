@@ -9,10 +9,9 @@
 import UIKit
 import GCCalendar
 
-class ViewController: UIViewController, GCCalendarDelegate
+class ViewController: GCCalendarViewController
 {
     private let dateLabel = UILabel()
-    private var calendarView: GCCalendarView!
     
     override func viewDidLoad()
     {
@@ -47,7 +46,7 @@ class ViewController: UIViewController, GCCalendarDelegate
     
     private func addCalendarView()
     {
-        self.calendarView = GCCalendarView(delegate: self)
+        self.calendarView = GCCalendarView(viewController: self)
         
         self.view.addSubview(self.calendarView)
         self.addCalendarViewConstraints()
@@ -62,9 +61,9 @@ class ViewController: UIViewController, GCCalendarDelegate
         self.view.addConstraints([top, width, height])
     }
     
-    // MARK: - GCCalendarDelegate
+    // MARK: - Override Functions
     
-    func didSelectDate(date: NSDate)
+    override func didSelectDate(date: NSDate)
     {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("EEEEdMMMMYYYY", options: 0, locale: NSLocale.currentLocale())

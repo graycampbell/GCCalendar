@@ -14,17 +14,17 @@ public final class GCCalendarMonthView: UIStackView
     
     var startDate: NSDate!
     
-    private var delegate: GCCalendarDelegate!
+    private var viewController: GCCalendarViewController!
     private var weekViews: [GCCalendarWeekView] = []
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
     // MARK: - Initializers
     
-    convenience init(delegate: GCCalendarDelegate, startDate: NSDate)
+    convenience init(viewController: GCCalendarViewController, startDate: NSDate)
     {
         self.init(frame: CGRectZero)
         
-        self.delegate = delegate
+        self.viewController = viewController
         self.startDate = startDate
         
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +68,7 @@ extension GCCalendarMonthView
     {
         for dates in self.dates
         {
-            let weekView = GCCalendarWeekView(delegate: self.delegate, dates: dates)
+            let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
             
             self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
