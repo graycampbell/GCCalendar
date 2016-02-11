@@ -10,6 +10,11 @@ import UIKit
 
 public class GCCalendarViewController: UIViewController
 {
+    let currentCalendar = NSCalendar.currentCalendar()
+    
+    var selectedDate: NSDate = NSDate()
+    var selectedDayView: GCCalendarDayView?
+    
     public var calendarView: GCCalendarView!
 }
 
@@ -17,7 +22,7 @@ public class GCCalendarViewController: UIViewController
 
 extension GCCalendarViewController
 {
-    // MARK: - Did Select Date
+    // MARK: Did Select Date
     
     public func didSelectDate(date: NSDate)
     {
@@ -29,6 +34,18 @@ extension GCCalendarViewController
 
 extension GCCalendarViewController
 {
+    // MARK: Weekday Label
+    
+    public func weekdayLabelFont() -> UIFont
+    {
+        return UIFont.systemFontOfSize(10)
+    }
+    
+    public func weekdayLabelTextColor() -> UIColor
+    {
+        return UIColor(r: 146, g: 146, b: 146)
+    }
+    
     // MARK: Day View
     
     public func dayViewFont() -> UIFont

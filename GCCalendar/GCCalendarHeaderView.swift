@@ -10,11 +10,17 @@ import UIKit
 
 public final class GCCalendarHeaderView: UIStackView
 {
+    // MARK: - Properties
+    
+    private var viewController: GCCalendarViewController!
+    
     // MARK: - Initializers
     
-    convenience init()
+    convenience init(viewController: GCCalendarViewController)
     {
         self.init(frame: CGRectZero)
+        
+        self.viewController = viewController
         
         self.axis = .Horizontal
         self.distribution = .FillEqually
@@ -28,9 +34,12 @@ public final class GCCalendarHeaderView: UIStackView
     
     private func addWeekdayLabels()
     {
-        for weekdaySymbol in Calendar.currentCalendar.veryShortWeekdaySymbols
+        for weekdaySymbol in self.viewController.currentCalendar.veryShortWeekdaySymbols
         {
             let label = GCCalendarWeekdayLabel(text: weekdaySymbol)
+            
+            label.font = self.viewController.weekdayLabelFont()
+            label.textColor = self.viewController.weekdayLabelTextColor()
             
             self.addArrangedSubview(label)
         }
