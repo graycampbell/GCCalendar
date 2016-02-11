@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GCCalendarDayView: UIView
+internal final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
@@ -35,7 +35,7 @@ final class GCCalendarDayView: UIView
 
 // MARK: - Font, Text Color, & Background Color
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
     private var defaultFont: UIFont {
         
@@ -65,9 +65,9 @@ extension GCCalendarDayView
 
 // MARK: - Initializers
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
-    convenience init(viewController: GCCalendarViewController, date: NSDate?)
+    internal convenience init(viewController: GCCalendarViewController, date: NSDate?)
     {
         self.init(frame: CGRectZero)
         
@@ -80,7 +80,7 @@ extension GCCalendarDayView
 
 // MARK: - Button
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
     private func addButton()
     {
@@ -104,9 +104,9 @@ extension GCCalendarDayView
 
 // MARK: - Date
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
-    func update(newDate newDate: NSDate?)
+    internal func update(newDate newDate: NSDate?)
     {
         self.date = newDate
         
@@ -120,7 +120,7 @@ extension GCCalendarDayView
         }
         else
         {
-            let title = self.dateFormatter.stringFromDate(self.date!)
+            let title = GCDateFormatter.stringFromDate(self.date!, withFormat: "d", andCalendar: self.viewController.currentCalendar)
             
             self.button.setTitle(title, forState: .Normal)
             self.button.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
@@ -129,31 +129,13 @@ extension GCCalendarDayView
             self.isSelectedDay = self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate)
         }
     }
-    
-    private var dateFormatter: NSDateFormatter {
-        
-        var formatter: NSDateFormatter!
-        var onceToken: dispatch_once_t = 0
-        
-        dispatch_once(&onceToken) {
-         
-            formatter = NSDateFormatter(dateFormat: "d")
-            
-            if formatter.calendar != self.viewController.currentCalendar
-            {
-                formatter.calendar = self.viewController.currentCalendar
-            }
-        }
-        
-        return formatter
-    }
 }
 
 // MARK: - Selection
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
-    func dayPressed()
+    internal func dayPressed()
     {
         self.isSelectedDay = true
     }
@@ -192,7 +174,7 @@ extension GCCalendarDayView
 
 // MARK: Animations
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
     private func animateSelection()
     {

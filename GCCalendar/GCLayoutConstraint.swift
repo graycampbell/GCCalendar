@@ -1,16 +1,16 @@
 //
-//  LayoutConstraint.swift
+//  GCLayoutConstraint.swift
 //  GCCalendar
 //
-//  Created by Gray Campbell on 1/28/16.
+//  Created by Gray Campbell on 2/10/16.
 //  Copyright © 2016 Gray Campbell. All rights reserved.
 //
 
 import UIKit
 
-extension NSLayoutConstraint
+internal extension NSLayoutConstraint
 {
-    convenience init(i i1: AnyObject, a a1: NSLayoutAttribute, r: NSLayoutRelation = .Equal, i i2: AnyObject? = nil, var a a2: NSLayoutAttribute = .NotAnAttribute, m: CGFloat = 1, c: CGFloat = 0)
+    internal convenience init(i i1: AnyObject, a a1: NSLayoutAttribute, r: NSLayoutRelation = .Equal, i i2: AnyObject? = nil, var a a2: NSLayoutAttribute = .NotAnAttribute, m: CGFloat = 1, c: CGFloat = 0)
     {
         if i2 != nil && a2 == .NotAnAttribute
         {

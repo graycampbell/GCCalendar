@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class GCCalendarMonthView: UIStackView
+internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelegate
 {
     // MARK: - Properties
     
-    var startDate: NSDate!
+    internal var startDate: NSDate!
     
     private var viewController: GCCalendarViewController!
     private var weekViews: [GCCalendarWeekView] = []
@@ -20,7 +20,7 @@ final class GCCalendarMonthView: UIStackView
     
     // MARK: - Initializers
     
-    convenience init(viewController: GCCalendarViewController, startDate: NSDate)
+    internal convenience init(viewController: GCCalendarViewController, startDate: NSDate)
     {
         self.init(frame: CGRectZero)
         
@@ -38,9 +38,9 @@ final class GCCalendarMonthView: UIStackView
 
 // MARK: - Pan Gesture Recognizer
 
-extension GCCalendarMonthView
+internal extension GCCalendarMonthView
 {
-    func addPanGestureRecognizer(target: AnyObject, action: Selector)
+    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
     {
         self.panGestureRecognizer.addTarget(target, action: action)
         
@@ -50,7 +50,7 @@ extension GCCalendarMonthView
 
 // MARK: - UIGestureRecognizerDelegate
 
-extension GCCalendarMonthView: UIGestureRecognizerDelegate
+internal extension GCCalendarMonthView
 {
     internal override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
     {
@@ -62,7 +62,7 @@ extension GCCalendarMonthView: UIGestureRecognizerDelegate
 
 // MARK: - Week Views
 
-extension GCCalendarMonthView
+internal extension GCCalendarMonthView
 {
     private func addWeekViews()
     {
@@ -103,7 +103,7 @@ extension GCCalendarMonthView
         return newDates
     }
     
-    func update(newStartDate newStartDate: NSDate)
+    internal func update(newStartDate newStartDate: NSDate)
     {
         self.startDate = newStartDate
         
@@ -113,7 +113,7 @@ extension GCCalendarMonthView
         }
     }
     
-    func setSelectedDate()
+    internal func setSelectedDate()
     {
         let today = NSDate()
         
