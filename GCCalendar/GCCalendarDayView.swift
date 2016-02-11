@@ -205,11 +205,13 @@ internal extension GCCalendarDayView
                 self.dayType = .Future
             }
             
-            self.button.enabled = (self.dayType != .Past || self.viewController.pastDaysEnabled())
-            
             if self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate)
             {
                 self.daySelected()
+            }
+            else
+            {
+                self.resetButton()
             }
         }
     }
@@ -221,7 +223,7 @@ internal extension GCCalendarDayView
 {
     internal func daySelected()
     {
-        if self.button.enabled
+        if self.date != nil && !(self.dayType == .Past && !self.viewController.pastDaysEnabled())
         {
             self.button.enabled = false
             
@@ -242,12 +244,17 @@ internal extension GCCalendarDayView
     
     private func dayDeselected()
     {
+        self.resetButton()
+        
+        self.button.enabled = true
+    }
+    
+    private func resetButton()
+    {
         self.button.backgroundColor = nil
         
         self.button.titleLabel!.font = self.font
         self.button.setTitleColor(self.textColor, forState: .Normal)
-        
-        self.button.enabled = true
     }
 }
 
