@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarHeaderView: UIStackView
+final class GCCalendarHeaderView: UIStackView
 {
     // MARK: - Properties
     
