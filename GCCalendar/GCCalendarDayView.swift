@@ -229,14 +229,17 @@ internal extension GCCalendarDayView
             
             self.viewController.selectedDayView?.dayDeselected()
             
-            self.viewController.selectedDayView = self
-            self.viewController.selectedDate = self.date!
-            
             self.button.backgroundColor = self.selectedBackgroundColor
             self.button.titleLabel!.font = self.selectedFont
             self.button.setTitleColor(self.selectedTextColor, forState: .Normal)
             
-            self.viewController.didSelectDate(self.date!)
+            if !self.date!.isEqualToDate(self.viewController.selectedDate)
+            {
+                self.viewController.didSelectDate(self.date!)
+            }
+            
+            self.viewController.selectedDayView = self
+            self.viewController.selectedDate = self.date!
             
             self.animateSelection()
         }
