@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarWeekdayLabel: UILabel
+final class GCCalendarWeekdayLabel: UILabel
 {
     // MARK: - Initializers
     

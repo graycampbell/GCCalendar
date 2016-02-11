@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarMonthView: UIStackView
+final class GCCalendarMonthView: UIStackView
 {
     // MARK: - Properties
     
@@ -52,7 +52,7 @@ extension GCCalendarMonthView
 
 extension GCCalendarMonthView: UIGestureRecognizerDelegate
 {
-    public override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
+    internal override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
     {
         let pan = gestureRecognizer as! UIPanGestureRecognizer
         
