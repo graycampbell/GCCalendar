@@ -8,33 +8,39 @@
 
 import UIKit
 
-public final class GCCalendarMonthView: UIView
+internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelegate
 {
     // MARK: - Properties
     
-    private let panGestureRecognizer = UIPanGestureRecognizer()
+    internal var startDate: NSDate!
     
+    private weak var viewController: GCCalendarViewController!
     private var weekViews: [GCCalendarWeekView] = []
-    
-    var startDate: NSDate!
-    
-    var topConstraint, bottomConstraint, leftConstraint, rightConstraint, widthConstraint: NSLayoutConstraint!
+    private let panGestureRecognizer = UIPanGestureRecognizer()
     
     // MARK: - Initializers
     
-    public convenience init()
+    internal convenience init(viewController: GCCalendarViewController, startDate: NSDate)
     {
         self.init(frame: CGRectZero)
         
+        self.viewController = viewController
+        self.startDate = startDate
+        
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.axis = .Vertical
+        self.distribution = .FillEqually
+        
+        self.addWeekViews()
     }
 }
 
 // MARK: - Pan Gesture Recognizer
 
-extension GCCalendarMonthView
+internal extension GCCalendarMonthView
 {
-    func addPanGestureRecognizer(target: AnyObject, action: Selector)
+    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
     {
         self.panGestureRecognizer.addTarget(target, action: action)
         
@@ -42,65 +48,81 @@ extension GCCalendarMonthView
     }
 }
 
-// MARK: - UIGestureRecognizerDelegate
-
-extension GCCalendarMonthView: UIGestureRecognizerDelegate
-{
-    public override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
-    {
-        let pan = gestureRecognizer as! UIPanGestureRecognizer
-        
-        return pan.velocityInView(pan.view!).x > pan.velocityInView(pan.view!).y
-    }
-}
-
 // MARK: - Week Views
 
-extension GCCalendarMonthView
+internal extension GCCalendarMonthView
 {
-    func addWeekViews()
+    private func addWeekViews()
     {
-        var date: NSDate? = self.startDate
-        
-        var dates: [[NSDate?]] = [[NSDate?]](count: 6, repeatedValue: [nil, nil, nil, nil, nil, nil, nil])
-        
-        while date != nil
+        for dates in self.dates
         {
-            let dateComponents = Calendar.currentCalendar.components([.WeekOfMonth, .Weekday, .Day], fromDate: date!)
+            let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
             
-            dates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
-            
-            date = Calendar.currentCalendar.dateBySettingUnit(.Day, value: dateComponents.day + 1, ofDate: date!, options: .MatchStrictly)
-        }
-        
-        let heightMultiplier = 1.0 / CGFloat(dates.count)
-        
-        for var i = 0; i < dates.count; i++
-        {
-            let weekView = GCCalendarWeekView()
-            
-            self.addSubview(weekView)
+            self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
-            
-            weekView.addDayViews(dates[i])
-            
-            if i == 0
-            {
-                self.addConstraintsForWeekView(weekView, item: self, attribute: .Top, heightMultiplier: heightMultiplier)
-            }
-            else
-            {
-                self.addConstraintsForWeekView(weekView, item: self.weekViews[i - 1], attribute: .Bottom, heightMultiplier: heightMultiplier)
-            }
         }
     }
     
-    private func addConstraintsForWeekView(weekView: GCCalendarWeekView, item: AnyObject, attribute: NSLayoutAttribute, heightMultiplier: CGFloat)
-    {
-        let top = NSLayoutConstraint(i: weekView, a: .Top, i: item, a: attribute)
-        let width = NSLayoutConstraint(i: weekView, a: .Width, i: self)
-        let height = NSLayoutConstraint(i: weekView, a: .Height, i: self, m: heightMultiplier)
+    private var dates: [[NSDate?]] {
         
-        self.addConstraints([top, width, height])
+        var date: NSDate? = self.startDate
+        
+        let numberOfWeekdays = self.viewController.currentCalendar.maximumRangeOfUnit(.Weekday).length
+        let numberOfWeeks = self.viewController.currentCalendar.maximumRangeOfUnit(.WeekOfMonth).length
+        
+        let week = [NSDate?](count: numberOfWeekdays, repeatedValue: nil)
+        
+        var newDates = [[NSDate?]](count: numberOfWeeks, repeatedValue: week)
+        
+        while date != nil
+        {
+            let dateComponents = self.viewController.currentCalendar.components([.Month, .WeekOfMonth, .Weekday, .Day], fromDate: date!)
+            
+            newDates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
+            
+            if let newDate = self.viewController.currentCalendar.dateByAddingUnit(.Day, value: 1, toDate: date!, options: .MatchStrictly)
+            {
+                let newDateComponents = self.viewController.currentCalendar.components(.Month, fromDate: newDate)
+                
+                date = (newDateComponents.month == dateComponents.month) ? newDate : nil
+            }
+        }
+        
+        return newDates
+    }
+    
+    internal func update(newStartDate newStartDate: NSDate)
+    {
+        self.startDate = newStartDate
+        
+        for (index, dates) in self.dates.enumerate()
+        {
+            self.weekViews[index].update(newDates: dates)
+        }
+    }
+    
+    internal func setSelectedDate()
+    {
+        let today = NSDate()
+        var selectedDate: NSDate!
+        
+        if self.viewController.currentCalendar.isDate(self.startDate, equalToDate: self.viewController.selectedDate, toUnitGranularity: .Month)
+        {
+            selectedDate = self.viewController.selectedDate
+        }
+        else if self.viewController.currentCalendar.isDate(self.startDate, equalToDate: today, toUnitGranularity: .Month)
+        {
+            selectedDate = today
+        }
+        else
+        {
+            selectedDate = self.startDate
+        }
+        
+        let selectedDateComponents = self.viewController.currentCalendar.components([.WeekOfMonth, .Weekday], fromDate: selectedDate)
+        
+        let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
+        
+        weekView.setSelectedDate(weekday: selectedDateComponents.weekday)
     }
 }

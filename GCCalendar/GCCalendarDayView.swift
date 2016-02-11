@@ -8,166 +8,271 @@
 
 import UIKit
 
-public final class GCCalendarDayView: UIButton
+internal final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
-    var date: NSDate?
+    private weak var viewController: GCCalendarViewController!
     
-    var isSelectedDay: Bool = false {
-        
-        didSet { self.isSelectedDay ? self.daySelected() : self.dayDeselected() }
+    private var date: NSDate?
+    private let button = UIButton()
+    private let buttonWidth: CGFloat = 35
+    
+    private enum DayType
+    {
+        case Past, Current, Future, None
     }
     
-    var isToday: Bool = false {
+    private var dayType: DayType = .None {
         
-        didSet {
+        didSet { self.formatButton() }
+    }
+}
+
+// MARK: - Font, Text Color, & Background Color
+
+internal extension GCCalendarDayView
+{
+    private var font: UIFont? {
+        
+        switch self.dayType
+        {
+            case .Past:
+                return self.viewController.pastDayViewFont()
+                
+            case .Current:
+                return self.viewController.currentDayViewFont()
             
-            self.titleLabel!.font = self.defaultFont
-            self.setTitleColor(self.defaultTextColor, forState: .Normal)
+            case .Future:
+                return self.viewController.futureDayViewFont()
+            
+            default:
+                return nil
         }
     }
     
-    var widthConstraint, heightConstraint, centerXConstraint, centerYConstraint: NSLayoutConstraint!
-}
-
-// MARK: Font & Text Color
-
-extension GCCalendarDayView
-{
-    var defaultFont: UIFont {
+    private var textColor: UIColor? {
         
-        return self.isToday ? Calendar.CurrentDayView.font : Calendar.DayView.font
+        switch self.dayType
+        {
+            case .Past:
+                return self.viewController.pastDaysEnabled() ? self.viewController.pastDayViewEnabledTextColor() : self.viewController.pastDayViewDisabledTextColor()
+                
+            case .Current:
+                return self.viewController.currentDayViewTextColor()
+                
+            case .Future:
+                return self.viewController.futureDayViewTextColor()
+            
+            default:
+                return nil
+        }
     }
     
-    var selectedFont: UIFont {
+    private var selectedFont: UIFont? {
         
-        return self.isToday ? Calendar.CurrentDayView.selectedFont : Calendar.DayView.selectedFont
+        switch self.dayType
+        {
+            case .Past:
+                return self.viewController.pastDayViewSelectedFont()
+                
+            case .Current:
+                return self.viewController.currentDayViewSelectedFont()
+                
+            case .Future:
+                return self.viewController.futureDayViewSelectedFont()
+            
+            default:
+                return nil
+        }
     }
     
-    var defaultTextColor: UIColor {
+    private var selectedTextColor: UIColor? {
         
-        return self.isToday ? Calendar.CurrentDayView.textColor : Calendar.DayView.textColor
+        switch self.dayType
+        {
+            case .Past:
+                return self.viewController.pastDayViewSelectedTextColor()
+                
+            case .Current:
+                return self.viewController.currentDayViewSelectedTextColor()
+                
+            case .Future:
+                return self.viewController.futureDayViewSelectedTextColor()
+            
+            default:
+                return nil
+        }
     }
     
-    var selectedTextColor: UIColor {
+    private var selectedBackgroundColor: UIColor? {
         
-        return self.isToday ? Calendar.CurrentDayView.selectedTextColor : Calendar.DayView.selectedTextColor
+        switch self.dayType
+        {
+            case .Past:
+                return self.viewController.pastDayViewSelectedBackgroundColor()
+                
+            case .Current:
+                return self.viewController.currentDayViewSelectedBackgroundColor()
+                
+            case .Future:
+                return self.viewController.futureDayViewSelectedBackgroundColor()
+            
+            default:
+                return nil
+        }
     }
 }
 
 // MARK: - Initializers
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
-    public convenience init(date: NSDate?)
+    internal convenience init(viewController: GCCalendarViewController, date: NSDate?)
     {
         self.init(frame: CGRectZero)
         
-        self.addDate(date)
+        self.viewController = viewController
         
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.addButton()
+        self.update(newDate: date)
+    }
+}
+
+// MARK: - Button
+
+internal extension GCCalendarDayView
+{
+    private func addButton()
+    {
+        self.button.layer.cornerRadius = self.buttonWidth / 2
+        self.button.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.button.addTarget(self, action: "daySelected", forControlEvents: .TouchUpInside)
+        
+        self.addSubview(self.button)
+        self.addButtonConstraints()
+    }
+    
+    private func addButtonConstraints()
+    {
+        let width = NSLayoutConstraint(i: self.button, a: .Width, c: self.buttonWidth)
+        let height = NSLayoutConstraint(i: self.button, a: .Height, c: self.buttonWidth)
+        let centerX = NSLayoutConstraint(i: self.button, a: .CenterX, i: self)
+        let centerY = NSLayoutConstraint(i: self.button, a: .CenterY, i: self)
+        
+        self.addConstraints([width, height, centerX, centerY])
+    }
+    
+    private func formatButton()
+    {
+        self.button.titleLabel!.font = self.font
+        self.button.setTitleColor(self.textColor, forState: .Normal)
     }
 }
 
 // MARK: - Date
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
-    func addDate(date: NSDate?)
+    internal func update(newDate newDate: NSDate?)
     {
-        self.date = date
+        self.date = newDate
         
-        if self.date != nil
+        if self.date == nil
         {
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "d"
+            self.button.enabled = false
+            self.button.setTitle(nil, forState: .Normal)
             
-            if dateFormatter.calendar != Calendar.currentCalendar
+            self.dayType = .None
+        }
+        else
+        {
+            let title = GCDateFormatter.stringFromDate(self.date!, withFormat: "d", andCalendar: self.viewController.currentCalendar)
+            
+            self.button.setTitle(title, forState: .Normal)
+            
+            if self.viewController.currentCalendar.isDateInToday(self.date!)
             {
-                dateFormatter.calendar = Calendar.currentCalendar
+                self.dayType = .Current
+            }
+            else if NSDate().earlierDate(self.date!).isEqualToDate(self.date!)
+            {
+                self.dayType = .Past
+            }
+            else
+            {
+                self.dayType = .Future
             }
             
-            let title = dateFormatter.stringFromDate(self.date!)
-            
-            self.setTitle(title, forState: .Normal)
-            
-            self.addTarget(self, action: "dayPressed", forControlEvents: .TouchUpInside)
-            
-            self.isToday = Calendar.currentCalendar.isDateInToday(self.date!)
-            self.isSelectedDay = self.isToday
+            if self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate)
+            {
+                self.daySelected()
+            }
+            else
+            {
+                self.resetButton()
+            }
         }
     }
 }
 
 // MARK: - Selection
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
-    func dayPressed()
+    internal func daySelected()
     {
-        self.isSelectedDay = true
-    }
-    
-    private func daySelected()
-    {
-        self.enabled = false
-        
-        Calendar.selectedDayView?.dayDeselected()
-        
-        Calendar.selectedDayView = self
-        
-        self.backgroundColor = Calendar.CurrentDayView.selectedBackgroundColor
-        
-        self.titleLabel!.font = Calendar.CurrentDayView.selectedFont
-        
-        self.setTitleColor(Calendar.CurrentDayView.selectedTextColor, forState: .Normal)
-        
-        self.animateSelection()
+        if self.date != nil && !(self.dayType == .Past && !self.viewController.pastDaysEnabled())
+        {
+            self.button.enabled = false
+            
+            self.viewController.selectedDayView?.dayDeselected()
+            
+            self.viewController.selectedDayView = self
+            self.viewController.selectedDate = self.date!
+            
+            self.button.backgroundColor = self.selectedBackgroundColor
+            self.button.titleLabel!.font = self.selectedFont
+            self.button.setTitleColor(self.selectedTextColor, forState: .Normal)
+            
+            self.viewController.didSelectDate(self.date!)
+            
+            self.animateSelection()
+        }
     }
     
     private func dayDeselected()
     {
-        self.backgroundColor = nil
+        self.resetButton()
         
-        let font = self.isToday ? Calendar.CurrentDayView.font : Calendar.DayView.font
-        let titleColor = self.isToday ? Calendar.CurrentDayView.textColor : Calendar.DayView.textColor
+        self.button.enabled = true
+    }
+    
+    private func resetButton()
+    {
+        self.button.backgroundColor = nil
         
-        self.titleLabel!.font = font
-        
-        self.setTitleColor(titleColor, forState: .Normal)
-        
-        self.enabled = true
+        self.button.titleLabel!.font = self.font
+        self.button.setTitleColor(self.textColor, forState: .Normal)
     }
 }
 
 // MARK: Animations
 
-extension GCCalendarDayView
+internal extension GCCalendarDayView
 {
     private func animateSelection()
     {
-        self.animateToScale(0.9) { finished in
-            
-            if finished
-            {
-                self.animateToScale(1.1) { finished in
-                    
-                    if finished
-                    {
-                        self.animateToScale(1.0, completion: nil)
-                    }
-                }
-            }
-        }
+        self.animateToScale(0.9) { finished in self.animateToScale(1.1) { finished in self.animateToScale(1.0) } }
     }
     
-    private func animateToScale(scale: CGFloat, completion: ((Bool) -> Void)?)
+    private func animateToScale(scale: CGFloat, completion: ((Bool) -> Void)? = nil)
     {
         UIView.animateWithDuration(0.1, animations: {
             
-            self.transform = CGAffineTransformMakeScale(scale, scale)
+            self.button.transform = CGAffineTransformMakeScale(scale, scale)
             
-            }, completion: completion)
+        }, completion: completion)
     }
 }

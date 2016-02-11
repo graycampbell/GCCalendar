@@ -8,45 +8,50 @@
 
 import UIKit
 
-public final class GCCalendarWeekView: UIView
+internal final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
+    private weak var viewController: GCCalendarViewController!
     private var dayViews: [GCCalendarDayView] = []
     
     // MARK: - Initializers
     
-    public convenience init()
+    internal convenience init(viewController: GCCalendarViewController, dates: [NSDate?])
     {
         self.init(frame: CGRectZero)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-    }
-}
-
-// MARK: Day Views
-
-extension GCCalendarWeekView
-{
-    func addDayViews(dates: [NSDate?])
-    {
-        let dayViewWidth: CGFloat = 35
+        self.viewController = viewController
         
-        for var i = 0; i < Calendar.view.headerView.weekdayLabels.count; i++
+        self.axis = .Horizontal
+        self.distribution = .FillEqually
+        
+        self.addDayViews(dates: dates)
+    }
+    
+    // MARK: - Day Views
+    
+    private func addDayViews(dates dates: [NSDate?])
+    {
+        for date in dates
         {
-            let dayView = GCCalendarDayView(date: dates[i])
+            let dayView = GCCalendarDayView(viewController: self.viewController, date: date)
             
-            self.addSubview(dayView)
+            self.addArrangedSubview(dayView)
             self.dayViews.append(dayView)
-            
-            dayView.layer.cornerRadius = dayViewWidth / 2
-            
-            dayView.widthConstraint = NSLayoutConstraint(i: dayView, a: .Width, c: dayViewWidth)
-            dayView.heightConstraint = NSLayoutConstraint(i: dayView, a: .Height, c: dayViewWidth)
-            dayView.centerXConstraint = NSLayoutConstraint(i: dayView, a: .CenterX, i: Calendar.view.headerView.weekdayLabels[i])
-            dayView.centerYConstraint = NSLayoutConstraint(i: dayView, a: .CenterY, i: self)
-            
-            Calendar.view.addConstraints([dayView.widthConstraint, dayView.heightConstraint, dayView.centerXConstraint, dayView.centerYConstraint])
         }
+    }
+    
+    internal func update(newDates newDates: [NSDate?])
+    {
+        for (index, date) in newDates.enumerate()
+        {
+            self.dayViews[index].update(newDate: date)
+        }
+    }
+    
+    internal func setSelectedDate(weekday weekday: Int)
+    {
+        self.dayViews[weekday - 1].daySelected()
     }
 }
