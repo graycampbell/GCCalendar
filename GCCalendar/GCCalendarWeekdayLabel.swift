@@ -8,20 +8,15 @@
 
 import UIKit
 
-public final class GCCalendarWeekdayLabel: UILabel
+final class GCCalendarWeekdayLabel: UILabel
 {
     // MARK: - Initializers
     
-    public convenience init(text: String)
+    internal convenience init(text: String)
     {
         self.init(frame: CGRectZero)
         
         self.text = text
         self.textAlignment = .Center
-        
-        self.font = Calendar.WeekdayLabel.font
-        self.textColor = Calendar.WeekdayLabel.textColor
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

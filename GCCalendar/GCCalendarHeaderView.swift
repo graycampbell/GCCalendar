@@ -8,62 +8,40 @@
 
 import UIKit
 
-public final class GCCalendarHeaderView: UIView
+internal final class GCCalendarHeaderView: UIStackView
 {
     // MARK: - Properties
     
-    var weekdayLabels: [GCCalendarWeekdayLabel] = []
+    private weak var viewController: GCCalendarViewController!
     
     // MARK: - Initializers
     
-    public convenience init()
+    internal convenience init(viewController: GCCalendarViewController)
     {
         self.init(frame: CGRectZero)
+        
+        self.viewController = viewController
+        
+        self.axis = .Horizontal
+        self.distribution = .FillEqually
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addWeekdayLabels()
     }
-}
-
-// MARK: - Weekday Labels
-
-extension GCCalendarHeaderView
-{
-    // MARK: Creation
+    
+    // MARK: - Weekday Labels
     
     private func addWeekdayLabels()
     {
-        let numberOfDays = Calendar.currentCalendar.veryShortWeekdaySymbols.count
-        let widthMultiplier = 1.0 / CGFloat(numberOfDays)
-        
-        for var i = 0; i < numberOfDays; i++
+        for weekdaySymbol in self.viewController.currentCalendar.veryShortWeekdaySymbols
         {
-            let label = GCCalendarWeekdayLabel(text: Calendar.currentCalendar.veryShortWeekdaySymbols[i])
+            let label = GCCalendarWeekdayLabel(text: weekdaySymbol)
             
-            self.addSubview(label)
-            self.weekdayLabels.append(label)
+            label.font = self.viewController.weekdayLabelFont()
+            label.textColor = self.viewController.weekdayLabelTextColor()
             
-            if i == 0
-            {
-                self.addConstraintsForWeekdayLabel(label, item: self, attribute: .Left, widthMultiplier: widthMultiplier)
-            }
-            else
-            {
-                self.addConstraintsForWeekdayLabel(label, item: self.weekdayLabels[i - 1], attribute: .Right, widthMultiplier: widthMultiplier)
-            }
+            self.addArrangedSubview(label)
         }
-    }
-    
-    // MARK: Constraints
-    
-    private func addConstraintsForWeekdayLabel(weekdayLabel: GCCalendarWeekdayLabel, item: AnyObject, attribute: NSLayoutAttribute, widthMultiplier: CGFloat)
-    {
-        let top = NSLayoutConstraint(i: weekdayLabel, a: .Top, i: self)
-        let left = NSLayoutConstraint(i: weekdayLabel, a: .Left, i: item, a: attribute)
-        let width = NSLayoutConstraint(i: weekdayLabel, a: .Width, i: self, m: widthMultiplier)
-        let height = NSLayoutConstraint(i: weekdayLabel, a: .Height, i: self)
-        
-        self.addConstraints([top, left, width, height])
     }
 }
