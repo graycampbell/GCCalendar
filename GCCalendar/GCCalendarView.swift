@@ -153,7 +153,7 @@ extension GCCalendarView
     
     // MARK: - Toggle Current Month
     
-    func toggleCurrentMonth(pan: UIPanGestureRecognizer)
+    internal func toggleCurrentMonth(pan: UIPanGestureRecognizer)
     {
         if pan.state == .Began
         {

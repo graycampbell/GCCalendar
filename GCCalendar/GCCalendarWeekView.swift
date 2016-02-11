@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GCCalendarWeekView: UIStackView
+internal final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
@@ -17,7 +17,7 @@ final class GCCalendarWeekView: UIStackView
     
     // MARK: - Initializers
     
-    convenience init(viewController: GCCalendarViewController, dates: [NSDate?])
+    internal convenience init(viewController: GCCalendarViewController, dates: [NSDate?])
     {
         self.init(frame: CGRectZero)
         
@@ -42,7 +42,7 @@ final class GCCalendarWeekView: UIStackView
         }
     }
     
-    func update(newDates newDates: [NSDate?])
+    internal func update(newDates newDates: [NSDate?])
     {
         for (index, date) in newDates.enumerate()
         {
@@ -50,7 +50,7 @@ final class GCCalendarWeekView: UIStackView
         }
     }
     
-    func setSelectedDate(weekday weekday: Int)
+    internal func setSelectedDate(weekday weekday: Int)
     {
         self.dayViews[weekday - 1].dayPressed()
     }

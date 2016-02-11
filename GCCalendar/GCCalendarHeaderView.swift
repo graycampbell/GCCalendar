@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GCCalendarHeaderView: UIStackView
+internal final class GCCalendarHeaderView: UIStackView
 {
     // MARK: - Properties
     
@@ -16,7 +16,7 @@ final class GCCalendarHeaderView: UIStackView
     
     // MARK: - Initializers
     
-    convenience init(viewController: GCCalendarViewController)
+    internal convenience init(viewController: GCCalendarViewController)
     {
         self.init(frame: CGRectZero)
         
