@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarWeekView: UIStackView
+final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     

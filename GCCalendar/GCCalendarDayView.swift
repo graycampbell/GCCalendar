@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class GCCalendarDayView: UIView
+final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
