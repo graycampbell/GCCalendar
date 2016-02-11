@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2B926971C5EBB88009B1AC9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9268D1C5EBB88009B1AC9 /* Color.swift */; };
-		E2B926981C5EBB88009B1AC9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9268E1C5EBB88009B1AC9 /* Constants.swift */; };
 		E2B926991C5EBB88009B1AC9 /* GCCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2B9269A1C5EBB88009B1AC9 /* GCCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */; };
 		E2B9269B1C5EBB88009B1AC9 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926911C5EBB88009B1AC9 /* GCCalendarHeaderView.swift */; };
@@ -16,7 +14,10 @@
 		E2B9269D1C5EBB88009B1AC9 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926931C5EBB88009B1AC9 /* GCCalendarView.swift */; };
 		E2B9269E1C5EBB88009B1AC9 /* GCCalendarWeekdayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926941C5EBB88009B1AC9 /* GCCalendarWeekdayLabel.swift */; };
 		E2B9269F1C5EBB88009B1AC9 /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */; };
-		E2B926A01C5EBB88009B1AC9 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926961C5EBB88009B1AC9 /* LayoutConstraint.swift */; };
+		E2D216FD1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D216FC1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift */; };
+		E2D216FF1C6C11A100BAE7B4 /* GCLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D216FE1C6C11A100BAE7B4 /* GCLayoutConstraint.swift */; };
+		E2D217011C6C11CF00BAE7B4 /* GCDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */; };
+		E2D217031C6C150500BAE7B4 /* GCColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D217021C6C150500BAE7B4 /* GCColor.swift */; };
 		E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
 		E2EF54E51C5AA64800E93F85 /* GCCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF54E41C5AA64800E93F85 /* GCCalendarTests.swift */; };
 /* End PBXBuildFile section */
@@ -32,8 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E2B9268D1C5EBB88009B1AC9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		E2B9268E1C5EBB88009B1AC9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
 		E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayView.swift; sourceTree = "<group>"; };
 		E2B926911C5EBB88009B1AC9 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
@@ -41,7 +40,10 @@
 		E2B926931C5EBB88009B1AC9 /* GCCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarView.swift; sourceTree = "<group>"; };
 		E2B926941C5EBB88009B1AC9 /* GCCalendarWeekdayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekdayLabel.swift; sourceTree = "<group>"; };
 		E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekView.swift; sourceTree = "<group>"; };
-		E2B926961C5EBB88009B1AC9 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
+		E2D216FC1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarViewController.swift; sourceTree = "<group>"; };
+		E2D216FE1C6C11A100BAE7B4 /* GCLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCLayoutConstraint.swift; sourceTree = "<group>"; };
+		E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDateFormatter.swift; sourceTree = "<group>"; };
+		E2D217021C6C150500BAE7B4 /* GCColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCColor.swift; sourceTree = "<group>"; };
 		E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54DA1C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,15 +92,16 @@
 			isa = PBXGroup;
 			children = (
 				E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */,
-				E2B9268D1C5EBB88009B1AC9 /* Color.swift */,
-				E2B9268E1C5EBB88009B1AC9 /* Constants.swift */,
+				E2D216FC1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift */,
 				E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */,
 				E2B926911C5EBB88009B1AC9 /* GCCalendarHeaderView.swift */,
 				E2B926921C5EBB88009B1AC9 /* GCCalendarMonthView.swift */,
 				E2B926931C5EBB88009B1AC9 /* GCCalendarView.swift */,
 				E2B926941C5EBB88009B1AC9 /* GCCalendarWeekdayLabel.swift */,
 				E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */,
-				E2B926961C5EBB88009B1AC9 /* LayoutConstraint.swift */,
+				E2D217021C6C150500BAE7B4 /* GCColor.swift */,
+				E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */,
+				E2D216FE1C6C11A100BAE7B4 /* GCLayoutConstraint.swift */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
 			path = GCCalendar;
@@ -222,14 +225,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B9269D1C5EBB88009B1AC9 /* GCCalendarView.swift in Sources */,
-				E2B926971C5EBB88009B1AC9 /* Color.swift in Sources */,
+				E2D217011C6C11CF00BAE7B4 /* GCDateFormatter.swift in Sources */,
 				E2B9269C1C5EBB88009B1AC9 /* GCCalendarMonthView.swift in Sources */,
 				E2B9269B1C5EBB88009B1AC9 /* GCCalendarHeaderView.swift in Sources */,
+				E2D216FD1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift in Sources */,
+				E2D216FF1C6C11A100BAE7B4 /* GCLayoutConstraint.swift in Sources */,
+				E2D217031C6C150500BAE7B4 /* GCColor.swift in Sources */,
 				E2B9269E1C5EBB88009B1AC9 /* GCCalendarWeekdayLabel.swift in Sources */,
-				E2B926A01C5EBB88009B1AC9 /* LayoutConstraint.swift in Sources */,
 				E2B9269A1C5EBB88009B1AC9 /* GCCalendarDayView.swift in Sources */,
 				E2B9269F1C5EBB88009B1AC9 /* GCCalendarWeekView.swift in Sources */,
-				E2B926981C5EBB88009B1AC9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +355,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = GCCalendar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,7 +375,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = GCCalendar/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
