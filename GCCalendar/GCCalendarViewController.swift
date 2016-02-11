@@ -10,12 +10,12 @@ import UIKit
 
 public class GCCalendarViewController: UIViewController
 {
-    internal let currentCalendar = NSCalendar.currentCalendar()
+    public var calendarView: GCCalendarView?
     
     internal var selectedDate: NSDate = NSDate()
     internal var selectedDayView: GCCalendarDayView?
     
-    public var calendarView: GCCalendarView!
+    internal let currentCalendar = NSCalendar.currentCalendar()
 }
 
 // MARK: - Required Functions
