@@ -12,16 +12,16 @@ public final class GCCalendarWeekView: UIStackView
 {
     // MARK: - Properties
     
-    private var delegate: GCCalendarDelegate!
+    private var viewController: GCCalendarViewController!
     private var dayViews: [GCCalendarDayView] = []
     
     // MARK: - Initializers
     
-    convenience init(delegate: GCCalendarDelegate, dates: [NSDate?])
+    convenience init(viewController: GCCalendarViewController, dates: [NSDate?])
     {
         self.init(frame: CGRectZero)
         
-        self.delegate = delegate
+        self.viewController = viewController
         
         self.axis = .Horizontal
         self.distribution = .FillEqually
@@ -35,7 +35,7 @@ public final class GCCalendarWeekView: UIStackView
     {
         for date in dates
         {
-            let dayView = GCCalendarDayView(delegate: self.delegate, date: date)
+            let dayView = GCCalendarDayView(viewController: self.viewController, date: date)
             
             self.addArrangedSubview(dayView)
             self.dayViews.append(dayView)

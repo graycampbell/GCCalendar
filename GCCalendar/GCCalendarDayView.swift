@@ -12,7 +12,7 @@ public final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
-    private var delegate: GCCalendarDelegate!
+    private var viewController: GCCalendarViewController!
     
     private var date: NSDate?
     private let button = UIButton()
@@ -39,27 +39,27 @@ extension GCCalendarDayView
 {
     private var defaultFont: UIFont {
         
-        return self.isToday ? self.delegate.currentDayViewFont!() : self.delegate.dayViewFont!()
+        return self.isToday ? self.viewController.currentDayViewFont() : self.viewController.dayViewFont()
     }
     
     private var selectedFont: UIFont {
         
-        return self.isToday ? self.delegate.currentDayViewSelectedFont!() : self.delegate.dayViewSelectedFont!()
+        return self.isToday ? self.viewController.currentDayViewSelectedFont() : self.viewController.dayViewSelectedFont()
     }
     
     private var defaultTextColor: UIColor {
         
-        return self.isToday ? self.delegate.currentDayViewTextColor!() : self.delegate.dayViewTextColor!()
+        return self.isToday ? self.viewController.currentDayViewTextColor() : self.viewController.dayViewTextColor()
     }
     
     private var selectedTextColor: UIColor {
         
-        return self.isToday ? self.delegate.currentDayViewSelectedTextColor!() : self.delegate.dayViewSelectedTextColor!()
+        return self.isToday ? self.viewController.currentDayViewSelectedTextColor() : self.viewController.dayViewSelectedTextColor()
     }
     
     private var selectedBackgroundColor: UIColor {
         
-        return self.isToday ? self.delegate.currentDayViewSelectedBackgroundColor!() : self.delegate.dayViewSelectedBackgroundColor!()
+        return self.isToday ? self.viewController.currentDayViewSelectedBackgroundColor() : self.viewController.dayViewSelectedBackgroundColor()
     }
 }
 
@@ -67,11 +67,11 @@ extension GCCalendarDayView
 
 extension GCCalendarDayView
 {
-    convenience init(delegate: GCCalendarDelegate, date: NSDate?)
+    convenience init(viewController: GCCalendarViewController, date: NSDate?)
     {
         self.init(frame: CGRectZero)
         
-        self.delegate = delegate
+        self.viewController = viewController
         
         self.addButton()
         self.update(newDate: date)
@@ -171,7 +171,7 @@ extension GCCalendarDayView
         self.button.titleLabel!.font = self.selectedFont
         self.button.setTitleColor(self.selectedTextColor, forState: .Normal)
         
-        self.delegate.didSelectDate(self.date!)
+        self.viewController.didSelectDate(self.date!)
         
         self.animateSelection()
     }
@@ -180,8 +180,8 @@ extension GCCalendarDayView
     {
         self.button.backgroundColor = nil
         
-        let font = self.isToday ? self.delegate.currentDayViewFont!() : self.delegate.dayViewFont!()
-        let titleColor = self.isToday ? self.delegate.currentDayViewTextColor!() : self.delegate.dayViewTextColor!()
+        let font = self.isToday ? self.viewController.currentDayViewFont() : self.viewController.dayViewFont()
+        let titleColor = self.isToday ? self.viewController.currentDayViewTextColor() : self.viewController.dayViewTextColor()
         
         self.button.titleLabel!.font = font
         self.button.setTitleColor(titleColor, forState: .Normal)
