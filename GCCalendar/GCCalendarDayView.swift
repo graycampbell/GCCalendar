@@ -12,7 +12,7 @@ internal final class GCCalendarDayView: UIView
 {
     // MARK: - Properties
     
-    private var viewController: GCCalendarViewController!
+    private weak var viewController: GCCalendarViewController!
     
     private var date: NSDate?
     private let button = UIButton()
