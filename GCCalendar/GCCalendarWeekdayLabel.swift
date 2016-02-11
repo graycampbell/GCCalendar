@@ -18,8 +18,5 @@ public final class GCCalendarWeekdayLabel: UILabel
         
         self.text = text
         self.textAlignment = .Center
-        
-        self.font = Calendar.WeekdayLabel.font
-        self.textColor = Calendar.WeekdayLabel.textColor
     }
 }
