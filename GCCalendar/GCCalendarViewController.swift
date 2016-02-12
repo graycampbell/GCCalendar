@@ -18,6 +18,13 @@ public class GCCalendarViewController: UIViewController
     internal var selectedDayView: GCCalendarDayView?
     
     internal let currentCalendar = NSCalendar.currentCalendar()
+    
+    public override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        self.view.clipsToBounds = true
+    }
 }
 
 // MARK: - Required Functions
