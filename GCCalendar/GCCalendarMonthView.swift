@@ -27,12 +27,21 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
         self.viewController = viewController
         self.startDate = startDate
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.axis = .Vertical
         self.distribution = .FillEqually
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
         self.addWeekViews()
+    }
+    
+    // MARK: - Visibility
+    
+    private func setVisibility()
+    {
+        let monthBeforeToday = self.viewController.currentCalendar.dateByAddingUnit(.Month, value: -1, toDate: NSDate(), options: .MatchStrictly)!
+        
+        self.hidden = self.viewController.currentCalendar.isDate(self.startDate, equalToDate: monthBeforeToday, toUnitGranularity: .Month)
     }
 }
 
@@ -60,6 +69,11 @@ internal extension GCCalendarMonthView
             
             self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
+        }
+        
+        if !self.viewController.shouldDisplayPreviousMonths()
+        {
+            self.setVisibility()
         }
     }
     
@@ -98,6 +112,11 @@ internal extension GCCalendarMonthView
         for (index, dates) in self.dates.enumerate()
         {
             self.weekViews[index].update(newDates: dates)
+        }
+        
+        if !self.viewController.shouldDisplayPreviousMonths()
+        {
+            self.setVisibility()
         }
     }
     
