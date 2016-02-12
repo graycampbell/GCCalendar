@@ -13,6 +13,7 @@ public final class GCCalendarView: UIView
     // MARK: - Properties
     
     private weak var viewController: GCCalendarViewController!
+    
     private var headerView: GCCalendarHeaderView!
     private var monthViews: [GCCalendarMonthView] = []
     
@@ -176,11 +177,11 @@ extension GCCalendarView
         }
         else if pan.state == .Ended
         {
-            if self.currentMonthView.center.x < 0
+            if self.currentMonthView.center.x < self.bounds.size.width * 0.25
             {
                 UIView.animateWithDuration(0.25, animations: self.showNextMonthView(), completion: self.nextMonthViewDidShow())
             }
-            else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width && !self.previousMonthView.hidden
+            else if self.currentMonthView.center.x > self.bounds.size.width * 0.75
             {
                 UIView.animateWithDuration(0.25, animations: self.showPreviousMonthView(), completion: self.previousMonthViewDidShow())
             }
