@@ -52,6 +52,6 @@ internal final class GCCalendarWeekView: UIStackView
     
     internal func setSelectedDate(weekday weekday: Int)
     {
-        self.dayViews[weekday - 1].daySelected()
+        self.dayViews[weekday - 1].selected()
     }
 }

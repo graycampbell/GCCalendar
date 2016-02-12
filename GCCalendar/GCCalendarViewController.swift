@@ -12,7 +12,9 @@ public class GCCalendarViewController: UIViewController
 {
     public var calendarView: GCCalendarView!
     
-    internal var selectedDate: NSDate = NSDate()
+    public var selectedDate: NSDate = NSDate()
+    public var displayedMonthStartDate: NSDate!
+    
     internal var selectedDayView: GCCalendarDayView?
     
     internal let currentCalendar = NSCalendar.currentCalendar()
@@ -22,14 +24,21 @@ public class GCCalendarViewController: UIViewController
 
 public extension GCCalendarViewController
 {
-    public func didDisplayMonthWithStartDate(startDate: NSDate)
+    internal func didSelectDayView(dayView: GCCalendarDayView)
     {
-        fatalError("Subclass of GCCalendarViewController must override didDisplayMonthWithStartDate")
+        self.selectedDayView = dayView
+        
+        self.didSelectDate(dayView.date!)
     }
     
     public func didSelectDate(date: NSDate)
     {
-        fatalError("Subclass of GCCalendarViewController must override didSelectDate")
+        self.selectedDate = date
+    }
+    
+    public func didDisplayMonthWithStartDate(startDate: NSDate)
+    {
+        self.displayedMonthStartDate = startDate
     }
 }
 

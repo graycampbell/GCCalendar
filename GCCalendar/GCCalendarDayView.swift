@@ -14,7 +14,7 @@ internal final class GCCalendarDayView: UIView
     
     private weak var viewController: GCCalendarViewController!
     
-    private var date: NSDate?
+    internal var date: NSDate?
     private let button = UIButton()
     private let buttonWidth: CGFloat = 35
     
@@ -148,7 +148,7 @@ internal extension GCCalendarDayView
         self.button.layer.cornerRadius = self.buttonWidth / 2
         self.button.translatesAutoresizingMaskIntoConstraints = false
         
-        self.button.addTarget(self, action: "daySelected", forControlEvents: .TouchUpInside)
+        self.button.addTarget(self, action: "selected", forControlEvents: .TouchUpInside)
         
         self.addSubview(self.button)
         self.addButtonConstraints()
@@ -190,6 +190,7 @@ internal extension GCCalendarDayView
         {
             let title = GCDateFormatter.stringFromDate(self.date!, withFormat: "d", andCalendar: self.viewController.currentCalendar)
             
+            self.button.enabled = true
             self.button.setTitle(title, forState: .Normal)
             
             if self.viewController.currentCalendar.isDateInToday(self.date!)
@@ -205,14 +206,7 @@ internal extension GCCalendarDayView
                 self.dayType = .Future
             }
             
-            if self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate)
-            {
-                self.daySelected()
-            }
-            else
-            {
-                self.resetButton()
-            }
+            self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate) ? self.selected() : self.deselected()
         }
     }
 }
@@ -221,13 +215,11 @@ internal extension GCCalendarDayView
 
 internal extension GCCalendarDayView
 {
-    internal func daySelected()
+    internal func selected()
     {
         if self.date != nil && !(self.dayType == .Past && !self.viewController.pastDaysEnabled())
         {
-            self.button.enabled = false
-            
-            self.viewController.selectedDayView?.dayDeselected()
+            self.viewController.selectedDayView?.deselected()
             
             self.button.backgroundColor = self.selectedBackgroundColor
             self.button.titleLabel!.font = self.selectedFont
@@ -235,24 +227,14 @@ internal extension GCCalendarDayView
             
             if !self.date!.isEqualToDate(self.viewController.selectedDate)
             {
-                self.viewController.didSelectDate(self.date!)
+                self.viewController.didSelectDayView(self)
             }
-            
-            self.viewController.selectedDayView = self
-            self.viewController.selectedDate = self.date!
             
             self.animateSelection()
         }
     }
     
-    private func dayDeselected()
-    {
-        self.resetButton()
-        
-        self.button.enabled = true
-    }
-    
-    private func resetButton()
+    private func deselected()
     {
         self.button.backgroundColor = nil
         
