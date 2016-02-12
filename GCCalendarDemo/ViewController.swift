@@ -12,29 +12,28 @@ import GCCalendar
 class ViewController: GCCalendarViewController
 {
     private let monthLabel = UILabel()
-    private var selectedDate: NSDate!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        self.addDateLabel()
+        self.addMonthLabel()
         self.addCalendarView()
     }
     
-    // MARK: - Date Label
+    // MARK: - Month Label
     
-    private func addDateLabel()
+    private func addMonthLabel()
     {
         self.monthLabel.textAlignment = .Center
         self.monthLabel.font = UIFont.boldSystemFontOfSize(14)
         self.monthLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.monthLabel)
-        self.addDateLabelConstraints()
+        self.addMonthLabelConstraints()
     }
     
-    private func addDateLabelConstraints()
+    private func addMonthLabelConstraints()
     {
         let top = NSLayoutConstraint(item: self.monthLabel, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1.0, constant: 0.0)
         let width = NSLayoutConstraint(item: self.monthLabel, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1.0, constant: 0.0)
@@ -66,6 +65,8 @@ class ViewController: GCCalendarViewController
     
     override func didDisplayMonthWithStartDate(startDate: NSDate)
     {
+        super.didDisplayMonthWithStartDate(startDate)
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMMMYYYY", options: 0, locale: NSLocale.currentLocale())
         
@@ -74,7 +75,7 @@ class ViewController: GCCalendarViewController
     
     override func didSelectDate(date: NSDate)
     {
-        self.selectedDate = date
+        super.didSelectDate(date)
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("EEEEdMMMMYYYY", options: 0, locale: NSLocale.currentLocale())
@@ -82,6 +83,10 @@ class ViewController: GCCalendarViewController
         let dateString = dateFormatter.stringFromDate(date)
         
         print(dateString)
+    }
+    
+    override func pastDaysEnabled() -> Bool {
+        return false
     }
     
     // MARK: - Status Bar
