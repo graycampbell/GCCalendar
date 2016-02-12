@@ -10,6 +10,14 @@ import UIKit
 
 internal class GCDateFormatter: NSDateFormatter
 {
+    internal convenience init(dateFormat: String, calendar: NSCalendar)
+    {
+        self.init()
+        
+        self.dateFormat = dateFormat
+        self.calendar = calendar
+    }
+    
     internal class func stringFromDate(date: NSDate, withFormat format: String, andCalendar calendar: NSCalendar) -> String
     {
         var dateFormatter: NSDateFormatter!
@@ -17,20 +25,9 @@ internal class GCDateFormatter: NSDateFormatter
         
         dispatch_once(&onceToken) {
             
-            dateFormatter = NSDateFormatter(dateFormat: "d", calendar: calendar)
+            dateFormatter = GCDateFormatter(dateFormat: "d", calendar: calendar)
         }
         
         return dateFormatter.stringFromDate(date)
-    }
-}
-
-internal extension NSDateFormatter
-{
-    internal convenience init(dateFormat: String, calendar: NSCalendar)
-    {
-        self.init()
-        
-        self.dateFormat = dateFormat
-        self.calendar = calendar
     }
 }
