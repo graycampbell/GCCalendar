@@ -37,6 +37,11 @@ public extension GCCalendarViewController
 
 public extension GCCalendarViewController
 {
+    public func shouldDisplayPreviousMonths() -> Bool
+    {
+        return true
+    }
+    
     // MARK: Weekday Label
     
     public func weekdayLabelFont() -> UIFont
