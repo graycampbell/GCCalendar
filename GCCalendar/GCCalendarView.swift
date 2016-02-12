@@ -165,9 +165,12 @@ extension GCCalendarView
         {
             let changeInX = pan.locationInView(self).x - self.panGestureStartLocation
             
-            self.previousMonthView.center.x += changeInX
-            self.currentMonthView.center.x += changeInX
-            self.nextMonthView.center.x += changeInX
+            if !(self.previousMonthView.hidden && self.currentMonthView.center.x + changeInX > self.currentMonthViewCenter)
+            {
+                self.previousMonthView.center.x += changeInX
+                self.currentMonthView.center.x += changeInX
+                self.nextMonthView.center.x += changeInX
+            }
             
             self.panGestureStartLocation = pan.locationInView(self).x
         }
@@ -177,7 +180,7 @@ extension GCCalendarView
             {
                 UIView.animateWithDuration(0.25, animations: self.showNextMonthView(), completion: self.nextMonthViewDidShow())
             }
-            else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width
+            else if self.currentMonthView.center.x > self.currentMonthView.bounds.size.width && !self.previousMonthView.hidden
             {
                 UIView.animateWithDuration(0.25, animations: self.showPreviousMonthView(), completion: self.previousMonthViewDidShow())
             }
