@@ -84,16 +84,6 @@ class ViewController: GCCalendarViewController
         print(dateString)
     }
     
-    override func shouldDisplayPreviousMonths() -> Bool
-    {
-        return false
-    }
-    
-    override func pastDaysEnabled() -> Bool
-    {
-        return false
-    }
-    
     // MARK: - Status Bar
     
     override func prefersStatusBarHidden() -> Bool

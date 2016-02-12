@@ -57,9 +57,9 @@ extension GCCalendarView
     
     private func addHeaderViewConstraints()
     {
-        let top = NSLayoutConstraint(i: self.headerView, a: .Top, i: self)
-        let width = NSLayoutConstraint(i: self.headerView, a: .Width, i: self)
-        let height = NSLayoutConstraint(i: self.headerView, a: .Height, c: 15)
+        let top = NSLayoutConstraint(item: self.headerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: self.headerView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1, constant: 0)
+        let height = NSLayoutConstraint(item: self.headerView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 15)
         
         self.addConstraints([top, width, height])
     }
@@ -88,9 +88,9 @@ extension GCCalendarView
             self.addSubview(monthView)
             self.monthViews.append(monthView)
             
-            let top = NSLayoutConstraint(i: monthView, a: .Top, i: self.headerView, a: .Bottom)
-            let bottom = NSLayoutConstraint(i: monthView, a: .Bottom, i: self)
-            let width = NSLayoutConstraint(i: monthView, a: .Width, i: self)
+            let top = NSLayoutConstraint(item: monthView, attribute: .Top, relatedBy: .Equal, toItem: self.headerView, attribute: .Bottom, multiplier: 1, constant: 0)
+            let bottom = NSLayoutConstraint(item: monthView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+            let width = NSLayoutConstraint(item: monthView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1, constant: 0)
             
             self.addConstraints([top, bottom, width])
         }

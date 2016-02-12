@@ -51,7 +51,7 @@ public extension GCCalendarViewController
     
     public func weekdayLabelTextColor() -> UIColor
     {
-        return UIColor(r: 146, g: 146, b: 146)
+        return UIColor(red: 146 / 255, green: 146 / 255, blue: 146 / 255, alpha: 1.0)
     }
     
     // MARK: Day View
@@ -63,7 +63,7 @@ public extension GCCalendarViewController
     
     public func dayViewTextColor() -> UIColor
     {
-        return UIColor.black(0.87)
+        return UIColor(white: 0.0, alpha: 0.87)
     }
     
     public func dayViewSelectedFont() -> UIFont
@@ -78,7 +78,7 @@ public extension GCCalendarViewController
     
     public func dayViewSelectedBackgroundColor() -> UIColor
     {
-        return UIColor.black(0.87)
+        return UIColor(white: 0.0, alpha: 0.87)
     }
     
     // MARK: Past Day View
@@ -95,12 +95,12 @@ public extension GCCalendarViewController
     
     public func pastDayViewEnabledTextColor() -> UIColor
     {
-        return UIColor.black(0.87)
+        return UIColor(white: 0.0, alpha: 0.87)
     }
     
     public func pastDayViewDisabledTextColor() -> UIColor
     {
-        return UIColor(r: 146, g: 146, b: 146)
+        return UIColor(red: 146 / 255, green: 146 / 255, blue: 146 / 255, alpha: 1.0)
     }
     
     public func pastDayViewSelectedFont() -> UIFont
@@ -115,7 +115,7 @@ public extension GCCalendarViewController
     
     public func pastDayViewSelectedBackgroundColor() -> UIColor
     {
-        return UIColor.black(0.87)
+        return UIColor(white: 0.0, alpha: 0.87)
     }
     
     // MARK: Current Day View
@@ -127,7 +127,7 @@ public extension GCCalendarViewController
     
     public func currentDayViewTextColor() -> UIColor
     {
-        return UIColor(r: 255, g: 58, b: 48)
+        return UIColor(red: 255 / 255, green: 58 / 255, blue: 48 / 255, alpha: 1.0)
     }
     
     public func currentDayViewSelectedFont() -> UIFont
@@ -142,7 +142,7 @@ public extension GCCalendarViewController
     
     public func currentDayViewSelectedBackgroundColor() -> UIColor
     {
-        return UIColor(r: 255, g: 58, b: 48)
+        return UIColor(red: 255 / 255, green: 58 / 255, blue: 48 / 255, alpha: 1.0)
     }
     
     // MARK: Future Day View
@@ -154,7 +154,7 @@ public extension GCCalendarViewController
     
     public func futureDayViewTextColor() -> UIColor
     {
-        return UIColor.black(0.87)
+        return UIColor(white: 0.0, alpha: 0.87)
     }
     
     public func futureDayViewSelectedFont() -> UIFont
@@ -169,6 +169,6 @@ public extension GCCalendarViewController
     
     public func futureDayViewSelectedBackgroundColor() -> UIColor
     {
-        return UIColor.black(0.87)
+        return UIColor(white: 0.0, alpha: 0.87)
     }
 }

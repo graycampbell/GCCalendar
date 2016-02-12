@@ -156,10 +156,10 @@ internal extension GCCalendarDayView
     
     private func addButtonConstraints()
     {
-        let width = NSLayoutConstraint(i: self.button, a: .Width, c: self.buttonWidth)
-        let height = NSLayoutConstraint(i: self.button, a: .Height, c: self.buttonWidth)
-        let centerX = NSLayoutConstraint(i: self.button, a: .CenterX, i: self)
-        let centerY = NSLayoutConstraint(i: self.button, a: .CenterY, i: self)
+        let width = NSLayoutConstraint(item: self.button, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: self.buttonWidth)
+        let height = NSLayoutConstraint(item: self.button, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: self.buttonWidth)
+        let centerX = NSLayoutConstraint(item: self.button, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0)
+        let centerY = NSLayoutConstraint(item: self.button, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0)
         
         self.addConstraints([width, height, centerX, centerY])
     }
