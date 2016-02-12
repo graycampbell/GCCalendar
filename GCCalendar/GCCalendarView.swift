@@ -110,12 +110,6 @@ extension GCCalendarView
         self.nextMonthView.center.x = self.nextMonthViewCenter
     }
     
-    private func hideNotVisibleMonthViews()
-    {
-        self.previousMonthView.hidden = true
-        self.nextMonthView.hidden = true
-    }
-    
     private var previousMonthViewCenter: CGFloat {
         
         return -self.currentMonthViewCenter
@@ -166,9 +160,6 @@ extension GCCalendarView
     {
         if pan.state == .Began
         {
-            self.previousMonthView.hidden = false
-            self.nextMonthView.hidden = false
-            
             self.panGestureStartLocation = pan.locationInView(self).x
         }
         else if pan.state == .Changed
@@ -196,7 +187,7 @@ extension GCCalendarView
             }
             else
             {
-                UIView.animateWithDuration(0.15, animations: { self.resetLayout() }, completion: { finished in self.hideNotVisibleMonthViews() })
+                UIView.animateWithDuration(0.15) { self.resetLayout() }
             }
         }
     }
@@ -223,7 +214,6 @@ extension GCCalendarView
             self.monthViews.removeFirst()
             
             self.resetLayout()
-            self.hideNotVisibleMonthViews()
             
             self.viewController.didDisplayMonthWithStartDate(self.currentMonthView.startDate)
             self.currentMonthView.setSelectedDate()
@@ -252,7 +242,6 @@ extension GCCalendarView
             self.monthViews.removeLast()
             
             self.resetLayout()
-            self.hideNotVisibleMonthViews()
             
             self.viewController.didDisplayMonthWithStartDate(self.currentMonthView.startDate)
             self.currentMonthView.setSelectedDate()
