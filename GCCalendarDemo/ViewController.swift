@@ -84,6 +84,11 @@ class ViewController: GCCalendarViewController
         print(dateString)
     }
     
+    override func shouldDisplayPreviousMonths() -> Bool
+    {
+        return false
+    }
+    
     override func pastDaysEnabled() -> Bool
     {
         return false
