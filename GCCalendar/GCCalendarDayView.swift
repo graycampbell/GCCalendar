@@ -188,12 +188,12 @@ internal extension GCCalendarDayView
         }
         else
         {
-            let title = GCDateFormatter.stringFromDate(self.date!, withFormat: "d", andCalendar: self.viewController.currentCalendar)
+            let title = GCDateFormatter.stringFromDate(self.date!, withFormat: "d", andCalendar: self.viewController.calendar)
             
             self.button.enabled = true
             self.button.setTitle(title, forState: .Normal)
             
-            if self.viewController.currentCalendar.isDateInToday(self.date!)
+            if self.viewController.calendar.isDateInToday(self.date!)
             {
                 self.dayType = .Current
             }
@@ -206,7 +206,7 @@ internal extension GCCalendarDayView
                 self.dayType = .Future
             }
             
-            self.viewController.currentCalendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate) ? self.selected() : self.deselected()
+            self.viewController.calendar.isDate(self.date!, inSameDayAsDate: self.viewController.selectedDate) ? self.selected() : self.deselected()
         }
     }
 }
