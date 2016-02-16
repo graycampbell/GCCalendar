@@ -13,52 +13,63 @@ public class GCCalendarViewController: UIViewController
     public var calendarView: GCCalendarView!
     
     public var selectedDate: NSDate = NSDate()
-    public var displayedMonthStartDate: NSDate!
     
     internal var selectedDayView: GCCalendarDayView?
     
-    internal let currentCalendar = NSCalendar.currentCalendar()
+    internal let calendar = NSCalendar.currentCalendar()
     
     public override func viewDidLoad()
     {
         super.viewDidLoad()
         
         self.view.clipsToBounds = true
+        
+        self.calendarView = GCCalendarView(viewController: self)
+        
+        self.view.addSubview(self.calendarView)
+        
+        if self.shouldAutomaticallyChangeModeOnOrientationChange()
+        {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        }
     }
-}
-
-// MARK: - Required Functions
-
-public extension GCCalendarViewController
-{
+    
+    internal func orientationChanged()
+    {
+        let orientation = UIApplication.sharedApplication().statusBarOrientation
+        
+        if orientation == .Portrait || orientation == .PortraitUpsideDown
+        {
+            self.calendarView.changeMode(.Month)
+        }
+        else
+        {
+            self.calendarView.changeMode(.Week)
+        }
+    }
+    
     internal func didSelectDayView(dayView: GCCalendarDayView)
     {
         self.selectedDayView = dayView
         
         self.didSelectDate(dayView.date!)
     }
+}
+
+// MARK: - Public Functions
+
+public extension GCCalendarViewController
+{
+    /// Default value is false. If returning true, portrait mode = .Month and landscape mode = .Week
+    public func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
+    {
+        return false
+    }
     
     /// Must call super.didSelectDate(date) before custom implementation
     public func didSelectDate(date: NSDate)
     {
         self.selectedDate = date
-    }
-    
-    /// Must call super.didDisplayMonthWithStartDate(startDate) before custom implementation
-    public func didDisplayMonthWithStartDate(startDate: NSDate)
-    {
-        self.displayedMonthStartDate = startDate
-    }
-}
-
-// MARK: - Optional Functions
-
-public extension GCCalendarViewController
-{
-    /// Default value is true
-    public func shouldDisplayPreviousMonths() -> Bool
-    {
-        return true
     }
     
     // MARK: Weekday Label
