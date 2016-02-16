@@ -34,7 +34,7 @@ internal final class GCCalendarHeaderView: UIStackView
     
     private func addWeekdayLabels()
     {
-        for weekdaySymbol in self.viewController.currentCalendar.veryShortWeekdaySymbols
+        for weekdaySymbol in self.viewController.calendar.veryShortWeekdaySymbols
         {
             let label = GCCalendarWeekdayLabel(text: weekdaySymbol)
             
