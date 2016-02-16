@@ -11,9 +11,14 @@ import GCCalendar
 
 class ViewController: GCCalendarViewController
 {
+    // MARK: - View Setup
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.navigationController!.navigationBar.shadowImage = UIImage(named: "NavigationBarShadowImage")
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBar"), forBarMetrics: .Default)
         
         self.addCalendarViewConstraints()
     }
@@ -22,7 +27,7 @@ class ViewController: GCCalendarViewController
     
     private func addCalendarViewConstraints()
     {
-        let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 76)
+        let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 12)
         let width = NSLayoutConstraint(item: self.calendarView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1, constant: 0)
         let height = NSLayoutConstraint(item: self.calendarView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 325)
         
@@ -31,14 +36,9 @@ class ViewController: GCCalendarViewController
     
     // MARK: - Override Functions
     
-    override func didDisplayMonthWithStartDate(startDate: NSDate)
+    override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
     {
-        super.didDisplayMonthWithStartDate(startDate)
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMMMYYYY", options: 0, locale: NSLocale.currentLocale())
-        
-        self.navigationItem.title = dateFormatter.stringFromDate(startDate)
+        return true
     }
     
     override func didSelectDate(date: NSDate)
@@ -46,10 +46,8 @@ class ViewController: GCCalendarViewController
         super.didSelectDate(date)
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("EEEEdMMMMYYYY", options: 0, locale: NSLocale.currentLocale())
+        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMMMYYYY", options: 0, locale: NSLocale.currentLocale())
         
-        let dateString = dateFormatter.stringFromDate(date)
-        
-        print(dateString)
+        self.navigationItem.title = dateFormatter.stringFromDate(date)
     }
 }
