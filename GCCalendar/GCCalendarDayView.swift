@@ -18,6 +18,8 @@ internal final class GCCalendarDayView: UIView
     private let button = UIButton()
     private let buttonWidth: CGFloat = 35
     
+    private var tapGestureRecognizer: UITapGestureRecognizer!
+    
     private enum DayType
     {
         case Past, Current, Future, None
@@ -136,6 +138,10 @@ internal extension GCCalendarDayView
         
         self.addButton()
         self.update(newDate: date)
+        
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "selected")
+        
+        self.addGestureRecognizer(self.tapGestureRecognizer)
     }
 }
 
@@ -225,10 +231,7 @@ internal extension GCCalendarDayView
             self.button.titleLabel!.font = self.selectedFont
             self.button.setTitleColor(self.selectedTextColor, forState: .Normal)
             
-            if !self.date!.isEqualToDate(self.viewController.selectedDate)
-            {
-                self.viewController.didSelectDayView(self)
-            }
+            self.viewController.didSelectDayView(self)
             
             self.animateSelection()
         }
