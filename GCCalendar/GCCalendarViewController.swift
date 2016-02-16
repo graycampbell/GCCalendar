@@ -29,19 +29,19 @@ public class GCCalendarViewController: UIViewController
         
         self.view.addSubview(self.calendarView)
     }
-}
-
-// MARK: - Required Functions
-
-public extension GCCalendarViewController
-{
+    
     internal func didSelectDayView(dayView: GCCalendarDayView)
     {
         self.selectedDayView = dayView
         
         self.didSelectDate(dayView.date!)
     }
-    
+}
+
+// MARK: - Required Functions
+
+public extension GCCalendarViewController
+{
     /// Must call super.didSelectDate(date) before custom implementation
     public func didSelectDate(date: NSDate)
     {
