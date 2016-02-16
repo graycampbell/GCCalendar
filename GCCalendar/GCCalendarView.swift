@@ -105,24 +105,9 @@ extension GCCalendarView
     
     private func resetLayout()
     {
-        self.previousMonthView.center.x = self.previousMonthViewCenter
-        self.currentMonthView.center.x = self.currentMonthViewCenter
-        self.nextMonthView.center.x = self.nextMonthViewCenter
-    }
-    
-    private var previousMonthViewCenter: CGFloat {
-        
-        return -self.currentMonthViewCenter
-    }
-    
-    private var currentMonthViewCenter: CGFloat {
-        
-        return self.bounds.size.width / 2
-    }
-    
-    private var nextMonthViewCenter: CGFloat {
-        
-        return self.bounds.size.width + self.currentMonthViewCenter
+        self.previousMonthView.center.x = -self.bounds.size.width * 0.5
+        self.currentMonthView.center.x = self.bounds.size.width * 0.5
+        self.nextMonthView.center.x = self.bounds.size.width * 1.5
     }
     
     // MARK: Previous Month, Current Month, & Next Month
@@ -166,7 +151,7 @@ extension GCCalendarView
         {
             let changeInX = pan.locationInView(self).x - self.panGestureStartLocation
             
-            if !(self.previousMonthView.hidden && self.currentMonthView.center.x + changeInX > self.currentMonthViewCenter)
+            if !(self.previousMonthView.hidden && self.currentMonthView.center.x + changeInX > self.bounds.size.width * 0.5)
             {
                 self.previousMonthView.center.x += changeInX
                 self.currentMonthView.center.x += changeInX
@@ -198,8 +183,8 @@ extension GCCalendarView
     {
         return {
             
-            self.currentMonthView.center.x = self.previousMonthViewCenter
-            self.nextMonthView.center.x = self.currentMonthViewCenter
+            self.currentMonthView.center.x = -self.bounds.size.width * 0.5
+            self.nextMonthView.center.x = self.bounds.size.width * 0.5
         }
     }
     
@@ -226,8 +211,8 @@ extension GCCalendarView
     {
         return {
             
-            self.previousMonthView.center.x = self.currentMonthViewCenter
-            self.currentMonthView.center.x = self.nextMonthViewCenter
+            self.previousMonthView.center.x = self.bounds.size.width * 0.5
+            self.currentMonthView.center.x = self.bounds.size.width * 1.5
         }
     }
     
