@@ -14,7 +14,7 @@ public final class GCCalendarView: UIView
     
     private weak var viewController: GCCalendarViewController!
     
-    private var mode: GCCalendarMode = .Month
+    private var mode: GCCalendarMode!
     private var headerView: GCCalendarHeaderView!
     private var monthViews: [GCCalendarMonthView] = []
     private var weekViews: [GCCalendarWeekView] = []
@@ -28,15 +28,18 @@ public final class GCCalendarView: UIView
     
     // MARK: - Initializers
     
-    public convenience init(viewController: GCCalendarViewController?)
+    public convenience init(viewController: GCCalendarViewController?, mode: GCCalendarMode)
     {
         self.init(frame: CGRectZero)
         
         self.viewController = viewController
+        self.mode = mode
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.addHeaderView()
-        self.addMonthViews()
+        
+        (self.mode == .Month) ? self.addMonthViews() : self.addWeekViews()
     }
     
     // MARK: - Layout

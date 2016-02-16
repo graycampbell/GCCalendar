@@ -24,14 +24,27 @@ public class GCCalendarViewController: UIViewController
         
         self.view.clipsToBounds = true
         
-        self.calendarView = GCCalendarView(viewController: self)
-        
-        self.view.addSubview(self.calendarView)
-        
         if self.shouldAutomaticallyChangeModeOnOrientationChange()
         {
+            let orientation = UIApplication.sharedApplication().statusBarOrientation
+            
+            if orientation == .Portrait || orientation == .PortraitUpsideDown
+            {
+                self.calendarView = GCCalendarView(viewController: self, mode: .Month)
+            }
+            else
+            {
+                self.calendarView = GCCalendarView(viewController: self, mode: .Week)
+            }
+            
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
         }
+        else
+        {
+            self.calendarView = GCCalendarView(viewController: self, mode: .Month)
+        }
+        
+        self.view.addSubview(self.calendarView)
     }
     
     internal func orientationChanged()
