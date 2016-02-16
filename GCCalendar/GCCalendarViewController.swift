@@ -24,6 +24,10 @@ public class GCCalendarViewController: UIViewController
         super.viewDidLoad()
         
         self.view.clipsToBounds = true
+        
+        self.calendarView = GCCalendarView(viewController: self)
+        
+        self.view.addSubview(self.calendarView)
     }
 }
 
