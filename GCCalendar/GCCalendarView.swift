@@ -150,11 +150,11 @@ extension GCCalendarView
         }
         else if pan.state == .Ended
         {
-            if self.currentView.center.x < (self.bounds.size.width * 0.5) - 50
+            if self.currentView.center.x < (self.bounds.size.width * 0.5) - 25
             {
                 UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
             }
-            else if self.currentView.center.x > (self.bounds.size.width * 0.5) + 50
+            else if self.currentView.center.x > (self.bounds.size.width * 0.5) + 25
             {
                 UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
             }
