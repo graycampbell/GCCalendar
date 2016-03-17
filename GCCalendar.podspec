@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                    A customizable calendar for iOS written in Swift.
                    DESC
   s.homepage = 'https://github.com/graycampbell/GCCalendar'
-  s.authors = { 'Gray Campbell' => 'gray.campbell@outlook.com' }
+  s.authors = { 'Gray Campbell' => 'gray.campbell@icloud.com' }
   s.source = { :git => 'https://github.com/graycampbell/GCCalendar.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'
