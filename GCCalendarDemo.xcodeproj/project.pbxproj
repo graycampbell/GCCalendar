@@ -13,8 +13,6 @@
 		E2EF550F1C5AEC9400E93F85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF550D1C5AEC9400E93F85 /* Main.storyboard */; };
 		E2EF55111C5AEC9400E93F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2EF55101C5AEC9400E93F85 /* Assets.xcassets */; };
 		E2EF55141C5AEC9400E93F85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2EF55121C5AEC9400E93F85 /* LaunchScreen.storyboard */; };
-		E2EF551F1C5AEC9500E93F85 /* GCCalendarDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF551E1C5AEC9500E93F85 /* GCCalendarDemoTests.swift */; };
-		E2EF552A1C5AEC9500E93F85 /* GCCalendarDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF55291C5AEC9500E93F85 /* GCCalendarDemoUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,11 +43,7 @@
 		E2EF55131C5AEC9400E93F85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2EF55151C5AEC9400E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2EF551A1C5AEC9500E93F85 /* GCCalendarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2EF551E1C5AEC9500E93F85 /* GCCalendarDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCCalendarDemoTests.swift; sourceTree = "<group>"; };
-		E2EF55201C5AEC9500E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2EF55251C5AEC9500E93F85 /* GCCalendarDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2EF55291C5AEC9500E93F85 /* GCCalendarDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCCalendarDemoUITests.swift; sourceTree = "<group>"; };
-		E2EF552B1C5AEC9500E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				E2EF55081C5AEC9400E93F85 /* GCCalendarDemo */,
-				E2EF551D1C5AEC9500E93F85 /* GCCalendarDemoTests */,
-				E2EF55281C5AEC9500E93F85 /* GCCalendarDemoUITests */,
 				E2EF55071C5AEC9400E93F85 /* Products */,
 				E82CA22CD757ED2C2C0F69A0 /* Frameworks */,
 			);
@@ -110,24 +102,6 @@
 				E2EF55151C5AEC9400E93F85 /* Info.plist */,
 			);
 			path = GCCalendarDemo;
-			sourceTree = "<group>";
-		};
-		E2EF551D1C5AEC9500E93F85 /* GCCalendarDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				E2EF551E1C5AEC9500E93F85 /* GCCalendarDemoTests.swift */,
-				E2EF55201C5AEC9500E93F85 /* Info.plist */,
-			);
-			path = GCCalendarDemoTests;
-			sourceTree = "<group>";
-		};
-		E2EF55281C5AEC9500E93F85 /* GCCalendarDemoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E2EF55291C5AEC9500E93F85 /* GCCalendarDemoUITests.swift */,
-				E2EF552B1C5AEC9500E93F85 /* Info.plist */,
-			);
-			path = GCCalendarDemoUITests;
 			sourceTree = "<group>";
 		};
 		E82CA22CD757ED2C2C0F69A0 /* Frameworks */ = {
@@ -279,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2EF551F1C5AEC9500E93F85 /* GCCalendarDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2EF552A1C5AEC9500E93F85 /* GCCalendarDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
