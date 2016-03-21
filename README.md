@@ -1,5 +1,7 @@
 ## GCCalendar
 
+[gif](Screenshots/GCCalendar.gif)
+
 ### CocoaPods
 
 To install GCCalendar, paste the code shown below into your project's Podfile, and then run `pod install` from the command line. For more information about installing dependencies using CocoaPods, please visit this [link](https://cocoapods.org/#get_started).
