@@ -16,6 +16,6 @@ Once you've installed GCCalendar, you'll need to link the GCCalendar framework t
 
 2. Set the calendar view's frame or add layout constraints
 
-   **If you're using layout constraints, make sure to add `self.calendarView.translatesAutoresizingMaskIntoConstraints = false` to your code.**
+   **Remember to include `self.calendarView.translatesAutoresizingMaskIntoConstraints = false` if using layout constraints.**
 
 3. Customize!
