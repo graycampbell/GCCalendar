@@ -26,6 +26,8 @@ class ViewController: GCCalendarViewController
     
     private func addCalendarViewConstraints()
     {
+        self.calendarView.translatesAutoresizingMaskIntoConstraints = false
+        
         let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 12)
         let width = NSLayoutConstraint(item: self.calendarView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1, constant: 0)
         let height = NSLayoutConstraint(item: self.calendarView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 325)
