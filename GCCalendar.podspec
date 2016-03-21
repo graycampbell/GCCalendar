@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'GCCalendar'
-  s.version = '1.0.2'
+  s.version = '1.0.3'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.summary = 'A customizable calendar for iOS written in Swift.'
   s.description  = <<-DESC
