@@ -19,3 +19,63 @@ Once you've installed GCCalendar, you'll need to link the GCCalendar framework t
    **Remember to include `self.calendarView.translatesAutoresizingMaskIntoConstraints = false` if using layout constraints.**
 
 3. Customize!
+
+### Customization
+
+- Calendar Modes
+
+  ```
+  self.calendarView.changeMode(.Week)
+  self.calendarView.changeMode(.Month)
+
+  override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
+  ```
+
+- Weekday Labels
+
+  ```
+  override func weekdayLabelFont() -> UIFont
+  override func weekdayLabelTextColor() -> UIColor
+  ```
+
+- Day Views
+
+  ```
+  override func pastDaysEnabled() -> Bool
+  override func pastDayViewFont() -> UIFont
+  override func pastDayViewEnabledTextColor() -> UIColor
+  override func pastDayViewDisabledTextColor() -> UIColor
+  override func pastDayViewSelectedFont() -> UIFont
+  override func pastDayViewSelectedTextColor() -> UIColor
+  override func pastDayViewSelectedBackgroundColor() -> UIColor
+
+  override func currentDayViewFont() -> UIFont
+  override func currentDayViewTextColor() -> UIColor
+  override func currentDayViewSelectedFont() -> UIFont
+  override func currentDayViewSelectedTextColor() -> UIColor
+  override func currentDayViewSelectedBackgroundColor() -> UIColor
+
+  override func futureDayViewFont() -> UIFont
+  override func futureDayViewTextColor() -> UIColor
+  override func futureDayViewSelectedFont() -> UIFont
+  override func futureDayViewSelectedTextColor() -> UIColor
+  override func futureDayViewSelectedBackgroundColor() -> UIColor
+  ```
+
+### Properties
+
+```
+public var selectedDate: NSDate!
+public var calendarView: GCCalendarView!
+```
+
+### Date Selection
+
+```
+override func didSelectDate(date: NSDate)
+{
+    super.didSelectDate(date)
+
+    // Add custom implementation here
+}
+```
