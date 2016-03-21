@@ -1,6 +1,6 @@
 ## GCCalendar
 
-[gif](Screenshots/GCCalendar.gif)
+[[Screenshots/GCCalendar.gif]]
 
 ### CocoaPods
 
