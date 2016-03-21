@@ -52,7 +52,9 @@ override func didSelectDate(date: NSDate)
 ```
 self.calendarView.changeMode(.Week)
 self.calendarView.changeMode(.Month)
+```
 
+```
 override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
 ```
 
