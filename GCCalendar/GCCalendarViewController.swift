@@ -10,11 +10,9 @@ import UIKit
 public class GCCalendarViewController: UIViewController
 {
     public var calendarView: GCCalendarView!
-    
     public var selectedDate: NSDate = NSDate()
     
     internal var selectedDayView: GCCalendarDayView?
-    
     internal let calendar = NSCalendar.currentCalendar()
     
     public override func viewDidLoad()
