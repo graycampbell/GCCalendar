@@ -34,8 +34,6 @@ public final class GCCalendarView: UIView
         self.viewController = viewController
         self.mode = mode
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.addHeaderView()
         
         (self.mode == .Month) ? self.addMonthViews() : self.addWeekViews()
