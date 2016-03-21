@@ -6,4 +6,4 @@ To install GCCalendar, paste the code shown below into your project's Podfile, a
 
 `pod "GCCalendar", git: "https://github.com/graycampbell/GCCalendar.git"`
 
-Once you've installed GCCalendar, you'll need to link GCCalendar.framework to your project and add `import GCCalendar` to your import statements.
+Once you've installed GCCalendar, you'll need to link the GCCalendar framework to your project and add `import GCCalendar` to your import statements.
