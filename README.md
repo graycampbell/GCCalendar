@@ -34,7 +34,7 @@ public var calendarView: GCCalendarView!
 
    **Remember to include `self.calendarView.translatesAutoresizingMaskIntoConstraints = false` if using layout constraints.**
 
-3. [Customize](https://github.com/graycampbell/GCCalendar#customization)!
+3. Customize!
 
 ### Date Selection
 
