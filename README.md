@@ -62,16 +62,10 @@ override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
 
 ### Customization
 
-- Weekday Labels
-
   ```
   override func weekdayLabelFont() -> UIFont
   override func weekdayLabelTextColor() -> UIColor
-  ```
 
-- Day Views
-
-  ```
   override func pastDaysEnabled() -> Bool
   override func pastDayViewFont() -> UIFont
   override func pastDayViewEnabledTextColor() -> UIColor
