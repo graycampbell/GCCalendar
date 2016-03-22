@@ -52,8 +52,8 @@ override func didSelectDate(date: NSDate)
 ### Calendar Modes
 
 ```
-self.calendarView.changeMode(.Week)
-self.calendarView.changeMode(.Month)
+self.calendarView.changeModeTo(.Week)
+self.calendarView.changeModeTo(.Month)
 ```
 
 ```
