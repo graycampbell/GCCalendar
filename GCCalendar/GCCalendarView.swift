@@ -124,6 +124,48 @@ extension GCCalendarView
         }
     }
     
+    // MARK: Today
+    
+    public func today()
+    {
+        var todayFound = false
+        
+        if self.mode == .Month
+        {
+            for monthView in self.monthViews
+            {
+                if self.viewController.calendar.isDate(monthView.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
+                {
+                    todayFound = true
+                    monthView.setSelectedDate()
+                    
+                    break
+                }
+            }
+        }
+        else
+        {
+            for weekView in self.weekViews
+            {
+                for date in weekView.dates
+                {
+                    if date != nil && self.viewController.calendar.isDateInToday(date!)
+                    {
+                        let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
+                        
+                        todayFound = true
+                        weekView.setSelectedDate(weekday: todayComponents.weekday)
+                    }
+                }
+            }
+        }
+        
+        if !todayFound
+        {
+            
+        }
+    }
+    
     // MARK: Toggle Current View
     
     internal func toggleCurrentView(pan: UIPanGestureRecognizer)
