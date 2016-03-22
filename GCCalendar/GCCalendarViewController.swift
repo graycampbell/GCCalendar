@@ -50,11 +50,11 @@ public class GCCalendarViewController: UIViewController
         
         if orientation == .Portrait || orientation == .PortraitUpsideDown
         {
-            self.calendarView.changeMode(.Month)
+            self.calendarView.changeModeTo(.Month)
         }
         else
         {
-            self.calendarView.changeMode(.Week)
+            self.calendarView.changeModeTo(.Week)
         }
     }
     
