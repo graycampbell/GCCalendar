@@ -16,18 +16,7 @@
 		E2B9269F1C5EBB88009B1AC9 /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */; };
 		E2D216FD1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D216FC1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift */; };
 		E2D217011C6C11CF00BAE7B4 /* GCDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */; };
-		E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E2EF54E11C5AA64800E93F85 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E2EF54CC1C5AA64800E93F85 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E2EF54D41C5AA64800E93F85;
-			remoteInfo = GCCalendar;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
@@ -41,7 +30,6 @@
 		E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDateFormatter.swift; sourceTree = "<group>"; };
 		E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54DA1C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,14 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2EF54DC1C5AA64800E93F85 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */,
-				E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,24 +108,6 @@
 			productReference = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E2EF54DE1C5AA64800E93F85 /* GCCalendarTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2EF54EC1C5AA64800E93F85 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */;
-			buildPhases = (
-				E2EF54DB1C5AA64800E93F85 /* Sources */,
-				E2EF54DC1C5AA64800E93F85 /* Frameworks */,
-				E2EF54DD1C5AA64800E93F85 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E2EF54E21C5AA64800E93F85 /* PBXTargetDependency */,
-			);
-			name = GCCalendarTests;
-			productName = GCCalendarTests;
-			productReference = E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -158,9 +119,6 @@
 				ORGANIZATIONNAME = "Gray Campbell";
 				TargetAttributes = {
 					E2EF54D41C5AA64800E93F85 = {
-						CreatedOnToolsVersion = 7.2;
-					};
-					E2EF54DE1C5AA64800E93F85 = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -178,20 +136,12 @@
 			projectRoot = "";
 			targets = (
 				E2EF54D41C5AA64800E93F85 /* GCCalendar */,
-				E2EF54DE1C5AA64800E93F85 /* GCCalendarTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E2EF54D31C5AA64800E93F85 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2EF54DD1C5AA64800E93F85 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,22 +166,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2EF54DB1C5AA64800E93F85 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E2EF54E21C5AA64800E93F85 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E2EF54D41C5AA64800E93F85 /* GCCalendar */;
-			targetProxy = E2EF54E11C5AA64800E93F85 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E2EF54E71C5AA64800E93F85 /* Debug */ = {
@@ -362,26 +297,6 @@
 			};
 			name = Release;
 		};
-		E2EF54ED1C5AA64800E93F85 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GCCalendarTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		E2EF54EE1C5AA64800E93F85 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GCCalendarTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,15 +314,6 @@
 			buildConfigurations = (
 				E2EF54EA1C5AA64800E93F85 /* Debug */,
 				E2EF54EB1C5AA64800E93F85 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2EF54EC1C5AA64800E93F85 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2EF54ED1C5AA64800E93F85 /* Debug */,
-				E2EF54EE1C5AA64800E93F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
