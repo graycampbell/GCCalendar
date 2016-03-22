@@ -62,27 +62,27 @@ override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
 
 ### Customization
 
-  ```
-  override func weekdayLabelFont() -> UIFont
-  override func weekdayLabelTextColor() -> UIColor
+```
+override func weekdayLabelFont() -> UIFont
+override func weekdayLabelTextColor() -> UIColor
 
-  override func pastDaysEnabled() -> Bool
-  override func pastDayViewFont() -> UIFont
-  override func pastDayViewEnabledTextColor() -> UIColor
-  override func pastDayViewDisabledTextColor() -> UIColor
-  override func pastDayViewSelectedFont() -> UIFont
-  override func pastDayViewSelectedTextColor() -> UIColor
-  override func pastDayViewSelectedBackgroundColor() -> UIColor
+override func pastDaysEnabled() -> Bool
+override func pastDayViewFont() -> UIFont
+override func pastDayViewEnabledTextColor() -> UIColor
+override func pastDayViewDisabledTextColor() -> UIColor
+override func pastDayViewSelectedFont() -> UIFont
+override func pastDayViewSelectedTextColor() -> UIColor
+override func pastDayViewSelectedBackgroundColor() -> UIColor
 
-  override func currentDayViewFont() -> UIFont
-  override func currentDayViewTextColor() -> UIColor
-  override func currentDayViewSelectedFont() -> UIFont
-  override func currentDayViewSelectedTextColor() -> UIColor
-  override func currentDayViewSelectedBackgroundColor() -> UIColor
+override func currentDayViewFont() -> UIFont
+override func currentDayViewTextColor() -> UIColor
+override func currentDayViewSelectedFont() -> UIFont
+override func currentDayViewSelectedTextColor() -> UIColor
+override func currentDayViewSelectedBackgroundColor() -> UIColor
 
-  override func futureDayViewFont() -> UIFont
-  override func futureDayViewTextColor() -> UIColor
-  override func futureDayViewSelectedFont() -> UIFont
-  override func futureDayViewSelectedTextColor() -> UIColor
-  override func futureDayViewSelectedBackgroundColor() -> UIColor
-  ```
+override func futureDayViewFont() -> UIFont
+override func futureDayViewTextColor() -> UIColor
+override func futureDayViewSelectedFont() -> UIFont
+override func futureDayViewSelectedTextColor() -> UIColor
+override func futureDayViewSelectedBackgroundColor() -> UIColor
+```
