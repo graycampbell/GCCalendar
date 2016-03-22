@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E29559B31CA0CC5A00A5F429 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
+		E29559BA1CA0CE8D00A5F429 /* GCCalendarDayViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29559B91CA0CE8D00A5F429 /* GCCalendarDayViewTests.swift */; };
+		E29559BC1CA0D65400A5F429 /* GCCalendarWeekViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29559BB1CA0D65400A5F429 /* GCCalendarWeekViewTests.swift */; };
+		E29559BE1CA0D86B00A5F429 /* GCCalendarMonthViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29559BD1CA0D86B00A5F429 /* GCCalendarMonthViewTests.swift */; };
 		E2B926991C5EBB88009B1AC9 /* GCCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2B9269A1C5EBB88009B1AC9 /* GCCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */; };
 		E2B9269B1C5EBB88009B1AC9 /* GCCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926911C5EBB88009B1AC9 /* GCCalendarHeaderView.swift */; };
@@ -16,11 +20,10 @@
 		E2B9269F1C5EBB88009B1AC9 /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */; };
 		E2D216FD1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D216FC1C6BFCAA00BAE7B4 /* GCCalendarViewController.swift */; };
 		E2D217011C6C11CF00BAE7B4 /* GCDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */; };
-		E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E2EF54E11C5AA64800E93F85 /* PBXContainerItemProxy */ = {
+		E29559B41CA0CC5A00A5F429 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E2EF54CC1C5AA64800E93F85 /* Project object */;
 			proxyType = 1;
@@ -30,6 +33,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E29559AE1CA0CC5A00A5F429 /* GCCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E29559B21CA0CC5A00A5F429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E29559B91CA0CE8D00A5F429 /* GCCalendarDayViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayViewTests.swift; sourceTree = "<group>"; };
+		E29559BB1CA0D65400A5F429 /* GCCalendarWeekViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekViewTests.swift; sourceTree = "<group>"; };
+		E29559BD1CA0D86B00A5F429 /* GCCalendarMonthViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthViewTests.swift; sourceTree = "<group>"; };
 		E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
 		E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayView.swift; sourceTree = "<group>"; };
 		E2B926911C5EBB88009B1AC9 /* GCCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarHeaderView.swift; sourceTree = "<group>"; };
@@ -41,10 +49,17 @@
 		E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDateFormatter.swift; sourceTree = "<group>"; };
 		E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54DA1C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E29559AB1CA0CC5A00A5F429 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E29559B31CA0CC5A00A5F429 /* GCCalendar.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2EF54D11C5AA64800E93F85 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -52,21 +67,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2EF54DC1C5AA64800E93F85 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E2EF54E01C5AA64800E93F85 /* GCCalendar.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E29559AF1CA0CC5A00A5F429 /* GCCalendarTests */ = {
+			isa = PBXGroup;
+			children = (
+				E29559B91CA0CE8D00A5F429 /* GCCalendarDayViewTests.swift */,
+				E29559BD1CA0D86B00A5F429 /* GCCalendarMonthViewTests.swift */,
+				E29559BB1CA0D65400A5F429 /* GCCalendarWeekViewTests.swift */,
+				E29559B21CA0CC5A00A5F429 /* Info.plist */,
+			);
+			path = GCCalendarTests;
+			sourceTree = "<group>";
+		};
 		E2EF54CB1C5AA64800E93F85 = {
 			isa = PBXGroup;
 			children = (
 				E2EF54D71C5AA64800E93F85 /* GCCalendar */,
+				E29559AF1CA0CC5A00A5F429 /* GCCalendarTests */,
 				E2EF54D61C5AA64800E93F85 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */,
-				E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */,
+				E29559AE1CA0CC5A00A5F429 /* GCCalendarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +130,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E29559AD1CA0CC5A00A5F429 /* GCCalendarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E29559B61CA0CC5A00A5F429 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */;
+			buildPhases = (
+				E29559AA1CA0CC5A00A5F429 /* Sources */,
+				E29559AB1CA0CC5A00A5F429 /* Frameworks */,
+				E29559AC1CA0CC5A00A5F429 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E29559B51CA0CC5A00A5F429 /* PBXTargetDependency */,
+			);
+			name = GCCalendarTests;
+			productName = GCCalendarTests;
+			productReference = E29559AE1CA0CC5A00A5F429 /* GCCalendarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E2EF54D41C5AA64800E93F85 /* GCCalendar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2EF54E91C5AA64800E93F85 /* Build configuration list for PBXNativeTarget "GCCalendar" */;
@@ -129,24 +166,6 @@
 			productReference = E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E2EF54DE1C5AA64800E93F85 /* GCCalendarTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2EF54EC1C5AA64800E93F85 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */;
-			buildPhases = (
-				E2EF54DB1C5AA64800E93F85 /* Sources */,
-				E2EF54DC1C5AA64800E93F85 /* Frameworks */,
-				E2EF54DD1C5AA64800E93F85 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E2EF54E21C5AA64800E93F85 /* PBXTargetDependency */,
-			);
-			name = GCCalendarTests;
-			productName = GCCalendarTests;
-			productReference = E2EF54DF1C5AA64800E93F85 /* GCCalendarTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -157,10 +176,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Gray Campbell";
 				TargetAttributes = {
-					E2EF54D41C5AA64800E93F85 = {
-						CreatedOnToolsVersion = 7.2;
+					E29559AD1CA0CC5A00A5F429 = {
+						CreatedOnToolsVersion = 7.2.1;
 					};
-					E2EF54DE1C5AA64800E93F85 = {
+					E2EF54D41C5AA64800E93F85 = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -178,20 +197,20 @@
 			projectRoot = "";
 			targets = (
 				E2EF54D41C5AA64800E93F85 /* GCCalendar */,
-				E2EF54DE1C5AA64800E93F85 /* GCCalendarTests */,
+				E29559AD1CA0CC5A00A5F429 /* GCCalendarTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E2EF54D31C5AA64800E93F85 /* Resources */ = {
+		E29559AC1CA0CC5A00A5F429 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2EF54DD1C5AA64800E93F85 /* Resources */ = {
+		E2EF54D31C5AA64800E93F85 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -201,6 +220,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E29559AA1CA0CC5A00A5F429 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E29559BC1CA0D65400A5F429 /* GCCalendarWeekViewTests.swift in Sources */,
+				E29559BA1CA0CE8D00A5F429 /* GCCalendarDayViewTests.swift in Sources */,
+				E29559BE1CA0D86B00A5F429 /* GCCalendarMonthViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2EF54D01C5AA64800E93F85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,24 +245,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2EF54DB1C5AA64800E93F85 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E2EF54E21C5AA64800E93F85 /* PBXTargetDependency */ = {
+		E29559B51CA0CC5A00A5F429 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E2EF54D41C5AA64800E93F85 /* GCCalendar */;
-			targetProxy = E2EF54E11C5AA64800E93F85 /* PBXContainerItemProxy */;
+			targetProxy = E29559B41CA0CC5A00A5F429 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		E29559B71CA0CC5A00A5F429 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				INFOPLIST_FILE = GCCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E29559B81CA0CC5A00A5F429 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = NO;
+				INFOPLIST_FILE = GCCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E2EF54E71C5AA64800E93F85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -362,29 +406,17 @@
 			};
 			name = Release;
 		};
-		E2EF54ED1C5AA64800E93F85 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GCCalendarTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		E2EF54EE1C5AA64800E93F85 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = GCCalendarTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.graycampbell.GCCalendarTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E29559B61CA0CC5A00A5F429 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E29559B71CA0CC5A00A5F429 /* Debug */,
+				E29559B81CA0CC5A00A5F429 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E2EF54CF1C5AA64800E93F85 /* Build configuration list for PBXProject "GCCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -399,15 +431,6 @@
 			buildConfigurations = (
 				E2EF54EA1C5AA64800E93F85 /* Debug */,
 				E2EF54EB1C5AA64800E93F85 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E2EF54EC1C5AA64800E93F85 /* Build configuration list for PBXNativeTarget "GCCalendarTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2EF54ED1C5AA64800E93F85 /* Debug */,
-				E2EF54EE1C5AA64800E93F85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

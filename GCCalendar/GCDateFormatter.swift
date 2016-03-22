@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal class GCDateFormatter: NSDateFormatter
+internal final class GCDateFormatter: NSDateFormatter
 {
     internal convenience init(dateFormat: String, calendar: NSCalendar)
     {

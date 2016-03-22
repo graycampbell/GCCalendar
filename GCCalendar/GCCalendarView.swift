@@ -444,7 +444,7 @@ extension GCCalendarView
     
     // MARK: Selected Week View Date
     
-    func setSelectedWeekViewDate()
+    private func setSelectedWeekViewDate()
     {
         let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
         
