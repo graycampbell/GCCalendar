@@ -35,10 +35,7 @@ internal final class GCCalendarHeaderView: UIStackView
     {
         for weekdaySymbol in self.viewController.calendar.veryShortWeekdaySymbols
         {
-            let label = GCCalendarWeekdayLabel(text: weekdaySymbol)
-            
-            label.font = self.viewController.weekdayLabelFont()
-            label.textColor = self.viewController.weekdayLabelTextColor()
+            let label = GCCalendarWeekdayLabel(viewController: self.viewController, text: weekdaySymbol)
             
             self.addArrangedSubview(label)
         }

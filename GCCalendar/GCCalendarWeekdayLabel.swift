@@ -7,15 +7,18 @@
 
 import UIKit
 
-final class GCCalendarWeekdayLabel: UILabel
+internal final class GCCalendarWeekdayLabel: UILabel
 {
     // MARK: - Initializers
     
-    internal convenience init(text: String)
+    internal convenience init(viewController: GCCalendarViewController, text: String)
     {
         self.init(frame: CGRectZero)
         
         self.text = text
         self.textAlignment = .Center
+        
+        self.font = viewController.weekdayLabelFont()
+        self.textColor = viewController.weekdayLabelTextColor()
     }
 }
