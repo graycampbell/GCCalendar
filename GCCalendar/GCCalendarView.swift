@@ -105,7 +105,7 @@ extension GCCalendarView
     
     // MARK: Change Mode
     
-    public func changeMode(newMode: GCCalendarMode)
+    public func changeModeTo(newMode: GCCalendarMode)
     {
         if newMode != self.mode
         {
