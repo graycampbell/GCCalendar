@@ -45,10 +45,6 @@ self.calendarView.today()
 ```
 
 ```
-let today = UIBarButtonItem(title: "Today", style: .Plain, target: self.calendarView, action: #selector(self.calendarView.today))
-```
-
-```
 override func didSelectDate(date: NSDate)
 {
     super.didSelectDate(date)
