@@ -145,6 +145,10 @@ extension GCCalendarView
         {
             UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
         }
+        else
+        {
+            
+        }
     }
     
     private func findTodayInWeekViews()
@@ -162,6 +166,10 @@ extension GCCalendarView
         else if self.nextWeekView.containsToday
         {
             UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
+        }
+        else
+        {
+            
         }
     }
     
