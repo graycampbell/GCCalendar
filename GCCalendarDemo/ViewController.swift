@@ -19,7 +19,7 @@ class ViewController: GCCalendarViewController
         self.navigationController!.navigationBar.shadowImage = UIImage(named: "NavigationBarShadowImage")
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBar"), forBarMetrics: .Default)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .Plain, target: self.calendarView, action: "today")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .Plain, target: self.calendarView, action: #selector(self.calendarView.today))
         
         self.addCalendarViewConstraints()
     }
