@@ -34,7 +34,7 @@ public class GCCalendarViewController: UIViewController
                 self.calendarView = GCCalendarView(viewController: self, mode: .Week)
             }
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.orientationChanged), name: UIDeviceOrientationDidChangeNotification, object: nil)
         }
         else
         {

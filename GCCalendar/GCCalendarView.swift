@@ -270,7 +270,7 @@ extension GCCalendarView
         for startDate in [previousMonthStartDate, currentMonthStartDate, nextMonthStartDate]
         {
             let monthView = GCCalendarMonthView(viewController: self.viewController, startDate: startDate)
-            monthView.addPanGestureRecognizer(self, action: "toggleCurrentView:")
+            monthView.addPanGestureRecognizer(self, action: #selector(self.toggleCurrentView(_:)))
             
             self.addSubview(monthView)
             self.monthViews.append(monthView)
@@ -376,7 +376,7 @@ extension GCCalendarView
         for dates in [previousWeekDates, currentWeekDates, nextWeekDates]
         {
             let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
-            weekView.addPanGestureRecognizer(self, action: "toggleCurrentView:")
+            weekView.addPanGestureRecognizer(self, action: #selector(self.toggleCurrentView(_:)))
             
             self.addSubview(weekView)
             self.weekViews.append(weekView)
@@ -429,8 +429,10 @@ extension GCCalendarView
         return self.weekDates(startDate: startDate)
     }
     
-    private func weekDates(var startDate date: NSDate?) -> [NSDate?]
+    private func weekDates(startDate startDate: NSDate?) -> [NSDate?]
     {
+        var date: NSDate? = startDate
+        
         let numberOfWeekdays = self.viewController.calendar.maximumRangeOfUnit(.Weekday).length
         
         var dates = [NSDate?](count: numberOfWeekdays, repeatedValue: nil)
