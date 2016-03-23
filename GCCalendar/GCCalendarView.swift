@@ -135,7 +135,7 @@ extension GCCalendarView
     {
         if self.previousMonthView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
+            self.animate(self.showPreviousView(), completion: self.previousViewDidShow())
         }
         else if self.currentMonthView.containsToday
         {
@@ -143,7 +143,7 @@ extension GCCalendarView
         }
         else if self.nextMonthView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
+            self.animate(self.showNextView(), completion: self.nextViewDidShow())
         }
         else
         {
@@ -155,7 +155,7 @@ extension GCCalendarView
     {
         if self.previousWeekView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
+            self.animate(self.showPreviousView(), completion: self.previousViewDidShow())
         }
         else if self.currentWeekView.containsToday
         {
@@ -165,7 +165,7 @@ extension GCCalendarView
         }
         else if self.nextWeekView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
+            self.animate(self.showNextView(), completion: self.nextViewDidShow())
         }
         else
         {
@@ -198,11 +198,11 @@ extension GCCalendarView
         {
             if self.currentView.center.x < (self.bounds.size.width * 0.5) - 25
             {
-                UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
+                self.animate(self.showNextView(), completion: self.nextViewDidShow())
             }
             else if self.currentView.center.x > (self.bounds.size.width * 0.5) + 25
             {
-                UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
+                self.animate(self.showPreviousView(), completion: self.previousViewDidShow())
             }
             else
             {
@@ -211,7 +211,12 @@ extension GCCalendarView
         }
     }
     
-    // MARK: Show Previous View
+    // MARK: Show View
+    
+    private func animate(animations: () -> Void, completion: ((Bool) -> Void)?)
+    {
+        UIView.animateWithDuration(0.25, animations: animations, completion: completion)
+    }
     
     private func showPreviousView() -> () -> Void
     {
