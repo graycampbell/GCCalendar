@@ -128,41 +128,39 @@ extension GCCalendarView
     
     public func today()
     {
-        var todayFound = false
+        (self.mode == .Month) ? self.findTodayInMonthViews() : self.findTodayInWeekViews()
+    }
+    
+    private func findTodayInMonthViews()
+    {
+        let today = NSDate()
         
-        if self.mode == .Month
+        for monthView in self.monthViews
         {
-            for monthView in self.monthViews
+            if self.viewController.calendar.isDate(monthView.startDate, equalToDate: today, toUnitGranularity: .Month)
             {
-                if self.viewController.calendar.isDate(monthView.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
+                monthView.setSelectedDate(today)
+                
+                return
+            }
+        }
+    }
+    
+    private func findTodayInWeekViews()
+    {
+        for weekView in self.weekViews
+        {
+            for date in weekView.dates
+            {
+                if date != nil && self.viewController.calendar.isDateInToday(date!)
                 {
-                    todayFound = true
-                    monthView.setSelectedDate()
+                    let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
                     
-                    break
+                    weekView.setSelectedDate(weekday: todayComponents.weekday)
+                    
+                    return
                 }
             }
-        }
-        else
-        {
-            for weekView in self.weekViews
-            {
-                for date in weekView.dates
-                {
-                    if date != nil && self.viewController.calendar.isDateInToday(date!)
-                    {
-                        let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
-                        
-                        todayFound = true
-                        weekView.setSelectedDate(weekday: todayComponents.weekday)
-                    }
-                }
-            }
-        }
-        
-        if !todayFound
-        {
-            
         }
     }
     
