@@ -138,7 +138,7 @@ internal extension GCCalendarDayView
         self.addButton()
         self.update(newDate: date)
         
-        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "selected")
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selected))
         
         self.addGestureRecognizer(self.tapGestureRecognizer)
     }
@@ -153,7 +153,7 @@ internal extension GCCalendarDayView
         self.button.layer.cornerRadius = self.buttonWidth / 2
         self.button.translatesAutoresizingMaskIntoConstraints = false
         
-        self.button.addTarget(self, action: "selected", forControlEvents: .TouchUpInside)
+        self.button.addTarget(self, action: #selector(self.selected), forControlEvents: .TouchUpInside)
         
         self.addSubview(self.button)
         self.addButtonConstraints()
