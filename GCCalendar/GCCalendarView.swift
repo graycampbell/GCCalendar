@@ -147,7 +147,16 @@ extension GCCalendarView
         }
         else
         {
+            let today = NSDate()
             
+            if today.compare(self.viewController.selectedDate) == .OrderedAscending
+            {
+                
+            }
+            else if today.compare(self.viewController.selectedDate) == .OrderedDescending
+            {
+                
+            }
         }
     }
     
@@ -169,7 +178,16 @@ extension GCCalendarView
         }
         else
         {
+            let today = NSDate()
             
+            if today.compare(self.viewController.selectedDate) == .OrderedAscending
+            {
+                
+            }
+            else if today.compare(self.viewController.selectedDate) == .OrderedDescending
+            {
+                
+            }
         }
     }
     
