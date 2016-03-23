@@ -133,13 +133,11 @@ extension GCCalendarView
     
     private func findTodayInMonthViews()
     {
-        let today = NSDate()
-        
         for monthView in self.monthViews
         {
-            if self.viewController.calendar.isDate(monthView.startDate, equalToDate: today, toUnitGranularity: .Month)
+            if self.viewController.calendar.isDate(monthView.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
             {
-                monthView.setSelectedDate(today)
+                monthView.setSelectedDate()
                 
                 return
             }
