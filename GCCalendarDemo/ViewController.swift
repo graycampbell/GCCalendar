@@ -16,12 +16,33 @@ class ViewController: GCCalendarViewController
     {
         super.viewDidLoad()
         
+        let tintColor = UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
+        
+        self.navigationController!.toolbar.tintColor = tintColor
+        self.navigationController!.navigationBar.tintColor = tintColor
+        
         self.navigationController!.navigationBar.shadowImage = UIImage(named: "NavigationBarShadowImage")
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBar"), forBarMetrics: .Default)
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBarBackgroundImage"), forBarMetrics: .Default)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .Plain, target: self.calendarView, action: #selector(self.calendarView.today))
-        
+        self.addToolbar()
         self.addCalendarViewConstraints()
+    }
+    
+    // MARK: - Toolbar
+    
+    private func addToolbar()
+    {
+        self.navigationController!.toolbarHidden = false
+        
+        let today = UIBarButtonItem(title: "Today", style: .Plain, target: self.calendarView, action: #selector(self.calendarView.today))
+        
+        self.toolbarItems = [today]
+        
+        let shadowImage = UIImage(named: "ToolbarShadowImage")
+        let backgroundImage = UIImage(named: "NavigationBarBackgroundImage")
+        
+        self.navigationController!.toolbar.setShadowImage(shadowImage, forToolbarPosition: .Bottom)
+        self.navigationController!.toolbar.setBackgroundImage(backgroundImage, forToolbarPosition: .Bottom, barMetrics: .Default)
     }
     
     // MARK: - Calendar View
