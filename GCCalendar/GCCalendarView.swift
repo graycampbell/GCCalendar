@@ -133,32 +133,35 @@ extension GCCalendarView
     
     private func findTodayInMonthViews()
     {
-        for monthView in self.monthViews
+        if self.previousMonthView.containsToday
         {
-            if self.viewController.calendar.isDate(monthView.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
-            {
-                monthView.setSelectedDate()
-                
-                return
-            }
+            UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
+        }
+        else if self.currentMonthView.containsToday
+        {
+            self.currentMonthView.setSelectedDate()
+        }
+        else if self.nextMonthView.containsToday
+        {
+            UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
         }
     }
     
     private func findTodayInWeekViews()
     {
-        for weekView in self.weekViews
+        if self.previousWeekView.containsToday
         {
-            for date in weekView.dates
-            {
-                if date != nil && self.viewController.calendar.isDateInToday(date!)
-                {
-                    let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
-                    
-                    weekView.setSelectedDate(weekday: todayComponents.weekday)
-                    
-                    return
-                }
-            }
+            UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
+        }
+        else if self.currentWeekView.containsToday
+        {
+            let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
+            
+            self.currentWeekView.setSelectedDate(weekday: todayComponents.weekday)
+        }
+        else if self.nextWeekView.containsToday
+        {
+            UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
         }
     }
     
