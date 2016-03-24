@@ -119,26 +119,17 @@ internal extension GCCalendarMonthView
     
     internal func setSelectedDate()
     {
-        let today = NSDate()
-        var selectedDate: NSDate!
-        
-        if self.viewController.calendar.isDate(self.startDate, equalToDate: self.viewController.selectedDate, toUnitGranularity: .Month)
-        {
-            selectedDate = self.viewController.selectedDate
-        }
-        else if self.viewController.calendar.isDate(self.startDate, equalToDate: today, toUnitGranularity: .Month)
-        {
-            selectedDate = today
-        }
-        else
-        {
-            selectedDate = self.startDate
-        }
+        let selectedDate = self.containsToday ? NSDate() : self.startDate
         
         let selectedDateComponents = self.viewController.calendar.components([.WeekOfMonth, .Weekday], fromDate: selectedDate)
         
         let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
         
         weekView.setSelectedDate(weekday: selectedDateComponents.weekday)
+    }
+    
+    internal var containsToday: Bool {
+        
+        return self.viewController.calendar.isDate(self.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
     }
 }

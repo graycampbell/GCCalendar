@@ -9,11 +9,15 @@ import UIKit
 
 public class GCCalendarViewController: UIViewController
 {
+    // MARK: - Properties
+    
     public var calendarView: GCCalendarView!
     public var selectedDate: NSDate = NSDate()
     
     internal var selectedDayView: GCCalendarDayView?
     internal let calendar = NSCalendar.currentCalendar()
+    
+    // MARK: - View Setup
     
     public override func viewDidLoad()
     {
@@ -57,6 +61,8 @@ public class GCCalendarViewController: UIViewController
             self.calendarView.changeModeTo(.Week)
         }
     }
+    
+    // MARK: - Day View Selection
     
     internal func didSelectDayView(dayView: GCCalendarDayView)
     {

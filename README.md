@@ -41,6 +41,10 @@ public var calendarView: GCCalendarView!
 ### Date Selection
 
 ```
+self.calendarView.today()
+```
+
+```
 override func didSelectDate(date: NSDate)
 {
     super.didSelectDate(date)

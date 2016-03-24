@@ -124,6 +124,147 @@ extension GCCalendarView
         }
     }
     
+    // MARK: Today
+    
+    public func today()
+    {
+        (self.mode == .Month) ? self.findTodayInMonthViews() : self.findTodayInWeekViews()
+    }
+    
+    private func findTodayInMonthViews()
+    {
+        if self.previousMonthView.containsToday
+        {
+            UIView.animateWithDuration(0.15, animations: self.showPreviousView, completion: self.previousMonthViewDidShow)
+        }
+        else if self.currentMonthView.containsToday
+        {
+            self.currentMonthView.setSelectedDate()
+        }
+        else if self.nextMonthView.containsToday
+        {
+            UIView.animateWithDuration(0.15, animations: self.showNextView, completion: self.nextMonthViewDidShow)
+        }
+        else
+        {
+            let today = NSDate()
+            
+            if today.compare(self.viewController.selectedDate) == .OrderedAscending
+            {
+                self.showToday(today, animations: self.showPreviousView, monthViewReuse: self.reuseNextMonthView) { finished in
+                 
+                    if finished
+                    {
+                        self.previousMonthViewDidShow(finished)
+                        
+                        let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.currentMonthView.startDate)
+                        
+                        self.nextMonthView.update(newStartDate: newStartDate)
+                    }
+                }
+            }
+            else if today.compare(self.viewController.selectedDate) == .OrderedDescending
+            {
+                self.showToday(today, animations: self.showNextView, monthViewReuse: self.reusePreviousMonthView) { finished in
+                    
+                    if finished
+                    {
+                        self.nextMonthViewDidShow(finished)
+                        
+                        let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.currentMonthView.startDate)
+                        
+                        self.previousMonthView.update(newStartDate: newStartDate)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showToday(today: NSDate, animations: () -> Void, monthViewReuse: ((NSDate) -> Void), completion: ((Bool) -> Void))
+    {
+        UIView.animateWithDuration(0.08, animations: animations) { finished in
+            
+            if finished
+            {
+                let newStartDate = self.currentMonthStartDate(fromDate: today)
+                
+                monthViewReuse(newStartDate)
+
+                self.resetLayout()
+                
+                UIView.animateWithDuration(0.08, animations: animations) { finished in completion(finished) }
+            }
+        }
+    }
+    
+    private func findTodayInWeekViews()
+    {
+        if self.previousWeekView.containsToday
+        {
+            UIView.animateWithDuration(0.15, animations: self.showPreviousView, completion: self.previousWeekViewDidShow)
+        }
+        else if self.currentWeekView.containsToday
+        {
+            let todayComponents = self.viewController.calendar.components([.Weekday, .WeekOfYear], fromDate: NSDate())
+            
+            self.currentWeekView.setSelectedDate(weekday: todayComponents.weekday)
+        }
+        else if self.nextWeekView.containsToday
+        {
+            UIView.animateWithDuration(0.15, animations: self.showNextView, completion: self.nextWeekViewDidShow)
+        }
+        else
+        {
+            let today = NSDate()
+            
+            if today.compare(self.viewController.selectedDate) == .OrderedAscending
+            {
+                self.showToday(today, animations: self.showPreviousView, weekViewReuse: self.reuseNextWeekView) { finished in
+                 
+                    if finished
+                    {
+                        self.previousWeekViewDidShow(finished)
+                        
+                        let newDates = self.nextWeekDates(currentWeekDates: self.currentWeekView.dates)
+                        
+                        self.nextWeekView.update(newDates: newDates)
+                    }
+                }
+            }
+            else if today.compare(self.viewController.selectedDate) == .OrderedDescending
+            {
+                self.showToday(today, animations: self.showNextView, weekViewReuse: self.reusePreviousWeekView) { finished in
+                    
+                    if finished
+                    {
+                        self.nextWeekViewDidShow(finished)
+                        
+                        let newDates = self.previousWeekDates(currentWeekDates: self.currentWeekView.dates)
+                        
+                        self.previousWeekView.update(newDates: newDates)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showToday(today: NSDate, animations: () -> Void, weekViewReuse: (([NSDate?]) -> Void), completion: ((Bool) -> Void))
+    {
+        UIView.animateWithDuration(0.08, animations: animations) { finished in
+            
+            if finished
+            {
+                let newDates = self.currentWeekDates(fromDate: today)
+                
+                weekViewReuse(newDates)
+                
+                self.resetLayout()
+                
+                UIView.animateWithDuration(0.08, animations: animations) { finished in completion(finished) }
+            }
+        }
+    }
+    
     // MARK: Toggle Current View
     
     internal func toggleCurrentView(pan: UIPanGestureRecognizer)
@@ -149,11 +290,11 @@ extension GCCalendarView
         {
             if self.currentView.center.x < (self.bounds.size.width * 0.5) - 25
             {
-                UIView.animateWithDuration(0.25, animations: self.showNextView(), completion: self.nextViewDidShow())
+                UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextViewDidShow)
             }
             else if self.currentView.center.x > (self.bounds.size.width * 0.5) + 25
             {
-                UIView.animateWithDuration(0.25, animations: self.showPreviousView(), completion: self.previousViewDidShow())
+                UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousViewDidShow)
             }
             else
             {
@@ -162,34 +303,31 @@ extension GCCalendarView
         }
     }
     
-    // MARK: Show Previous View
+    // MARK: Show View
     
-    private func showPreviousView() -> () -> Void
+    private func showPreviousView()
     {
-        return {
-            
-            self.previousView.center.x = self.bounds.size.width * 0.5
-            self.currentView.center.x = self.bounds.size.width * 1.5
+        self.previousView.center.x = self.bounds.size.width * 0.5
+        self.currentView.center.x = self.bounds.size.width * 1.5
+    }
+    
+    private func previousViewDidShow(finished: Bool)
+    {
+        (self.mode == .Month) ? self.previousMonthViewDidShow(finished) : self.previousWeekViewDidShow(finished)
+    }
+    
+    private func showNextView()
+    {
+        self.currentView.center.x = -self.bounds.size.width * 0.5
+        self.nextView.center.x = self.bounds.size.width * 0.5
+    }
+    
+    private func nextViewDidShow(finished: Bool)
+    {
+        if finished
+        {
+            (self.mode == .Month) ? self.nextMonthViewDidShow(finished) : self.nextWeekViewDidShow(finished)
         }
-    }
-    
-    private func previousViewDidShow() -> ((Bool) -> Void)?
-    {
-        return (self.mode == .Month) ? self.previousMonthViewDidShow() : self.previousWeekViewDidShow()
-    }
-    
-    private func showNextView() -> () -> Void
-    {
-        return {
-            
-            self.currentView.center.x = -self.bounds.size.width * 0.5
-            self.nextView.center.x = self.bounds.size.width * 0.5
-        }
-    }
-    
-    private func nextViewDidShow() -> ((Bool) -> Void)?
-    {
-        return (self.mode == .Month) ? self.nextMonthViewDidShow() : self.nextWeekViewDidShow()
     }
 }
 
@@ -218,10 +356,7 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
-        let currentMonthComponents = self.viewController.calendar.components([.Day, .Month, .Year], fromDate: self.viewController.selectedDate)
-        currentMonthComponents.day = 1
-        
-        let currentMonthStartDate = self.viewController.calendar.dateFromComponents(currentMonthComponents)!
+        let currentMonthStartDate = self.currentMonthStartDate(fromDate: self.viewController.selectedDate)
         let previousMonthStartDate = self.previousMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         let nextMonthStartDate = self.nextMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         
@@ -257,6 +392,15 @@ extension GCCalendarView
     
     // MARK: Start Dates
     
+    private func currentMonthStartDate(fromDate date: NSDate) -> NSDate
+    {
+        let components = self.viewController.calendar.components([.Day, .Month, .Year], fromDate: date)
+        
+        components.day = 1
+        
+        return self.viewController.calendar.dateFromComponents(components)!
+    }
+    
     private func previousMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
     {
         return self.viewController.calendar.dateByAddingUnit(.Month, value: -1, toDate: currentMonthStartDate, options: .MatchStrictly)!
@@ -269,36 +413,48 @@ extension GCCalendarView
     
     // MARK: Show Month View
     
-    private func previousMonthViewDidShow() -> ((Bool) -> Void)?
+    private func previousMonthViewDidShow(finished: Bool)
     {
-        return { finished in
-            
+        if finished
+        {
             let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
             
-            self.nextMonthView.update(newStartDate: newStartDate)
-            self.monthViews.insert(self.nextMonthView, atIndex: 0)
-            self.monthViews.removeLast()
+            self.reuseNextMonthView(newStartDate: newStartDate)
             
-            self.resetLayout()
-            
-            self.currentMonthView.setSelectedDate()
+            self.monthViewDidShow()
         }
     }
     
-    private func nextMonthViewDidShow() -> ((Bool) -> Void)?
+    private func reuseNextMonthView(newStartDate newStartDate: NSDate)
     {
-        return { finished in
-            
+        self.nextMonthView.update(newStartDate: newStartDate)
+        self.monthViews.insert(self.nextMonthView, atIndex: 0)
+        self.monthViews.removeLast()
+    }
+    
+    private func nextMonthViewDidShow(finished: Bool)
+    {
+        if finished
+        {
             let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
             
-            self.previousMonthView.update(newStartDate: newStartDate)
-            self.monthViews.append(self.previousMonthView)
-            self.monthViews.removeFirst()
-            
-            self.resetLayout()
-            
-            self.currentMonthView.setSelectedDate()
+            self.reusePreviousMonthView(newStartDate: newStartDate)
+
+            self.monthViewDidShow()
         }
+    }
+    
+    private func reusePreviousMonthView(newStartDate newStartDate: NSDate)
+    {
+        self.previousMonthView.update(newStartDate: newStartDate)
+        self.monthViews.append(self.previousMonthView)
+        self.monthViews.removeFirst()
+    }
+    
+    private func monthViewDidShow()
+    {
+        self.resetLayout()
+        self.currentMonthView.setSelectedDate()
     }
 }
 
@@ -327,7 +483,7 @@ extension GCCalendarView
     
     private func addWeekViews()
     {
-        let currentWeekDates = self.currentWeekDates()
+        let currentWeekDates = self.currentWeekDates(fromDate: self.viewController.selectedDate)
         let previousWeekDates = self.previousWeekDates(currentWeekDates: currentWeekDates)
         let nextWeekDates = self.nextWeekDates(currentWeekDates: currentWeekDates)
         
@@ -370,9 +526,9 @@ extension GCCalendarView
         return self.weekDates(startDate: startDate)
     }
     
-    private func currentWeekDates() -> [NSDate?]
+    private func currentWeekDates(fromDate date: NSDate) -> [NSDate?]
     {
-        let components = self.viewController.calendar.components([.Weekday, .WeekOfYear, .Year], fromDate: self.viewController.selectedDate)
+        let components = self.viewController.calendar.components([.Weekday, .WeekOfYear, .Year], fromDate: date)
         components.weekday = 1
         
         let startDate = self.viewController.calendar.dateFromComponents(components)
@@ -414,34 +570,48 @@ extension GCCalendarView
     
     // MARK: Show Week View
     
-    private func previousWeekViewDidShow() -> ((Bool) -> Void)?
+    private func previousWeekViewDidShow(finished: Bool)
     {
-        return { finished in
-            
+        if finished
+        {
             let newDates = self.previousWeekDates(currentWeekDates: self.previousWeekView.dates)
             
-            self.nextWeekView.update(newDates: newDates)
-            self.weekViews.insert(self.nextWeekView, atIndex: 0)
-            self.weekViews.removeLast()
+            self.reuseNextWeekView(newDates: newDates)
             
-            self.resetLayout()
-            self.setSelectedWeekViewDate()
+            self.weekViewDidShow()
         }
     }
     
-    private func nextWeekViewDidShow() -> ((Bool) -> Void)?
+    private func reuseNextWeekView(newDates newDates: [NSDate?])
     {
-        return { finished in
-            
+        self.nextWeekView.update(newDates: newDates)
+        self.weekViews.insert(self.nextWeekView, atIndex: 0)
+        self.weekViews.removeLast()
+    }
+    
+    private func nextWeekViewDidShow(finished: Bool)
+    {
+        if finished
+        {
             let newDates = self.nextWeekDates(currentWeekDates: self.nextWeekView.dates)
             
-            self.previousWeekView.update(newDates: newDates)
-            self.weekViews.append(self.previousWeekView)
-            self.weekViews.removeFirst()
+            self.reusePreviousWeekView(newDates: newDates)
             
-            self.resetLayout()
-            self.setSelectedWeekViewDate()
+            self.weekViewDidShow()
         }
+    }
+    
+    private func reusePreviousWeekView(newDates newDates: [NSDate?])
+    {
+        self.previousWeekView.update(newDates: newDates)
+        self.weekViews.append(self.previousWeekView)
+        self.weekViews.removeFirst()
+    }
+    
+    private func weekViewDidShow()
+    {
+        self.resetLayout()
+        self.setSelectedWeekViewDate()
     }
     
     // MARK: Selected Week View Date
