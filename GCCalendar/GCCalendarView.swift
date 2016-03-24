@@ -135,7 +135,7 @@ extension GCCalendarView
     {
         if self.previousMonthView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousMonthViewDidShow)
+            UIView.animateWithDuration(0.15, animations: self.showPreviousView, completion: self.previousMonthViewDidShow)
         }
         else if self.currentMonthView.containsToday
         {
@@ -143,7 +143,7 @@ extension GCCalendarView
         }
         else if self.nextMonthView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextMonthViewDidShow)
+            UIView.animateWithDuration(0.15, animations: self.showNextView, completion: self.nextMonthViewDidShow)
         }
         else
         {
@@ -151,11 +151,48 @@ extension GCCalendarView
             
             if today.compare(self.viewController.selectedDate) == .OrderedAscending
             {
-                
+                self.showToday(today, animations: self.showPreviousView, monthViewReuse: self.reuseNextMonthView) { finished in
+                 
+                    if finished
+                    {
+                        self.previousMonthViewDidShow(finished)
+                        
+                        let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.currentMonthView.startDate)
+                        
+                        self.nextMonthView.update(newStartDate: newStartDate)
+                    }
+                }
             }
             else if today.compare(self.viewController.selectedDate) == .OrderedDescending
             {
+                self.showToday(today, animations: self.showNextView, monthViewReuse: self.reusePreviousMonthView) { finished in
+                    
+                    if finished
+                    {
+                        self.nextMonthViewDidShow(finished)
+                        
+                        let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.currentMonthView.startDate)
+                        
+                        self.previousMonthView.update(newStartDate: newStartDate)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showToday(today: NSDate, animations: () -> Void, monthViewReuse: ((NSDate) -> Void), completion: ((Bool) -> Void))
+    {
+        UIView.animateWithDuration(0.08, animations: animations) { finished in
+            
+            if finished
+            {
+                let newStartDate = self.currentMonthStartDate(fromDate: today)
                 
+                monthViewReuse(newStartDate)
+
+                self.resetLayout()
+                
+                UIView.animateWithDuration(0.08, animations: animations) { finished in completion(finished) }
             }
         }
     }
@@ -164,7 +201,7 @@ extension GCCalendarView
     {
         if self.previousWeekView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousWeekViewDidShow)
+            UIView.animateWithDuration(0.15, animations: self.showPreviousView, completion: self.previousWeekViewDidShow)
         }
         else if self.currentWeekView.containsToday
         {
@@ -174,7 +211,7 @@ extension GCCalendarView
         }
         else if self.nextWeekView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextWeekViewDidShow)
+            UIView.animateWithDuration(0.15, animations: self.showNextView, completion: self.nextWeekViewDidShow)
         }
         else
         {
@@ -182,11 +219,48 @@ extension GCCalendarView
             
             if today.compare(self.viewController.selectedDate) == .OrderedAscending
             {
-                
+                self.showToday(today, animations: self.showPreviousView, weekViewReuse: self.reuseNextWeekView) { finished in
+                 
+                    if finished
+                    {
+                        self.previousWeekViewDidShow(finished)
+                        
+                        let newDates = self.nextWeekDates(currentWeekDates: self.currentWeekView.dates)
+                        
+                        self.nextWeekView.update(newDates: newDates)
+                    }
+                }
             }
             else if today.compare(self.viewController.selectedDate) == .OrderedDescending
             {
+                self.showToday(today, animations: self.showNextView, weekViewReuse: self.reusePreviousWeekView) { finished in
+                    
+                    if finished
+                    {
+                        self.nextWeekViewDidShow(finished)
+                        
+                        let newDates = self.previousWeekDates(currentWeekDates: self.currentWeekView.dates)
+                        
+                        self.previousWeekView.update(newDates: newDates)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showToday(today: NSDate, animations: () -> Void, weekViewReuse: (([NSDate?]) -> Void), completion: ((Bool) -> Void))
+    {
+        UIView.animateWithDuration(0.08, animations: animations) { finished in
+            
+            if finished
+            {
+                let newDates = self.currentWeekDates(fromDate: today)
                 
+                weekViewReuse(newDates)
+                
+                self.resetLayout()
+                
+                UIView.animateWithDuration(0.08, animations: animations) { finished in completion(finished) }
             }
         }
     }
