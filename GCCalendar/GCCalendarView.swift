@@ -285,10 +285,7 @@ extension GCCalendarView
     
     private func addMonthViews()
     {
-        let currentMonthComponents = self.viewController.calendar.components([.Day, .Month, .Year], fromDate: self.viewController.selectedDate)
-        currentMonthComponents.day = 1
-        
-        let currentMonthStartDate = self.viewController.calendar.dateFromComponents(currentMonthComponents)!
+        let currentMonthStartDate = self.currentMonthStartDate(fromDate: self.viewController.selectedDate)
         let previousMonthStartDate = self.previousMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         let nextMonthStartDate = self.nextMonthStartDate(currentMonthStartDate: currentMonthStartDate)
         
@@ -323,6 +320,15 @@ extension GCCalendarView
     }
     
     // MARK: Start Dates
+    
+    private func currentMonthStartDate(fromDate date: NSDate) -> NSDate
+    {
+        let components = self.viewController.calendar.components([.Day, .Month, .Year], fromDate: date)
+        
+        components.day = 1
+        
+        return self.viewController.calendar.dateFromComponents(components)!
+    }
     
     private func previousMonthStartDate(currentMonthStartDate currentMonthStartDate: NSDate) -> NSDate
     {
@@ -394,7 +400,7 @@ extension GCCalendarView
     
     private func addWeekViews()
     {
-        let currentWeekDates = self.currentWeekDates()
+        let currentWeekDates = self.currentWeekDates(fromDate: self.viewController.selectedDate)
         let previousWeekDates = self.previousWeekDates(currentWeekDates: currentWeekDates)
         let nextWeekDates = self.nextWeekDates(currentWeekDates: currentWeekDates)
         
@@ -437,9 +443,9 @@ extension GCCalendarView
         return self.weekDates(startDate: startDate)
     }
     
-    private func currentWeekDates() -> [NSDate?]
+    private func currentWeekDates(fromDate date: NSDate) -> [NSDate?]
     {
-        let components = self.viewController.calendar.components([.Weekday, .WeekOfYear, .Year], fromDate: self.viewController.selectedDate)
+        let components = self.viewController.calendar.components([.Weekday, .WeekOfYear, .Year], fromDate: date)
         components.weekday = 1
         
         let startDate = self.viewController.calendar.dateFromComponents(components)
