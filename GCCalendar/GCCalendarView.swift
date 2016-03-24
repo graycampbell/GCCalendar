@@ -135,7 +135,7 @@ extension GCCalendarView
     {
         if self.previousMonthView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousViewDidShow)
+            UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousMonthViewDidShow)
         }
         else if self.currentMonthView.containsToday
         {
@@ -143,7 +143,7 @@ extension GCCalendarView
         }
         else if self.nextMonthView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextViewDidShow)
+            UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextMonthViewDidShow)
         }
         else
         {
@@ -164,7 +164,7 @@ extension GCCalendarView
     {
         if self.previousWeekView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousViewDidShow)
+            UIView.animateWithDuration(0.25, animations: self.showPreviousView, completion: self.previousWeekViewDidShow)
         }
         else if self.currentWeekView.containsToday
         {
@@ -174,7 +174,7 @@ extension GCCalendarView
         }
         else if self.nextWeekView.containsToday
         {
-            UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextViewDidShow)
+            UIView.animateWithDuration(0.25, animations: self.showNextView, completion: self.nextWeekViewDidShow)
         }
         else
         {
@@ -239,10 +239,7 @@ extension GCCalendarView
     
     private func previousViewDidShow(finished: Bool)
     {
-        if finished
-        {
-            (self.mode == .Month) ? self.previousMonthViewDidShow() : self.previousWeekViewDidShow()
-        }
+        (self.mode == .Month) ? self.previousMonthViewDidShow(finished) : self.previousWeekViewDidShow(finished)
     }
     
     private func showNextView()
@@ -255,7 +252,7 @@ extension GCCalendarView
     {
         if finished
         {
-            (self.mode == .Month) ? self.nextMonthViewDidShow() : self.nextWeekViewDidShow()
+            (self.mode == .Month) ? self.nextMonthViewDidShow(finished) : self.nextWeekViewDidShow(finished)
         }
     }
 }
@@ -342,30 +339,36 @@ extension GCCalendarView
     
     // MARK: Show Month View
     
-    private func previousMonthViewDidShow()
+    private func previousMonthViewDidShow(finished: Bool)
     {
-        let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
-        
-        self.nextMonthView.update(newStartDate: newStartDate)
-        self.monthViews.insert(self.nextMonthView, atIndex: 0)
-        self.monthViews.removeLast()
-        
-        self.resetLayout()
-        
-        self.currentMonthView.setSelectedDate()
+        if finished
+        {
+            let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
+            
+            self.nextMonthView.update(newStartDate: newStartDate)
+            self.monthViews.insert(self.nextMonthView, atIndex: 0)
+            self.monthViews.removeLast()
+            
+            self.resetLayout()
+            
+            self.currentMonthView.setSelectedDate()
+        }
     }
     
-    private func nextMonthViewDidShow()
+    private func nextMonthViewDidShow(finished: Bool)
     {
-        let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
-        
-        self.previousMonthView.update(newStartDate: newStartDate)
-        self.monthViews.append(self.previousMonthView)
-        self.monthViews.removeFirst()
-        
-        self.resetLayout()
-        
-        self.currentMonthView.setSelectedDate()
+        if finished
+        {
+            let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
+            
+            self.previousMonthView.update(newStartDate: newStartDate)
+            self.monthViews.append(self.previousMonthView)
+            self.monthViews.removeFirst()
+            
+            self.resetLayout()
+            
+            self.currentMonthView.setSelectedDate()
+        }
     }
 }
 
@@ -481,28 +484,34 @@ extension GCCalendarView
     
     // MARK: Show Week View
     
-    private func previousWeekViewDidShow()
+    private func previousWeekViewDidShow(finished: Bool)
     {
-        let newDates = self.previousWeekDates(currentWeekDates: self.previousWeekView.dates)
-        
-        self.nextWeekView.update(newDates: newDates)
-        self.weekViews.insert(self.nextWeekView, atIndex: 0)
-        self.weekViews.removeLast()
-        
-        self.resetLayout()
-        self.setSelectedWeekViewDate()
+        if finished
+        {
+            let newDates = self.previousWeekDates(currentWeekDates: self.previousWeekView.dates)
+            
+            self.nextWeekView.update(newDates: newDates)
+            self.weekViews.insert(self.nextWeekView, atIndex: 0)
+            self.weekViews.removeLast()
+            
+            self.resetLayout()
+            self.setSelectedWeekViewDate()
+        }
     }
     
-    private func nextWeekViewDidShow()
+    private func nextWeekViewDidShow(finished: Bool)
     {
-        let newDates = self.nextWeekDates(currentWeekDates: self.nextWeekView.dates)
-        
-        self.previousWeekView.update(newDates: newDates)
-        self.weekViews.append(self.previousWeekView)
-        self.weekViews.removeFirst()
-        
-        self.resetLayout()
-        self.setSelectedWeekViewDate()
+        if finished
+        {
+            let newDates = self.nextWeekDates(currentWeekDates: self.nextWeekView.dates)
+            
+            self.previousWeekView.update(newDates: newDates)
+            self.weekViews.append(self.previousWeekView)
+            self.weekViews.removeFirst()
+            
+            self.resetLayout()
+            self.setSelectedWeekViewDate()
+        }
     }
     
     // MARK: Selected Week View Date
