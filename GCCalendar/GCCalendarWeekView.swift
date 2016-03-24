@@ -93,4 +93,9 @@ internal final class GCCalendarWeekView: UIStackView
     {
         self.dayViews[weekday - 1].selected()
     }
+    
+    internal var containsToday: Bool {
+        
+        return !self.dates.filter({ $0 != nil && self.viewController.calendar.isDateInToday($0!) }).isEmpty
+    }
 }
