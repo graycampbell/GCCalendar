@@ -345,14 +345,17 @@ extension GCCalendarView
         {
             let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
             
-            self.nextMonthView.update(newStartDate: newStartDate)
-            self.monthViews.insert(self.nextMonthView, atIndex: 0)
-            self.monthViews.removeLast()
+            self.reuseNextMonthView(newStartDate: newStartDate)
             
-            self.resetLayout()
-            
-            self.currentMonthView.setSelectedDate()
+            self.monthViewDidShow()
         }
+    }
+    
+    private func reuseNextMonthView(newStartDate newStartDate: NSDate)
+    {
+        self.nextMonthView.update(newStartDate: newStartDate)
+        self.monthViews.insert(self.nextMonthView, atIndex: 0)
+        self.monthViews.removeLast()
     }
     
     private func nextMonthViewDidShow(finished: Bool)
@@ -361,14 +364,24 @@ extension GCCalendarView
         {
             let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
             
-            self.previousMonthView.update(newStartDate: newStartDate)
-            self.monthViews.append(self.previousMonthView)
-            self.monthViews.removeFirst()
+            self.reusePreviousMonthView(newStartDate: newStartDate)
             
-            self.resetLayout()
-            
-            self.currentMonthView.setSelectedDate()
+            self.monthViewDidShow()
         }
+    }
+    
+    private func reusePreviousMonthView(newStartDate newStartDate: NSDate)
+    {
+        self.previousMonthView.update(newStartDate: newStartDate)
+        self.monthViews.append(self.previousMonthView)
+        self.monthViews.removeFirst()
+    }
+    
+    private func monthViewDidShow()
+    {
+        self.resetLayout()
+        
+        self.currentMonthView.setSelectedDate()
     }
 }
 
