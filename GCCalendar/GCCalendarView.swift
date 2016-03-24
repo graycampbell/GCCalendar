@@ -365,7 +365,7 @@ extension GCCalendarView
             let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
             
             self.reusePreviousMonthView(newStartDate: newStartDate)
-            
+
             self.monthViewDidShow()
         }
     }
@@ -380,7 +380,6 @@ extension GCCalendarView
     private func monthViewDidShow()
     {
         self.resetLayout()
-        
         self.currentMonthView.setSelectedDate()
     }
 }
@@ -503,13 +502,17 @@ extension GCCalendarView
         {
             let newDates = self.previousWeekDates(currentWeekDates: self.previousWeekView.dates)
             
-            self.nextWeekView.update(newDates: newDates)
-            self.weekViews.insert(self.nextWeekView, atIndex: 0)
-            self.weekViews.removeLast()
+            self.reuseNextWeekView(newDates: newDates)
             
-            self.resetLayout()
-            self.setSelectedWeekViewDate()
+            self.weekViewDidShow()
         }
+    }
+    
+    private func reuseNextWeekView(newDates newDates: [NSDate?])
+    {
+        self.nextWeekView.update(newDates: newDates)
+        self.weekViews.insert(self.nextWeekView, atIndex: 0)
+        self.weekViews.removeLast()
     }
     
     private func nextWeekViewDidShow(finished: Bool)
@@ -518,13 +521,23 @@ extension GCCalendarView
         {
             let newDates = self.nextWeekDates(currentWeekDates: self.nextWeekView.dates)
             
-            self.previousWeekView.update(newDates: newDates)
-            self.weekViews.append(self.previousWeekView)
-            self.weekViews.removeFirst()
+            self.reusePreviousWeekView(newDates: newDates)
             
-            self.resetLayout()
-            self.setSelectedWeekViewDate()
+            self.weekViewDidShow()
         }
+    }
+    
+    private func reusePreviousWeekView(newDates newDates: [NSDate?])
+    {
+        self.previousWeekView.update(newDates: newDates)
+        self.weekViews.append(self.previousWeekView)
+        self.weekViews.removeFirst()
+    }
+    
+    private func weekViewDidShow()
+    {
+        self.resetLayout()
+        self.setSelectedWeekViewDate()
     }
     
     // MARK: Selected Week View Date
