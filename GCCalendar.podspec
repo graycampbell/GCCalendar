@@ -2,9 +2,9 @@ Pod::Spec.new do |s|
   s.name = 'GCCalendar'
   s.version = '1.1.0'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
-  s.summary = 'A customizable calendar for iOS written in Swift.'
+  s.summary = 'A customizable calendar for iOS 9+ written in Swift.'
   s.description  = <<-DESC
-                   A customizable calendar for iOS written in Swift.
+                   A Swift framework that provides a customizable calendar UI component for iOS.
                    DESC
   s.homepage = 'https://github.com/graycampbell/GCCalendar'
   s.authors = { 'Gray Campbell' => 'gray.campbell@icloud.com' }
