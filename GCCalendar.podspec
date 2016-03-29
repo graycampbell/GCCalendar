@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                    A Swift framework that provides a customizable calendar UI component for iOS.
                    DESC
   s.homepage = 'https://github.com/graycampbell/GCCalendar'
-  s.authors = { 'Gray Campbell' => 'gray.campbell@icloud.com' }
+  s.author = 'Gray Campbell'
   s.source = { :git => 'https://github.com/graycampbell/GCCalendar.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'
