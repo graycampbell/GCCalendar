@@ -277,7 +277,7 @@ extension GCCalendarView
         {
             let changeInX = pan.locationInView(self).x - self.panGestureStartLocation
             
-            if !(self.previousView.hidden && self.currentView.center.x + changeInX > self.bounds.size.width * 0.5)
+            if !(self.previousViewDisabled && self.currentView.center.x + changeInX > self.bounds.size.width * 0.5)
             {
                 self.previousView.center.x += changeInX
                 self.currentView.center.x += changeInX
@@ -301,6 +301,23 @@ extension GCCalendarView
                 UIView.animateWithDuration(0.15) { self.resetLayout() }
             }
         }
+    }
+    
+    private var previousViewDisabled: Bool {
+        
+        if !self.viewController.pastDaysEnabled()
+        {
+            if self.previousView.isKindOfClass(GCCalendarMonthView)
+            {
+                return self.currentMonthView.containsToday
+            }
+            else
+            {
+                return self.currentWeekView.containsToday
+            }
+        }
+        
+        return false
     }
     
     // MARK: Show View
