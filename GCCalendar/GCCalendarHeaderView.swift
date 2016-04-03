@@ -39,7 +39,7 @@ internal final class GCCalendarHeaderView: UIStackView
 
 // MARK: - Weekday Labels
 
-extension GCCalendarHeaderView
+private extension GCCalendarHeaderView
 {
     // MARK: Creation
     

@@ -29,7 +29,7 @@ internal final class GCDateFormatter: NSDateFormatter
 
 // MARK: - String From Date
 
-extension GCDateFormatter
+internal extension GCDateFormatter
 {
     internal class func stringFromDate(date: NSDate, withFormat format: String, andCalendar calendar: NSCalendar) -> String
     {

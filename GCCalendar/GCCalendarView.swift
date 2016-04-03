@@ -50,7 +50,7 @@ public final class GCCalendarView: UIView
 
 // MARK: - Layout
 
-extension GCCalendarView
+public extension GCCalendarView
 {
     public override func layoutSubviews()
     {
@@ -69,7 +69,7 @@ extension GCCalendarView
 
 // MARK: - Header View
 
-extension GCCalendarView
+private extension GCCalendarView
 {
     // MARK: Creation
     
@@ -95,7 +95,7 @@ extension GCCalendarView
 
 // MARK: - Month & Week Views
 
-extension GCCalendarView
+public extension GCCalendarView
 {
     // MARK: Views
     
@@ -361,7 +361,7 @@ extension GCCalendarView
 
 // MARK: - Month Views
 
-extension GCCalendarView
+private extension GCCalendarView
 {
     // MARK: Views
     
@@ -488,7 +488,7 @@ extension GCCalendarView
 
 // MARK: - Week Views
 
-extension GCCalendarView
+private extension GCCalendarView
 {
     // MARK: Views
     
