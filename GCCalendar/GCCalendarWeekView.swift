@@ -49,7 +49,7 @@ internal final class GCCalendarWeekView: UIStackView
 
 // MARK: - Pan Gesture Recognizer
 
-extension GCCalendarWeekView
+internal extension GCCalendarWeekView
 {
     // MARK: Creation
     
@@ -63,7 +63,7 @@ extension GCCalendarWeekView
 
 // MARK: - Day Views
 
-extension GCCalendarWeekView
+private extension GCCalendarWeekView
 {
     // MARK: Creation
 
@@ -83,7 +83,7 @@ extension GCCalendarWeekView
 
 // MARK: - Dates & Selected Date
 
-extension GCCalendarWeekView
+internal extension GCCalendarWeekView
 {
     // MARK: Dates
     

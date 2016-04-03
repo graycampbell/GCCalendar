@@ -153,7 +153,7 @@ internal final class GCCalendarDayView: UIView
 
 // MARK: - Button
 
-internal extension GCCalendarDayView
+private extension GCCalendarDayView
 {
     // MARK: Creation
     
@@ -247,7 +247,7 @@ internal extension GCCalendarDayView
         }
     }
     
-    private func deselected()
+    internal func deselected()
     {
         self.button.backgroundColor = nil
         
@@ -256,9 +256,9 @@ internal extension GCCalendarDayView
     }
 }
 
-// MARK: Animations
+// MARK: - Animations
 
-internal extension GCCalendarDayView
+private extension GCCalendarDayView
 {
     private func animateSelection()
     {

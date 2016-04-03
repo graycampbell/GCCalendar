@@ -93,7 +93,7 @@ internal extension GCCalendarMonthView
 
 // MARK: - Week Views
 
-internal extension GCCalendarMonthView
+private extension GCCalendarMonthView
 {
     // MARK: Creation
     
@@ -111,7 +111,7 @@ internal extension GCCalendarMonthView
 
 // MARK: - Start Date & Selected Date
 
-extension GCCalendarMonthView
+internal extension GCCalendarMonthView
 {
     // MARK: Start Date
     
