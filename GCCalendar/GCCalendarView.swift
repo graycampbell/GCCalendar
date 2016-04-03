@@ -7,11 +7,18 @@
 
 import UIKit
 
+public enum GCCalendarMode
+{
+    case Month, Week
+}
+
+// MARK: Properties & Initializers
+
 public final class GCCalendarView: UIView
 {
-    // MARK: - Properties
+    // MARK: Properties
     
-    private weak var viewController: GCCalendarViewController!
+    private let viewController: GCCalendarViewController!
     
     private var mode: GCCalendarMode!
     private var headerView: GCCalendarHeaderView!
@@ -20,27 +27,31 @@ public final class GCCalendarView: UIView
     
     private var panGestureStartLocation: CGFloat!
     
-    public enum GCCalendarMode
+    // MARK: Initializers
+    
+    required public init?(coder aDecoder: NSCoder)
     {
-        case Month, Week
+        return nil
     }
     
-    // MARK: - Initializers
-    
-    public convenience init(viewController: GCCalendarViewController?, mode: GCCalendarMode)
+    public init(viewController: GCCalendarViewController?, mode: GCCalendarMode)
     {
-        self.init(frame: CGRectZero)
-        
         self.viewController = viewController
+        
+        super.init(frame: CGRectZero)
+        
         self.mode = mode
         
         self.addHeaderView()
         
         (self.mode == .Month) ? self.addMonthViews() : self.addWeekViews()
     }
-    
-    // MARK: - Layout
-    
+}
+
+// MARK: - Layout
+
+extension GCCalendarView
+{
     public override func layoutSubviews()
     {
         super.layoutSubviews()
@@ -86,7 +97,7 @@ extension GCCalendarView
 
 extension GCCalendarView
 {
-    // MARK: Properties
+    // MARK: Views
     
     private var previousView: UIView {
         
@@ -103,7 +114,7 @@ extension GCCalendarView
         return (self.mode == .Month) ? self.nextMonthView : self.nextWeekView
     }
     
-    // MARK: Change Mode
+    // MARK: Mode
     
     public func changeModeTo(newMode: GCCalendarMode)
     {
@@ -352,7 +363,7 @@ extension GCCalendarView
 
 extension GCCalendarView
 {
-    // MARK: Properties
+    // MARK: Views
     
     private var previousMonthView: GCCalendarMonthView {
         
@@ -479,7 +490,7 @@ extension GCCalendarView
 
 extension GCCalendarView
 {
-    // MARK: Properties
+    // MARK: Views
     
     private var previousWeekView: GCCalendarWeekView {
         
