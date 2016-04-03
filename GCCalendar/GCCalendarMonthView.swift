@@ -34,18 +34,6 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
         
         self.addWeekViews()
     }
-    
-    // MARK: - Visibility
-    
-    private func setVisibility()
-    {
-        if !self.viewController.pastDaysEnabled()
-        {
-            let monthBeforeToday = self.viewController.calendar.dateByAddingUnit(.Month, value: -1, toDate: NSDate(), options: .MatchStrictly)!
-            
-            self.hidden = self.viewController.calendar.isDate(self.startDate, equalToDate: monthBeforeToday, toUnitGranularity: .Month)
-        }
-    }
 }
 
 // MARK: - Pan Gesture Recognizer
@@ -73,8 +61,6 @@ internal extension GCCalendarMonthView
             self.addArrangedSubview(weekView)
             self.weekViews.append(weekView)
         }
-        
-        self.setVisibility()
     }
     
     private var dates: [[NSDate?]] {
@@ -113,8 +99,6 @@ internal extension GCCalendarMonthView
         {
             self.weekViews[index].update(newDates: dates)
         }
-        
-        self.setVisibility()
     }
     
     internal func setSelectedDate()

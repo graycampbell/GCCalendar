@@ -34,23 +34,6 @@ internal final class GCCalendarWeekView: UIStackView
         self.addDayViews(dates: dates)
     }
     
-    // MARK: - Visibility
-    
-    private func setVisibility()
-    {
-        if !self.viewController.pastDaysEnabled()
-        {
-            let firstDate = self.dates.filter { $0 != nil }.first
-            
-            if firstDate != nil
-            {
-                let weekBeforeToday = self.viewController.calendar.dateByAddingUnit(.WeekOfYear, value: -1, toDate: NSDate(), options: .MatchStrictly)!
-                
-                self.hidden = self.viewController.calendar.isDate(firstDate!!, equalToDate: weekBeforeToday, toUnitGranularity: .WeekOfYear)
-            }
-        }
-    }
-    
     // MARK: - Pan Gesture Recognizer
     
     internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
@@ -73,8 +56,6 @@ internal final class GCCalendarWeekView: UIStackView
             self.addArrangedSubview(dayView)
             self.dayViews.append(dayView)
         }
-        
-        self.setVisibility()
     }
     
     internal func update(newDates newDates: [NSDate?])
@@ -85,8 +66,6 @@ internal final class GCCalendarWeekView: UIStackView
         {
             self.dayViews[index].update(newDate: date)
         }
-        
-        self.setVisibility()
     }
     
     internal func setSelectedDate(weekday weekday: Int)
