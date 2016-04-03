@@ -7,18 +7,23 @@
 
 import UIKit
 
+// MARK: Properties & Initializers
+
 public class GCCalendarViewController: UIViewController
 {
-    // MARK: - Properties
+    // MARK: Properties
     
     public var calendarView: GCCalendarView!
     public var selectedDate: NSDate = NSDate()
     
     internal var selectedDayView: GCCalendarDayView?
     internal let calendar = NSCalendar.currentCalendar()
-    
-    // MARK: - View Setup
-    
+}
+
+// MARK: - View Setup
+
+public extension GCCalendarViewController
+{
     public override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -61,9 +66,12 @@ public class GCCalendarViewController: UIViewController
             self.calendarView.changeModeTo(.Week)
         }
     }
-    
-    // MARK: - Day View Selection
-    
+}
+
+// MARK: - Day View Selection
+
+public extension GCCalendarViewController
+{
     internal func didSelectDayView(dayView: GCCalendarDayView)
     {
         self.selectedDayView = dayView
@@ -76,11 +84,15 @@ public class GCCalendarViewController: UIViewController
 
 public extension GCCalendarViewController
 {
+    // MARK: Calendar Mode
+    
     /// Default value is false. If returning true, portrait mode = .Month and landscape mode = .Week
     public func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
     {
         return false
     }
+    
+    // MARK: Selected Date
     
     /// Must call super.didSelectDate(date) before custom implementation
     public func didSelectDate(date: NSDate)
