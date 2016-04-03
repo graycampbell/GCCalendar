@@ -7,16 +7,30 @@
 
 import UIKit
 
+// MARK: Properties & Initializers
+
 internal final class GCDateFormatter: NSDateFormatter
 {
-    internal convenience init(dateFormat: String, calendar: NSCalendar)
+    // MARK: Initializers
+    
+    required internal init?(coder aDecoder: NSCoder)
     {
-        self.init()
+        return nil
+    }
+    
+    internal init(dateFormat: String, calendar: NSCalendar)
+    {
+        super.init()
         
         self.dateFormat = dateFormat
         self.calendar = calendar
     }
-    
+}
+
+// MARK: - String From Date
+
+extension GCDateFormatter
+{
     internal class func stringFromDate(date: NSDate, withFormat format: String, andCalendar calendar: NSCalendar) -> String
     {
         var dateFormatter: NSDateFormatter!
