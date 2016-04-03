@@ -7,60 +7,22 @@
 
 import UIKit
 
+// MARK: Properties & Initializers
+
 internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelegate
 {
-    // MARK: - Properties
+    // MARK: Properties
+    
+    private let viewController: GCCalendarViewController!
     
     internal var startDate: NSDate!
-    
-    private weak var viewController: GCCalendarViewController!
     
     private var weekViews: [GCCalendarWeekView] = []
     private var panGestureRecognizer: UIPanGestureRecognizer!
     
-    // MARK: - Initializers
-    
-    internal convenience init(viewController: GCCalendarViewController, startDate: NSDate)
-    {
-        self.init(frame: CGRectZero)
+    internal var containsToday: Bool {
         
-        self.viewController = viewController
-        self.startDate = startDate
-        
-        self.axis = .Vertical
-        self.distribution = .FillEqually
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.addWeekViews()
-    }
-}
-
-// MARK: - Pan Gesture Recognizer
-
-internal extension GCCalendarMonthView
-{
-    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
-    {
-        self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
-        
-        self.addGestureRecognizer(self.panGestureRecognizer)
-    }
-}
-
-// MARK: - Week Views
-
-internal extension GCCalendarMonthView
-{
-    private func addWeekViews()
-    {
-        for dates in self.dates
-        {
-            let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
-            
-            self.addArrangedSubview(weekView)
-            self.weekViews.append(weekView)
-        }
+        return self.viewController.calendar.isDate(self.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
     }
     
     private var dates: [[NSDate?]] {
@@ -91,6 +53,68 @@ internal extension GCCalendarMonthView
         return newDates
     }
     
+    // MARK: Initializers
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        return nil
+    }
+    
+    init(viewController: GCCalendarViewController, startDate: NSDate)
+    {
+        self.viewController = viewController
+        
+        super.init(frame: CGRectZero)
+        
+        self.startDate = startDate
+        
+        self.axis = .Vertical
+        self.distribution = .FillEqually
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addWeekViews()
+    }
+}
+
+// MARK: - Pan Gesture Recognizer
+
+internal extension GCCalendarMonthView
+{
+    // MARK: Creation
+    
+    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
+    {
+        self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
+        
+        self.addGestureRecognizer(self.panGestureRecognizer)
+    }
+}
+
+// MARK: - Week Views
+
+internal extension GCCalendarMonthView
+{
+    // MARK: Creation
+    
+    private func addWeekViews()
+    {
+        for dates in self.dates
+        {
+            let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
+            
+            self.addArrangedSubview(weekView)
+            self.weekViews.append(weekView)
+        }
+    }
+}
+
+// MARK: - Start Date & Selected Date
+
+extension GCCalendarMonthView
+{
+    // MARK: Start Date
+    
     internal func update(newStartDate newStartDate: NSDate)
     {
         self.startDate = newStartDate
@@ -101,6 +125,8 @@ internal extension GCCalendarMonthView
         }
     }
     
+    // MARK: Selected Date
+    
     internal func setSelectedDate()
     {
         let selectedDate = self.containsToday ? NSDate() : self.startDate
@@ -110,10 +136,5 @@ internal extension GCCalendarMonthView
         let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
         
         weekView.setSelectedDate(weekday: selectedDateComponents.weekday)
-    }
-    
-    internal var containsToday: Bool {
-        
-        return self.viewController.calendar.isDate(self.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
     }
 }
