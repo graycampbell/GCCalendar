@@ -18,7 +18,7 @@ internal final class GCCalendarDayView: UIView
 {
     // MARK: Properties
     
-    private weak var viewController: GCCalendarViewController!
+    private let viewController: GCCalendarViewController!
     
     internal var date: NSDate?
     private let button = UIButton()
@@ -138,9 +138,9 @@ internal final class GCCalendarDayView: UIView
     
     init(viewController: GCCalendarViewController, date: NSDate?)
     {
-        super.init(frame: CGRectZero)
-        
         self.viewController = viewController
+        
+        super.init(frame: CGRectZero)
         
         self.addButton()
         self.update(newDate: date)
