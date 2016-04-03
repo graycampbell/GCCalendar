@@ -7,24 +7,36 @@
 
 import UIKit
 
+// MARK: Properties & Initializers
+
 internal final class GCCalendarWeekView: UIStackView
 {
-    // MARK: - Properties
+    // MARK: Properties
     
-    private weak var viewController: GCCalendarViewController!
+    private let viewController: GCCalendarViewController!
     
     internal var dates: [NSDate?]!
     
     private var dayViews: [GCCalendarDayView] = []
     private var panGestureRecognizer: UIPanGestureRecognizer!
     
-    // MARK: - Initializers
-    
-    internal convenience init(viewController: GCCalendarViewController, dates: [NSDate?])
-    {
-        self.init(frame: CGRectZero)
+    internal var containsToday: Bool {
         
+        return !self.dates.filter({ $0 != nil && self.viewController.calendar.isDateInToday($0!) }).isEmpty
+    }
+    
+    // MARK: Initializers
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        return nil
+    }
+    
+    internal init(viewController: GCCalendarViewController, dates: [NSDate?])
+    {
         self.viewController = viewController
+        
+        super.init(frame: CGRectZero)
         
         self.axis = .Horizontal
         self.distribution = .FillEqually
@@ -33,8 +45,13 @@ internal final class GCCalendarWeekView: UIStackView
         
         self.addDayViews(dates: dates)
     }
-    
-    // MARK: - Pan Gesture Recognizer
+}
+
+// MARK: - Pan Gesture Recognizer
+
+extension GCCalendarWeekView
+{
+    // MARK: Creation
     
     internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
     {
@@ -42,9 +59,14 @@ internal final class GCCalendarWeekView: UIStackView
         
         self.addGestureRecognizer(self.panGestureRecognizer)
     }
-    
-    // MARK: - Day Views
-    
+}
+
+// MARK: - Day Views
+
+extension GCCalendarWeekView
+{
+    // MARK: Creation
+
     private func addDayViews(dates dates: [NSDate?])
     {
         self.dates = dates
@@ -57,6 +79,13 @@ internal final class GCCalendarWeekView: UIStackView
             self.dayViews.append(dayView)
         }
     }
+}
+
+// MARK: - Dates & Selected Date
+
+extension GCCalendarWeekView
+{
+    // MARK: Dates
     
     internal func update(newDates newDates: [NSDate?])
     {
@@ -68,13 +97,10 @@ internal final class GCCalendarWeekView: UIStackView
         }
     }
     
+    // MARK: Selected Date
+    
     internal func setSelectedDate(weekday weekday: Int)
     {
         self.dayViews[weekday - 1].selected()
-    }
-    
-    internal var containsToday: Bool {
-        
-        return !self.dates.filter({ $0 != nil && self.viewController.calendar.isDateInToday($0!) }).isEmpty
     }
 }
