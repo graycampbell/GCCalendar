@@ -17,12 +17,12 @@ internal final class GCCalendarHeaderView: UIStackView
     
     // MARK: Initializers
     
-    required init?(coder aDecoder: NSCoder)
+    required internal init?(coder aDecoder: NSCoder)
     {
         return nil
     }
     
-    init(viewController: GCCalendarViewController)
+    internal init(viewController: GCCalendarViewController)
     {
         self.viewController = viewController
         

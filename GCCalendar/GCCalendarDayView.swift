@@ -131,12 +131,12 @@ internal final class GCCalendarDayView: UIView
     
     // MARK: Initializers
     
-    required init?(coder aDecoder: NSCoder)
+    required internal init?(coder aDecoder: NSCoder)
     {
         return nil
     }
     
-    init(viewController: GCCalendarViewController, date: NSDate?)
+    internal init(viewController: GCCalendarViewController, date: NSDate?)
     {
         self.viewController = viewController
         

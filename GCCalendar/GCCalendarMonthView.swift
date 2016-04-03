@@ -55,12 +55,12 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
     
     // MARK: Initializers
     
-    required init?(coder aDecoder: NSCoder)
+    required internal init?(coder aDecoder: NSCoder)
     {
         return nil
     }
     
-    init(viewController: GCCalendarViewController, startDate: NSDate)
+    internal init(viewController: GCCalendarViewController, startDate: NSDate)
     {
         self.viewController = viewController
         
