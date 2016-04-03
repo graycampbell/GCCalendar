@@ -7,19 +7,26 @@
 
 import UIKit
 
+// MARK: Properties & Initializers
+
 internal final class GCCalendarHeaderView: UIStackView
 {
-    // MARK: - Properties
+    // MARK: Properties
     
-    private weak var viewController: GCCalendarViewController!
+    private let viewController: GCCalendarViewController!
     
-    // MARK: - Initializers
+    // MARK: Initializers
     
-    internal convenience init(viewController: GCCalendarViewController)
+    required init?(coder aDecoder: NSCoder)
     {
-        self.init(frame: CGRectZero)
-        
+        return nil
+    }
+    
+    init(viewController: GCCalendarViewController)
+    {
         self.viewController = viewController
+        
+        super.init(frame: CGRectZero)
         
         self.axis = .Horizontal
         self.distribution = .FillEqually
@@ -28,8 +35,13 @@ internal final class GCCalendarHeaderView: UIStackView
         
         self.addWeekdayLabels()
     }
-    
-    // MARK: - Weekday Labels
+}
+
+// MARK: - Weekday Labels
+
+extension GCCalendarHeaderView
+{
+    // MARK: Creation
     
     private func addWeekdayLabels()
     {
