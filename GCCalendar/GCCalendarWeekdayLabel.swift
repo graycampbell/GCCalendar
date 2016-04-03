@@ -7,13 +7,20 @@
 
 import UIKit
 
+// MARK: Properties & Initializers
+
 internal final class GCCalendarWeekdayLabel: UILabel
 {
-    // MARK: - Initializers
+    // MARK: Initializers
     
-    internal convenience init(viewController: GCCalendarViewController, text: String)
+    required internal init?(coder aDecoder: NSCoder)
     {
-        self.init(frame: CGRectZero)
+        return nil
+    }
+    
+    internal init(viewController: GCCalendarViewController, text: String)
+    {
+        super.init(frame: CGRectZero)
         
         self.text = text
         self.textAlignment = .Center
