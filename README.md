@@ -1,5 +1,8 @@
 ![banner](Screenshots/Banner.png)
 
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://img.shields.io/cocoapods/v/GCCalendar.svg)
+[![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)](http://cocoadocs.org/docsets/GCCalendar)
+
 ### Overview
 
 1. [CocoaPods](https://github.com/graycampbell/GCCalendar#cocoapods)
