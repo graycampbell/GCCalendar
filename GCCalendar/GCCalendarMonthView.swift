@@ -9,42 +9,42 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelegate
-{
+internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelegate {
+    
     // MARK: Properties
     
-    private let viewController: GCCalendarViewController!
+    fileprivate var viewController: GCCalendarViewController!
     
-    internal var startDate: NSDate!
+    internal var startDate: Date!
     
-    private var weekViews: [GCCalendarWeekView] = []
-    private var panGestureRecognizer: UIPanGestureRecognizer!
+    fileprivate var weekViews: [GCCalendarWeekView] = []
+    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
     internal var containsToday: Bool {
         
-        return self.viewController.calendar.isDate(self.startDate, equalToDate: NSDate(), toUnitGranularity: .Month)
+        return (self.viewController.calendar as NSCalendar).isDate(self.startDate, equalTo: Date(), toUnitGranularity: .month)
     }
     
-    private var dates: [[NSDate?]] {
+    fileprivate var dates: [[Date?]] {
         
-        var date: NSDate? = self.startDate
+        var date: Date? = self.startDate
         
-        let numberOfWeekdays = self.viewController.calendar.maximumRangeOfUnit(.Weekday).length
-        let numberOfWeeks = self.viewController.calendar.maximumRangeOfUnit(.WeekOfMonth).length
+        let numberOfWeekdays = (self.viewController.calendar as NSCalendar).maximumRange(of: .weekday).length
+        let numberOfWeeks = (self.viewController.calendar as NSCalendar).maximumRange(of: .weekOfMonth).length
         
-        let week = [NSDate?](count: numberOfWeekdays, repeatedValue: nil)
+        let week = [Date?](repeating: nil, count: numberOfWeekdays)
         
-        var newDates = [[NSDate?]](count: numberOfWeeks, repeatedValue: week)
+        var newDates = [[Date?]](repeating: week, count: numberOfWeeks)
         
-        while date != nil
-        {
-            let dateComponents = self.viewController.calendar.components([.Weekday, .WeekOfMonth, .Month, .Year], fromDate: date!)
+        while date != nil {
             
-            newDates[dateComponents.weekOfMonth - 1][dateComponents.weekday - 1] = date
+            let dateComponents = self.viewController.calendar.dateComponents([.weekday, .weekOfMonth, .month, .year], from: date!)
             
-            if let newDate = self.viewController.calendar.dateByAddingUnit(.Day, value: 1, toDate: date!, options: .MatchStrictly)
-            {
-                let newDateComponents = self.viewController.calendar.components(.Month, fromDate: newDate)
+            newDates[dateComponents.weekOfMonth! - 1][dateComponents.weekday! - 1] = date
+            
+            if let newDate = (self.viewController.calendar as NSCalendar).date(byAdding: .day, value: 1, to: date!, options: .matchStrictly) {
+                
+                let newDateComponents = self.viewController.calendar.dateComponents([.month], from: newDate)
                 
                 date = (newDateComponents.month == dateComponents.month) ? newDate : nil
             }
@@ -55,21 +55,21 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
     
     // MARK: Initializers
     
-    required internal init?(coder aDecoder: NSCoder)
-    {
-        return nil
+    required internal init(coder: NSCoder) {
+        
+        super.init(coder: coder)
     }
     
-    internal init(viewController: GCCalendarViewController, startDate: NSDate)
-    {
-        self.viewController = viewController
+    internal init(viewController: GCCalendarViewController, startDate: Date) {
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
+        
+        self.viewController = viewController
         
         self.startDate = startDate
         
-        self.axis = .Vertical
-        self.distribution = .FillEqually
+        self.axis = .vertical
+        self.distribution = .fillEqually
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -79,12 +79,12 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
 
 // MARK: - Pan Gesture Recognizer
 
-internal extension GCCalendarMonthView
-{
+internal extension GCCalendarMonthView {
+    
     // MARK: Creation
     
-    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
-    {
+    internal func addPanGestureRecognizer(_ target: AnyObject, action: Selector) {
+        
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
         self.addGestureRecognizer(self.panGestureRecognizer)
@@ -93,14 +93,14 @@ internal extension GCCalendarMonthView
 
 // MARK: - Week Views
 
-private extension GCCalendarMonthView
-{
+private extension GCCalendarMonthView {
+    
     // MARK: Creation
     
-    private func addWeekViews()
-    {
-        for dates in self.dates
-        {
+    func addWeekViews() {
+        
+        for dates in self.dates {
+            
             let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
             
             self.addArrangedSubview(weekView)
@@ -111,30 +111,30 @@ private extension GCCalendarMonthView
 
 // MARK: - Start Date & Selected Date
 
-internal extension GCCalendarMonthView
-{
+internal extension GCCalendarMonthView {
+    
     // MARK: Start Date
     
-    internal func update(newStartDate newStartDate: NSDate)
-    {
+    internal func update(newStartDate: Date) {
+        
         self.startDate = newStartDate
         
-        for (index, dates) in self.dates.enumerate()
-        {
+        for (index, dates) in self.dates.enumerated() {
+            
             self.weekViews[index].update(newDates: dates)
         }
     }
     
     // MARK: Selected Date
     
-    internal func setSelectedDate()
-    {
-        let selectedDate = self.containsToday ? NSDate() : self.startDate
+    internal func setSelectedDate() {
         
-        let selectedDateComponents = self.viewController.calendar.components([.WeekOfMonth, .Weekday], fromDate: selectedDate)
+        let selectedDate: Date = self.containsToday ? Date() : self.startDate
         
-        let weekView = self.weekViews[selectedDateComponents.weekOfMonth - 1]
+        let selectedDateComponents = self.viewController.calendar.dateComponents([.weekOfMonth, .weekday], from: selectedDate)
         
-        weekView.setSelectedDate(weekday: selectedDateComponents.weekday)
+        let weekView = self.weekViews[selectedDateComponents.weekOfMonth! - 1]
+        
+        weekView.setSelectedDate(weekday: selectedDateComponents.weekday!)
     }
 }

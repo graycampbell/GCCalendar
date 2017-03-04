@@ -10,15 +10,15 @@ import XCTest
 
 class GCCalendarMonthViewTests: XCTestCase
 {
-    private var viewController = GCCalendarViewController()
+    fileprivate var viewController = GCCalendarViewController()
     
     func testUpdate()
     {
-        let components = self.viewController.calendar.components([.Day, .Month, .Year], fromDate: self.viewController.selectedDate)
+        let components = (self.viewController.calendar as NSCalendar).components([.day, .month, .year], from: self.viewController.selectedDate)
         components.day = 1
         
-        let startDate = self.viewController.calendar.dateFromComponents(components)!
-        let newStartDate = self.viewController.calendar.nextDateAfterDate(startDate, matchingUnit: .Day, value: 1, options: .MatchStrictly)!
+        let startDate = self.viewController.calendar.date(from: components)!
+        let newStartDate = (self.viewController.calendar as NSCalendar).nextDate(after: startDate, matching: .day, value: 1, options: .matchStrictly)!
         
         let monthView = GCCalendarMonthView(viewController: self.viewController, startDate: startDate)
         

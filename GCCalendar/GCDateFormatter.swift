@@ -9,17 +9,17 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCDateFormatter: NSDateFormatter
-{
+internal final class GCDateFormatter: DateFormatter {
+    
     // MARK: Initializers
     
-    required internal init?(coder aDecoder: NSCoder)
-    {
+    required internal init?(coder aDecoder: NSCoder) {
+        
         return nil
     }
     
-    internal init(dateFormat: String, calendar: NSCalendar)
-    {
+    internal init(dateFormat: String, calendar: Calendar) {
+        
         super.init()
         
         self.dateFormat = dateFormat
@@ -29,18 +29,10 @@ internal final class GCDateFormatter: NSDateFormatter
 
 // MARK: - String From Date
 
-internal extension GCDateFormatter
-{
-    internal class func stringFromDate(date: NSDate, withFormat format: String, andCalendar calendar: NSCalendar) -> String
-    {
-        var dateFormatter: NSDateFormatter!
-        var onceToken: dispatch_once_t = 0
+internal extension GCDateFormatter {
+    
+    internal class func stringFromDate(_ date: Date, withFormat format: String, andCalendar calendar: Calendar) -> String {
         
-        dispatch_once(&onceToken) {
-            
-            dateFormatter = GCDateFormatter(dateFormat: "d", calendar: calendar)
-        }
-        
-        return dateFormatter.stringFromDate(date)
+        return GCDateFormatter(dateFormat: format, calendar: calendar).string(from: date)
     }
 }

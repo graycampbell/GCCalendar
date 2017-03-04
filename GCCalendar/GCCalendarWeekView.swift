@@ -9,16 +9,16 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarWeekView: UIStackView
-{
+internal final class GCCalendarWeekView: UIStackView {
+    
     // MARK: Properties
     
-    private let viewController: GCCalendarViewController!
+    fileprivate var viewController: GCCalendarViewController!
     
-    internal var dates: [NSDate?]!
+    internal var dates: [Date?]!
     
-    private var dayViews: [GCCalendarDayView] = []
-    private var panGestureRecognizer: UIPanGestureRecognizer!
+    fileprivate var dayViews: [GCCalendarDayView] = []
+    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
     internal var containsToday: Bool {
         
@@ -27,19 +27,19 @@ internal final class GCCalendarWeekView: UIStackView
     
     // MARK: Initializers
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        return nil
+    required internal init(coder: NSCoder) {
+        
+        super.init(coder: coder)
     }
     
-    internal init(viewController: GCCalendarViewController, dates: [NSDate?])
-    {
+    internal init(viewController: GCCalendarViewController, dates: [Date?]) {
+        
+        super.init(frame: CGRect.zero)
+        
         self.viewController = viewController
         
-        super.init(frame: CGRectZero)
-        
-        self.axis = .Horizontal
-        self.distribution = .FillEqually
+        self.axis = .horizontal
+        self.distribution = .fillEqually
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,12 +49,12 @@ internal final class GCCalendarWeekView: UIStackView
 
 // MARK: - Pan Gesture Recognizer
 
-internal extension GCCalendarWeekView
-{
+internal extension GCCalendarWeekView {
+    
     // MARK: Creation
     
-    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
-    {
+    internal func addPanGestureRecognizer(_ target: AnyObject, action: Selector) {
+        
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
         self.addGestureRecognizer(self.panGestureRecognizer)
@@ -63,16 +63,16 @@ internal extension GCCalendarWeekView
 
 // MARK: - Day Views
 
-private extension GCCalendarWeekView
-{
+private extension GCCalendarWeekView {
+    
     // MARK: Creation
 
-    private func addDayViews(dates dates: [NSDate?])
-    {
+    func addDayViews(dates: [Date?]) {
+        
         self.dates = dates
         
-        for date in self.dates
-        {
+        for date in self.dates {
+            
             let dayView = GCCalendarDayView(viewController: self.viewController, date: date)
             
             self.addArrangedSubview(dayView)
@@ -83,24 +83,24 @@ private extension GCCalendarWeekView
 
 // MARK: - Dates & Selected Date
 
-internal extension GCCalendarWeekView
-{
+internal extension GCCalendarWeekView {
+    
     // MARK: Dates
     
-    internal func update(newDates newDates: [NSDate?])
-    {
+    internal func update(newDates: [Date?]) {
+        
         self.dates = newDates
         
-        for (index, date) in self.dates.enumerate()
-        {
+        for (index, date) in self.dates.enumerated() {
+            
             self.dayViews[index].update(newDate: date)
         }
     }
     
     // MARK: Selected Date
     
-    internal func setSelectedDate(weekday weekday: Int)
-    {
+    internal func setSelectedDate(weekday: Int) {
+        
         self.dayViews[weekday - 1].selected()
     }
 }

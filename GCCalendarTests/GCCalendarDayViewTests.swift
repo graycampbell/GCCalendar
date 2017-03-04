@@ -10,11 +10,11 @@ import XCTest
 
 class GCCalendarDayViewTests: XCTestCase
 {
-    private var viewController = GCCalendarViewController()
+    fileprivate var viewController = GCCalendarViewController()
     
     func testUpdate()
     {
-        let newDate = NSDate()
+        let newDate = Date()
         let dayView = GCCalendarDayView(viewController: self.viewController, date: nil)
         
         XCTAssertEqual(dayView.date, nil)

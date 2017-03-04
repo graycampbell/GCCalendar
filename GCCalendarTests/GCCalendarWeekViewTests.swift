@@ -10,23 +10,23 @@ import XCTest
 
 class GCCalendarWeekViewTests: XCTestCase
 {
-    private var viewController = GCCalendarViewController()
+    fileprivate var viewController = GCCalendarViewController()
     
     func testUpdate()
     {
-        let dates = [NSDate?](count: 7, repeatedValue: nil)
-        let newDates = [NSDate?](count: 7, repeatedValue: NSDate())
+        let dates = [Date?](repeating: nil, count: 7)
+        let newDates = [Date?](repeating: Date(), count: 7)
         
         let weekView = GCCalendarWeekView(viewController: self.viewController, dates: dates)
         
-        for (index, date) in weekView.dates.enumerate()
+        for (index, date) in weekView.dates.enumerated()
         {
             XCTAssertEqual(date, dates[index])
         }
         
         weekView.update(newDates: newDates)
         
-        for (index, date) in weekView.dates.enumerate()
+        for (index, date) in weekView.dates.enumerated()
         {
             XCTAssertEqual(date, newDates[index])
         }
