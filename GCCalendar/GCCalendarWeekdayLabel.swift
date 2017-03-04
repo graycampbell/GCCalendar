@@ -9,21 +9,21 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarWeekdayLabel: UILabel
-{
+internal final class GCCalendarWeekdayLabel: UILabel {
+    
     // MARK: Initializers
     
-    required internal init?(coder aDecoder: NSCoder)
-    {
+    required internal init?(coder aDecoder: NSCoder) {
+        
         return nil
     }
     
-    internal init(viewController: GCCalendarViewController, text: String)
-    {
-        super.init(frame: CGRectZero)
+    internal init(viewController: GCCalendarViewController, text: String) {
+        
+        super.init(frame: CGRect.zero)
         
         self.text = text
-        self.textAlignment = .Center
+        self.textAlignment = .center
         
         self.font = viewController.weekdayLabelFont()
         self.textColor = viewController.weekdayLabelTextColor()

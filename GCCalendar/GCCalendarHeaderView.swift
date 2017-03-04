@@ -9,27 +9,27 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarHeaderView: UIStackView
-{
+internal final class GCCalendarHeaderView: UIStackView {
+    
     // MARK: Properties
     
-    private let viewController: GCCalendarViewController!
+    fileprivate var viewController: GCCalendarViewController!
     
     // MARK: Initializers
     
-    required internal init?(coder aDecoder: NSCoder)
-    {
-        return nil
+    required internal init(coder: NSCoder) {
+        
+        super.init(coder: coder)
     }
     
-    internal init(viewController: GCCalendarViewController)
-    {
+    internal init(viewController: GCCalendarViewController) {
+        
+        super.init(frame: CGRect.zero)
+        
         self.viewController = viewController
         
-        super.init(frame: CGRectZero)
-        
-        self.axis = .Horizontal
-        self.distribution = .FillEqually
+        self.axis = .horizontal
+        self.distribution = .fillEqually
         
         self.translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,14 +39,14 @@ internal final class GCCalendarHeaderView: UIStackView
 
 // MARK: - Weekday Labels
 
-private extension GCCalendarHeaderView
-{
+private extension GCCalendarHeaderView {
+    
     // MARK: Creation
     
-    private func addWeekdayLabels()
-    {
-        for weekdaySymbol in self.viewController.calendar.veryShortWeekdaySymbols
-        {
+    func addWeekdayLabels() {
+        
+        for weekdaySymbol in self.viewController.calendar.veryShortWeekdaySymbols {
+            
             let label = GCCalendarWeekdayLabel(viewController: self.viewController, text: weekdaySymbol)
             
             self.addArrangedSubview(label)

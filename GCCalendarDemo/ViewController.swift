@@ -8,12 +8,12 @@
 import UIKit
 import GCCalendar
 
-class ViewController: GCCalendarViewController
-{
+class ViewController: GCCalendarViewController {
+    
     // MARK: - View Setup
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let tintColor = UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
@@ -22,7 +22,7 @@ class ViewController: GCCalendarViewController
         self.navigationController!.navigationBar.tintColor = tintColor
         
         self.navigationController!.navigationBar.shadowImage = UIImage(named: "NavigationBarShadowImage")
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBarBackgroundImage"), forBarMetrics: .Default)
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBarBackgroundImage"), for: .default)
         
         self.addToolbar()
         self.addCalendarViewConstraints()
@@ -30,48 +30,49 @@ class ViewController: GCCalendarViewController
     
     // MARK: - Toolbar
     
-    private func addToolbar()
-    {
-        self.navigationController!.toolbarHidden = false
+    fileprivate func addToolbar() {
         
-        let today = UIBarButtonItem(title: "Today", style: .Plain, target: self.calendarView, action: #selector(self.calendarView.today))
+        self.navigationController!.isToolbarHidden = false
+        
+        let today = UIBarButtonItem(title: "Today", style: .plain, target: self.calendarView, action: #selector(self.calendarView.today))
         
         self.toolbarItems = [today]
         
         let shadowImage = UIImage(named: "ToolbarShadowImage")
         let backgroundImage = UIImage(named: "NavigationBarBackgroundImage")
         
-        self.navigationController!.toolbar.setShadowImage(shadowImage, forToolbarPosition: .Bottom)
-        self.navigationController!.toolbar.setBackgroundImage(backgroundImage, forToolbarPosition: .Bottom, barMetrics: .Default)
+        self.navigationController!.toolbar.setShadowImage(shadowImage, forToolbarPosition: .bottom)
+        self.navigationController!.toolbar.setBackgroundImage(backgroundImage, forToolbarPosition: .bottom, barMetrics: .default)
     }
     
     // MARK: - Calendar View
     
-    private func addCalendarViewConstraints()
-    {
+    fileprivate func addCalendarViewConstraints() {
+        
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
         
-        let top = NSLayoutConstraint(item: self.calendarView, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 12)
-        let width = NSLayoutConstraint(item: self.calendarView, attribute: .Width, relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1, constant: 0)
-        let height = NSLayoutConstraint(item: self.calendarView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1, constant: 325)
+        let top = NSLayoutConstraint(item: self.calendarView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 12)
+        let width = NSLayoutConstraint(item: self.calendarView, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0)
+        let height = NSLayoutConstraint(item: self.calendarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 325)
         
         self.view.addConstraints([top, width, height])
     }
     
     // MARK: - Override Functions
     
-    override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
-    {
+    override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool {
+        
         return true
     }
     
-    override func didSelectDate(date: NSDate)
-    {
+    override func didSelectDate(_ date: Date) {
+        
         super.didSelectDate(date)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("MMMMYYYY", options: 0, locale: NSLocale.currentLocale())
+        let dateFormatter = DateFormatter()
         
-        self.navigationItem.title = dateFormatter.stringFromDate(date)
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: Locale.current)
+        
+        self.navigationItem.title = dateFormatter.string(from: date)
     }
 }

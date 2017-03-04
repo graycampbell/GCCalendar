@@ -7,218 +7,209 @@
 
 import UIKit
 
-// MARK: Properties & Initializers
-
-public class GCCalendarViewController: UIViewController
-{
+open class GCCalendarViewController: UIViewController {
+    
     // MARK: Properties
     
-    public var calendarView: GCCalendarView!
-    public var selectedDate: NSDate = NSDate()
+    open var calendarView: GCCalendarView!
+    open var selectedDate: Date = Date()
     
     internal var selectedDayView: GCCalendarDayView?
-    internal let calendar = NSCalendar.currentCalendar()
-}
-
-// MARK: - View Setup
-
-public extension GCCalendarViewController
-{
-    public override func viewDidLoad()
-    {
+    internal let calendar = Calendar.current
+    
+    // MARK: View
+    
+    open override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.view.clipsToBounds = true
         
-        if self.shouldAutomaticallyChangeModeOnOrientationChange()
-        {
-            let orientation = UIApplication.sharedApplication().statusBarOrientation
+        if self.shouldAutomaticallyChangeModeOnOrientationChange() {
             
-            if orientation == .Portrait || orientation == .PortraitUpsideDown
-            {
-                self.calendarView = GCCalendarView(viewController: self, mode: .Month)
-            }
-            else
-            {
-                self.calendarView = GCCalendarView(viewController: self, mode: .Week)
+            switch UIApplication.shared.statusBarOrientation {
+                
+            case .portrait, .portraitUpsideDown:
+                self.calendarView = GCCalendarView(viewController: self, mode: .month)
+                
+            default:
+                self.calendarView = GCCalendarView(viewController: self, mode: .week)
             }
             
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.orientationChanged), name: UIDeviceOrientationDidChangeNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.orientationChanged), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         }
-        else
-        {
-            self.calendarView = GCCalendarView(viewController: self, mode: .Month)
+        else {
+            
+            self.calendarView = GCCalendarView(viewController: self, mode: .month)
         }
         
         self.view.addSubview(self.calendarView)
     }
     
-    internal func orientationChanged()
-    {
-        let orientation = UIApplication.sharedApplication().statusBarOrientation
-        
-        if orientation == .Portrait || orientation == .PortraitUpsideDown
-        {
-            self.calendarView.changeModeTo(.Month)
-        }
-        else
-        {
-            self.calendarView.changeModeTo(.Week)
-        }
-    }
-}
-
-// MARK: - Day View Selection
-
-public extension GCCalendarViewController
-{
-    internal func didSelectDayView(dayView: GCCalendarDayView)
-    {
-        self.selectedDayView = dayView
-        
-        self.didSelectDate(dayView.date!)
-    }
-}
-
-// MARK: - Public Functions
-
-public extension GCCalendarViewController
-{
     // MARK: Calendar Mode
     
     /// Default value is false. If returning true, portrait mode = .Month and landscape mode = .Week
-    public func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
-    {
+    open func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool {
+        
         return false
     }
     
     // MARK: Selected Date
     
     /// Must call super.didSelectDate(date) before custom implementation
-    public func didSelectDate(date: NSDate)
-    {
+    open func didSelectDate(_ date: Date) {
+        
         self.selectedDate = date
     }
     
     // MARK: Weekday Label
     
     /// Default value is UIFont.systemFontOfSize(10)
-    public func weekdayLabelFont() -> UIFont
-    {
-        return UIFont.systemFontOfSize(10)
+    open func weekdayLabelFont() -> UIFont {
+        
+        return UIFont.systemFont(ofSize: 10)
     }
     
     /// Default value is UIColor.grayColor()
-    public func weekdayLabelTextColor() -> UIColor
-    {
-        return UIColor.grayColor()
+    open func weekdayLabelTextColor() -> UIColor {
+        
+        return UIColor.gray
     }
     
     // MARK: Past Day View
     
     /// Default value is true
-    public func pastDaysEnabled() -> Bool
-    {
+    open func pastDaysEnabled() -> Bool {
+        
         return true
     }
     
     /// Default value is UIFont.systemFontOfSize(17)
-    public func pastDayViewFont() -> UIFont
-    {
-        return UIFont.systemFontOfSize(17)
+    open func pastDayViewFont() -> UIFont {
+        
+        return UIFont.systemFont(ofSize: 17)
     }
     
     /// Default value is UIColor(white: 0.0, alpha: 0.87)
-    public func pastDayViewEnabledTextColor() -> UIColor
-    {
+    open func pastDayViewEnabledTextColor() -> UIColor {
+        
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
     /// Default value is UIColor.grayColor()
-    public func pastDayViewDisabledTextColor() -> UIColor
-    {
-        return UIColor.grayColor()
+    open func pastDayViewDisabledTextColor() -> UIColor {
+        
+        return UIColor.gray
     }
     
     /// Default value is UIFont.boldSystemFontOfSize(17)
-    public func pastDayViewSelectedFont() -> UIFont
-    {
-        return UIFont.boldSystemFontOfSize(17)
+    open func pastDayViewSelectedFont() -> UIFont {
+        
+        return UIFont.boldSystemFont(ofSize: 17)
     }
     
     /// Default value is UIColor.whiteColor()
-    public func pastDayViewSelectedTextColor() -> UIColor
-    {
-        return UIColor.whiteColor()
+    open func pastDayViewSelectedTextColor() -> UIColor {
+        
+        return UIColor.white
     }
     
     /// Default value is UIColor(white: 0.0, alpha: 0.87)
-    public func pastDayViewSelectedBackgroundColor() -> UIColor
-    {
+    open func pastDayViewSelectedBackgroundColor() -> UIColor {
+        
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
     // MARK: Current Day View
     
     /// Default value is UIFont.boldSystemFontOfSize(17)
-    public func currentDayViewFont() -> UIFont
-    {
-        return UIFont.boldSystemFontOfSize(17)
+    open func currentDayViewFont() -> UIFont {
+        
+        return UIFont.boldSystemFont(ofSize: 17)
     }
     
     /// Default value is UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
-    public func currentDayViewTextColor() -> UIColor
-    {
+    open func currentDayViewTextColor() -> UIColor {
+        
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
     /// Default value is UIFont.boldSystemFontOfSize(17)
-    public func currentDayViewSelectedFont() -> UIFont
-    {
-        return UIFont.boldSystemFontOfSize(17)
+    open func currentDayViewSelectedFont() -> UIFont {
+        
+        return UIFont.boldSystemFont(ofSize: 17)
     }
     
     /// Default value is UIColor.whiteColor()
-    public func currentDayViewSelectedTextColor() -> UIColor
-    {
-        return UIColor.whiteColor()
+    open func currentDayViewSelectedTextColor() -> UIColor {
+        
+        return UIColor.white
     }
     
     /// Default value is UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
-    public func currentDayViewSelectedBackgroundColor() -> UIColor
-    {
+    open func currentDayViewSelectedBackgroundColor() -> UIColor {
+        
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
     // MARK: Future Day View
     
     /// Default value is UIFont.systemFontOfSize(17)
-    public func futureDayViewFont() -> UIFont
-    {
-        return UIFont.systemFontOfSize(17)
+    open func futureDayViewFont() -> UIFont {
+        
+        return UIFont.systemFont(ofSize: 17)
     }
     
     /// Default value is UIColor(white: 0.0, alpha: 0.87)
-    public func futureDayViewTextColor() -> UIColor
-    {
+    open func futureDayViewTextColor() -> UIColor {
+        
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
     /// Default value is UIFont.boldSystemFontOfSize(17)
-    public func futureDayViewSelectedFont() -> UIFont
-    {
-        return UIFont.boldSystemFontOfSize(17)
+    open func futureDayViewSelectedFont() -> UIFont {
+        
+        return UIFont.boldSystemFont(ofSize: 17)
     }
     
     /// Default value is UIColor.whiteColor()
-    public func futureDayViewSelectedTextColor() -> UIColor
-    {
-        return UIColor.whiteColor()
+    open func futureDayViewSelectedTextColor() -> UIColor {
+        
+        return UIColor.white
     }
     
     /// Default value is UIColor(white: 0.0, alpha: 0.87)
-    public func futureDayViewSelectedBackgroundColor() -> UIColor
-    {
+    open func futureDayViewSelectedBackgroundColor() -> UIColor {
+        
         return UIColor(white: 0.0, alpha: 0.87)
+    }
+}
+
+// MARK: - Orientation
+
+internal extension GCCalendarViewController {
+    
+    internal func orientationChanged() {
+        
+        switch UIApplication.shared.statusBarOrientation {
+            
+            case .portrait, .portraitUpsideDown:
+                self.calendarView.changeModeTo(.month)
+                
+            default:
+                self.calendarView.changeModeTo(.week)
+        }
+    }
+}
+
+// MARK: - Day View Selection
+
+internal extension GCCalendarViewController {
+    
+    internal func didSelectDayView(_ dayView: GCCalendarDayView) {
+        
+        self.selectedDayView = dayView
+        
+        self.didSelectDate(dayView.date! as Date)
     }
 }
