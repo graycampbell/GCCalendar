@@ -29,11 +29,11 @@ open class GCCalendarViewController: UIViewController {
             
             switch UIApplication.shared.statusBarOrientation {
                 
-            case .portrait, .portraitUpsideDown:
-                self.calendarView = GCCalendarView(viewController: self, mode: .month)
-                
-            default:
-                self.calendarView = GCCalendarView(viewController: self, mode: .week)
+                case .portrait, .portraitUpsideDown:
+                    self.calendarView = GCCalendarView(viewController: self, mode: .month)
+                    
+                default:
+                    self.calendarView = GCCalendarView(viewController: self, mode: .week)
             }
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.orientationChanged), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
