@@ -540,17 +540,20 @@ private extension GCCalendarView {
             let monthView = GCCalendarMonthView(configuration: self.configuration)
             
             monthView.startDate = startDate
+            monthView.translatesAutoresizingMaskIntoConstraints = false
             
-            monthView.addPanGestureRecognizer(self, action: #selector(self.toggleCurrentView(_:)))
+            monthView.addPanGestureRecognizer(target: self, action: #selector(self.toggleCurrentView(_:)))
             
             self.addSubview(monthView)
             self.monthViews.append(monthView)
             
-            let top = NSLayoutConstraint(item: monthView, attribute: .top, relatedBy: .equal, toItem: self.headerView, attribute: .bottom, multiplier: 1, constant: 0)
-            let bottom = NSLayoutConstraint(item: monthView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
-            let width = NSLayoutConstraint(item: monthView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
+            let views: [String: UIView] = ["headerView": self.headerView, "monthView": monthView]
             
-            self.addConstraints([top, bottom, width])
+            let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[headerView][monthView]|", options: [], metrics: nil, views: views)
+            let horizontal = NSLayoutConstraint(item: monthView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
+            
+            self.addConstraints(vertical)
+            self.addConstraint(horizontal)
         }
         
         self.resetLayout()
@@ -666,8 +669,9 @@ private extension GCCalendarView {
             let weekView = GCCalendarWeekView(configuration: self.configuration)
             
             weekView.dates = dates
-            weekView.panGestureRecognizer.addTarget(self, action: #selector(self.toggleCurrentView(_:)))
             weekView.translatesAutoresizingMaskIntoConstraints = false
+            
+            weekView.addPanGestureRecognizer(target: self, action: #selector(self.toggleCurrentView(_:)))
             
             self.addSubview(weekView)
             self.weekViews.append(weekView)
