@@ -9,11 +9,11 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarWeekView: UIStackView {
+internal final class GCCalendarWeekView: UIView {
     
     // MARK: Properties
     
-    fileprivate var configuration: GCCalendarConfiguration!
+    fileprivate let configuration: GCCalendarConfiguration
     
     fileprivate var dayViews = [GCCalendarDayView]()
     
@@ -21,7 +21,7 @@ internal final class GCCalendarWeekView: UIStackView {
     
     internal var containsToday: Bool {
         
-        return !self.dates.filter({ $0 != nil && self.configuration.calendar.isDateInToday($0!) }).isEmpty
+        return self.dates.contains(where: { $0 != nil && self.configuration.calendar.isDateInToday($0!) })
     }
     
     internal var dates: [Date?] = [] {
@@ -34,21 +34,17 @@ internal final class GCCalendarWeekView: UIStackView {
     
     // MARK: Initializers
     
-    required internal init(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         
-        super.init(coder: coder)
+        return nil
     }
     
     internal init(configuration: GCCalendarConfiguration) {
         
-        super.init(frame: CGRect.zero)
-        
         self.configuration = configuration
         
-        self.axis = .horizontal
-        self.distribution = .fillEqually
+        super.init(frame: CGRect.zero)
         
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.addGestureRecognizer(self.panGestureRecognizer)
     }
 }
@@ -59,26 +55,48 @@ fileprivate extension GCCalendarWeekView {
     
     fileprivate func addDayViews() {
         
-        self.dates.forEach { date in
+        var views = [String: UIView]()
+        var horizontalVisualFormat = "H:|"
+        
+        self.dates.enumerated().forEach { index, date in
             
             let dayView = GCCalendarDayView(configuration: self.configuration)
             
             dayView.date = date
+            dayView.translatesAutoresizingMaskIntoConstraints = false
             
-            self.addArrangedSubview(dayView)
+            self.addSubview(dayView)
             self.dayViews.append(dayView)
+            
+            let currentDayView = "dayView\(index)"
+            let previousDayView = "dayView\(index - 1)"
+            
+            views[currentDayView] = dayView
+            
+            switch index {
+                
+                case 0:
+                    horizontalVisualFormat += "[\(currentDayView)]"
+                    
+                default:
+                    horizontalVisualFormat += "[\(currentDayView)(==\(previousDayView))]"
+            }
+            
+            let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(currentDayView)]|", options: [], metrics: nil, views: views)
+            
+            self.addConstraints(vertical)
         }
+        
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: horizontalVisualFormat + "|", options: [], metrics: nil, views: views)
+        
+        self.addConstraints(horizontal)
     }
     
     fileprivate func updateDayViews() {
         
-        var index = 0
-        
-        self.dayViews.forEach { dayView in
+        self.dayViews.enumerated().forEach { index, dayView in
             
             dayView.date = self.dates[index]
-            
-            index += 1
         }
     }
 }
@@ -86,8 +104,6 @@ fileprivate extension GCCalendarWeekView {
 // MARK: - Selected Date
 
 internal extension GCCalendarWeekView {
-    
-    // MARK: Selected Date
     
     internal func setSelectedDate(weekday: Int) {
         

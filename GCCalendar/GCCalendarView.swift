@@ -667,15 +667,18 @@ private extension GCCalendarView {
             
             weekView.dates = dates
             weekView.panGestureRecognizer.addTarget(self, action: #selector(self.toggleCurrentView(_:)))
+            weekView.translatesAutoresizingMaskIntoConstraints = false
             
             self.addSubview(weekView)
             self.weekViews.append(weekView)
             
-            let top = NSLayoutConstraint(item: weekView, attribute: .top, relatedBy: .equal, toItem: self.headerView, attribute: .bottom, multiplier: 1, constant: 0)
-            let width = NSLayoutConstraint(item: weekView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
-            let height = NSLayoutConstraint(item: weekView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 45)
+            let views: [String: UIView] = ["headerView": self.headerView, "weekView": weekView]
             
-            self.addConstraints([top, width, height])
+            let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[headerView][weekView(45)]", options: [], metrics: nil, views: views)
+            let horizontal = NSLayoutConstraint(item: weekView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
+            
+            self.addConstraints(vertical)
+            self.addConstraint(horizontal)
         }
         
         self.resetLayout()
