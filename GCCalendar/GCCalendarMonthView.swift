@@ -18,11 +18,6 @@ internal final class GCCalendarMonthView: UIView {
     fileprivate var weekViews = [GCCalendarWeekView]()
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
-    internal var containsToday: Bool {
-        
-        return self.configuration.calendar.isDate(self.startDate, equalTo: Date(), toGranularity: .month)
-    }
-    
     fileprivate var dates: [[Date?]] {
         
         let numberOfWeekdays = self.configuration.calendar.maximumRange(of: .weekday)!.count
@@ -51,6 +46,11 @@ internal final class GCCalendarMonthView: UIView {
             
             self.weekViews.isEmpty ? self.addWeekViews() : self.updateWeekViews()
         }
+    }
+    
+    internal var containsToday: Bool {
+        
+        return self.configuration.calendar.isDate(self.startDate, equalTo: Date(), toGranularity: .month)
     }
     
     // MARK: Initializers
