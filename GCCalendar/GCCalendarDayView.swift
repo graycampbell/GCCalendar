@@ -18,7 +18,7 @@ internal final class GCCalendarDayView: UIView {
     
     // MARK: Properties
     
-    fileprivate var configuration: GCCalendarConfiguration!
+    fileprivate let configuration: GCCalendarConfiguration
     
     fileprivate let button = UIButton()
     fileprivate let buttonWidth: CGFloat = 35
@@ -168,9 +168,9 @@ internal final class GCCalendarDayView: UIView {
     
     internal init(configuration: GCCalendarConfiguration) {
         
-        super.init(frame: CGRect.zero)
-        
         self.configuration = configuration
+        
+        super.init(frame: CGRect.zero)
         
         self.addButton()
         self.addTapGestureRecognizer()
