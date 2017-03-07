@@ -15,7 +15,7 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
     
     fileprivate var configuration: GCCalendarConfiguration!
     
-    fileprivate var weekViews: [GCCalendarWeekView] = []
+    fileprivate var weekViews = [GCCalendarWeekView]()
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
     internal var containsToday: Bool {
@@ -25,28 +25,22 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
     
     fileprivate var dates: [[Date?]] {
         
-        var date: Date? = self.startDate
+        let numberOfWeekdays = self.configuration.calendar.maximumRange(of: .weekday)!.count
+        let numberOfWeeks = self.configuration.calendar.maximumRange(of: .weekOfMonth)!.count
         
-        let numberOfWeekdays = (self.configuration.calendar as NSCalendar).maximumRange(of: .weekday).length
-        let numberOfWeeks = (self.configuration.calendar as NSCalendar).maximumRange(of: .weekOfMonth).length
+        var newDates = [[Date?]](repeating: [Date?](repeating: nil, count: numberOfWeekdays), count: numberOfWeeks)
         
-        let week = [Date?](repeating: nil, count: numberOfWeekdays)
+        var date: Date = self.startDate
         
-        var newDates = [[Date?]](repeating: week, count: numberOfWeeks)
-        
-        while date != nil {
+        repeat {
             
-            let dateComponents = self.configuration.calendar.dateComponents([.weekday, .weekOfMonth, .month, .year], from: date!)
+            let dateComponents = self.configuration.calendar.dateComponents([.weekday, .weekOfMonth, .month, .year], from: date)
             
             newDates[dateComponents.weekOfMonth! - 1][dateComponents.weekday! - 1] = date
             
-            if let newDate = (self.configuration.calendar as NSCalendar).date(byAdding: .day, value: 1, to: date!, options: .matchStrictly) {
-                
-                let newDateComponents = self.configuration.calendar.dateComponents([.month], from: newDate)
-                
-                date = (newDateComponents.month == dateComponents.month) ? newDate : nil
-            }
-        }
+            date = self.configuration.calendar.date(byAdding: .day, value: 1, to: date)!
+            
+        } while self.configuration.calendar.isDate(date, equalTo: self.startDate, toGranularity: .month)
         
         return newDates
     }
@@ -92,8 +86,6 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
         
         self.axis = .vertical
         self.distribution = .fillEqually
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
@@ -101,9 +93,7 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
 
 internal extension GCCalendarMonthView {
     
-    // MARK: Creation
-    
-    internal func addPanGestureRecognizer(_ target: AnyObject, action: Selector) {
+    internal func addPanGestureRecognizer(target: Any?, action: Selector?) {
         
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
@@ -114,8 +104,6 @@ internal extension GCCalendarMonthView {
 // MARK: - Selected Date
 
 internal extension GCCalendarMonthView {
-    
-    // MARK: Selected Date
     
     internal func setSelectedDate() {
         

@@ -16,8 +16,7 @@ internal final class GCCalendarWeekView: UIView {
     fileprivate let configuration: GCCalendarConfiguration
     
     fileprivate var dayViews = [GCCalendarDayView]()
-    
-    internal let panGestureRecognizer = UIPanGestureRecognizer()
+    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
     internal var containsToday: Bool {
         
@@ -44,8 +43,6 @@ internal final class GCCalendarWeekView: UIView {
         self.configuration = configuration
         
         super.init(frame: CGRect.zero)
-        
-        self.addGestureRecognizer(self.panGestureRecognizer)
     }
 }
 
@@ -98,6 +95,18 @@ fileprivate extension GCCalendarWeekView {
             
             dayView.date = self.dates[index]
         }
+    }
+}
+
+// MARK: - Pan Gesture Recognizer
+
+internal extension GCCalendarWeekView {
+    
+    internal func addPanGestureRecognizer(target: Any?, action: Selector?) {
+        
+        self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
+        
+        self.addGestureRecognizer(self.panGestureRecognizer)
     }
 }
 
