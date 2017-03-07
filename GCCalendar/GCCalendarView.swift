@@ -19,11 +19,10 @@ public final class GCCalendarView: UIView {
     // MARK: Properties
     
     fileprivate let delegate: GCCalendarViewDelegate
+    fileprivate var configuration = GCCalendarConfiguration()
     
     fileprivate var selectedDate = Date()
     fileprivate var selectedDayView: GCCalendarDayView? = nil
-    
-    fileprivate var configuration: GCCalendarConfiguration!
     
     fileprivate var headerView = UIStackView()
     fileprivate var weekViews: [GCCalendarWeekView] = []
@@ -115,8 +114,6 @@ public extension GCCalendarView {
     
     fileprivate func setConfiguration(calendar: Calendar) {
         
-        self.configuration = GCCalendarConfiguration()
-        
         self.configuration.calendar = calendar
         
         self.configuration.appearance.weekdayLabelFont = self.delegate.weekdayLabelFont(calendarView: self)
@@ -142,10 +139,8 @@ public extension GCCalendarView {
         self.configuration.appearance.futureDateSelectedTextColor = self.delegate.futureDateSelectedTextColor(calendarView: self)
         self.configuration.appearance.futureDateSelectedBackgroundColor = self.delegate.futureDateSelectedBackgroundColor(calendarView: self)
         
-        self.configuration.selectedDate = {
-            
-            return self.selectedDate
-        }
+        self.configuration.selectedDate = { return self.selectedDate }
+        self.configuration.selectedDayView = { return self.selectedDayView }
         
         self.configuration.dayViewSelected = { dayView in
             
