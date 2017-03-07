@@ -47,7 +47,7 @@ public protocol GCCalendarViewDelegate: class {
     
     /// Asks the delegate if the calendar view should enable days prior to the current date.
     ///
-    /// The default value is true. If returning false, the calendar view will make past days unselectable and will only display past days for the current month (or week, depending on the calendar mode).
+    /// The default value is true. If returning false, the calendar view will make past days unselectable and will only display past days for the current week or month, depending on the calendar display mode.
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: A boolean value inidicating whether or not the calendar view should enable days prior to the current date.
