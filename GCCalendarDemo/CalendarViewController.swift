@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalendarViewController.swift
 //  GCCalendarDemo
 //
 //  Created by Gray Campbell on 1/28/16.
@@ -10,7 +10,7 @@ import GCCalendar
 
 // MARK: Properties & Initializers
 
-class ViewController: UIViewController {
+class CalendarViewController: UIViewController {
     
     // MARK: Properties
     
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
 // MARK: - View
 
-extension ViewController {
+extension CalendarViewController {
     
     override func viewDidLoad() {
         
@@ -40,7 +40,7 @@ extension ViewController {
 
 // MARK: - Toolbar
 
-extension ViewController {
+extension CalendarViewController {
     
     fileprivate func addToolbar() {
         
@@ -59,7 +59,7 @@ extension ViewController {
 
 // MARK: - Calendar View
 
-fileprivate extension ViewController {
+fileprivate extension CalendarViewController {
     
     fileprivate func addCalendarView() {
         
@@ -74,7 +74,7 @@ fileprivate extension ViewController {
 
 // MARK: - Constraints
 
-fileprivate extension ViewController {
+fileprivate extension CalendarViewController {
     
     fileprivate func addConstraints() {
         
@@ -92,7 +92,7 @@ fileprivate extension ViewController {
 
 // MARK: - GCCalendarViewDelegate
 
-extension ViewController: GCCalendarViewDelegate {
+extension CalendarViewController: GCCalendarViewDelegate {
     
     func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date) {
         
