@@ -15,7 +15,15 @@ internal final class GCCalendarWeekView: UIStackView {
     
     fileprivate var configuration: GCCalendarConfiguration!
     
-    var dates: [Date?] = [] {
+    fileprivate var dayViews: [GCCalendarDayView] = []
+    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
+    
+    internal var containsToday: Bool {
+        
+        return !self.dates.filter({ $0 != nil && self.configuration.calendar.isDateInToday($0!) }).isEmpty
+    }
+    
+    internal var dates: [Date?] = [] {
         
         didSet {
             
@@ -39,14 +47,6 @@ internal final class GCCalendarWeekView: UIStackView {
                 }
             }
         }
-    }
-    
-    fileprivate var dayViews: [GCCalendarDayView] = []
-    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
-    
-    internal var containsToday: Bool {
-        
-        return !self.dates.filter({ $0 != nil && self.configuration.calendar.isDateInToday($0!) }).isEmpty
     }
     
     // MARK: Initializers
