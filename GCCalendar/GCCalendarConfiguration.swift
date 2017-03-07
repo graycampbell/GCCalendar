@@ -10,7 +10,7 @@ import UIKit
 
 struct GCCalendarConfiguration {
     
-    var calendar = Calendar.current
+    var calendar: Calendar!
     var appearance = GCCalendarAppearance()
     
     var selectedDate: (() -> Date)!
