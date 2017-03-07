@@ -51,8 +51,9 @@ class ViewController: UIViewController, GCCalendarViewDelegate {
     
     fileprivate func addCalendarView() {
         
-        self.calendarView = GCCalendarView(delegate: self)
+        self.calendarView = GCCalendarView(delegate: self, calendar: Calendar.current)
         
+        self.calendarView.automaticallyUpdatesDisplayMode = true
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.calendarView)
