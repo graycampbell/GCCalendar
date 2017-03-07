@@ -18,29 +18,58 @@ public final class GCCalendarView: UIView {
     
     // MARK: Properties
     
-    let delegate: GCCalendarViewDelegate
+    fileprivate let delegate: GCCalendarViewDelegate
     
     fileprivate var selectedDate = Date()
     fileprivate var selectedDayView: GCCalendarDayView? = nil
     
     fileprivate var configuration: GCCalendarConfiguration!
     
-    fileprivate var displayMode: GCCalendarDisplayMode = .month {
+    fileprivate var headerView = UIStackView()
+    fileprivate var weekViews: [GCCalendarWeekView] = []
+    fileprivate var monthViews: [GCCalendarMonthView] = []
+    
+    fileprivate var panGestureStartLocation: CGFloat!
+    
+    public var displayMode: GCCalendarDisplayMode! {
         
         didSet {
             
             if self.displayMode != oldValue {
                 
-                self.displayModeDidChange()
+                switch self.displayMode! {
+                    
+                    case .week:
+                        self.removeMonthViews()
+                        self.addWeekViews()
+                        
+                    case .month:
+                        self.removeWeekViews()
+                        self.addMonthViews()
+                }
             }
         }
     }
     
-    fileprivate var headerView = UIStackView()
-    fileprivate var monthViews: [GCCalendarMonthView] = []
-    fileprivate var weekViews: [GCCalendarWeekView] = []
-    
-    fileprivate var panGestureStartLocation: CGFloat!
+    public var automaticallyUpdatesDisplayMode: Bool = false {
+        
+        didSet {
+            
+            if self.automaticallyUpdatesDisplayMode != oldValue {
+                
+                if self.automaticallyUpdatesDisplayMode {
+                    
+                    self.updateDisplayMode()
+                    
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.updateDisplayMode), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+                }
+                else {
+                    
+                    NotificationCenter.default.removeObserver(self, name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
+                }
+            }
+        }
+    }
     
     // MARK: Initializers
     
@@ -49,24 +78,15 @@ public final class GCCalendarView: UIView {
         return nil
     }
     
-    public init(delegate: GCCalendarViewDelegate) {
+    public init(delegate: GCCalendarViewDelegate, calendar: Calendar) {
         
         self.delegate = delegate
         
         super.init(frame: CGRect.zero)
         
-        self.setConfiguration()
+        self.setConfiguration(calendar: calendar)
         
         self.addHeaderView()
-        
-        if self.delegate.shouldAutomaticallyChangeModeOnOrientationChange(forCalendarView: self) {
-            
-            self.updateDisplayMode()
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(self.updateDisplayMode), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        }
-        
-        self.displayModeDidChange()
     }
 }
 
@@ -93,11 +113,11 @@ public extension GCCalendarView {
 
 public extension GCCalendarView {
     
-    fileprivate func setConfiguration() {
+    fileprivate func setConfiguration(calendar: Calendar) {
         
         self.configuration = GCCalendarConfiguration()
         
-        self.configuration.calendar = self.delegate.calendar(forCalendarView: self)
+        self.configuration.calendar = calendar
         
         self.configuration.appearance.weekdayLabelFont = self.delegate.weekdayLabelFont(forCalendarView: self)
         self.configuration.appearance.weekdayLabelTextColor = self.delegate.weekdayLabelTextColor(forCalendarView: self)
@@ -154,20 +174,6 @@ internal extension GCCalendarView {
                 self.displayMode = .month
         }
     }
-    
-    fileprivate func displayModeDidChange() {
-        
-        switch self.displayMode {
-            
-            case .week:
-                self.removeMonthViews()
-                self.addWeekViews()
-                
-            case .month:
-                self.removeWeekViews()
-                self.addMonthViews()
-        }
-    }
 }
 
 // MARK: - Header View
@@ -218,7 +224,7 @@ public extension GCCalendarView {
     
     fileprivate var previousView: UIView {
         
-        switch self.displayMode {
+        switch self.displayMode! {
             
             case .week:
                 return self.previousWeekView
@@ -230,7 +236,7 @@ public extension GCCalendarView {
     
     fileprivate var currentView: UIView {
         
-        switch self.displayMode {
+        switch self.displayMode! {
             
             case .week:
                 return self.currentWeekView
@@ -242,7 +248,7 @@ public extension GCCalendarView {
     
     fileprivate var nextView: UIView {
         
-        switch self.displayMode {
+        switch self.displayMode! {
             
             case .week:
                 return self.nextWeekView
@@ -256,7 +262,7 @@ public extension GCCalendarView {
     
     public func today() {
         
-        switch self.displayMode {
+        switch self.displayMode! {
             
             case .week:
                 self.findTodayInWeekViews()
@@ -467,7 +473,7 @@ public extension GCCalendarView {
         
         if finished {
             
-            switch self.displayMode {
+            switch self.displayMode! {
                 
                 case .week:
                     self.previousWeekViewDidShow(finished)
@@ -488,7 +494,7 @@ public extension GCCalendarView {
         
         if finished {
             
-            switch self.displayMode {
+            switch self.displayMode! {
                 
                 case .week:
                     self.nextWeekViewDidShow(finished)
