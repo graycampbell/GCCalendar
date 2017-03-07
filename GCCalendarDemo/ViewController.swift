@@ -71,11 +71,6 @@ class ViewController: UIViewController, GCCalendarViewDelegate {
     
     // MARK: - GCCalendarViewDelegate
     
-    func shouldAutomaticallyChangeModeOnOrientationChange(forCalendarView calendarView: GCCalendarView) -> Bool {
-        
-        return true
-    }
-    
     func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date) {
         
         let dateFormatter = DateFormatter()
