@@ -18,9 +18,8 @@ internal final class GCCalendarDayView: UIView {
     
     // MARK: Properties
     
-    fileprivate let viewController: GCCalendarViewController!
+    fileprivate var configuration: GCCalendarConfiguration!
     
-    internal var date: Date?
     fileprivate let button = UIButton()
     fileprivate let buttonWidth: CGFloat = 35
     
@@ -39,15 +38,15 @@ internal final class GCCalendarDayView: UIView {
         switch self.dayType {
             
             case .past:
-                return self.viewController.pastDayViewFont()
+                return self.configuration.appearance.pastDayViewFont
                 
             case .current:
-                return self.viewController.currentDayViewFont()
+                return self.configuration.appearance.currentDayViewFont
                 
             case .future:
-                return self.viewController.futureDayViewFont()
+                return self.configuration.appearance.futureDayViewFont
                 
-            default:
+            case .none:
                 return nil
         }
     }
@@ -57,15 +56,15 @@ internal final class GCCalendarDayView: UIView {
         switch self.dayType {
             
             case .past:
-                return self.viewController.pastDaysEnabled() ? self.viewController.pastDayViewEnabledTextColor() : self.viewController.pastDayViewDisabledTextColor()
+                return self.configuration.appearance.pastDaysEnabled ? self.configuration.appearance.pastDayViewEnabledTextColor : self.configuration.appearance.pastDayViewDisabledTextColor
                 
             case .current:
-                return self.viewController.currentDayViewTextColor()
+                return self.configuration.appearance.currentDayViewTextColor
                 
             case .future:
-                return self.viewController.futureDayViewTextColor()
+                return self.configuration.appearance.futureDayViewTextColor
                 
-            default:
+            case .none:
                 return nil
         }
     }
@@ -75,15 +74,15 @@ internal final class GCCalendarDayView: UIView {
         switch self.dayType {
             
             case .past:
-                return self.viewController.pastDayViewSelectedFont()
+                return self.configuration.appearance.pastDayViewSelectedFont
                 
             case .current:
-                return self.viewController.currentDayViewSelectedFont()
+                return self.configuration.appearance.currentDayViewSelectedFont
                 
             case .future:
-                return self.viewController.futureDayViewSelectedFont()
+                return self.configuration.appearance.futureDayViewSelectedFont
                 
-            default:
+            case .none:
                 return nil
         }
     }
@@ -93,15 +92,15 @@ internal final class GCCalendarDayView: UIView {
         switch self.dayType {
             
             case .past:
-                return self.viewController.pastDayViewSelectedTextColor()
+                return self.configuration.appearance.pastDayViewSelectedTextColor
                 
             case .current:
-                return self.viewController.currentDayViewSelectedTextColor()
+                return self.configuration.appearance.currentDayViewSelectedTextColor
                 
             case .future:
-                return self.viewController.futureDayViewSelectedTextColor()
+                return self.configuration.appearance.futureDayViewSelectedTextColor
                 
-            default:
+            case .none:
                 return nil
         }
     }
@@ -111,16 +110,52 @@ internal final class GCCalendarDayView: UIView {
         switch self.dayType {
             
             case .past:
-                return self.viewController.pastDayViewSelectedBackgroundColor()
+                return self.configuration.appearance.pastDayViewSelectedBackgroundColor
                 
             case .current:
-                return self.viewController.currentDayViewSelectedBackgroundColor()
+                return self.configuration.appearance.currentDayViewSelectedBackgroundColor
                 
             case .future:
-                return self.viewController.futureDayViewSelectedBackgroundColor()
+                return self.configuration.appearance.futureDayViewSelectedBackgroundColor
                 
-            default:
+            case .none:
                 return nil
+        }
+    }
+    
+    var date: Date? {
+        
+        didSet {
+            
+            if self.date == nil {
+                
+                self.button.isEnabled = false
+                self.button.setTitle(nil, for: .normal)
+                
+                self.dayType = .none
+            }
+            else {
+                
+                let title = GCDateFormatter.string(fromDate: self.date!, withFormat: "d", andCalendar: self.configuration.calendar)
+                
+                self.button.isEnabled = true
+                self.button.setTitle(title, for: .normal)
+                
+                if self.configuration.calendar.isDateInToday(self.date!) {
+                    
+                    self.dayType = .current
+                }
+                else if (Date() as NSDate).earlierDate(self.date!) == self.date! {
+                    
+                    self.dayType = .past
+                }
+                else {
+                    
+                    self.dayType = .future
+                }
+                
+                self.configuration.calendar.isDate(self.date!, inSameDayAs: self.configuration.selectedDate()) ? self.highlight() : self.unhighlight()
+            }
         }
     }
     
@@ -131,18 +166,14 @@ internal final class GCCalendarDayView: UIView {
         return nil
     }
     
-    internal init(viewController: GCCalendarViewController, date: Date?) {
-        
-        self.viewController = viewController
+    internal init(configuration: GCCalendarConfiguration) {
         
         super.init(frame: CGRect.zero)
         
+        self.configuration = configuration
+        
         self.addButton()
-        self.update(newDate: date)
-        
-        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.selected))
-        
-        self.addGestureRecognizer(self.tapGestureRecognizer)
+        self.addTapGestureRecognizer()
     }
 }
 
@@ -157,7 +188,7 @@ private extension GCCalendarDayView {
         self.button.layer.cornerRadius = self.buttonWidth / 2
         self.button.translatesAutoresizingMaskIntoConstraints = false
         
-        self.button.addTarget(self, action: #selector(self.selected), for: .touchUpInside)
+        self.button.addTarget(self, action: #selector(self.highlight), for: .touchUpInside)
         
         self.addSubview(self.button)
         self.addButtonConstraints()
@@ -182,43 +213,15 @@ private extension GCCalendarDayView {
     }
 }
 
-// MARK: - Date
+// MARK: - Tap Gesture Recognizer
 
-internal extension GCCalendarDayView {
+fileprivate extension GCCalendarDayView {
     
-    internal func update(newDate: Date?) {
+    fileprivate func addTapGestureRecognizer() {
         
-        self.date = newDate
+        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.highlight))
         
-        if self.date == nil {
-            
-            self.button.isEnabled = false
-            self.button.setTitle(nil, for: .normal)
-            
-            self.dayType = .none
-        }
-        else {
-            
-            let title = GCDateFormatter.stringFromDate(self.date!, withFormat: "d", andCalendar: self.viewController.calendar)
-            
-            self.button.isEnabled = true
-            self.button.setTitle(title, for: .normal)
-            
-            if self.viewController.calendar.isDateInToday(self.date!) {
-                
-                self.dayType = .current
-            }
-            else if (Date() as NSDate).earlierDate(self.date!) == self.date! {
-                
-                self.dayType = .past
-            }
-            else {
-                
-                self.dayType = .future
-            }
-            
-            self.viewController.calendar.isDate(self.date!, inSameDayAs: self.viewController.selectedDate) ? self.selected() : self.deselected()
-        }
+        self.addGestureRecognizer(self.tapGestureRecognizer)
     }
 }
 
@@ -226,23 +229,21 @@ internal extension GCCalendarDayView {
 
 internal extension GCCalendarDayView {
     
-    internal func selected() {
+    internal func highlight() {
         
-        if self.date != nil && !(self.dayType == .past && !self.viewController.pastDaysEnabled()) {
-            
-            self.viewController.selectedDayView?.deselected()
+        if self.date != nil && !(self.dayType == .past && !self.configuration.appearance.pastDaysEnabled) {
             
             self.button.backgroundColor = self.selectedBackgroundColor
             self.button.titleLabel!.font = self.selectedFont
             self.button.setTitleColor(self.selectedTextColor, for: .normal)
             
-            self.viewController.didSelectDayView(self)
+            self.configuration.dayViewSelected?(self)
             
             self.animateSelection()
         }
     }
     
-    internal func deselected() {
+    internal func unhighlight() {
         
         self.button.backgroundColor = nil
         
