@@ -27,7 +27,11 @@ public protocol GCCalendarViewDelegate: class {
     
     /// Asks the delegate to provide the font for the calendar view's weekday labels.
     ///
-    /// The default value is UIFont.systemFont(ofSize: 10).
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIFont.systemFont(ofSize: 10)`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The font for the weekday labels.
@@ -36,7 +40,11 @@ public protocol GCCalendarViewDelegate: class {
     
     /// Asks the delegate to provide the text color for the calendar view's weekday labels.
     ///
-    /// The default value is UIColor.gray.
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor.gray`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The text color for the weekday labels.
@@ -47,6 +55,8 @@ public protocol GCCalendarViewDelegate: class {
     
     /// Asks the delegate if the calendar view should enable days prior to the current date.
     ///
+    /// ---
+    ///
     /// The default value is true. If returning false, the calendar view will make past days unselectable and will only display past days for the current week or month, depending on the calendar display mode.
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
@@ -54,81 +64,149 @@ public protocol GCCalendarViewDelegate: class {
     
     func pastDaysEnabled(forCalendarView calendarView: GCCalendarView) -> Bool
     
-    /// Asks the delegate to provide the font for the calendar view's **unselected** past day views.
+    /// Asks the delegate to provide the **unselected** font for days prior to the current date.
     ///
-    /// The default value is UIFont.systemFont(ofSize: 17).
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIFont.systemFont(ofSize: 17)`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The font for unselected past day views.
+    /// - Returns: The unselected font for days prior to the current date.
     
     func pastDayViewFont(forCalendarView calendarView: GCCalendarView) -> UIFont
     
-    /// Asks the delegate to provide the text color for the calendar view's **enabled** past day views.
+    /// Asks the delegate to provide the **enabled** text color for days prior to the current date.
     ///
-    /// The default value is UIColor(white: 0.0, alpha: 0.87).
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor(white: 0.0, alpha: 0.87)`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The text color for enabled past day views.
+    /// - Returns: The enabled text color for days prior to the current date.
     
     func pastDayViewEnabledTextColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
-    /// Asks the delegate to provide the text color for the calendar view's **disabled** past day views.
+    /// Asks the delegate to provide the **disabled** text color for days prior to the current date.
     ///
-    /// The default value is UIColor.gray.
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor.gray`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The text color for disabled past day views.
+    /// - Returns: The disabled text color for days prior to the current date.
     
     func pastDayViewDisabledTextColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
-    /// Asks the delegate to provide the font for the calendar view's **selected** past day views.
+    /// Asks the delegate to provide the **selected** font for days prior to the current date.
     ///
-    /// The default value is UIFont.boldSystemFont(ofSize: 17).
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIFont.boldSystemFont(ofSize: 17)`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The font for selected past day views.
+    /// - Returns: The selected font for days prior to the current date.
     
     func pastDayViewSelectedFont(forCalendarView calendarView: GCCalendarView) -> UIFont
     
-    /// Asks the delegate to provide the text color for the calendar view's **selected** past day views.
+    /// Asks the delegate to provide the **selected** text color for days prior to the current date.
     ///
-    /// The default value is UIColor.white.
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor.white`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The text color for selected past day views.
+    /// - Returns: The selected text color for days prior to the current date.
     
     func pastDayViewSelectedTextColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
-    /// Asks the delegate to provide the background color for the calendar view's **selected** past day views.
+    /// Asks the delegate to provide the **selected** background color for days prior to the current date.
     ///
-    /// The default value is UIColor(white: 0.0, alpha: 0.87).
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor(white: 0.0, alpha: 0.87)`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The background color for selected past day views.
+    /// - Returns: The selected background color for days prior to the current date.
     
     func pastDayViewSelectedBackgroundColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
     // MARK: Current Day Views
     
-    /// Asks the delegate to provide the font for the day view representing the current day.
+    /// Asks the delegate to provide the **unselected** font for the current date.
     ///
-    /// The default value is UIFont.boldSystemFontOfSize(17)
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIFont.boldSystemFont(ofSize: 17)`
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: The specified font.
+    /// - Returns: The unselected font for the current date.
     
     func currentDayViewFont(forCalendarView calendarView: GCCalendarView) -> UIFont
     
-    /// Default value is UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
+    /// Asks the delegate to provide the **unselected** text color for the current date.
+    ///
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)`
+    ///
+    /// - Parameter calendarView: The calendar view requesting this information.
+    /// - Returns: The unselected text color for the current date.
+    
     func currentDayViewTextColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
-    /// Default value is UIFont.boldSystemFontOfSize(17)
+    /// Asks the delegate to provide the **selected** font for the current date.
+    ///
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIFont.boldSystemFont(ofSize: 17)`
+    ///
+    /// - Parameter calendarView: The calendar view requesting this information.
+    /// - Returns: The selected font for the current date.
+    
     func currentDayViewSelectedFont(forCalendarView calendarView: GCCalendarView) -> UIFont
     
-    /// Default value is UIColor.whiteColor()
+    /// Asks the delegate to provide the **selected** text color for the current date.
+    ///
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor.white`
+    ///
+    /// - Parameter calendarView: The calendar view requesting this information.
+    /// - Returns: The selected text color for the current date.
+    
     func currentDayViewSelectedTextColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
-    /// Default value is UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
+    /// Asks the delegate to provide the **selected** background color for the current date.
+    ///
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)`
+    ///
+    /// - Parameter calendarView: The calendar view requesting this information.
+    /// - Returns: The selected background color for the current date.
+    
     func currentDayViewSelectedBackgroundColor(forCalendarView calendarView: GCCalendarView) -> UIColor
     
     // MARK: Future Day Views
