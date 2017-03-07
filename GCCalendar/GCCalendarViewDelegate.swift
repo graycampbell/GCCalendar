@@ -153,11 +153,6 @@ public protocol GCCalendarViewDelegate: class {
 
 public extension GCCalendarViewDelegate {
     
-    public func calendar(forCalendarView calendarView: GCCalendarView) -> Calendar {
-        
-        return Calendar.current
-    }
-    
     // MARK: Weekday Labels
     
     public func weekdayLabelFont(forCalendarView calendarView: GCCalendarView) -> UIFont {
