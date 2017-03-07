@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum GCCalendarDayType {
+private enum GCCalendarDateType {
     
     case past, current, future, none
 }
@@ -27,10 +27,10 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var isEnabled: Bool {
         
-        return (self.date != nil && !(self.dayType == .past && !self.configuration.appearance.pastDatesEnabled))
+        return (self.date != nil && !(self.dateType == .past && !self.configuration.appearance.pastDatesEnabled))
     }
     
-    fileprivate var dayType: GCCalendarDayType = .none {
+    fileprivate var dateType: GCCalendarDateType = .none {
         
         didSet {
             
@@ -40,7 +40,7 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var font: UIFont? {
         
-        switch self.dayType {
+        switch self.dateType {
             
             case .past:
                 return self.configuration.appearance.pastDateFont
@@ -58,7 +58,7 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var textColor: UIColor? {
         
-        switch self.dayType {
+        switch self.dateType {
             
             case .past:
                 return self.configuration.appearance.pastDatesEnabled ? self.configuration.appearance.pastDateEnabledTextColor : self.configuration.appearance.pastDateDisabledTextColor
@@ -76,7 +76,7 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var selectedFont: UIFont? {
         
-        switch self.dayType {
+        switch self.dateType {
             
             case .past:
                 return self.configuration.appearance.pastDateSelectedFont
@@ -94,7 +94,7 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var selectedTextColor: UIColor? {
         
-        switch self.dayType {
+        switch self.dateType {
             
             case .past:
                 return self.configuration.appearance.pastDateSelectedTextColor
@@ -112,7 +112,7 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var selectedBackgroundColor: UIColor? {
         
-        switch self.dayType {
+        switch self.dateType {
             
             case .past:
                 return self.configuration.appearance.pastDateSelectedBackgroundColor
@@ -137,7 +137,7 @@ internal final class GCCalendarDayView: UIView {
                 self.button.isEnabled = false
                 self.button.setTitle(nil, for: .normal)
                 
-                self.dayType = .none
+                self.dateType = .none
             }
             else {
                 
@@ -148,15 +148,15 @@ internal final class GCCalendarDayView: UIView {
                 
                 if self.configuration.calendar.isDateInToday(self.date!) {
                     
-                    self.dayType = .current
+                    self.dateType = .current
                 }
                 else if (Date() as NSDate).earlierDate(self.date!) == self.date! {
                     
-                    self.dayType = .past
+                    self.dateType = .past
                 }
                 else {
                     
-                    self.dayType = .future
+                    self.dateType = .future
                 }
                 
                 self.configuration.calendar.isDate(self.date!, inSameDayAs: self.configuration.selectedDate()) ? self.highlight() : self.unhighlight()
