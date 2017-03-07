@@ -49,25 +49,7 @@ internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelega
         
         didSet {
             
-            if self.weekViews.isEmpty {
-                
-                for dates in self.dates {
-                    
-                    let weekView = GCCalendarWeekView(configuration: self.configuration)
-                    
-                    weekView.dates = dates
-                    
-                    self.addArrangedSubview(weekView)
-                    self.weekViews.append(weekView)
-                }
-            }
-            else {
-                
-                for (index, dates) in self.dates.enumerated() {
-                    
-                    self.weekViews[index].dates = dates
-                }
-            }
+            self.weekViews.isEmpty ? self.addWeekViews() : self.updateWeekViews()
         }
     }
     
@@ -98,6 +80,32 @@ internal extension GCCalendarMonthView {
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
         self.addGestureRecognizer(self.panGestureRecognizer)
+    }
+}
+
+// MARK: - Week Views
+
+fileprivate extension GCCalendarMonthView {
+    
+    fileprivate func addWeekViews() {
+        
+        for dates in self.dates {
+            
+            let weekView = GCCalendarWeekView(configuration: self.configuration)
+            
+            weekView.dates = dates
+            
+            self.addArrangedSubview(weekView)
+            self.weekViews.append(weekView)
+        }
+    }
+    
+    fileprivate func updateWeekViews() {
+        
+        self.weekViews.enumerated().forEach { index, weekView in
+            
+            weekView.dates = self.dates[index]
+        }
     }
 }
 
