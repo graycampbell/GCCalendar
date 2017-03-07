@@ -25,6 +25,11 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var tapGestureRecognizer: UITapGestureRecognizer!
     
+    fileprivate var isEnabled: Bool {
+        
+        return (self.date != nil && !(self.dayType == .past && !self.configuration.appearance.pastDatesEnabled))
+    }
+    
     fileprivate var dayType: GCCalendarDayType = .none {
         
         didSet {
@@ -231,13 +236,13 @@ internal extension GCCalendarDayView {
     
     internal func highlight() {
         
-        if self.date != nil && !(self.dayType == .past && !self.configuration.appearance.pastDatesEnabled) {
+        if self.isEnabled && self != self.configuration.selectedDayView() {
             
             self.button.backgroundColor = self.selectedBackgroundColor
             self.button.titleLabel!.font = self.selectedFont
             self.button.setTitleColor(self.selectedTextColor, for: .normal)
             
-            self.configuration.dayViewSelected?(self)
+            self.configuration.dayViewSelected(self)
             
             self.animateSelection()
         }

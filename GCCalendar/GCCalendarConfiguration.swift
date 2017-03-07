@@ -14,5 +14,6 @@ struct GCCalendarConfiguration {
     var appearance = GCCalendarAppearance()
     
     var selectedDate: (() -> Date)!
-    var dayViewSelected: ((GCCalendarDayView) -> Void)?
+    var selectedDayView: (() -> GCCalendarDayView?)!
+    var dayViewSelected: ((GCCalendarDayView) -> Void)!
 }
