@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarMonthView: UIStackView, UIGestureRecognizerDelegate {
+internal final class GCCalendarMonthView: UIStackView {
     
     // MARK: Properties
     
