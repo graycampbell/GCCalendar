@@ -15,8 +15,9 @@ internal final class GCCalendarWeekView: UIStackView {
     
     fileprivate var configuration: GCCalendarConfiguration!
     
-    fileprivate var dayViews: [GCCalendarDayView] = []
-    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
+    fileprivate var dayViews = [GCCalendarDayView]()
+    
+    internal let panGestureRecognizer = UIPanGestureRecognizer()
     
     internal var containsToday: Bool {
         
@@ -27,25 +28,7 @@ internal final class GCCalendarWeekView: UIStackView {
         
         didSet {
             
-            if self.dayViews.isEmpty {
-                
-                self.dates.forEach { date in
-                    
-                    let dayView = GCCalendarDayView(configuration: self.configuration)
-                    
-                    dayView.date = date
-                    
-                    self.addArrangedSubview(dayView)
-                    self.dayViews.append(dayView)
-                }
-            }
-            else {
-                
-                for (index, date) in self.dates.enumerated() {
-                    
-                    self.dayViews[index].date = date
-                }
-            }
+            self.dayViews.isEmpty ? self.addDayViews() : self.updateDayViews()
         }
     }
     
@@ -66,20 +49,37 @@ internal final class GCCalendarWeekView: UIStackView {
         self.distribution = .fillEqually
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.addGestureRecognizer(self.panGestureRecognizer)
     }
 }
 
-// MARK: - Pan Gesture Recognizer
+// MARK: - Day Views
 
-internal extension GCCalendarWeekView {
+fileprivate extension GCCalendarWeekView {
     
-    // MARK: Creation
+    fileprivate func addDayViews() {
+        
+        self.dates.forEach { date in
+            
+            let dayView = GCCalendarDayView(configuration: self.configuration)
+            
+            dayView.date = date
+            
+            self.addArrangedSubview(dayView)
+            self.dayViews.append(dayView)
+        }
+    }
     
-    internal func addPanGestureRecognizer(_ target: AnyObject, action: Selector) {
+    fileprivate func updateDayViews() {
         
-        self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
+        var index = 0
         
-        self.addGestureRecognizer(self.panGestureRecognizer)
+        self.dayViews.forEach { dayView in
+            
+            dayView.date = self.dates[index]
+            
+            index += 1
+        }
     }
 }
 

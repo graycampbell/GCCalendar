@@ -666,8 +666,7 @@ private extension GCCalendarView {
             let weekView = GCCalendarWeekView(configuration: self.configuration)
             
             weekView.dates = dates
-            
-            weekView.addPanGestureRecognizer(self, action: #selector(self.toggleCurrentView(_:)))
+            weekView.panGestureRecognizer.addTarget(self, action: #selector(self.toggleCurrentView(_:)))
             
             self.addSubview(weekView)
             self.weekViews.append(weekView)
