@@ -8,13 +8,18 @@
 import UIKit
 import GCCalendar
 
-class ViewController: UIViewController, GCCalendarViewDelegate {
+// MARK: Properties & Initializers
+
+class ViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: Properties
     
-    private var calendarView: GCCalendarView!
-    
-    // MARK: - View Setup
+    fileprivate var calendarView: GCCalendarView!
+}
+
+// MARK: - View
+
+extension ViewController {
     
     override func viewDidLoad() {
         
@@ -29,9 +34,13 @@ class ViewController: UIViewController, GCCalendarViewDelegate {
         
         self.addToolbar()
         self.addCalendarView()
+        self.addConstraints()
     }
-    
-    // MARK: - Toolbar
+}
+
+// MARK: - Toolbar
+
+extension ViewController {
     
     fileprivate func addToolbar() {
         
@@ -46,36 +55,50 @@ class ViewController: UIViewController, GCCalendarViewDelegate {
         
         self.calendarView.today()
     }
-    
-    // MARK: - Calendar View
+}
+
+// MARK: - Calendar View
+
+fileprivate extension ViewController {
     
     fileprivate func addCalendarView() {
         
-        self.calendarView = GCCalendarView(delegate: self, calendar: Calendar.current)
+        self.calendarView = GCCalendarView(delegate: self, calendar: .current)
         
         self.calendarView.automaticallyUpdatesDisplayMode = true
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.calendarView)
-        self.addCalendarViewConstraints()
     }
+}
+
+// MARK: - Constraints
+
+fileprivate extension ViewController {
     
-    fileprivate func addCalendarViewConstraints() {
+    fileprivate func addConstraints() {
         
-        let top = NSLayoutConstraint(item: self.calendarView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 12)
-        let width = NSLayoutConstraint(item: self.calendarView, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0)
-        let height = NSLayoutConstraint(item: self.calendarView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 325)
+        let views: [String: UIView] = ["calendarView": self.calendarView]
         
-        self.view.addConstraints([top, width, height])
+        let top = self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 12)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[calendarView(325)]", options: [], metrics: nil, views: views)
+        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[calendarView]|", options: [], metrics: nil, views: views)
+        
+        self.view.addConstraint(top)
+        self.view.addConstraints(vertical)
+        self.view.addConstraints(horizontal)
     }
-    
-    // MARK: - GCCalendarViewDelegate
+}
+
+// MARK: - GCCalendarViewDelegate
+
+extension ViewController: GCCalendarViewDelegate {
     
     func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date) {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: Locale.current)
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: .current)
         
         self.navigationItem.title = dateFormatter.string(from: date)
     }
