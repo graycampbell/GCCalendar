@@ -18,17 +18,17 @@ internal final class GCCalendarWeekView: UIView {
     fileprivate var dayViews = [GCCalendarDayView]()
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
-    internal var containsToday: Bool {
-        
-        return self.dates.contains(where: { $0 != nil && self.configuration.calendar.isDateInToday($0!) })
-    }
-    
     internal var dates: [Date?] = [] {
         
         didSet {
             
             self.dayViews.isEmpty ? self.addDayViews() : self.updateDayViews()
         }
+    }
+    
+    internal var containsToday: Bool {
+        
+        return self.dates.contains(where: { $0 != nil && self.configuration.calendar.isDateInToday($0!) })
     }
     
     // MARK: Initializers
