@@ -8,7 +8,11 @@
 import UIKit
 import GCCalendar
 
-class ViewController: GCCalendarViewController {
+class ViewController: UIViewController, GCCalendarViewDelegate {
+    
+    // MARK: - Properties
+    
+    private var calendarView: GCCalendarView!
     
     // MARK: - View Setup
     
@@ -16,16 +20,15 @@ class ViewController: GCCalendarViewController {
         
         super.viewDidLoad()
         
+        self.view.clipsToBounds = true
+        
         let tintColor = UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
         
         self.navigationController!.toolbar.tintColor = tintColor
         self.navigationController!.navigationBar.tintColor = tintColor
         
-        self.navigationController!.navigationBar.shadowImage = UIImage(named: "NavigationBarShadowImage")
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "NavigationBarBackgroundImage"), for: .default)
-        
         self.addToolbar()
-        self.addCalendarViewConstraints()
+        self.addCalendarView()
     }
     
     // MARK: - Toolbar
@@ -34,22 +37,29 @@ class ViewController: GCCalendarViewController {
         
         self.navigationController!.isToolbarHidden = false
         
-        let today = UIBarButtonItem(title: "Today", style: .plain, target: self.calendarView, action: #selector(self.calendarView.today))
+        let today = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(self.today))
         
         self.toolbarItems = [today]
+    }
+    
+    func today() {
         
-        let shadowImage = UIImage(named: "ToolbarShadowImage")
-        let backgroundImage = UIImage(named: "NavigationBarBackgroundImage")
-        
-        self.navigationController!.toolbar.setShadowImage(shadowImage, forToolbarPosition: .bottom)
-        self.navigationController!.toolbar.setBackgroundImage(backgroundImage, forToolbarPosition: .bottom, barMetrics: .default)
+        self.calendarView.today()
     }
     
     // MARK: - Calendar View
     
-    fileprivate func addCalendarViewConstraints() {
+    fileprivate func addCalendarView() {
+        
+        self.calendarView = GCCalendarView(delegate: self)
         
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(self.calendarView)
+        self.addCalendarViewConstraints()
+    }
+    
+    fileprivate func addCalendarViewConstraints() {
         
         let top = NSLayoutConstraint(item: self.calendarView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 12)
         let width = NSLayoutConstraint(item: self.calendarView, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0)
@@ -58,16 +68,14 @@ class ViewController: GCCalendarViewController {
         self.view.addConstraints([top, width, height])
     }
     
-    // MARK: - Override Functions
+    // MARK: - GCCalendarViewDelegate
     
-    override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool {
+    func shouldAutomaticallyChangeModeOnOrientationChange(forCalendarView calendarView: GCCalendarView) -> Bool {
         
         return true
     }
     
-    override func didSelectDate(_ date: Date) {
-        
-        super.didSelectDate(date)
+    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date) {
         
         let dateFormatter = DateFormatter()
         

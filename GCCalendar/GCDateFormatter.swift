@@ -31,7 +31,7 @@ internal final class GCDateFormatter: DateFormatter {
 
 internal extension GCDateFormatter {
     
-    internal class func stringFromDate(_ date: Date, withFormat format: String, andCalendar calendar: Calendar) -> String {
+    internal class func string(fromDate date: Date, withFormat format: String, andCalendar calendar: Calendar) -> String {
         
         return GCDateFormatter(dateFormat: format, calendar: calendar).string(from: date)
     }
