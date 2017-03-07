@@ -9,11 +9,11 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarMonthView: UIStackView {
+internal final class GCCalendarMonthView: UIView {
     
     // MARK: Properties
     
-    fileprivate var configuration: GCCalendarConfiguration!
+    fileprivate let configuration: GCCalendarConfiguration
     
     fileprivate var weekViews = [GCCalendarWeekView]()
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
@@ -45,7 +45,7 @@ internal final class GCCalendarMonthView: UIStackView {
         return newDates
     }
     
-    var startDate: Date! {
+    internal var startDate: Date! {
         
         didSet {
             
@@ -55,19 +55,16 @@ internal final class GCCalendarMonthView: UIStackView {
     
     // MARK: Initializers
     
-    required internal init(coder: NSCoder) {
+    required internal init?(coder aDecoder: NSCoder) {
         
-        super.init(coder: coder)
+        return nil
     }
     
     internal init(configuration: GCCalendarConfiguration) {
         
-        super.init(frame: CGRect.zero)
-        
         self.configuration = configuration
         
-        self.axis = .vertical
-        self.distribution = .fillEqually
+        super.init(frame: CGRect.zero)
     }
 }
 
@@ -89,15 +86,41 @@ fileprivate extension GCCalendarMonthView {
     
     fileprivate func addWeekViews() {
         
-        for dates in self.dates {
+        var views = [String: UIView]()
+        var verticalVisualFormat = "V:|"
+        
+        self.dates.enumerated().forEach { index, dates in
             
             let weekView = GCCalendarWeekView(configuration: self.configuration)
             
             weekView.dates = dates
+            weekView.translatesAutoresizingMaskIntoConstraints = false
             
-            self.addArrangedSubview(weekView)
+            self.addSubview(weekView)
             self.weekViews.append(weekView)
+            
+            let currentWeekView = "weekView\(index)"
+            let previousWeekView = "weekView\(index - 1)"
+            
+            views[currentWeekView] = weekView
+            
+            switch index {
+                
+                case 0:
+                    verticalVisualFormat += "[\(currentWeekView)]"
+                    
+                default:
+                    verticalVisualFormat += "[\(currentWeekView)(==\(previousWeekView))]"
+            }
+            
+            let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[\(currentWeekView)]|", options: [], metrics: nil, views: views)
+            
+            self.addConstraints(horizontal)
         }
+        
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: verticalVisualFormat + "|", options: [], metrics: nil, views: views)
+        
+        self.addConstraints(vertical)
     }
     
     fileprivate func updateWeekViews() {
