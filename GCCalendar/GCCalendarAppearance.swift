@@ -17,28 +17,28 @@ struct GCCalendarAppearance {
     
     // MARK: Past Day Views
     
-    var pastDaysEnabled: Bool = true
+    var pastDatesEnabled: Bool = true
     
-    var pastDayViewFont: UIFont!
-    var pastDayViewEnabledTextColor: UIColor!
-    var pastDayViewDisabledTextColor: UIColor!
-    var pastDayViewSelectedFont: UIFont!
-    var pastDayViewSelectedTextColor: UIColor!
-    var pastDayViewSelectedBackgroundColor: UIColor!
+    var pastDateFont: UIFont!
+    var pastDateEnabledTextColor: UIColor!
+    var pastDateDisabledTextColor: UIColor!
+    var pastDateSelectedFont: UIFont!
+    var pastDateSelectedTextColor: UIColor!
+    var pastDateSelectedBackgroundColor: UIColor!
     
     // MARK: Current Day Views
     
-    var currentDayViewFont: UIFont!
-    var currentDayViewTextColor: UIColor!
-    var currentDayViewSelectedFont: UIFont!
-    var currentDayViewSelectedTextColor: UIColor!
-    var currentDayViewSelectedBackgroundColor: UIColor!
+    var currentDateFont: UIFont!
+    var currentDateTextColor: UIColor!
+    var currentDateSelectedFont: UIFont!
+    var currentDateSelectedTextColor: UIColor!
+    var currentDateSelectedBackgroundColor: UIColor!
     
     // MARK: Future Day Views
     
-    var futureDayViewFont: UIFont!
-    var futureDayViewTextColor: UIColor!
-    var futureDayViewSelectedFont: UIFont!
-    var futureDayViewSelectedTextColor: UIColor!
-    var futureDayViewSelectedBackgroundColor: UIColor!
+    var futureDateFont: UIFont!
+    var futureDateTextColor: UIColor!
+    var futureDateSelectedFont: UIFont!
+    var futureDateSelectedTextColor: UIColor!
+    var futureDateSelectedBackgroundColor: UIColor!
 }

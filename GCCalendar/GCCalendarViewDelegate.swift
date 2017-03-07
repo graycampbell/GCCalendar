@@ -62,7 +62,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: A boolean value inidicating whether or not the calendar view should enable past dates.
     
-    func pastDaysEnabled(calendarView: GCCalendarView) -> Bool
+    func pastDatesEnabled(calendarView: GCCalendarView) -> Bool
     
     /// Asks the delegate to provide the **unselected** font for past dates.
     ///
@@ -75,7 +75,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The unselected font for past dates.
     
-    func pastDayViewFont(calendarView: GCCalendarView) -> UIFont
+    func pastDateFont(calendarView: GCCalendarView) -> UIFont
     
     /// Asks the delegate to provide the **enabled** text color for past dates.
     ///
@@ -88,7 +88,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The enabled text color for past dates.
     
-    func pastDayViewEnabledTextColor(calendarView: GCCalendarView) -> UIColor
+    func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **disabled** text color for past dates.
     ///
@@ -101,7 +101,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The disabled text color for past dates.
     
-    func pastDayViewDisabledTextColor(calendarView: GCCalendarView) -> UIColor
+    func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **selected** font for past dates.
     ///
@@ -114,7 +114,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected font for past dates.
     
-    func pastDayViewSelectedFont(calendarView: GCCalendarView) -> UIFont
+    func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont
     
     /// Asks the delegate to provide the **selected** text color for past dates.
     ///
@@ -127,7 +127,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected text color for past dates.
     
-    func pastDayViewSelectedTextColor(calendarView: GCCalendarView) -> UIColor
+    func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **selected** background color for past dates.
     ///
@@ -140,7 +140,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected background color for past dates.
     
-    func pastDayViewSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+    func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
     
     // MARK: Current Day Views
     
@@ -155,7 +155,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The unselected font for the current date.
     
-    func currentDayViewFont(calendarView: GCCalendarView) -> UIFont
+    func currentDateFont(calendarView: GCCalendarView) -> UIFont
     
     /// Asks the delegate to provide the **unselected** text color for the current date.
     ///
@@ -168,7 +168,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The unselected text color for the current date.
     
-    func currentDayViewTextColor(calendarView: GCCalendarView) -> UIColor
+    func currentDateTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **selected** font for the current date.
     ///
@@ -181,7 +181,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected font for the current date.
     
-    func currentDayViewSelectedFont(calendarView: GCCalendarView) -> UIFont
+    func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont
     
     /// Asks the delegate to provide the **selected** text color for the current date.
     ///
@@ -194,7 +194,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected text color for the current date.
     
-    func currentDayViewSelectedTextColor(calendarView: GCCalendarView) -> UIColor
+    func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **selected** background color for the current date.
     ///
@@ -207,7 +207,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected background color for the current date.
     
-    func currentDayViewSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+    func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
     
     // MARK: Future Day Views
     
@@ -222,7 +222,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The unselected font for future dates.
     
-    func futureDayViewFont(calendarView: GCCalendarView) -> UIFont
+    func futureDateFont(calendarView: GCCalendarView) -> UIFont
     
     /// Asks the delegate to provide the **unselected** text color for future dates.
     ///
@@ -235,7 +235,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The unselected text color for future dates.
     
-    func futureDayViewTextColor(calendarView: GCCalendarView) -> UIColor
+    func futureDateTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **selected** font for future dates.
     ///
@@ -248,7 +248,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected font for future dates.
     
-    func futureDayViewSelectedFont(calendarView: GCCalendarView) -> UIFont
+    func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont
     
     /// Asks the delegate to provide the **selected** text color for future dates.
     ///
@@ -261,7 +261,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected text color for future dates.
     
-    func futureDayViewSelectedTextColor(calendarView: GCCalendarView) -> UIColor
+    func futureDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
     
     /// Asks the delegate to provide the **selected** background color for future dates.
     ///
@@ -274,7 +274,7 @@ public protocol GCCalendarViewDelegate: class {
     /// - Parameter calendarView: The calendar view requesting this information.
     /// - Returns: The selected background color for future dates.
     
-    func futureDayViewSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+    func futureDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
 }
 
 // MARK: - Default Implementations
@@ -295,91 +295,91 @@ public extension GCCalendarViewDelegate {
     
     // MARK: Past Day Views
     
-    public func pastDaysEnabled(calendarView: GCCalendarView) -> Bool {
+    public func pastDatesEnabled(calendarView: GCCalendarView) -> Bool {
         
         return true
     }
     
-    public func pastDayViewFont(calendarView: GCCalendarView) -> UIFont {
+    public func pastDateFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.systemFont(ofSize: 17)
     }
     
-    public func pastDayViewEnabledTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
-    public func pastDayViewDisabledTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.gray
     }
     
-    public func pastDayViewSelectedFont(calendarView: GCCalendarView) -> UIFont {
+    public func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func pastDayViewSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.white
     }
     
-    public func pastDayViewSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
+    public func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
     // MARK: Current Day Views
     
-    public func currentDayViewFont(calendarView: GCCalendarView) -> UIFont {
+    public func currentDateFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func currentDayViewTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func currentDateTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
-    public func currentDayViewSelectedFont(calendarView: GCCalendarView) -> UIFont {
+    public func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func currentDayViewSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.white
     }
     
-    public func currentDayViewSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
+    public func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
     // MARK: Future Day Views
     
-    public func futureDayViewFont(calendarView: GCCalendarView) -> UIFont {
+    public func futureDateFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.systemFont(ofSize: 17)
     }
     
-    public func futureDayViewTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func futureDateTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
-    public func futureDayViewSelectedFont(calendarView: GCCalendarView) -> UIFont {
+    public func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func futureDayViewSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
+    public func futureDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.white
     }
     
-    public func futureDayViewSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
+    public func futureDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
