@@ -122,25 +122,25 @@ public extension GCCalendarView {
         self.configuration.appearance.weekdayLabelFont = self.delegate.weekdayLabelFont(calendarView: self)
         self.configuration.appearance.weekdayLabelTextColor = self.delegate.weekdayLabelTextColor(calendarView: self)
         
-        self.configuration.appearance.pastDaysEnabled = self.delegate.pastDaysEnabled(calendarView: self)
-        self.configuration.appearance.pastDayViewFont = self.delegate.pastDayViewFont(calendarView: self)
-        self.configuration.appearance.pastDayViewEnabledTextColor = self.delegate.pastDayViewEnabledTextColor(calendarView: self)
-        self.configuration.appearance.pastDayViewDisabledTextColor = self.delegate.pastDayViewDisabledTextColor(calendarView: self)
-        self.configuration.appearance.pastDayViewSelectedFont = self.delegate.pastDayViewSelectedFont(calendarView: self)
-        self.configuration.appearance.pastDayViewSelectedTextColor = self.delegate.pastDayViewSelectedTextColor(calendarView: self)
-        self.configuration.appearance.pastDayViewSelectedBackgroundColor = self.delegate.pastDayViewSelectedBackgroundColor(calendarView: self)
+        self.configuration.appearance.pastDatesEnabled = self.delegate.pastDatesEnabled(calendarView: self)
+        self.configuration.appearance.pastDateFont = self.delegate.pastDateFont(calendarView: self)
+        self.configuration.appearance.pastDateEnabledTextColor = self.delegate.pastDateEnabledTextColor(calendarView: self)
+        self.configuration.appearance.pastDateDisabledTextColor = self.delegate.pastDateDisabledTextColor(calendarView: self)
+        self.configuration.appearance.pastDateSelectedFont = self.delegate.pastDateSelectedFont(calendarView: self)
+        self.configuration.appearance.pastDateSelectedTextColor = self.delegate.pastDateSelectedTextColor(calendarView: self)
+        self.configuration.appearance.pastDateSelectedBackgroundColor = self.delegate.pastDateSelectedBackgroundColor(calendarView: self)
         
-        self.configuration.appearance.currentDayViewFont = self.delegate.currentDayViewFont(calendarView: self)
-        self.configuration.appearance.currentDayViewTextColor = self.delegate.currentDayViewTextColor(calendarView: self)
-        self.configuration.appearance.currentDayViewSelectedFont = self.delegate.currentDayViewSelectedFont(calendarView: self)
-        self.configuration.appearance.currentDayViewSelectedTextColor = self.delegate.currentDayViewSelectedTextColor(calendarView: self)
-        self.configuration.appearance.currentDayViewSelectedBackgroundColor = self.delegate.currentDayViewSelectedBackgroundColor(calendarView: self)
+        self.configuration.appearance.currentDateFont = self.delegate.currentDateFont(calendarView: self)
+        self.configuration.appearance.currentDateTextColor = self.delegate.currentDateTextColor(calendarView: self)
+        self.configuration.appearance.currentDateSelectedFont = self.delegate.currentDateSelectedFont(calendarView: self)
+        self.configuration.appearance.currentDateSelectedTextColor = self.delegate.currentDateSelectedTextColor(calendarView: self)
+        self.configuration.appearance.currentDateSelectedBackgroundColor = self.delegate.currentDateSelectedBackgroundColor(calendarView: self)
         
-        self.configuration.appearance.futureDayViewFont = self.delegate.futureDayViewFont(calendarView: self)
-        self.configuration.appearance.futureDayViewTextColor = self.delegate.futureDayViewTextColor(calendarView: self)
-        self.configuration.appearance.futureDayViewSelectedFont = self.delegate.futureDayViewSelectedFont(calendarView: self)
-        self.configuration.appearance.futureDayViewSelectedTextColor = self.delegate.futureDayViewSelectedTextColor(calendarView: self)
-        self.configuration.appearance.futureDayViewSelectedBackgroundColor = self.delegate.futureDayViewSelectedBackgroundColor(calendarView: self)
+        self.configuration.appearance.futureDateFont = self.delegate.futureDateFont(calendarView: self)
+        self.configuration.appearance.futureDateTextColor = self.delegate.futureDateTextColor(calendarView: self)
+        self.configuration.appearance.futureDateSelectedFont = self.delegate.futureDateSelectedFont(calendarView: self)
+        self.configuration.appearance.futureDateSelectedTextColor = self.delegate.futureDateSelectedTextColor(calendarView: self)
+        self.configuration.appearance.futureDateSelectedBackgroundColor = self.delegate.futureDateSelectedBackgroundColor(calendarView: self)
         
         self.configuration.selectedDate = {
             
@@ -446,7 +446,7 @@ public extension GCCalendarView {
     
     fileprivate var previousViewDisabled: Bool {
         
-        if !self.configuration.appearance.pastDaysEnabled {
+        if !self.configuration.appearance.pastDatesEnabled {
             
             if self.previousView.isKind(of: GCCalendarMonthView.self) {
                 
