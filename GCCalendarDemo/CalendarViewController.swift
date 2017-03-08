@@ -63,9 +63,11 @@ fileprivate extension CalendarViewController {
     
     fileprivate func addCalendarView() {
         
-        self.calendarView = GCCalendarView(delegate: self, calendar: .current)
+        self.calendarView = GCCalendarView()
         
+        self.calendarView.delegate = self
         self.calendarView.automaticallyUpdatesDisplayMode = true
+        
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(self.calendarView)

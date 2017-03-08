@@ -22,6 +22,21 @@ public protocol GCCalendarViewDelegate: class {
     
     func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
     
+    // MARK: Calendar
+    
+    /// Asks the delegate to provide the calendar for the calendar view.
+    ///
+    /// ---
+    ///
+    /// **Default Value**
+    ///
+    /// `Calendar.current`
+    ///
+    /// - Parameter calendarView: The calendar view requesting this information.
+    /// - Returns: The calendar for the calendar view.
+    
+    func calendar(calendarView: GCCalendarView) -> Calendar
+    
     // MARK: Weekday Labels
     
     /// Asks the delegate to provide the font for the calendar view's weekday labels.
@@ -279,6 +294,13 @@ public protocol GCCalendarViewDelegate: class {
 // MARK: - Default Implementations
 
 public extension GCCalendarViewDelegate {
+    
+    // MARK: Calendar
+    
+    public func calendar(calendarView: GCCalendarView) -> Calendar {
+        
+        return Calendar.current
+    }
     
     // MARK: Weekday Labels
     
