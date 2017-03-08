@@ -48,6 +48,5 @@ internal struct GCCalendarConfiguration {
     // MARK: Date Selection
     
     internal var selectedDate: (() -> Date)!
-    internal var selectedDayView: (() -> GCCalendarDayView?)!
     internal var dayViewSelected: ((GCCalendarDayView) -> Void)!
 }
