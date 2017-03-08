@@ -86,8 +86,7 @@ fileprivate extension GCCalendarMonthView {
     
     fileprivate func addWeekViews() {
         
-        var views = [String: UIView]()
-        var verticalVisualFormat = "V:|"
+        var previousViewAnchor: NSLayoutAnchor = self.topAnchor
         
         self.dates.enumerated().forEach { index, dates in
             
@@ -99,28 +98,19 @@ fileprivate extension GCCalendarMonthView {
             self.addSubview(weekView)
             self.weekViews.append(weekView)
             
-            let currentWeekView = "weekView\(index)"
-            let previousWeekView = "weekView\(index - 1)"
+            weekView.topAnchor.constraint(equalTo: previousViewAnchor).isActive = true
+            weekView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+            weekView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
             
-            views[currentWeekView] = weekView
-            
-            switch index {
+            if index > 0 {
                 
-                case 0:
-                    verticalVisualFormat += "[\(currentWeekView)]"
-                    
-                default:
-                    verticalVisualFormat += "[\(currentWeekView)(==\(previousWeekView))]"
+                weekView.heightAnchor.constraint(equalTo: self.weekViews[index - 1].heightAnchor).isActive = true
             }
             
-            let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[\(currentWeekView)]|", options: [], metrics: nil, views: views)
-            
-            self.addConstraints(horizontal)
+            previousViewAnchor = weekView.bottomAnchor
         }
         
-        let vertical = NSLayoutConstraint.constraints(withVisualFormat: verticalVisualFormat + "|", options: [], metrics: nil, views: views)
-        
-        self.addConstraints(vertical)
+        previousViewAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     fileprivate func updateWeekViews() {

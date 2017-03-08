@@ -223,12 +223,10 @@ fileprivate extension GCCalendarDayView {
     
     fileprivate func addConstraints() {
         
-        let width = self.button.widthAnchor.constraint(equalToConstant: self.buttonDimension)
-        let height = self.button.heightAnchor.constraint(equalToConstant: self.buttonDimension)
-        let centerX = self.button.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        let centerY = self.button.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        
-        self.addConstraints([width, height, centerX, centerY])
+        self.button.widthAnchor.constraint(equalToConstant: self.buttonDimension).isActive = true
+        self.button.heightAnchor.constraint(equalToConstant: self.buttonDimension).isActive = true
+        self.button.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        self.button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }
 

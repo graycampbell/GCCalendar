@@ -78,15 +78,10 @@ fileprivate extension CalendarViewController {
     
     fileprivate func addConstraints() {
         
-        let views: [String: UIView] = ["calendarView": self.calendarView]
-        
-        let top = self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 12)
-        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:[calendarView(325)]", options: [], metrics: nil, views: views)
-        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:|[calendarView]|", options: [], metrics: nil, views: views)
-        
-        self.view.addConstraint(top)
-        self.view.addConstraints(vertical)
-        self.view.addConstraints(horizontal)
+        self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 12).isActive = true
+        self.calendarView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        self.calendarView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.calendarView.heightAnchor.constraint(equalToConstant: 325).isActive = true
     }
 }
 
