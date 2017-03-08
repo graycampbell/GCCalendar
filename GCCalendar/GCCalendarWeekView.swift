@@ -41,7 +41,7 @@ internal final class GCCalendarWeekView: UIStackView {
     
     // MARK: Initializers
     
-    required init(coder: NSCoder) {
+    required internal init(coder: NSCoder) {
         
         super.init(coder: coder)
     }
@@ -94,7 +94,7 @@ internal extension GCCalendarWeekView {
     }
 }
 
-// MARK: - Highlight
+// MARK: - Selected Date
 
 internal extension GCCalendarWeekView {
     

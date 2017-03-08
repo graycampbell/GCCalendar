@@ -84,7 +84,7 @@ public final class GCCalendarView: UIView {
         super.init(frame: CGRect.zero)
         
         self.setConfiguration(calendar: calendar)
-
+        
         self.addHeaderView()
     }
 }
@@ -110,7 +110,7 @@ public extension GCCalendarView {
 
 // MARK: - Configuration
 
-public extension GCCalendarView {
+fileprivate extension GCCalendarView {
     
     fileprivate func setConfiguration(calendar: Calendar) {
         
@@ -173,9 +173,9 @@ internal extension GCCalendarView {
 
 // MARK: - Header View
 
-private extension GCCalendarView {
+fileprivate extension GCCalendarView {
     
-    func addHeaderView() {
+    fileprivate func addHeaderView() {
         
         self.headerView.axis = .horizontal
         self.headerView.distribution = .fillEqually
@@ -201,7 +201,7 @@ private extension GCCalendarView {
     
     // MARK: Constraints
     
-    func addHeaderViewConstraints() {
+    fileprivate func addHeaderViewConstraints() {
         
         self.headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.headerView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true

@@ -2,8 +2,7 @@
 //  GCCalendarViewDelegate.swift
 //  GCCalendar
 //
-//  Created by MacBook Pro on 3/4/17.
-//  Copyright © 2017 Gray Campbell. All rights reserved.
+//  Created by Gray Campbell on 3/4/17.
 //
 
 import UIKit

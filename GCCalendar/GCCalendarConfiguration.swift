@@ -2,18 +2,17 @@
 //  GCCalendarConfiguration.swift
 //  GCCalendar
 //
-//  Created by MacBook Pro on 3/6/17.
-//  Copyright © 2017 Gray Campbell. All rights reserved.
+//  Created by Gray Campbell on 3/6/17.
 //
 
 import UIKit
 
-struct GCCalendarConfiguration {
+internal struct GCCalendarConfiguration {
     
-    var calendar: Calendar!
-    var appearance = GCCalendarAppearance()
+    internal var calendar: Calendar!
+    internal var appearance = GCCalendarAppearance()
     
-    var selectedDate: (() -> Date)!
-    var selectedDayView: (() -> GCCalendarDayView?)!
-    var dayViewSelected: ((GCCalendarDayView) -> Void)!
+    internal var selectedDate: (() -> Date)!
+    internal var selectedDayView: (() -> GCCalendarDayView?)!
+    internal var dayViewSelected: ((GCCalendarDayView) -> Void)!
 }
