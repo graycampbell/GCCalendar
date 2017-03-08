@@ -96,11 +96,9 @@ public final class GCCalendarView: UIView {
         self.clipsToBounds = true
     }
     
-    public init() {
+    public convenience init() {
         
-        super.init(frame: CGRect.zero)
-        
-        self.clipsToBounds = true
+        self.init(frame: CGRect.zero)
     }
 }
 
