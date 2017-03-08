@@ -38,6 +38,18 @@ internal final class GCCalendarDayView: UIView {
         }
     }
     
+    fileprivate var title: String? {
+        
+        switch self.dateType {
+            
+            case .none:
+                return nil
+            
+            default:
+                return GCDateFormatter.string(fromDate: self.date!, withFormat: "d", andCalendar: self.configuration.calendar)
+        }
+    }
+    
     fileprivate var font: UIFont? {
         
         switch self.dateType {
@@ -132,25 +144,13 @@ internal final class GCCalendarDayView: UIView {
         
         didSet {
             
-            if self.date == nil {
+            if let newDate = self.date {
                 
-                self.button.isEnabled = false
-                self.button.setTitle(nil, for: .normal)
-                
-                self.dateType = .none
-            }
-            else {
-                
-                let title = GCDateFormatter.string(fromDate: self.date!, withFormat: "d", andCalendar: self.configuration.calendar)
-                
-                self.button.isEnabled = true
-                self.button.setTitle(title, for: .normal)
-                
-                if self.configuration.calendar.isDateInToday(self.date!) {
+                if self.configuration.calendar.isDateInToday(newDate) {
                     
                     self.dateType = .current
                 }
-                else if (Date() as NSDate).earlierDate(self.date!) == self.date! {
+                else if (Date() as NSDate).earlierDate(newDate) == newDate {
                     
                     self.dateType = .past
                 }
@@ -158,8 +158,10 @@ internal final class GCCalendarDayView: UIView {
                     
                     self.dateType = .future
                 }
+            }
+            else {
                 
-                self.configuration.calendar.isDate(self.date!, inSameDayAs: self.configuration.selectedDate()) ? self.highlight() : self.unhighlight()
+                self.dateType = .none
             }
         }
     }
@@ -212,8 +214,27 @@ fileprivate extension GCCalendarDayView {
     
     fileprivate func formatButton() {
         
-        self.button.titleLabel!.font = self.font
+        self.button.setTitle(self.title, for: .normal)
         self.button.setTitleColor(self.textColor, for: .normal)
+        self.button.titleLabel!.font = self.font
+        
+        switch self.dateType {
+            
+            case .none:
+                self.button.isEnabled = false
+            
+            default:
+                self.button.isEnabled = true
+            
+                if self.configuration.calendar.isDate(self.date!, inSameDayAs: self.configuration.selectedDate()) {
+                    
+                    self.highlight()
+                }
+                else {
+                    
+                    self.unhighlight()
+                }
+        }
     }
 }
 
