@@ -25,8 +25,6 @@ extension CalendarViewController {
         
         super.viewDidLoad()
         
-        self.view.clipsToBounds = true
-        
         let tintColor = UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
         
         self.navigationController!.toolbar.tintColor = tintColor
