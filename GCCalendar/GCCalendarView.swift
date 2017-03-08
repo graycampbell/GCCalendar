@@ -36,6 +36,8 @@ public final class GCCalendarView: UIView {
         return (self.configuration != nil && self.displayMode != nil)
     }
     
+    /// The object that acts as the delegate of the calendar view.
+    
     public var delegate: GCCalendarViewDelegate! {
         
         didSet {
@@ -49,6 +51,8 @@ public final class GCCalendarView: UIView {
         }
     }
     
+    /// The display mode for the calendar.
+    
     public var displayMode: GCCalendarDisplayMode! {
         
         didSet {
@@ -59,6 +63,12 @@ public final class GCCalendarView: UIView {
             }
         }
     }
+    
+    /// A Boolean value that determines whether the calendar view automatically updates its display mode when the device orientation changes.
+    ///
+    /// ---
+    ///
+    /// The default value is false. If set to true, the calendar view will automatically update its display mode when the device orientation changes, displaying month views in portrait mode and week views in landscape mode.
     
     public var automaticallyUpdatesDisplayMode: Bool = false {
         
@@ -811,7 +821,7 @@ fileprivate extension GCCalendarView {
 
 public extension GCCalendarView {
     
-    /// Tells the calendar view to select the current day, updating the currently visible week view or month view if necessary.
+    /// Tells the calendar view to select the current date, updating any visible week views or month views if necessary.
     
     public func today() {
         

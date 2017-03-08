@@ -74,7 +74,7 @@ public protocol GCCalendarViewDelegate: class {
     /// The default value is true. If returning false, the calendar view will make past dates unselectable and will only display past dates for the current week or month, depending on the calendar display mode.
     ///
     /// - Parameter calendarView: The calendar view requesting this information.
-    /// - Returns: A boolean value inidicating whether or not the calendar view should enable past dates.
+    /// - Returns: A Boolean value inidicating whether or not the calendar view should enable past dates.
     
     func pastDatesEnabled(calendarView: GCCalendarView) -> Bool
     
