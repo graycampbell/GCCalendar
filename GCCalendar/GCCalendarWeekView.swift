@@ -31,7 +31,12 @@ internal final class GCCalendarWeekView: UIStackView {
     
     internal var containsToday: Bool {
         
-        return self.dates.contains(where: { $0 != nil && self.configuration.calendar.isDateInToday($0!) })
+        return self.dates.contains(where: { possibleDate in
+            
+            guard let date = possibleDate else { return false }
+            
+            return self.configuration.calendar.isDate(date, equalTo: Date(), toGranularity: .weekOfYear)
+        })
     }
     
     // MARK: Initializers
@@ -89,11 +94,27 @@ internal extension GCCalendarWeekView {
     }
 }
 
-// MARK: - Selected Date
+// MARK: - Highlight
 
 internal extension GCCalendarWeekView {
     
-    internal func setSelectedDate(weekday: Int) {
+    internal func setSelectedDate(currentSelectedDate: Date) {
+        
+        let dateComponents: DateComponents
+        
+        if self.containsToday {
+            
+            dateComponents = self.configuration.calendar.dateComponents([.weekday], from: Date())
+        }
+        else {
+            
+            dateComponents = self.configuration.calendar.dateComponents([.weekday], from: currentSelectedDate)
+        }
+        
+        self.highlight(weekday: dateComponents.weekday!)
+    }
+    
+    internal func highlight(weekday: Int) {
         
         self.dayViews[weekday - 1].highlight()
     }
