@@ -52,8 +52,7 @@ fileprivate extension GCCalendarWeekView {
     
     fileprivate func addDayViews() {
         
-        var views = [String: UIView]()
-        var horizontalVisualFormat = "H:|"
+        var previousViewAnchor: NSLayoutAnchor = self.leftAnchor
         
         self.dates.enumerated().forEach { index, date in
             
@@ -65,28 +64,25 @@ fileprivate extension GCCalendarWeekView {
             self.addSubview(dayView)
             self.dayViews.append(dayView)
             
-            let currentDayView = "dayView\(index)"
-            let previousDayView = "dayView\(index - 1)"
+            let top = dayView.topAnchor.constraint(equalTo: self.topAnchor)
+            let bottom = dayView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            let left = dayView.leftAnchor.constraint(equalTo: previousViewAnchor)
             
-            views[currentDayView] = dayView
+            self.addConstraints([top, bottom, left])
             
-            switch index {
+            if index > 0 {
                 
-                case 0:
-                    horizontalVisualFormat += "[\(currentDayView)]"
-                    
-                default:
-                    horizontalVisualFormat += "[\(currentDayView)(==\(previousDayView))]"
+                let width = dayView.widthAnchor.constraint(equalTo: self.dayViews[index - 1].widthAnchor)
+                
+                self.addConstraint(width)
             }
             
-            let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(currentDayView)]|", options: [], metrics: nil, views: views)
-            
-            self.addConstraints(vertical)
+            previousViewAnchor = dayView.rightAnchor
         }
         
-        let horizontal = NSLayoutConstraint.constraints(withVisualFormat: horizontalVisualFormat + "|", options: [], metrics: nil, views: views)
+        let right = previousViewAnchor.constraint(equalTo: self.rightAnchor)
         
-        self.addConstraints(horizontal)
+        self.addConstraint(right)
     }
     
     fileprivate func updateDayViews() {
