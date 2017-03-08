@@ -79,6 +79,29 @@ public final class GCCalendarView: UIView {
             }
         }
     }
+    
+    // MARK: Initializers
+    
+    public required init?(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)
+        
+        self.clipsToBounds = true
+    }
+    
+    public override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        
+        self.clipsToBounds = true
+    }
+    
+    public init() {
+        
+        super.init(frame: CGRect.zero)
+        
+        self.clipsToBounds = true
+    }
 }
 
 // MARK: - Layout
