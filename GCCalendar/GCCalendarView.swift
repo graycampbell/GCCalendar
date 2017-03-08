@@ -24,7 +24,7 @@ public final class GCCalendarView: UIView {
     fileprivate var selectedDate = Date()
     fileprivate var selectedDayView: GCCalendarDayView? = nil
     
-    fileprivate var headerView = UIView()
+    fileprivate var headerView = UIStackView()
     fileprivate var weekViews: [GCCalendarWeekView] = []
     fileprivate var monthViews: [GCCalendarMonthView] = []
     
@@ -177,7 +177,8 @@ private extension GCCalendarView {
     
     func addHeaderView() {
         
-        var previousViewAnchor: NSLayoutAnchor = self.headerView.leftAnchor
+        self.headerView.axis = .horizontal
+        self.headerView.distribution = .fillEqually
         
         self.configuration.calendar.veryShortWeekdaySymbols.enumerated().forEach { index, weekdaySymbol in
             
@@ -189,23 +190,8 @@ private extension GCCalendarView {
             weekdayLabel.font = self.configuration.appearance.weekdayLabelFont
             weekdayLabel.textColor = self.configuration.appearance.weekdayLabelTextColor
             
-            weekdayLabel.translatesAutoresizingMaskIntoConstraints = false
-            
-            self.headerView.addSubview(weekdayLabel)
-            
-            weekdayLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor).isActive = true
-            weekdayLabel.bottomAnchor.constraint(equalTo: self.headerView.bottomAnchor).isActive = true
-            weekdayLabel.leftAnchor.constraint(equalTo: previousViewAnchor).isActive = true
-            
-            if index > 0 {
-                
-                weekdayLabel.widthAnchor.constraint(equalTo: self.headerView.subviews[index - 1].widthAnchor).isActive = true
-            }
-            
-            previousViewAnchor = weekdayLabel.rightAnchor
+            self.headerView.addArrangedSubview(weekdayLabel)
         }
-        
-        previousViewAnchor.constraint(equalTo: self.headerView.rightAnchor).isActive = true
         
         self.headerView.translatesAutoresizingMaskIntoConstraints = false
         

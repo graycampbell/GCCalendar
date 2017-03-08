@@ -9,14 +9,17 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarMonthView: UIView {
+internal final class GCCalendarMonthView: UIStackView {
     
     // MARK: Properties
     
-    fileprivate let configuration: GCCalendarConfiguration
-    
-    fileprivate var weekViews = [GCCalendarWeekView]()
+    fileprivate var configuration: GCCalendarConfiguration!
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
+    
+    fileprivate var weekViews: [GCCalendarWeekView] {
+        
+        return self.arrangedSubviews as! [GCCalendarWeekView]
+    }
     
     fileprivate var dates: [[Date?]] {
         
@@ -44,7 +47,7 @@ internal final class GCCalendarMonthView: UIView {
         
         didSet {
             
-            self.weekViews.isEmpty ? self.addWeekViews() : self.updateWeekViews()
+            self.arrangedSubviews.isEmpty ? self.addWeekViews() : self.updateWeekViews()
         }
     }
     
@@ -55,16 +58,19 @@ internal final class GCCalendarMonthView: UIView {
     
     // MARK: Initializers
     
-    required internal init?(coder aDecoder: NSCoder) {
+    required init(coder: NSCoder) {
         
-        return nil
+        super.init(coder: coder)
     }
     
     internal init(configuration: GCCalendarConfiguration) {
         
+        super.init(frame: CGRect.zero)
+        
         self.configuration = configuration
         
-        super.init(frame: CGRect.zero)
+        self.axis = .vertical
+        self.distribution = .fillEqually
     }
 }
 
@@ -86,31 +92,14 @@ fileprivate extension GCCalendarMonthView {
     
     fileprivate func addWeekViews() {
         
-        var previousViewAnchor: NSLayoutAnchor = self.topAnchor
-        
-        self.dates.enumerated().forEach { index, dates in
+        self.dates.forEach { dates in
             
             let weekView = GCCalendarWeekView(configuration: self.configuration)
             
             weekView.dates = dates
-            weekView.translatesAutoresizingMaskIntoConstraints = false
             
-            self.addSubview(weekView)
-            self.weekViews.append(weekView)
-            
-            weekView.topAnchor.constraint(equalTo: previousViewAnchor).isActive = true
-            weekView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-            weekView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-            
-            if index > 0 {
-                
-                weekView.heightAnchor.constraint(equalTo: self.weekViews[index - 1].heightAnchor).isActive = true
-            }
-            
-            previousViewAnchor = weekView.bottomAnchor
+            self.addArrangedSubview(weekView)
         }
-        
-        previousViewAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
     fileprivate func updateWeekViews() {
