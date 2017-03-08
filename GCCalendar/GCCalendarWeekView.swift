@@ -9,14 +9,17 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarWeekView: UIView {
+internal final class GCCalendarWeekView: UIStackView {
     
     // MARK: Properties
     
-    fileprivate let configuration: GCCalendarConfiguration
-    
-    fileprivate var dayViews = [GCCalendarDayView]()
+    fileprivate var configuration: GCCalendarConfiguration!
     fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
+    
+    fileprivate var dayViews: [GCCalendarDayView] {
+        
+        return self.arrangedSubviews as! [GCCalendarDayView]
+    }
     
     internal var dates: [Date?] = [] {
         
@@ -33,16 +36,19 @@ internal final class GCCalendarWeekView: UIView {
     
     // MARK: Initializers
     
-    required init?(coder aDecoder: NSCoder) {
+    required init(coder: NSCoder) {
         
-        return nil
+        super.init(coder: coder)
     }
     
     internal init(configuration: GCCalendarConfiguration) {
         
+        super.init(frame: CGRect.zero)
+        
         self.configuration = configuration
         
-        super.init(frame: CGRect.zero)
+        self.axis = .horizontal
+        self.distribution = .fillEqually
     }
 }
 
@@ -52,31 +58,14 @@ fileprivate extension GCCalendarWeekView {
     
     fileprivate func addDayViews() {
         
-        var previousViewAnchor: NSLayoutAnchor = self.leftAnchor
-        
-        self.dates.enumerated().forEach { index, date in
+        self.dates.forEach { date in
             
             let dayView = GCCalendarDayView(configuration: self.configuration)
             
             dayView.date = date
-            dayView.translatesAutoresizingMaskIntoConstraints = false
             
-            self.addSubview(dayView)
-            self.dayViews.append(dayView)
-            
-            dayView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            dayView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-            dayView.leftAnchor.constraint(equalTo: previousViewAnchor).isActive = true
-            
-            if index > 0 {
-                
-                dayView.widthAnchor.constraint(equalTo: self.dayViews[index - 1].widthAnchor).isActive = true
-            }
-            
-            previousViewAnchor = dayView.rightAnchor
+            self.addArrangedSubview(dayView)
         }
-        
-        previousViewAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
     
     fileprivate func updateDayViews() {
