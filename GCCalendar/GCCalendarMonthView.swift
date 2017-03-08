@@ -117,12 +117,11 @@ internal extension GCCalendarMonthView {
     
     internal func setSelectedDate() {
         
-        let selectedDate: Date = self.containsToday ? Date() : self.startDate
-        
-        let selectedDateComponents = self.configuration.calendar.dateComponents([.weekOfMonth, .weekday], from: selectedDate)
+        let selectedDate = self.containsToday ? Date() : self.startDate
+        let selectedDateComponents = self.configuration.calendar.dateComponents([.weekOfMonth, .weekday], from: selectedDate!)
         
         let weekView = self.weekViews[selectedDateComponents.weekOfMonth! - 1]
         
-        weekView.setSelectedDate(weekday: selectedDateComponents.weekday!)
+        weekView.highlight(weekday: selectedDateComponents.weekday!)
     }
 }
