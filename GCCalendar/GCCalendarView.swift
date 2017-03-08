@@ -158,7 +158,6 @@ fileprivate extension GCCalendarView {
         self.configuration.futureDateSelectedBackgroundColor = self.delegate.futureDateSelectedBackgroundColor(calendarView: self)
         
         self.configuration.selectedDate = { return self.selectedDate }
-        self.configuration.selectedDayView = { return self.selectedDayView }
         
         self.configuration.dayViewSelected = { dayView in
             

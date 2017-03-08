@@ -7,12 +7,14 @@
 
 import UIKit
 
+// MARK: Enumerables
+
 fileprivate enum GCCalendarDateType {
     
     case past, current, future, none
 }
 
-// MARK: Properties & Initializers
+// MARK: - Properties & Initializers
 
 internal final class GCCalendarDayView: UIView {
     
@@ -24,11 +26,6 @@ internal final class GCCalendarDayView: UIView {
     fileprivate let buttonDimension: CGFloat = 35
     
     fileprivate let tapGestureRecognizer = UITapGestureRecognizer()
-    
-    fileprivate var isEnabled: Bool {
-        
-        return (self.date != nil && !(self.dateType == .past && !self.configuration.pastDatesEnabled))
-    }
     
     fileprivate var dateType: GCCalendarDateType = .none {
         
@@ -150,7 +147,7 @@ internal final class GCCalendarDayView: UIView {
                     
                     self.dateType = .current
                 }
-                else if (Date() as NSDate).earlierDate(newDate) == newDate {
+                else if newDate < Date() {
                     
                     self.dateType = .past
                 }
@@ -221,10 +218,10 @@ fileprivate extension GCCalendarDayView {
         switch self.dateType {
             
             case .none:
-                self.button.isEnabled = false
+                self.isUserInteractionEnabled = false
             
             default:
-                self.button.isEnabled = true
+                self.isUserInteractionEnabled = true
             
                 if self.configuration.calendar.isDate(self.date!, inSameDayAs: self.configuration.selectedDate()) {
                     
@@ -257,7 +254,9 @@ internal extension GCCalendarDayView {
     
     internal func highlight() {
         
-        if self.isEnabled && self != self.configuration.selectedDayView() {
+        if !(self.dateType == .past && !self.configuration.pastDatesEnabled) {
+            
+            self.isUserInteractionEnabled = false
             
             self.button.backgroundColor = self.selectedBackgroundColor
             self.button.titleLabel!.font = self.selectedFont
@@ -275,6 +274,8 @@ internal extension GCCalendarDayView {
         
         self.button.titleLabel!.font = self.font
         self.button.setTitleColor(self.textColor, for: .normal)
+        
+        self.isUserInteractionEnabled = true
     }
 }
 
