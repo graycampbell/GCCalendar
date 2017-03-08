@@ -7,19 +7,20 @@
 
 import UIKit
 
+// MARK: Enumerables
+
 public enum GCCalendarDisplayMode {
     
     case week, month
 }
 
-// MARK: Properties & Initializers
+// MARK: - Properties & Initializers
 
 public final class GCCalendarView: UIView {
     
     // MARK: Properties
     
-    fileprivate let delegate: GCCalendarViewDelegate
-    fileprivate var configuration = GCCalendarConfiguration()
+    fileprivate var configuration: GCCalendarConfiguration!
     
     fileprivate var selectedDate = Date()
     fileprivate var selectedDayView: GCCalendarDayView? = nil
@@ -30,22 +31,31 @@ public final class GCCalendarView: UIView {
     
     fileprivate var panGestureStartLocation: CGFloat!
     
+    fileprivate var isProperlyConfigured: Bool {
+        
+        return (self.configuration != nil && self.displayMode != nil)
+    }
+    
+    public var delegate: GCCalendarViewDelegate! {
+        
+        didSet {
+            
+            self.updateConfiguration()
+            
+            if self.displayMode != nil {
+                
+                self.reloadCalendarView()
+            }
+        }
+    }
+    
     public var displayMode: GCCalendarDisplayMode! {
         
         didSet {
             
-            if self.displayMode != oldValue {
+            if self.configuration != nil && self.displayMode != oldValue {
                 
-                switch self.displayMode! {
-                    
-                    case .week:
-                        self.removeMonthViews()
-                        self.addWeekViews()
-                        
-                    case .month:
-                        self.removeWeekViews()
-                        self.addMonthViews()
-                }
+                self.reloadCalendarView()
             }
         }
     }
@@ -69,24 +79,6 @@ public final class GCCalendarView: UIView {
             }
         }
     }
-    
-    // MARK: Initializers
-    
-    required public init?(coder aDecoder: NSCoder) {
-        
-        return nil
-    }
-    
-    public init(delegate: GCCalendarViewDelegate, calendar: Calendar) {
-        
-        self.delegate = delegate
-        
-        super.init(frame: CGRect.zero)
-        
-        self.setConfiguration(calendar: calendar)
-        
-        self.addHeaderView()
-    }
 }
 
 // MARK: - Layout
@@ -97,7 +89,10 @@ public extension GCCalendarView {
         
         super.layoutSubviews()
         
-        self.resetLayout()
+        if self.isProperlyConfigured {
+            
+            self.resetLayout()
+        }
     }
     
     fileprivate func resetLayout() {
@@ -112,32 +107,34 @@ public extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func setConfiguration(calendar: Calendar) {
+    fileprivate func updateConfiguration() {
         
-        self.configuration.calendar = calendar
+        self.configuration = GCCalendarConfiguration()
         
-        self.configuration.appearance.weekdayLabelFont = self.delegate.weekdayLabelFont(calendarView: self)
-        self.configuration.appearance.weekdayLabelTextColor = self.delegate.weekdayLabelTextColor(calendarView: self)
+        self.configuration.calendar = self.delegate.calendar(calendarView: self)
         
-        self.configuration.appearance.pastDatesEnabled = self.delegate.pastDatesEnabled(calendarView: self)
-        self.configuration.appearance.pastDateFont = self.delegate.pastDateFont(calendarView: self)
-        self.configuration.appearance.pastDateEnabledTextColor = self.delegate.pastDateEnabledTextColor(calendarView: self)
-        self.configuration.appearance.pastDateDisabledTextColor = self.delegate.pastDateDisabledTextColor(calendarView: self)
-        self.configuration.appearance.pastDateSelectedFont = self.delegate.pastDateSelectedFont(calendarView: self)
-        self.configuration.appearance.pastDateSelectedTextColor = self.delegate.pastDateSelectedTextColor(calendarView: self)
-        self.configuration.appearance.pastDateSelectedBackgroundColor = self.delegate.pastDateSelectedBackgroundColor(calendarView: self)
+        self.configuration.weekdayLabelFont = self.delegate.weekdayLabelFont(calendarView: self)
+        self.configuration.weekdayLabelTextColor = self.delegate.weekdayLabelTextColor(calendarView: self)
         
-        self.configuration.appearance.currentDateFont = self.delegate.currentDateFont(calendarView: self)
-        self.configuration.appearance.currentDateTextColor = self.delegate.currentDateTextColor(calendarView: self)
-        self.configuration.appearance.currentDateSelectedFont = self.delegate.currentDateSelectedFont(calendarView: self)
-        self.configuration.appearance.currentDateSelectedTextColor = self.delegate.currentDateSelectedTextColor(calendarView: self)
-        self.configuration.appearance.currentDateSelectedBackgroundColor = self.delegate.currentDateSelectedBackgroundColor(calendarView: self)
+        self.configuration.pastDatesEnabled = self.delegate.pastDatesEnabled(calendarView: self)
+        self.configuration.pastDateFont = self.delegate.pastDateFont(calendarView: self)
+        self.configuration.pastDateEnabledTextColor = self.delegate.pastDateEnabledTextColor(calendarView: self)
+        self.configuration.pastDateDisabledTextColor = self.delegate.pastDateDisabledTextColor(calendarView: self)
+        self.configuration.pastDateSelectedFont = self.delegate.pastDateSelectedFont(calendarView: self)
+        self.configuration.pastDateSelectedTextColor = self.delegate.pastDateSelectedTextColor(calendarView: self)
+        self.configuration.pastDateSelectedBackgroundColor = self.delegate.pastDateSelectedBackgroundColor(calendarView: self)
         
-        self.configuration.appearance.futureDateFont = self.delegate.futureDateFont(calendarView: self)
-        self.configuration.appearance.futureDateTextColor = self.delegate.futureDateTextColor(calendarView: self)
-        self.configuration.appearance.futureDateSelectedFont = self.delegate.futureDateSelectedFont(calendarView: self)
-        self.configuration.appearance.futureDateSelectedTextColor = self.delegate.futureDateSelectedTextColor(calendarView: self)
-        self.configuration.appearance.futureDateSelectedBackgroundColor = self.delegate.futureDateSelectedBackgroundColor(calendarView: self)
+        self.configuration.currentDateFont = self.delegate.currentDateFont(calendarView: self)
+        self.configuration.currentDateTextColor = self.delegate.currentDateTextColor(calendarView: self)
+        self.configuration.currentDateSelectedFont = self.delegate.currentDateSelectedFont(calendarView: self)
+        self.configuration.currentDateSelectedTextColor = self.delegate.currentDateSelectedTextColor(calendarView: self)
+        self.configuration.currentDateSelectedBackgroundColor = self.delegate.currentDateSelectedBackgroundColor(calendarView: self)
+        
+        self.configuration.futureDateFont = self.delegate.futureDateFont(calendarView: self)
+        self.configuration.futureDateTextColor = self.delegate.futureDateTextColor(calendarView: self)
+        self.configuration.futureDateSelectedFont = self.delegate.futureDateSelectedFont(calendarView: self)
+        self.configuration.futureDateSelectedTextColor = self.delegate.futureDateSelectedTextColor(calendarView: self)
+        self.configuration.futureDateSelectedBackgroundColor = self.delegate.futureDateSelectedBackgroundColor(calendarView: self)
         
         self.configuration.selectedDate = { return self.selectedDate }
         self.configuration.selectedDayView = { return self.selectedDayView }
@@ -171,11 +168,36 @@ internal extension GCCalendarView {
     }
 }
 
+// MARK: - Reload Calendar View
+
+fileprivate extension GCCalendarView {
+    
+    fileprivate func reloadCalendarView() {
+        
+        self.removeHeaderView()
+        self.addHeaderView()
+        
+        self.removeWeekViews()
+        self.removeMonthViews()
+        
+        switch self.displayMode! {
+            
+            case .week:
+                self.addWeekViews()
+                
+            case .month:
+                self.addMonthViews()
+        }
+    }
+}
+
 // MARK: - Header View
 
 fileprivate extension GCCalendarView {
     
     fileprivate func addHeaderView() {
+        
+        self.headerView = UIStackView()
         
         self.headerView.axis = .horizontal
         self.headerView.distribution = .fillEqually
@@ -187,8 +209,8 @@ fileprivate extension GCCalendarView {
             weekdayLabel.text = weekdaySymbol
             weekdayLabel.textAlignment = .center
             
-            weekdayLabel.font = self.configuration.appearance.weekdayLabelFont
-            weekdayLabel.textColor = self.configuration.appearance.weekdayLabelTextColor
+            weekdayLabel.font = self.configuration.weekdayLabelFont
+            weekdayLabel.textColor = self.configuration.weekdayLabelTextColor
             
             self.headerView.addArrangedSubview(weekdayLabel)
         }
@@ -197,6 +219,11 @@ fileprivate extension GCCalendarView {
         
         self.addSubview(self.headerView)
         self.addHeaderViewConstraints()
+    }
+    
+    fileprivate func removeHeaderView() {
+        
+        self.headerView.removeFromSuperview()
     }
     
     // MARK: Constraints
@@ -216,7 +243,7 @@ internal extension GCCalendarView {
     
     fileprivate var previousViewDisabled: Bool {
         
-        if !self.configuration.appearance.pastDatesEnabled {
+        if !self.configuration.pastDatesEnabled {
             
             if self.previousView.isKind(of: GCCalendarMonthView.self) {
                 
@@ -768,13 +795,16 @@ public extension GCCalendarView {
     
     public func today() {
         
-        switch self.displayMode! {
+        if self.isProperlyConfigured {
             
-            case .week:
-                self.findTodayInWeekViews()
+            switch self.displayMode! {
                 
-            case .month:
-                self.findTodayInMonthViews()
+                case .week:
+                    self.findTodayInWeekViews()
+                    
+                case .month:
+                    self.findTodayInMonthViews()
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ internal final class GCCalendarDayView: UIView {
     
     fileprivate var isEnabled: Bool {
         
-        return (self.date != nil && !(self.dateType == .past && !self.configuration.appearance.pastDatesEnabled))
+        return (self.date != nil && !(self.dateType == .past && !self.configuration.pastDatesEnabled))
     }
     
     fileprivate var dateType: GCCalendarDateType = .none {
@@ -55,13 +55,13 @@ internal final class GCCalendarDayView: UIView {
         switch self.dateType {
             
             case .past:
-                return self.configuration.appearance.pastDateFont
+                return self.configuration.pastDateFont
                 
             case .current:
-                return self.configuration.appearance.currentDateFont
+                return self.configuration.currentDateFont
                 
             case .future:
-                return self.configuration.appearance.futureDateFont
+                return self.configuration.futureDateFont
                 
             case .none:
                 return nil
@@ -73,13 +73,13 @@ internal final class GCCalendarDayView: UIView {
         switch self.dateType {
             
             case .past:
-                return self.configuration.appearance.pastDatesEnabled ? self.configuration.appearance.pastDateEnabledTextColor : self.configuration.appearance.pastDateDisabledTextColor
+                return self.configuration.pastDatesEnabled ? self.configuration.pastDateEnabledTextColor : self.configuration.pastDateDisabledTextColor
                 
             case .current:
-                return self.configuration.appearance.currentDateTextColor
+                return self.configuration.currentDateTextColor
                 
             case .future:
-                return self.configuration.appearance.futureDateTextColor
+                return self.configuration.futureDateTextColor
                 
             case .none:
                 return nil
@@ -91,13 +91,13 @@ internal final class GCCalendarDayView: UIView {
         switch self.dateType {
             
             case .past:
-                return self.configuration.appearance.pastDateSelectedFont
+                return self.configuration.pastDateSelectedFont
                 
             case .current:
-                return self.configuration.appearance.currentDateSelectedFont
+                return self.configuration.currentDateSelectedFont
                 
             case .future:
-                return self.configuration.appearance.futureDateSelectedFont
+                return self.configuration.futureDateSelectedFont
                 
             case .none:
                 return nil
@@ -109,13 +109,13 @@ internal final class GCCalendarDayView: UIView {
         switch self.dateType {
             
             case .past:
-                return self.configuration.appearance.pastDateSelectedTextColor
+                return self.configuration.pastDateSelectedTextColor
                 
             case .current:
-                return self.configuration.appearance.currentDateSelectedTextColor
+                return self.configuration.currentDateSelectedTextColor
                 
             case .future:
-                return self.configuration.appearance.futureDateSelectedTextColor
+                return self.configuration.futureDateSelectedTextColor
                 
             case .none:
                 return nil
@@ -127,13 +127,13 @@ internal final class GCCalendarDayView: UIView {
         switch self.dateType {
             
             case .past:
-                return self.configuration.appearance.pastDateSelectedBackgroundColor
+                return self.configuration.pastDateSelectedBackgroundColor
                 
             case .current:
-                return self.configuration.appearance.currentDateSelectedBackgroundColor
+                return self.configuration.currentDateSelectedBackgroundColor
                 
             case .future:
-                return self.configuration.appearance.futureDateSelectedBackgroundColor
+                return self.configuration.futureDateSelectedBackgroundColor
                 
             case .none:
                 return nil
