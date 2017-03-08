@@ -63,7 +63,7 @@ fileprivate extension GCCalendarWeekView {
     
     fileprivate func addDayViews() {
         
-        self.dates.forEach { date in
+        for date in self.dates {
             
             let dayView = GCCalendarDayView(configuration: self.configuration)
             
@@ -75,9 +75,9 @@ fileprivate extension GCCalendarWeekView {
     
     fileprivate func updateDayViews() {
         
-        self.dayViews.enumerated().forEach { index, dayView in
+        for (index, date) in self.dates.enumerated() {
             
-            dayView.date = self.dates[index]
+            self.dayViews[index].date = date
         }
     }
 }
