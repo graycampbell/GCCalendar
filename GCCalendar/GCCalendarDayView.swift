@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum GCCalendarDateType {
+fileprivate enum GCCalendarDateType {
     
     case past, current, future, none
 }
@@ -21,9 +21,9 @@ internal final class GCCalendarDayView: UIView {
     fileprivate let configuration: GCCalendarConfiguration
     
     fileprivate let button = UIButton()
-    fileprivate let buttonWidth: CGFloat = 35
+    fileprivate let buttonDimension: CGFloat = 35
     
-    fileprivate var tapGestureRecognizer: UITapGestureRecognizer!
+    fileprivate let tapGestureRecognizer = UITapGestureRecognizer()
     
     fileprivate var isEnabled: Bool {
         
@@ -177,44 +177,10 @@ internal final class GCCalendarDayView: UIView {
         
         super.init(frame: CGRect.zero)
         
-        self.addButton()
         self.addTapGestureRecognizer()
-    }
-}
-
-// MARK: - Button
-
-private extension GCCalendarDayView {
-    
-    // MARK: Creation
-    
-    func addButton() {
         
-        self.button.layer.cornerRadius = self.buttonWidth / 2
-        self.button.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.button.addTarget(self, action: #selector(self.highlight), for: .touchUpInside)
-        
-        self.addSubview(self.button)
-        self.addButtonConstraints()
-    }
-    
-    func formatButton() {
-        
-        self.button.titleLabel!.font = self.font
-        self.button.setTitleColor(self.textColor, for: .normal)
-    }
-    
-    // MARK: Constraints
-    
-    func addButtonConstraints() {
-        
-        let width = NSLayoutConstraint(item: self.button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: self.buttonWidth)
-        let height = NSLayoutConstraint(item: self.button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: self.buttonWidth)
-        let centerX = NSLayoutConstraint(item: self.button, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
-        let centerY = NSLayoutConstraint(item: self.button, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
-        
-        self.addConstraints([width, height, centerX, centerY])
+        self.addButton()
+        self.addConstraints()
     }
 }
 
@@ -224,9 +190,45 @@ fileprivate extension GCCalendarDayView {
     
     fileprivate func addTapGestureRecognizer() {
         
-        self.tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.highlight))
+        self.tapGestureRecognizer.addTarget(self, action: #selector(self.highlight))
         
         self.addGestureRecognizer(self.tapGestureRecognizer)
+    }
+}
+
+// MARK: - Button
+
+fileprivate extension GCCalendarDayView {
+    
+    fileprivate func addButton() {
+        
+        self.button.layer.cornerRadius = self.buttonDimension / 2
+        self.button.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.button.addTarget(self, action: #selector(self.highlight), for: .touchUpInside)
+        
+        self.addSubview(self.button)
+    }
+    
+    fileprivate func formatButton() {
+        
+        self.button.titleLabel!.font = self.font
+        self.button.setTitleColor(self.textColor, for: .normal)
+    }
+}
+
+// MARK: - Constraints
+
+fileprivate extension GCCalendarDayView {
+    
+    fileprivate func addConstraints() {
+        
+        let width = self.button.widthAnchor.constraint(equalToConstant: self.buttonDimension)
+        let height = self.button.heightAnchor.constraint(equalToConstant: self.buttonDimension)
+        let centerX = self.button.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        let centerY = self.button.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        
+        self.addConstraints([width, height, centerX, centerY])
     }
 }
 
@@ -259,14 +261,26 @@ internal extension GCCalendarDayView {
 
 // MARK: - Animations
 
-private extension GCCalendarDayView {
+fileprivate extension GCCalendarDayView {
     
-    func animateSelection() {
+    fileprivate func animateSelection() {
         
-        self.animateToScale(0.9) { finished in self.animateToScale(1.1) { finished in self.animateToScale(1.0) } }
+        self.animate(toScale: 0.9) { finished in
+            
+            if finished {
+                
+                self.animate(toScale: 1.1) { finished in
+                    
+                    if finished {
+                        
+                        self.animate(toScale: 1.0)
+                    }
+                }
+            }
+        }
     }
     
-    func animateToScale(_ scale: CGFloat, completion: ((Bool) -> Void)? = nil) {
+    fileprivate func animate(toScale scale: CGFloat, completion: ((Bool) -> Void)? = nil) {
         
         UIView.animate(withDuration: 0.1, animations: {
             
