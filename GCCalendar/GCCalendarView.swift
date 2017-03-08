@@ -203,11 +203,10 @@ private extension GCCalendarView {
     
     func addHeaderViewConstraints() {
         
-        let top = NSLayoutConstraint(item: self.headerView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let width = NSLayoutConstraint(item: self.headerView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
-        let height = NSLayoutConstraint(item: self.headerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 15)
-        
-        self.addConstraints([top, width, height])
+        self.headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        self.headerView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        self.headerView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        self.headerView.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }
 }
 

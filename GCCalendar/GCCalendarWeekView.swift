@@ -64,25 +64,19 @@ fileprivate extension GCCalendarWeekView {
             self.addSubview(dayView)
             self.dayViews.append(dayView)
             
-            let top = dayView.topAnchor.constraint(equalTo: self.topAnchor)
-            let bottom = dayView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-            let left = dayView.leftAnchor.constraint(equalTo: previousViewAnchor)
-            
-            self.addConstraints([top, bottom, left])
+            dayView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            dayView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            dayView.leftAnchor.constraint(equalTo: previousViewAnchor).isActive = true
             
             if index > 0 {
                 
-                let width = dayView.widthAnchor.constraint(equalTo: self.dayViews[index - 1].widthAnchor)
-                
-                self.addConstraint(width)
+                dayView.widthAnchor.constraint(equalTo: self.dayViews[index - 1].widthAnchor).isActive = true
             }
             
             previousViewAnchor = dayView.rightAnchor
         }
         
-        let right = previousViewAnchor.constraint(equalTo: self.rightAnchor)
-        
-        self.addConstraint(right)
+        previousViewAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
     
     fileprivate func updateDayViews() {
