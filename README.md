@@ -1,7 +1,8 @@
 ![banner](Screenshots/Banner.png)
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://img.shields.io/cocoapods/v/GCCalendar.svg)
-[![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)](http://cocoadocs.org/docsets/GCCalendar)
+![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)
+![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)
+![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
 
 ### Overview
 
@@ -29,12 +30,12 @@ pod 'GCCalendar'
 ### GCCalendarView
 
 ```
-var delegate: GCCalendarViewDelegate!
-var displayMode: GCCalendarDisplayMode!
-```
-```
 init()
 init(frame: CGRect)
+```
+```
+var delegate: GCCalendarViewDelegate!
+var displayMode: GCCalendarDisplayMode!
 ```
 ```
 func today()
