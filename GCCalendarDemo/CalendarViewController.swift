@@ -45,13 +45,22 @@ extension CalendarViewController {
         self.navigationController!.isToolbarHidden = false
         
         let today = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(self.today))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let displayMode = UIBarButtonItem(title: "Display Mode", style: .plain, target: self, action: #selector(self.displayMode))
         
-        self.toolbarItems = [today]
+        self.toolbarItems = [today, space, displayMode]
     }
+    
+    // MARK: Targets
     
     func today() {
         
         self.calendarView.today()
+    }
+    
+    func displayMode() {
+        
+        self.calendarView.displayMode = (self.calendarView.displayMode == .month) ? .week : .month
     }
 }
 
@@ -64,7 +73,7 @@ fileprivate extension CalendarViewController {
         self.calendarView = GCCalendarView()
         
         self.calendarView.delegate = self
-        self.calendarView.automaticallyUpdatesDisplayMode = true
+        self.calendarView.displayMode = .month
         
         self.calendarView.translatesAutoresizingMaskIntoConstraints = false
         
