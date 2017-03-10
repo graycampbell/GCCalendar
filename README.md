@@ -29,13 +29,13 @@ pod 'GCCalendar'
 ### GCCalendarView
 
 ```
-public init(frame: CGRect)
-public convenience init()
+init(frame: CGRect)
+convenience init()
 
-public var delegate: GCCalendarViewDelegate!
-public var displayMode: GCCalendarDisplayMode!
+var delegate: GCCalendarViewDelegate!
+var displayMode: GCCalendarDisplayMode!
 
-public func today()
+func today()
 ```
 
 ## GCCalendarViewDelegate
