@@ -29,8 +29,8 @@ pod 'GCCalendar'
 ### GCCalendarView
 
 ```
+init()
 init(frame: CGRect)
-convenience init()
 
 var delegate: GCCalendarViewDelegate!
 var displayMode: GCCalendarDisplayMode!
