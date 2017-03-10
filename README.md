@@ -31,10 +31,12 @@ pod 'GCCalendar'
 ```
 init()
 init(frame: CGRect)
-
+```
+```
 var delegate: GCCalendarViewDelegate!
 var displayMode: GCCalendarDisplayMode!
-
+```
+```
 func today()
 ```
 
