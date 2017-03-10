@@ -46,7 +46,7 @@ public final class GCCalendarView: UIView {
             
             if self.displayMode != nil {
                 
-                self.reloadCalendarView()
+                self.refreshCalendarView()
             }
         }
     }
@@ -59,33 +59,7 @@ public final class GCCalendarView: UIView {
             
             if self.configuration != nil && self.displayMode != oldValue {
                 
-                self.reloadCalendarView()
-            }
-        }
-    }
-    
-    /// A Boolean value that determines whether the calendar view automatically updates its display mode when the device orientation changes.
-    ///
-    /// ---
-    ///
-    /// The default value is false. If set to true, the calendar view will automatically update its display mode when the device orientation changes, displaying month views in portrait mode and week views in landscape mode.
-    
-    public var automaticallyUpdatesDisplayMode: Bool = false {
-        
-        didSet {
-            
-            if self.automaticallyUpdatesDisplayMode != oldValue {
-                
-                if self.automaticallyUpdatesDisplayMode {
-                    
-                    self.updateDisplayMode()
-                    
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.updateDisplayMode), name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
-                }
-                else {
-                    
-                    NotificationCenter.default.removeObserver(self, name: Notification.Name.UIDeviceOrientationDidChange, object: nil)
-                }
+                self.refreshCalendarView()
             }
         }
     }
@@ -181,28 +155,11 @@ fileprivate extension GCCalendarView {
     }
 }
 
-// MARK: - Display Mode
-
-internal extension GCCalendarView {
-    
-    internal func updateDisplayMode() {
-        
-        switch UIApplication.shared.statusBarOrientation {
-            
-            case .landscapeLeft, .landscapeRight:
-                self.displayMode = .week
-                
-            default:
-                self.displayMode = .month
-        }
-    }
-}
-
-// MARK: - Reload Calendar View
+// MARK: - Refresh Calendar View
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func reloadCalendarView() {
+    fileprivate func refreshCalendarView() {
         
         self.removeHeaderView()
         self.addHeaderView()
