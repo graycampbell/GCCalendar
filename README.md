@@ -3,6 +3,7 @@
 ![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)
 ![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)
 ![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
+![License](https://img.shields.io/cocoapods/l/GCCalendar.svg)
 
 ### Overview
 
@@ -25,7 +26,7 @@ pod 'GCCalendar'
 
 3. Set the delegate and the display mode. If you don't set the delegate and the display mode, the calendar will not appear.
 
-4. Implement GCCalendarViewDelegate.
+4. Implement GCCalendarViewDelegate (optional).
 
 ### GCCalendarView
 
@@ -41,7 +42,7 @@ var displayMode: GCCalendarDisplayMode!
 func today()
 ```
 
-## GCCalendarViewDelegate
+### GCCalendarViewDelegate
 
 ```
 func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
