@@ -2,6 +2,7 @@
 
 ![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)
 ![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)
+![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/GCCalendar.svg)
 ![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
 ![License](https://img.shields.io/cocoapods/l/GCCalendar.svg)
 
