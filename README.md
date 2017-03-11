@@ -46,12 +46,15 @@ func today()
 
 ```
 func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
-
+```
+```
 func calendar(calendarView: GCCalendarView) -> Calendar
-
+```
+```
 func weekdayLabelFont(calendarView: GCCalendarView) -> UIFont
 func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor
-
+```
+```
 func pastDatesEnabled(calendarView: GCCalendarView) -> Bool
 func pastDateFont(calendarView: GCCalendarView) -> UIFont
 func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor
@@ -59,13 +62,15 @@ func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor
 func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont
 func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
 func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
-
+```
+```
 func currentDateFont(calendarView: GCCalendarView) -> UIFont
 func currentDateTextColor(calendarView: GCCalendarView) -> UIColor
 func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont
 func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
 func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
-
+```
+```
 func futureDateFont(calendarView: GCCalendarView) -> UIFont
 func futureDateTextColor(calendarView: GCCalendarView) -> UIColor
 func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont
