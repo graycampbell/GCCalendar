@@ -782,7 +782,7 @@ public extension GCCalendarView {
     
     public func today() {
         
-        if self.isProperlyConfigured {
+        if self.isProperlyConfigured && !self.configuration.calendar.isDateInToday(self.selectedDate) {
             
             switch self.displayMode! {
                 
