@@ -99,12 +99,12 @@
 			isa = PBXGroup;
 			children = (
 				E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */,
-				E2CC20141E6E501F00FA2F32 /* GCCalendarViewDelegate.swift */,
+				E2CC200E1E6E257A00FA2F32 /* GCCalendarConfiguration.swift */,
 				E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */,
 				E2B926921C5EBB88009B1AC9 /* GCCalendarMonthView.swift */,
 				E2B926931C5EBB88009B1AC9 /* GCCalendarView.swift */,
+				E2CC20141E6E501F00FA2F32 /* GCCalendarViewDelegate.swift */,
 				E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */,
-				E2CC200E1E6E257A00FA2F32 /* GCCalendarConfiguration.swift */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
 			path = GCCalendar;
