@@ -18,7 +18,6 @@
 		E2B9269F1C5EBB88009B1AC9 /* GCCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */; };
 		E2CC200F1E6E257A00FA2F32 /* GCCalendarConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC200E1E6E257A00FA2F32 /* GCCalendarConfiguration.swift */; };
 		E2CC20151E6E501F00FA2F32 /* GCCalendarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC20141E6E501F00FA2F32 /* GCCalendarViewDelegate.swift */; };
-		E2D217011C6C11CF00BAE7B4 /* GCDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 		E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarWeekView.swift; sourceTree = "<group>"; };
 		E2CC200E1E6E257A00FA2F32 /* GCCalendarConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarConfiguration.swift; sourceTree = "<group>"; };
 		E2CC20141E6E501F00FA2F32 /* GCCalendarViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarViewDelegate.swift; sourceTree = "<group>"; };
-		E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDateFormatter.swift; sourceTree = "<group>"; };
 		E2EF54D51C5AA64800E93F85 /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2EF54DA1C5AA64800E93F85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,7 +105,6 @@
 				E2B926931C5EBB88009B1AC9 /* GCCalendarView.swift */,
 				E2B926951C5EBB88009B1AC9 /* GCCalendarWeekView.swift */,
 				E2CC200E1E6E257A00FA2F32 /* GCCalendarConfiguration.swift */,
-				E2D217001C6C11CF00BAE7B4 /* GCDateFormatter.swift */,
 				E2EF54DA1C5AA64800E93F85 /* Info.plist */,
 			);
 			path = GCCalendar;
@@ -236,7 +233,6 @@
 			files = (
 				E2B9269D1C5EBB88009B1AC9 /* GCCalendarView.swift in Sources */,
 				E2CC20151E6E501F00FA2F32 /* GCCalendarViewDelegate.swift in Sources */,
-				E2D217011C6C11CF00BAE7B4 /* GCDateFormatter.swift in Sources */,
 				E2B9269C1C5EBB88009B1AC9 /* GCCalendarMonthView.swift in Sources */,
 				E2CC200F1E6E257A00FA2F32 /* GCCalendarConfiguration.swift in Sources */,
 				E2B9269A1C5EBB88009B1AC9 /* GCCalendarDayView.swift in Sources */,

@@ -102,7 +102,8 @@ extension CalendarViewController: GCCalendarViewDelegate {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: .current)
+        dateFormatter.calendar = self.calendar(calendarView: self.calendarView)
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: dateFormatter.calendar.locale)
         
         self.navigationItem.title = dateFormatter.string(from: date)
     }
