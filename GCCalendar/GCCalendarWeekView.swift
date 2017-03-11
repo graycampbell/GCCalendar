@@ -9,98 +9,113 @@ import UIKit
 
 // MARK: Properties & Initializers
 
-internal final class GCCalendarWeekView: UIStackView
-{
+internal final class GCCalendarWeekView: UIStackView {
+    
     // MARK: Properties
     
-    private let viewController: GCCalendarViewController!
+    fileprivate var configuration: GCCalendarConfiguration!
+    fileprivate var panGestureRecognizer: UIPanGestureRecognizer!
     
-    internal var dates: [NSDate?]!
+    fileprivate var dayViews: [GCCalendarDayView] {
+        
+        return self.arrangedSubviews as! [GCCalendarDayView]
+    }
     
-    private var dayViews: [GCCalendarDayView] = []
-    private var panGestureRecognizer: UIPanGestureRecognizer!
+    internal var dates: [Date?] = [] {
+        
+        didSet {
+            
+            self.dayViews.isEmpty ? self.addDayViews() : self.updateDayViews()
+        }
+    }
     
     internal var containsToday: Bool {
         
-        return !self.dates.filter({ $0 != nil && self.viewController.calendar.isDateInToday($0!) }).isEmpty
+        return self.dates.contains(where: { possibleDate in
+            
+            guard let date = possibleDate else { return false }
+            
+            return self.configuration.calendar.isDate(date, equalTo: Date(), toGranularity: .weekOfYear)
+        })
     }
     
     // MARK: Initializers
     
-    required init?(coder aDecoder: NSCoder)
-    {
-        return nil
+    required internal init(coder: NSCoder) {
+        
+        super.init(coder: coder)
     }
     
-    internal init(viewController: GCCalendarViewController, dates: [NSDate?])
-    {
-        self.viewController = viewController
+    internal init(configuration: GCCalendarConfiguration) {
         
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
-        self.axis = .Horizontal
-        self.distribution = .FillEqually
+        self.configuration = configuration
         
-        self.translatesAutoresizingMaskIntoConstraints = false
+        self.axis = .horizontal
+        self.distribution = .fillEqually
+    }
+}
+
+// MARK: - Day Views
+
+fileprivate extension GCCalendarWeekView {
+    
+    fileprivate func addDayViews() {
         
-        self.addDayViews(dates: dates)
+        for date in self.dates {
+            
+            let dayView = GCCalendarDayView(configuration: self.configuration)
+            
+            dayView.date = date
+            
+            self.addArrangedSubview(dayView)
+        }
+    }
+    
+    fileprivate func updateDayViews() {
+        
+        for (index, date) in self.dates.enumerated() {
+            
+            self.dayViews[index].date = date
+        }
     }
 }
 
 // MARK: - Pan Gesture Recognizer
 
-internal extension GCCalendarWeekView
-{
-    // MARK: Creation
+internal extension GCCalendarWeekView {
     
-    internal func addPanGestureRecognizer(target: AnyObject, action: Selector)
-    {
+    internal func addPanGestureRecognizer(target: Any?, action: Selector?) {
+        
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
         self.addGestureRecognizer(self.panGestureRecognizer)
     }
 }
 
-// MARK: - Day Views
+// MARK: - Selected Date
 
-private extension GCCalendarWeekView
-{
-    // MARK: Creation
-
-    private func addDayViews(dates dates: [NSDate?])
-    {
-        self.dates = dates
+internal extension GCCalendarWeekView {
+    
+    internal func setSelectedDate(currentSelectedDate: Date) {
         
-        for date in self.dates
-        {
-            let dayView = GCCalendarDayView(viewController: self.viewController, date: date)
+        let dateComponents: DateComponents
+        
+        if self.containsToday {
             
-            self.addArrangedSubview(dayView)
-            self.dayViews.append(dayView)
+            dateComponents = self.configuration.calendar.dateComponents([.weekday], from: Date())
         }
-    }
-}
-
-// MARK: - Dates & Selected Date
-
-internal extension GCCalendarWeekView
-{
-    // MARK: Dates
-    
-    internal func update(newDates newDates: [NSDate?])
-    {
-        self.dates = newDates
+        else {
+            
+            dateComponents = self.configuration.calendar.dateComponents([.weekday], from: currentSelectedDate)
+        }
         
-        for (index, date) in self.dates.enumerate()
-        {
-            self.dayViews[index].update(newDate: date)
-        }
+        self.highlight(weekday: dateComponents.weekday!)
     }
     
-    // MARK: Selected Date
-    
-    internal func setSelectedDate(weekday weekday: Int)
-    {
-        self.dayViews[weekday - 1].selected()
+    internal func highlight(weekday: Int) {
+        
+        self.dayViews[weekday - 1].highlight()
     }
 }
