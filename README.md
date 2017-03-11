@@ -1,7 +1,9 @@
 ![banner](Screenshots/Banner.png)
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://img.shields.io/cocoapods/v/GCCalendar.svg)
-[![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)](http://cocoadocs.org/docsets/GCCalendar)
+![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)
+![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)
+![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
+![License](https://img.shields.io/cocoapods/l/GCCalendar.svg)
 
 ### Overview
 
@@ -24,30 +26,40 @@ pod 'GCCalendar'
 
 3. Set the delegate and the display mode. If you don't set the delegate and the display mode, the calendar will not appear.
 
-4. Implement GCCalendarViewDelegate.
+4. Implement GCCalendarViewDelegate (optional).
 
 ### GCCalendarView
 
 ```
-public init(frame: CGRect)
-public convenience init()
-
-public var delegate: GCCalendarViewDelegate!
-public var displayMode: GCCalendarDisplayMode!
-
-public func today()
+init()
+init(frame: CGRect)
 ```
 
-## GCCalendarViewDelegate
+```
+var delegate: GCCalendarViewDelegate!
+var displayMode: GCCalendarDisplayMode!
+```
+
+```
+func today()
+```
+
+### GCCalendarViewDelegate
 
 ```
 func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
+```
 
+```
 func calendar(calendarView: GCCalendarView) -> Calendar
+```
 
+```
 func weekdayLabelFont(calendarView: GCCalendarView) -> UIFont
 func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor
+```
 
+```
 func pastDatesEnabled(calendarView: GCCalendarView) -> Bool
 func pastDateFont(calendarView: GCCalendarView) -> UIFont
 func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor
@@ -55,13 +67,17 @@ func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor
 func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont
 func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
 func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+```
 
+```
 func currentDateFont(calendarView: GCCalendarView) -> UIFont
 func currentDateTextColor(calendarView: GCCalendarView) -> UIColor
 func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont
 func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
 func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+```
 
+```
 func futureDateFont(calendarView: GCCalendarView) -> UIFont
 func futureDateTextColor(calendarView: GCCalendarView) -> UIColor
 func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont
