@@ -1,16 +1,17 @@
 ![banner](Screenshots/Banner.png)
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://img.shields.io/cocoapods/v/GCCalendar.svg)
-[![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)](http://cocoadocs.org/docsets/GCCalendar)
+![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)
+![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)
+![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/GCCalendar.svg)
+![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
+![License](https://img.shields.io/cocoapods/l/GCCalendar.svg)
 
 ### Overview
 
 1. [CocoaPods](https://github.com/graycampbell/GCCalendar#cocoapods)
-2. [Properties](https://github.com/graycampbell/GCCalendar#properties)
-3. [View Setup](https://github.com/graycampbell/GCCalendar#view-setup)
-4. [Date Selection](https://github.com/graycampbell/GCCalendar#date-selection)
-5. [Calendar Modes](https://github.com/graycampbell/GCCalendar#calendar-modes)
-6. [Customization](https://github.com/graycampbell/GCCalendar#customization)
+2. [Implementation](https://github.com/graycampbell/GCCalendar#implementation)
+3. [GCCalendarView](https://github.com/graycampbell/GCCalendar#gccalendarview)
+4. [GCCalendarViewDelegate](https://github.com/graycampbell/GCCalendar#gccalendarviewdelegate)
 
 ### CocoaPods
 
@@ -18,74 +19,69 @@
 pod 'GCCalendar'
 ```
 
-### Properties
+### Implementation
+
+1. Add `GCCalendar` to your file's import statements.
+
+2. Create an instance of GCCalendarView.
+
+3. Set the delegate and the display mode. If you don't set the delegate and the display mode, the calendar will not appear.
+
+4. Implement GCCalendarViewDelegate (optional).
+
+### GCCalendarView
 
 ```
-public var selectedDate: NSDate!
-public var calendarView: GCCalendarView!
-```
-
-### View Setup
-
-1. Create a subclass of GCCalendarViewController
-
-   **GCCalendarViewController has a property called `calendarView` that is already added to the view, so you don't need to create it yourself or add it as a subview.**
-
-2. Set the calendar view's frame or add layout constraints
-
-   **Remember to include `self.calendarView.translatesAutoresizingMaskIntoConstraints = false` if using layout constraints.**
-
-3. Customize!
-
-### Date Selection
-
-```
-self.calendarView.today()
+init()
+init(frame: CGRect)
 ```
 
 ```
-override func didSelectDate(date: NSDate)
-{
-    super.didSelectDate(date)
-
-    // Add custom implementation here
-}
-```
-
-### Calendar Modes
-
-```
-self.calendarView.changeModeTo(.Week)
-self.calendarView.changeModeTo(.Month)
+var delegate: GCCalendarViewDelegate!
+var displayMode: GCCalendarDisplayMode!
 ```
 
 ```
-override func shouldAutomaticallyChangeModeOnOrientationChange() -> Bool
+func today()
 ```
 
-### Customization
+### GCCalendarViewDelegate
 
 ```
-override func weekdayLabelFont() -> UIFont
-override func weekdayLabelTextColor() -> UIColor
+func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
+```
 
-override func pastDaysEnabled() -> Bool
-override func pastDayViewFont() -> UIFont
-override func pastDayViewEnabledTextColor() -> UIColor
-override func pastDayViewDisabledTextColor() -> UIColor
-override func pastDayViewSelectedFont() -> UIFont
-override func pastDayViewSelectedTextColor() -> UIColor
-override func pastDayViewSelectedBackgroundColor() -> UIColor
+```
+func calendar(calendarView: GCCalendarView) -> Calendar
+```
 
-override func currentDayViewFont() -> UIFont
-override func currentDayViewTextColor() -> UIColor
-override func currentDayViewSelectedFont() -> UIFont
-override func currentDayViewSelectedTextColor() -> UIColor
-override func currentDayViewSelectedBackgroundColor() -> UIColor
+```
+func weekdayLabelFont(calendarView: GCCalendarView) -> UIFont
+func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor
+```
 
-override func futureDayViewFont() -> UIFont
-override func futureDayViewTextColor() -> UIColor
-override func futureDayViewSelectedFont() -> UIFont
-override func futureDayViewSelectedTextColor() -> UIColor
-override func futureDayViewSelectedBackgroundColor() -> UIColor
+```
+func pastDatesEnabled(calendarView: GCCalendarView) -> Bool
+func pastDateFont(calendarView: GCCalendarView) -> UIFont
+func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor
+func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor
+func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont
+func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
+func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+```
+
+```
+func currentDateFont(calendarView: GCCalendarView) -> UIFont
+func currentDateTextColor(calendarView: GCCalendarView) -> UIColor
+func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont
+func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
+func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
+```
+
+```
+func futureDateFont(calendarView: GCCalendarView) -> UIFont
+func futureDateTextColor(calendarView: GCCalendarView) -> UIColor
+func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont
+func futureDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
+func futureDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
 ```
