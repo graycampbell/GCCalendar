@@ -43,7 +43,12 @@ internal final class GCCalendarDayView: UIView {
                 return nil
             
             default:
-                return GCDateFormatter.string(fromDate: self.date!, withFormat: "d", andCalendar: self.configuration.calendar)
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.calendar = self.configuration.calendar
+                dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "d", options: 0, locale: self.configuration.calendar.locale)
+                
+                return dateFormatter.string(from: self.date!)
         }
     }
     
