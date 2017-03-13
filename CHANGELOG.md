@@ -1,13 +1,13 @@
 # Change Log
 
-## [2.0.1](https://github.com/graycampbell/GCCalendar/tree/2.0.1) (2017-03-13)
+## [Version 2.0.1](https://github.com/graycampbell/GCCalendar/tree/2.0.1) (2017-03-13)
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.0.0...2.0.1)
 
 **Release Notes**
 
 - Completed documentation
 
-## [2.0.0](https://github.com/graycampbell/GCCalendar/tree/2.0.0) (2017-03-11)
+## [Version 2.0.0](https://github.com/graycampbell/GCCalendar/tree/2.0.0) (2017-03-11)
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/1.1.3...2.0.0)
 
 **Release Notes**
@@ -30,7 +30,7 @@
 
 - Update to Swift 3 and GCCalendarViewDelegate [\#21](https://github.com/graycampbell/GCCalendar/pull/21) ([graycampbell](https://github.com/graycampbell))
 
-## [1.1.3](https://github.com/graycampbell/GCCalendar/tree/1.1.3) (2016-04-03)
+## [Version 1.1.3](https://github.com/graycampbell/GCCalendar/tree/1.1.3) (2016-04-03)
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/1.1.2...1.1.3)
 
 **Release Notes**
@@ -42,7 +42,7 @@
 - Refactoring [\#18](https://github.com/graycampbell/GCCalendar/pull/18) ([graycampbell](https://github.com/graycampbell))
 - Fix bug that hid weeks in month view when past days were disabled [\#17](https://github.com/graycampbell/GCCalendar/pull/17) ([graycampbell](https://github.com/graycampbell))
 
-## [1.1.2](https://github.com/graycampbell/GCCalendar/tree/1.1.2) (2016-03-29)
+## [Version 1.1.2](https://github.com/graycampbell/GCCalendar/tree/1.1.2) (2016-03-29)
 
 **Release Notes**
 
