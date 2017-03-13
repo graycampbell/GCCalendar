@@ -6,13 +6,6 @@
 ![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
 [![License](https://img.shields.io/cocoapods/l/GCCalendar.svg)](https://github.com/graycampbell/GCCalendar/blob/master/LICENSE)
 
-### Overview
-
-1. [CocoaPods](https://github.com/graycampbell/GCCalendar#cocoapods)
-2. [Implementation](https://github.com/graycampbell/GCCalendar#implementation)
-3. [GCCalendarView](https://github.com/graycampbell/GCCalendar#gccalendarview)
-4. [GCCalendarViewDelegate](https://github.com/graycampbell/GCCalendar#gccalendarviewdelegate)
-
 ### CocoaPods
 
 ```
