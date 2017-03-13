@@ -3,35 +3,55 @@
 ## [2.0.1](https://github.com/graycampbell/GCCalendar/tree/2.0.1) (2017-03-13)
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.0.0...2.0.1)
 
-**Implemented enhancements:**
+**Release Notes**
 
-- persian number [\#19](https://github.com/graycampbell/GCCalendar/issues/19)
-
-**Closed issues:**
-
-- Swift 3 support [\#22](https://github.com/graycampbell/GCCalendar/issues/22)
+- Completed documentation
 
 ## [2.0.0](https://github.com/graycampbell/GCCalendar/tree/2.0.0) (2017-03-11)
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/1.1.3...2.0.0)
 
-**Closed issues:**
+**Release Notes**
+
+- Updated to Swift 3 (including syntax changes, renamed functions, etc.)
+- Updated to use GCCalendarView with GCCalendarViewDelegate instead of GCCalendarViewController
+- Updated to allow for localized calendars
+- Auto-updating calendar display mode functionality has been removed
+
+**Implemented Enhancements**
+
+- Swift 3 support [\#22](https://github.com/graycampbell/GCCalendar/issues/22)
+- persian number [\#19](https://github.com/graycampbell/GCCalendar/issues/19)
+
+**Closed Issues**
 
 - Can i place custom view under every day view? [\#20](https://github.com/graycampbell/GCCalendar/issues/20)
 
-**Merged pull requests:**
+**Merged Pull Requests**
 
 - Update to Swift 3 and GCCalendarViewDelegate [\#21](https://github.com/graycampbell/GCCalendar/pull/21) ([graycampbell](https://github.com/graycampbell))
 
 ## [1.1.3](https://github.com/graycampbell/GCCalendar/tree/1.1.3) (2016-04-03)
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/1.1.2...1.1.3)
 
-**Merged pull requests:**
+**Release Notes**
+
+- Fixes a bug that caused some previous weeks to be hidden if past days were disabled
+
+**Merged Pull Requests**
 
 - Refactoring [\#18](https://github.com/graycampbell/GCCalendar/pull/18) ([graycampbell](https://github.com/graycampbell))
 - Fix bug that hid weeks in month view when past days were disabled [\#17](https://github.com/graycampbell/GCCalendar/pull/17) ([graycampbell](https://github.com/graycampbell))
 
 ## [1.1.2](https://github.com/graycampbell/GCCalendar/tree/1.1.2) (2016-03-29)
-**Merged pull requests:**
+
+**Release Notes**
+
+- Clean implementation using GCCalendarViewController
+- Simple today button integration using self.calendarView.today()
+- Extensive customization options including colors, fonts, and past day disabling
+- Two calendar modes (week and month) with optional auto-switching based on device orientation
+
+**Merged Pull Requests**
 
 - Today [\#16](https://github.com/graycampbell/GCCalendar/pull/16) ([graycampbell](https://github.com/graycampbell))
 - Testing [\#15](https://github.com/graycampbell/GCCalendar/pull/15) ([graycampbell](https://github.com/graycampbell))
