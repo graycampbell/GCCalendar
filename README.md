@@ -24,11 +24,11 @@ pod 'GCCalendar'
 
 ### Documentation
 
-- [Classes](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes.html)
-  - [GCCalendarView](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes/GCCalendarView.html)
+- [Classes](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Classes.html)
+  - [GCCalendarView](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Classes/GCCalendarView.html)
 
-- [Enums](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Enums.html)
-  - [GCCalendarDisplayMode](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Enums/GCCalendarDisplayMode.html)
+- [Enums](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Enums.html)
+  - [GCCalendarDisplayMode](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Enums/GCCalendarDisplayMode.html)
 
-- [Protocols](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols.html)
-  - [GCCalendarViewDelegate](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols/GCCalendarViewDelegate.html)
+- [Protocols](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Protocols.html)
+  - [GCCalendarViewDelegate](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Protocols/GCCalendarViewDelegate.html)
