@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Protocol
 
-/// The delegate of a GCCalendarView object must adopt the GCCalendarViewDelegate protocol. The protocol's optional methods allow the delegate to handle date selection and customize the calendar's appearance.
+/// The delegate of a GCCalendarView object must adopt the GCCalendarViewDelegate protocol. The protocol's optional methods allow the delegate to handle date selection and customize the calendar view's appearance.
 
 public protocol GCCalendarViewDelegate: class {
     
@@ -65,7 +65,7 @@ public protocol GCCalendarViewDelegate: class {
     
     func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor
     
-    // MARK: Past Day Views
+    // MARK: Past Dates
     
     /// Asks the delegate if the calendar view should enable past dates.
     ///
@@ -156,7 +156,7 @@ public protocol GCCalendarViewDelegate: class {
     
     func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
     
-    // MARK: Current Day Views
+    // MARK: Current Date
     
     /// Asks the delegate to provide the **unselected** font for the current date.
     ///
@@ -223,7 +223,7 @@ public protocol GCCalendarViewDelegate: class {
     
     func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
     
-    // MARK: Future Day Views
+    // MARK: Future Dates
     
     /// Asks the delegate to provide the **unselected** font for future dates.
     ///
@@ -314,7 +314,7 @@ public extension GCCalendarViewDelegate {
         return UIColor.gray
     }
     
-    // MARK: Past Day Views
+    // MARK: Past Dates
     
     public func pastDatesEnabled(calendarView: GCCalendarView) -> Bool {
         
@@ -351,7 +351,7 @@ public extension GCCalendarViewDelegate {
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
-    // MARK: Current Day Views
+    // MARK: Current Date
     
     public func currentDateFont(calendarView: GCCalendarView) -> UIFont {
         
@@ -378,7 +378,7 @@ public extension GCCalendarViewDelegate {
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
-    // MARK: Future Day Views
+    // MARK: Future Dates
     
     public func futureDateFont(calendarView: GCCalendarView) -> UIFont {
         
