@@ -22,10 +22,13 @@ pod 'GCCalendar'
 
 4. Implement GCCalendarViewDelegate.
 
-### GCCalendarView
+### Documentation
 
-See [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes/GCCalendarView.html).
+- [Classes](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes.html)
+  - [GCCalendarView](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes/GCCalendarView.html)
 
-### GCCalendarViewDelegate
+- [Enums](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Enums.html)
+  - [GCCalendarDisplayMode](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Enums/GCCalendarDisplayMode.html)
 
-See [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols/GCCalendarViewDelegate.html).
+- [Protocols](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols.html)
+  - [GCCalendarViewDelegate](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols/GCCalendarViewDelegate.html)
