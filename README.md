@@ -31,57 +31,8 @@ pod 'GCCalendar'
 
 ### GCCalendarView
 
-```
-init()
-init(frame: CGRect)
-```
-
-```
-var delegate: GCCalendarViewDelegate!
-var displayMode: GCCalendarDisplayMode!
-```
-
-```
-func today()
-```
+See full [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes/GCCalendarView.html).
 
 ### GCCalendarViewDelegate
 
-```
-func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
-```
-
-```
-func calendar(calendarView: GCCalendarView) -> Calendar
-```
-
-```
-func weekdayLabelFont(calendarView: GCCalendarView) -> UIFont
-func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor
-```
-
-```
-func pastDatesEnabled(calendarView: GCCalendarView) -> Bool
-func pastDateFont(calendarView: GCCalendarView) -> UIFont
-func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor
-func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor
-func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont
-func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
-func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
-```
-
-```
-func currentDateFont(calendarView: GCCalendarView) -> UIFont
-func currentDateTextColor(calendarView: GCCalendarView) -> UIColor
-func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont
-func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
-func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
-```
-
-```
-func futureDateFont(calendarView: GCCalendarView) -> UIFont
-func futureDateTextColor(calendarView: GCCalendarView) -> UIColor
-func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont
-func futureDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor
-func futureDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor
-```
+See full [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols/GCCalendarViewDelegate.html).
