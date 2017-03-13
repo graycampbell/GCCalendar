@@ -31,8 +31,8 @@ pod 'GCCalendar'
 
 ### GCCalendarView
 
-See full [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes/GCCalendarView.html).
+See [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Classes/GCCalendarView.html).
 
 ### GCCalendarViewDelegate
 
-See full [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols/GCCalendarViewDelegate.html).
+See [documentation](http://cocoadocs.org/docsets/GCCalendar/2.0.0/Protocols/GCCalendarViewDelegate.html).
