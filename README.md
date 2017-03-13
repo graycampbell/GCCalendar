@@ -27,7 +27,7 @@ pod 'GCCalendar'
 
 3. Set the delegate and the display mode. If you don't set the delegate and the display mode, the calendar will not appear.
 
-4. Implement GCCalendarViewDelegate (optional).
+4. Implement GCCalendarViewDelegate.
 
 ### GCCalendarView
 
