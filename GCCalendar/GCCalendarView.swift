@@ -9,12 +9,22 @@ import UIKit
 
 // MARK: Enumerables
 
+/// The display mode when displaying a calendar.
+
 public enum GCCalendarDisplayMode {
     
-    case week, month
+    /// The calendar is displayed one week at a time.
+    
+    case week
+    
+    /// The calendar is displayed one month at a time.
+    
+    case month
 }
 
 // MARK: - Properties & Initializers
+
+/// The GCCalendarView class defines a view containing an interactive calendar.
 
 public final class GCCalendarView: UIView {
     
@@ -46,7 +56,7 @@ public final class GCCalendarView: UIView {
             
             if self.displayMode != nil {
                 
-                self.refreshCalendarView()
+                self.refresh()
             }
         }
     }
@@ -59,12 +69,17 @@ public final class GCCalendarView: UIView {
             
             if self.configuration != nil && self.displayMode != oldValue {
                 
-                self.refreshCalendarView()
+                self.refresh()
             }
         }
     }
     
     // MARK: Initializers
+    
+    /// Returns an object initialized from data in a given unarchiver.
+    ///
+    /// - Parameter coder: An unarchiver object.
+    /// - Returns: self, initialized using the data in decoder.
     
     public required init?(coder aDecoder: NSCoder) {
         
@@ -73,12 +88,23 @@ public final class GCCalendarView: UIView {
         self.clipsToBounds = true
     }
     
+    /// Initializes and returns a newly allocated calendar view object with the specified frame rectangle.
+    ///
+    /// - Parameter frame: The frame rectangle for the calendar view, measured in points. The origin of the frame is relative to the superview in which you plan to add it. This method uses the frame rectangle to set the center and bounds properties accordingly.
+    /// - Returns: An initialized calendar view object.
+    
     public override init(frame: CGRect) {
         
         super.init(frame: frame)
         
         self.clipsToBounds = true
     }
+    
+    /// Initializes and returns a newly allocated calendar view object.
+    ///
+    /// Use this initializer if you are planning on using layout constraints. If you are using frame rectangles to layout your views, use init(frame:) instead.
+    ///
+    /// - Returns: An initialized calendar view object.
     
     public convenience init() {
         
@@ -89,6 +115,10 @@ public final class GCCalendarView: UIView {
 // MARK: - Layout
 
 public extension GCCalendarView {
+    
+    /// Lays out subviews.
+    ///
+    /// You should not call this method directly. If you want to force a layout update, call the setNeedsLayout() method instead to do so prior to the next drawing update. If you want to update the layout of your views immediately, call the layoutIfNeeded() method.
     
     public override func layoutSubviews() {
         
@@ -155,11 +185,11 @@ fileprivate extension GCCalendarView {
     }
 }
 
-// MARK: - Refresh Calendar View
+// MARK: - Refresh
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func refreshCalendarView() {
+    fileprivate func refresh() {
         
         self.removeHeaderView()
         self.addHeaderView()
