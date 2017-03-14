@@ -14,11 +14,24 @@ pod 'GCCalendar'
 
 ### Implementation
 
-1. Add `GCCalendar` to your file's import statements.
+1. Add GCCalendar to your file's import statements.
+
+    ```
+    import GCCalendar
+    ```
 
 2. Create an instance of GCCalendarView.
 
+    ```
+    let calendarView = GCCalendarView()
+    ```
+
 3. Set the delegate and the display mode. If you don't set the delegate and the display mode, the calendar will not appear.
+
+    ```
+    calendarView.delegate = self
+    calendarView.displayMode = .month
+    ```
 
 4. Implement GCCalendarViewDelegate.
 
