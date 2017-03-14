@@ -32,3 +32,7 @@ pod 'GCCalendar'
 
 - [Protocols](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Protocols.html)
   - [GCCalendarViewDelegate](http://cocoadocs.org/docsets/GCCalendar/2.0.1/Protocols/GCCalendarViewDelegate.html)
+  
+### License
+
+GCCalendar is available under the MIT license. See the LICENSE file for more info.
