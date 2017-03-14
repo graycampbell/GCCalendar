@@ -48,4 +48,4 @@ pod 'GCCalendar'
   
 ### License
 
-GCCalendar is available under the MIT license. See the LICENSE file for more info.
+GCCalendar is available under the MIT license. See the [LICENSE](https://github.com/graycampbell/GCCalendar/blob/master/LICENSE) file for more info.
