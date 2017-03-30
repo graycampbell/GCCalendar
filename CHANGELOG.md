@@ -1,5 +1,12 @@
 # Change Log
 
+## [Version 2.1.0](https://github.com/graycampbell/GCCalendar/tree/2.1.0) - March 29, 2017
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.0.1...2.1.0)
+
+**Release Notes**
+
+- Updated to Swift 3.1
+
 ## [Version 2.0.1](https://github.com/graycampbell/GCCalendar/tree/2.0.1) - March 13, 2017
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.0.0...2.0.1)
 
