@@ -98,12 +98,12 @@ fileprivate extension CalendarViewController {
 
 extension CalendarViewController: GCCalendarViewDelegate {
     
-    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date) {
+    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date, inCalendar calendar: Calendar) {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.calendar = self.calendar(calendarView: self.calendarView)
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: dateFormatter.calendar.locale)
+        dateFormatter.calendar = calendar
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMMYYYY", options: 0, locale: calendar.locale)
         
         self.navigationItem.title = dateFormatter.string(from: date)
     }
