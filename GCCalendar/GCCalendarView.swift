@@ -61,7 +61,7 @@ public final class GCCalendarView: UIView {
         }
     }
     
-    /// The display mode for the calendar.
+    /// The display mode for the calendar view.
     
     public var displayMode: GCCalendarDisplayMode! {
         
@@ -180,7 +180,7 @@ fileprivate extension GCCalendarView {
             self.selectedDate = dayView.date!
             self.selectedDayView = dayView
             
-            self.delegate.calendarView(self, didSelectDate: self.selectedDate)
+            self.delegate.calendarView(self, didSelectDate: self.selectedDate, inCalendar: self.configuration.calendar)
         }
     }
 }
@@ -219,7 +219,11 @@ fileprivate extension GCCalendarView {
         self.headerView.axis = .horizontal
         self.headerView.distribution = .fillEqually
         
-        self.configuration.calendar.veryShortWeekdaySymbols.enumerated().forEach { index, weekdaySymbol in
+        let firstWeekdayIndex = self.configuration.calendar.firstWeekday - 1
+        let weekdaySymbols = self.configuration.calendar.veryShortWeekdaySymbols
+        let reorderedWeekdaySymbols = weekdaySymbols[firstWeekdayIndex..<weekdaySymbols.count] + weekdaySymbols[0..<firstWeekdayIndex]
+        
+        reorderedWeekdaySymbols.forEach { weekdaySymbol in
             
             let weekdayLabel = UILabel()
             
@@ -645,7 +649,6 @@ fileprivate extension GCCalendarView {
             let newDates = self.previousWeekDates(currentWeekDates: self.previousWeekView.dates)
             
             self.reuseNextWeekView(newDates: newDates)
-            
             self.weekViewDidShow()
         }
     }
@@ -664,7 +667,6 @@ fileprivate extension GCCalendarView {
             let newDates = self.nextWeekDates(currentWeekDates: self.nextWeekView.dates)
             
             self.reusePreviousWeekView(newDates: newDates)
-            
             self.weekViewDidShow()
         }
     }
@@ -766,7 +768,6 @@ fileprivate extension GCCalendarView {
             let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
             
             self.reuseNextMonthView(newStartDate: newStartDate)
-            
             self.monthViewDidShow()
         }
     }
@@ -785,7 +786,6 @@ fileprivate extension GCCalendarView {
             let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
             
             self.reusePreviousMonthView(newStartDate: newStartDate)
-
             self.monthViewDidShow()
         }
     }
