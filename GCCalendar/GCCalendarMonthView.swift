@@ -40,7 +40,13 @@ internal final class GCCalendarMonthView: UIStackView {
             
         } while self.configuration.calendar.isDate(date, equalTo: self.startDate, toGranularity: .month)
         
-        return newDates
+        return newDates.map { dates in
+            
+            let firstWeekdayIndex = self.configuration.calendar.firstWeekday - 1
+            let reorderedDates = dates[firstWeekdayIndex..<dates.count] + dates[0..<firstWeekdayIndex]
+            
+            return [Date?](reorderedDates)
+        }
     }
     
     internal var startDate: Date! {
@@ -115,13 +121,11 @@ fileprivate extension GCCalendarMonthView {
 
 internal extension GCCalendarMonthView {
     
-    internal func setSelectedDate() {
+    internal func setSelectedDate(_ date: Date? = nil) {
         
-        let selectedDate = self.containsToday ? Date() : self.startDate
-        let selectedDateComponents = self.configuration.calendar.dateComponents([.weekOfMonth, .weekday], from: selectedDate!)
+        let newDate = date ?? self.startDate
+        let newDateComponents = self.configuration.calendar.dateComponents([.weekOfMonth, .weekday], from: newDate!)
         
-        let weekView = self.weekViews[selectedDateComponents.weekOfMonth! - 1]
-        
-        weekView.highlight(weekday: selectedDateComponents.weekday!)
+        self.weekViews[newDateComponents.weekOfMonth! - 1].setSelectedDate(newDate)
     }
 }

@@ -15,12 +15,13 @@ public protocol GCCalendarViewDelegate: class {
     
     // MARK: Date Selection
     
-    /// Tells the delegate that a new date was selected for the specified calendar view.
+    /// Tells the delegate that the calendar view selected a new date in the specified calendar.
     ///
     /// - Parameter calendarView: The calendar view.
     /// - Parameter date: The selected date.
+    /// - Parameter calendar: The calendar used to configure the calendar view.
     
-    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date)
+    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date, inCalendar calendar: Calendar)
     
     // MARK: Calendar
     
