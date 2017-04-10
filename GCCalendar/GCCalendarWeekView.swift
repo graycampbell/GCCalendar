@@ -98,24 +98,42 @@ internal extension GCCalendarWeekView {
 
 internal extension GCCalendarWeekView {
     
-    internal func setSelectedDate(currentSelectedDate: Date) {
+    internal func setSelectedDate(_ date: Date? = nil) {
         
-        let dateComponents: DateComponents
-        
-        if self.containsToday {
+        if let newDate = date {
             
-            dateComponents = self.configuration.calendar.dateComponents([.weekday], from: Date())
+            for dayView in self.dayViews {
+                
+                guard let dayViewDate = dayView.date else { continue }
+                
+                if self.configuration.calendar.isDate(dayViewDate, inSameDayAs: newDate) {
+                    
+                    dayView.highlight()
+                    
+                    break
+                }
+            }
         }
         else {
             
-            dateComponents = self.configuration.calendar.dateComponents([.weekday], from: currentSelectedDate)
+            let selectedDateComponents = self.configuration.calendar.dateComponents([.weekday], from: self.configuration.selectedDate())
+            
+            for dayView in self.dayViews {
+                
+                guard let dayViewDate = dayView.date else { continue }
+                
+                let dayViewDateComponents = self.configuration.calendar.dateComponents([.weekday], from: dayViewDate)
+                
+                guard let dayViewDateWeekday = dayViewDateComponents.weekday else { continue }
+                guard let selectedDateWeekday = selectedDateComponents.weekday else { continue }
+                
+                if dayViewDateWeekday == selectedDateWeekday {
+                    
+                    dayView.highlight()
+                    
+                    break
+                }
+            }
         }
-        
-        self.highlight(weekday: dateComponents.weekday!)
-    }
-    
-    internal func highlight(weekday: Int) {
-        
-        self.dayViews[weekday - 1].highlight()
     }
 }
