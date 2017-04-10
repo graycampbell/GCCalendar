@@ -61,7 +61,7 @@ public final class GCCalendarView: UIView {
         }
     }
     
-    /// The display mode for the calendar.
+    /// The display mode for the calendar view.
     
     public var displayMode: GCCalendarDisplayMode! {
         
@@ -180,7 +180,7 @@ fileprivate extension GCCalendarView {
             self.selectedDate = dayView.date!
             self.selectedDayView = dayView
             
-            self.delegate.calendarView(self, didSelectDate: self.selectedDate)
+            self.delegate.calendarView(self, didSelectDate: self.selectedDate, inCalendar: self.configuration.calendar)
         }
     }
 }
@@ -219,7 +219,11 @@ fileprivate extension GCCalendarView {
         self.headerView.axis = .horizontal
         self.headerView.distribution = .fillEqually
         
-        self.configuration.calendar.veryShortWeekdaySymbols.enumerated().forEach { index, weekdaySymbol in
+        let firstWeekdayIndex = self.configuration.calendar.firstWeekday - 1
+        let weekdaySymbols = self.configuration.calendar.veryShortWeekdaySymbols
+        let reorderedWeekdaySymbols = weekdaySymbols[firstWeekdayIndex..<weekdaySymbols.count] + weekdaySymbols[0..<firstWeekdayIndex]
+        
+        reorderedWeekdaySymbols.forEach { weekdaySymbol in
             
             let weekdayLabel = UILabel()
             
@@ -408,9 +412,7 @@ fileprivate extension GCCalendarView {
         }
         else if self.currentWeekView.containsToday {
             
-            let todayComponents = self.configuration.calendar.dateComponents([.weekday, .weekOfYear], from: Date())
-            
-            self.currentWeekView.highlight(weekday: todayComponents.weekday!)
+            self.currentWeekView.setSelectedDate(Date())
         }
         else if self.nextWeekView.containsToday {
             
@@ -476,7 +478,7 @@ fileprivate extension GCCalendarView {
         }
         else if self.currentMonthView.containsToday {
             
-            self.currentMonthView.setSelectedDate()
+            self.currentMonthView.setSelectedDate(Date())
         }
         else if self.nextMonthView.containsToday {
             
@@ -620,20 +622,19 @@ fileprivate extension GCCalendarView {
         let numberOfWeekdays = self.configuration.calendar.maximumRange(of: .weekday)!.count
         
         var dates = [Date?](repeating: nil, count: numberOfWeekdays)
+        var dateComponents = self.configuration.calendar.dateComponents([.weekOfYear, .year], from: startDate)
         
-        var date = startDate
+        for weekday in (1...numberOfWeekdays) {
+            
+            dateComponents.weekday = weekday
+            
+            dates[weekday - 1] = self.configuration.calendar.date(from: dateComponents)
+        }
         
-        repeat {
-            
-            let dateComponents = self.configuration.calendar.dateComponents([.weekday, .weekOfYear, .year], from: date)
-            
-            dates[dateComponents.weekday! - 1] = date
-            
-            date = self.configuration.calendar.date(byAdding: .weekday, value: 1, to: date)!
-            
-        } while self.configuration.calendar.isDate(date, equalTo: startDate, toGranularity: .weekOfYear)
+        let firstWeekdayIndex = self.configuration.calendar.firstWeekday - 1
+        let reorderedDates = dates[firstWeekdayIndex..<dates.count] + dates[0..<firstWeekdayIndex]
         
-        return dates
+        return [Date?](reorderedDates)
     }
     
     // MARK: Show Week View
@@ -645,7 +646,6 @@ fileprivate extension GCCalendarView {
             let newDates = self.previousWeekDates(currentWeekDates: self.previousWeekView.dates)
             
             self.reuseNextWeekView(newDates: newDates)
-            
             self.weekViewDidShow()
         }
     }
@@ -664,7 +664,6 @@ fileprivate extension GCCalendarView {
             let newDates = self.nextWeekDates(currentWeekDates: self.nextWeekView.dates)
             
             self.reusePreviousWeekView(newDates: newDates)
-            
             self.weekViewDidShow()
         }
     }
@@ -679,7 +678,7 @@ fileprivate extension GCCalendarView {
     fileprivate func weekViewDidShow() {
         
         self.resetLayout()
-        self.currentWeekView.setSelectedDate(currentSelectedDate: self.selectedDate)
+        self.currentWeekView.containsToday ? self.currentWeekView.setSelectedDate(Date()) : self.currentWeekView.setSelectedDate()
     }
 }
 
@@ -766,7 +765,6 @@ fileprivate extension GCCalendarView {
             let newStartDate = self.previousMonthStartDate(currentMonthStartDate: self.previousMonthView.startDate)
             
             self.reuseNextMonthView(newStartDate: newStartDate)
-            
             self.monthViewDidShow()
         }
     }
@@ -785,7 +783,6 @@ fileprivate extension GCCalendarView {
             let newStartDate = self.nextMonthStartDate(currentMonthStartDate: self.nextMonthView.startDate)
             
             self.reusePreviousMonthView(newStartDate: newStartDate)
-
             self.monthViewDidShow()
         }
     }
@@ -800,7 +797,7 @@ fileprivate extension GCCalendarView {
     fileprivate func monthViewDidShow() {
         
         self.resetLayout()
-        self.currentMonthView.setSelectedDate()
+        self.currentMonthView.containsToday ? self.currentMonthView.setSelectedDate(Date()) : self.currentMonthView.setSelectedDate()
     }
 }
 
