@@ -1,4 +1,4 @@
-![banner](Screenshots/Banner.png)
+![banner](Resources/README/Images/Banner.png)
 
 [![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)](https://github.com/graycampbell/GCCalendar/releases/latest)
 [![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://cocoapods.org/pods/GCCalendar)
@@ -46,7 +46,7 @@ pod 'GCCalendar'
 
 - [Protocols](http://cocoadocs.org/docsets/GCCalendar/2.1.1/Protocols.html)
   - [GCCalendarViewDelegate](http://cocoadocs.org/docsets/GCCalendar/2.1.1/Protocols/GCCalendarViewDelegate.html)
-  
+
 ### License
 
 GCCalendar is available under the MIT license. See the [LICENSE](https://github.com/graycampbell/GCCalendar/blob/master/LICENSE) file for more info.
