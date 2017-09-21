@@ -455,7 +455,7 @@ fileprivate extension GCCalendarView {
     
     fileprivate func show(today: Date, animations: @escaping () -> Void, weekViewReuse: @escaping (([Date?]) -> Void), completion: @escaping ((Bool) -> Void)) {
         
-        UIView.animate(withDuration: 0.08, animations: animations, completion: { finished in
+        UIView.animate(withDuration: 0.08, animations: animations) { finished in
             
             if finished {
                 
@@ -465,9 +465,9 @@ fileprivate extension GCCalendarView {
                 
                 self.resetLayout()
                 
-                UIView.animate(withDuration: 0.08, animations: animations, completion: { finished in completion(finished) }) 
+                UIView.animate(withDuration: 0.08, animations: animations) { finished in completion(finished) }
             }
-        }) 
+        }
     }
     
     fileprivate func findTodayInMonthViews() {
@@ -521,7 +521,7 @@ fileprivate extension GCCalendarView {
     
     fileprivate func show(today: Date, animations: @escaping () -> Void, monthViewReuse: @escaping ((Date) -> Void), completion: @escaping ((Bool) -> Void)) {
         
-        UIView.animate(withDuration: 0.08, animations: animations, completion: { finished in
+        UIView.animate(withDuration: 0.08, animations: animations) { finished in
             
             if finished {
                 
@@ -531,9 +531,9 @@ fileprivate extension GCCalendarView {
                 
                 self.resetLayout()
                 
-                UIView.animate(withDuration: 0.08, animations: animations, completion: { finished in completion(finished) })
+                UIView.animate(withDuration: 0.08, animations: animations) { finished in completion(finished) }
             }
-        }) 
+        }
     }
 }
 
@@ -569,7 +569,7 @@ fileprivate extension GCCalendarView {
     
     fileprivate func removeWeekViews() {
         
-        self.weekViews.forEach({ $0.removeFromSuperview() })
+        self.weekViews.forEach { $0.removeFromSuperview() }
         self.weekViews.removeAll()
     }
     
@@ -714,7 +714,7 @@ fileprivate extension GCCalendarView {
     
     fileprivate func removeMonthViews() {
         
-        self.monthViews.forEach ({ $0.removeFromSuperview() })
+        self.monthViews.forEach { $0.removeFromSuperview() }
         self.monthViews.removeAll()
     }
     
