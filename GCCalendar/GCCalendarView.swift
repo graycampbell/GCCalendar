@@ -319,7 +319,7 @@ internal extension GCCalendarView {
     
     // MARK: Toggle Views
     
-    internal func toggleCurrentView(_ pan: UIPanGestureRecognizer) {
+    @objc internal func toggleCurrentView(_ pan: UIPanGestureRecognizer) {
         
         switch pan.state {
             
