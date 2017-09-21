@@ -257,7 +257,7 @@ fileprivate extension GCCalendarDayView {
 
 internal extension GCCalendarDayView {
     
-    internal func highlight() {
+    @objc internal func highlight() {
         
         if !(self.dateType == .past && !self.configuration.pastDatesEnabled) {
             

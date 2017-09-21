@@ -53,12 +53,12 @@ extension CalendarViewController {
     
     // MARK: Targets
     
-    func today() {
+    @objc func today() {
         
         self.calendarView.today()
     }
     
-    func displayMode() {
+    @objc func displayMode() {
         
         self.calendarView.displayMode = (self.calendarView.displayMode == .month) ? .week : .month
     }
