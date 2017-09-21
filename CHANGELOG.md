@@ -1,5 +1,17 @@
 # Change Log
 
+## [Version 2.2.0](https://github.com/graycampbell/GCCalendar/tree/2.2.0) - September 21, 2017
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.1.1...2.2.0)
+
+**Release Notes**
+
+- Updated to Swift 4
+
+**Merged Pull Requests**
+
+- Update to Swift 4 [\#30](https://github.com/graycampbell/GCCalendar/pull/30) ([graycampbell](https://github.com/graycampbell))
+- Add redesigned banner [\#28](https://github.com/graycampbell/GCCalendar/pull/28) ([graycampbell](https://github.com/graycampbell))
+
 ## [Version 2.1.1](https://github.com/graycampbell/GCCalendar/tree/2.1.1) - April 9, 2017
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.1.0...2.1.1)
 
