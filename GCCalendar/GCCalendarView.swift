@@ -422,7 +422,7 @@ fileprivate extension GCCalendarView {
             
             let today = Date()
             
-            if today.compare(self.selectedDate) == .orderedAscending {
+            if today < self.selectedDate {
                 
                 self.show(today: today, animations: self.showPreviousView, weekViewReuse: self.reuseNextWeekView) { finished in
                  
@@ -436,7 +436,7 @@ fileprivate extension GCCalendarView {
                     }
                 }
             }
-            else if today.compare(self.selectedDate) == .orderedDescending {
+            else if today > self.selectedDate {
                 
                 self.show(today: today, animations: self.showNextView, weekViewReuse: self.reusePreviousWeekView) { finished in
                     
@@ -488,7 +488,7 @@ fileprivate extension GCCalendarView {
             
             let today = Date()
             
-            if today.compare(self.selectedDate) == .orderedAscending {
+            if today < self.selectedDate {
                 
                 self.show(today: today, animations: self.showPreviousView, monthViewReuse: self.reuseNextMonthView) { finished in
                     
@@ -502,7 +502,7 @@ fileprivate extension GCCalendarView {
                     }
                 }
             }
-            else if today.compare(self.selectedDate) == .orderedDescending {
+            else if today > self.selectedDate {
                 
                 self.show(today: today, animations: self.showNextView, monthViewReuse: self.reusePreviousMonthView) { finished in
                     
