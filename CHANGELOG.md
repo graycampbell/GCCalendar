@@ -1,5 +1,21 @@
 # Change Log
 
+## [Version 2.2.1](https://github.com/graycampbell/GCCalendar/tree/2.2.1) - September 22, 2017
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.0...2.2.1)
+
+**Release Notes**
+
+- Fixed bugs related to regions with weeks that start on days other than Sunday
+
+**Closed Issues**
+
+- Set first day [\#27](https://github.com/graycampbell/GCCalendar/issues/27)
+- Not works correctly if first day of week is not Sunday [\#24](https://github.com/graycampbell/GCCalendar/issues/24)
+
+**Merged Pull Requests**
+
+- Bug fixes [\#32](https://github.com/graycampbell/GCCalendar/pull/32) ([graycampbell](https://github.com/graycampbell))
+
 ## [Version 2.2.0](https://github.com/graycampbell/GCCalendar/tree/2.2.0) - September 21, 2017
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.1.1...2.2.0)
 
