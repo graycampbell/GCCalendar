@@ -32,21 +32,21 @@ internal final class GCCalendarMonthView: UIStackView {
         
         repeat {
             
-            let dateComponents = self.configuration.calendar.dateComponents([.weekday, .weekOfMonth, .month, .year], from: date)
+            let weekday = self.configuration.calendar.ordinality(of: .weekday, in: .weekOfMonth, for: date)!
+            var weekOfMonth = self.configuration.calendar.ordinality(of: .weekOfMonth, in: .month, for: date)!
             
-            newDates[dateComponents.weekOfMonth! - 1][dateComponents.weekday! - 1] = date
+            if self.configuration.calendar.ordinality(of: .weekOfMonth, in: .month, for: self.startDate)! != 0 {
+                
+                weekOfMonth -= 1
+            }
+            
+            newDates[weekOfMonth][weekday - 1] = date
             
             date = self.configuration.calendar.date(byAdding: .day, value: 1, to: date)!
             
         } while self.configuration.calendar.isDate(date, equalTo: self.startDate, toGranularity: .month)
         
-        return newDates.map { dates in
-            
-            let firstWeekdayIndex = self.configuration.calendar.firstWeekday - 1
-            let reorderedDates = dates[firstWeekdayIndex..<dates.count] + dates[0..<firstWeekdayIndex]
-            
-            return [Date?](reorderedDates)
-        }
+        return newDates
     }
     
     internal var startDate: Date! {
@@ -123,9 +123,14 @@ internal extension GCCalendarMonthView {
     
     internal func setSelectedDate(_ date: Date? = nil) {
         
-        let newDate = date ?? self.startDate
-        let newDateComponents = self.configuration.calendar.dateComponents([.weekOfMonth, .weekday], from: newDate!)
+        let newDate: Date = date ?? self.startDate
+        var weekOfMonth = self.configuration.calendar.ordinality(of: .weekOfMonth, in: .month, for: newDate)!
         
-        self.weekViews[newDateComponents.weekOfMonth! - 1].setSelectedDate(newDate)
+        if self.configuration.calendar.ordinality(of: .weekOfMonth, in: .month, for: self.startDate)! != 0 {
+            
+            weekOfMonth -= 1
+        }
+        
+        self.weekViews[weekOfMonth].setSelectedDate(newDate)
     }
 }
