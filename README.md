@@ -1,4 +1,4 @@
-![banner](Resources/README/Images/Banner.png)
+![banner](Resources/README/Assets/Banner.png)
 
 [![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)](https://github.com/graycampbell/GCCalendar/releases/latest)
 [![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://cocoapods.org/pods/GCCalendar)
