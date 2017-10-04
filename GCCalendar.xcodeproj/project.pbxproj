@@ -29,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		E29559AE1CA0CC5A00A5F429 /* GCCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E29559B21CA0CC5A00A5F429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2B9268F1C5EBB88009B1AC9 /* GCCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
 		E2B926901C5EBB88009B1AC9 /* GCCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarDayView.swift; sourceTree = "<group>"; };
 		E2B926921C5EBB88009B1AC9 /* GCCalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCCalendarMonthView.swift; sourceTree = "<group>"; };
@@ -60,19 +59,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E29559AF1CA0CC5A00A5F429 /* GCCalendarTests */ = {
-			isa = PBXGroup;
-			children = (
-				E29559B21CA0CC5A00A5F429 /* Info.plist */,
-			);
-			path = GCCalendarTests;
-			sourceTree = "<group>";
-		};
 		E2EF54CB1C5AA64800E93F85 = {
 			isa = PBXGroup;
 			children = (
 				E2EF54D71C5AA64800E93F85 /* GCCalendar */,
-				E29559AF1CA0CC5A00A5F429 /* GCCalendarTests */,
 				E2EF54D61C5AA64800E93F85 /* Products */,
 			);
 			sourceTree = "<group>";
