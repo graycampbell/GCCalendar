@@ -37,6 +37,10 @@ pod 'GCCalendar'
 
 4. Implement GCCalendarViewDelegate.
 
+    ```
+    func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date, inCalendar calendar: Calendar)
+    ```
+
 ### Documentation
 
 - [Classes](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Classes.html)
