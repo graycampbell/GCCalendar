@@ -76,11 +76,6 @@ public final class GCCalendarView: UIView {
     
     // MARK: Initializers
     
-    /// Returns an object initialized from data in a given unarchiver.
-    ///
-    /// - Parameter coder: An unarchiver object.
-    /// - Returns: self, initialized using the data in decoder.
-    
     public required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
@@ -102,7 +97,7 @@ public final class GCCalendarView: UIView {
     
     /// Initializes and returns a newly allocated calendar view object.
     ///
-    /// Use this initializer if you are planning on using layout constraints. If you are using frame rectangles to layout your views, use init(frame:) instead.
+    /// Use this initializer if you are planning on using layout constraints. If you are using frame rectangles to layout your views, use `init(frame:)` instead.
     ///
     /// - Returns: An initialized calendar view object.
     
@@ -115,10 +110,6 @@ public final class GCCalendarView: UIView {
 // MARK: - Layout
 
 public extension GCCalendarView {
-    
-    /// Lays out subviews.
-    ///
-    /// You should not call this method directly. If you want to force a layout update, call the setNeedsLayout() method instead to do so prior to the next drawing update. If you want to update the layout of your views immediately, call the layoutIfNeeded() method.
     
     public override func layoutSubviews() {
         
