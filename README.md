@@ -43,14 +43,14 @@ pod 'GCCalendar'
 
 ### Documentation
 
-- [Classes](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Classes.html)
-  - [GCCalendarView](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Classes/GCCalendarView.html)
+- [Classes](https://graycampbell.github.io/GCCalendar/Classes.html)
+  - [GCCalendarView](https://graycampbell.github.io/GCCalendar/Classes/GCCalendarView.html)
 
-- [Enums](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Enums.html)
-  - [GCCalendarDisplayMode](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Enums/GCCalendarDisplayMode.html)
+- [Enums](https://graycampbell.github.io/GCCalendar/Enums.html)
+  - [GCCalendarDisplayMode](https://graycampbell.github.io/GCCalendar/Enums/GCCalendarDisplayMode.html)
 
-- [Protocols](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Protocols.html)
-  - [GCCalendarViewDelegate](http://cocoadocs.org/docsets/GCCalendar/2.2.1/Protocols/GCCalendarViewDelegate.html)
+- [Protocols](https://graycampbell.github.io/GCCalendar/Protocols.html)
+  - [GCCalendarViewDelegate](https://graycampbell.github.io/GCCalendar/Protocols/GCCalendarViewDelegate.html)
 
 ### License
 
