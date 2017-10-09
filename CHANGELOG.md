@@ -1,5 +1,13 @@
 # Change Log
 
+## [Version 2.2.3](https://github.com/graycampbell/GCCalendar/tree/2.2.3) - October 8, 2017
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.2...2.2.3)
+
+**Release Notes**
+
+- Improves documentation.
+
 ## [Version 2.2.2](https://github.com/graycampbell/GCCalendar/tree/2.2.2) - October 8, 2017
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.1...2.2.2)
