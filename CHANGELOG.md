@@ -8,6 +8,10 @@
 
 - Improves documentation.
 
+**Closed Issues**
+
+- GCCalendarView.currentMonthStartDate returns wrong Date [\#31](https://github.com/graycampbell/GCCalendar/issues/31)
+
 ## [Version 2.2.2](https://github.com/graycampbell/GCCalendar/tree/2.2.2) - October 8, 2017
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.1...2.2.2)
