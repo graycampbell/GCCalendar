@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GCCalendarViewDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/GCCalendarViewDelegate" class="dashAnchor"></a>
+    <a title="GCCalendarViewDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GCCalendar Docs</a></p>
+        <p class="header-right"><a href="https://github.com/graycampbell/GCCalendar"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GCCalendar Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GCCalendarViewDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GCCalendarView.html">GCCalendarView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/GCCalendarDisplayMode.html">GCCalendarDisplayMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GCCalendarViewDelegate.html">GCCalendarViewDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GCCalendarViewDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GCCalendarViewDelegate</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+
+                </div>
+              </div>
+            <p>The delegate of a GCCalendarView object must adopt the GCCalendarViewDelegate protocol. The protocol&rsquo;s optional methods allow the delegate to handle date selection and customize the calendar view&rsquo;s appearance.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Date%20Selection"></a>
+                <a name="//apple_ref/swift/Section/Date Selection" class="dashAnchor"></a>
+                <a href="#/Date%20Selection">
+                  <h3 class="section-name">Date Selection</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP08calendarB0yAA0aB0C_10Foundation4DateV09didSelectF0AG8CalendarV02inI0tF"></a>
+                    <a name="//apple_ref/swift/Method/calendarView(_:didSelectDate:inCalendar:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP08calendarB0yAA0aB0C_10Foundation4DateV09didSelectF0AG8CalendarV02inI0tF">calendarView(_:didSelectDate:inCalendar:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the delegate that the calendar view selected a new date in the specified calendar.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">calendarView</span><span class="p">(</span><span class="n">_</span> <span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">,</span> <span class="n">didSelectDate</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="n">inCalendar</span> <span class="nv">calendar</span><span class="p">:</span> <span class="kt">Calendar</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>date</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The selected date.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendar</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar used to configure the calendar view.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Calendar"></a>
+                <a name="//apple_ref/swift/Section/Calendar" class="dashAnchor"></a>
+                <a href="#/Calendar">
+                  <h3 class="section-name">Calendar</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP8calendar10Foundation8CalendarVAA0aB0C0dB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/calendar(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP8calendar10Foundation8CalendarVAA0aB0C0dB0_tF">calendar(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the calendar for the calendar view.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>Calendar.current</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">calendar</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Calendar</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The calendar for the calendar view.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Weekday%20Labels"></a>
+                <a name="//apple_ref/swift/Section/Weekday Labels" class="dashAnchor"></a>
+                <a href="#/Weekday%20Labels">
+                  <h3 class="section-name">Weekday Labels</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP16weekdayLabelFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/weekdayLabelFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP16weekdayLabelFontSo6UIFontCAA0aB0C08calendarB0_tF">weekdayLabelFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the font for the calendar view&rsquo;s weekday labels.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.systemFont(ofSize: 10)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">weekdayLabelFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The font for the weekday labels.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP21weekdayLabelTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/weekdayLabelTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP21weekdayLabelTextColorSo7UIColorCAA0aB0C08calendarB0_tF">weekdayLabelTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the text color for the calendar view&rsquo;s weekday labels.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor.gray</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">weekdayLabelTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The text color for the weekday labels.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Past%20Dates"></a>
+                <a name="//apple_ref/swift/Section/Past Dates" class="dashAnchor"></a>
+                <a href="#/Past%20Dates">
+                  <h3 class="section-name">Past Dates</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP16pastDatesEnabledSbAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDatesEnabled(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP16pastDatesEnabledSbAA0aB0C08calendarB0_tF">pastDatesEnabled(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate if the calendar view should enable past dates.</p>
+
+<hr>
+
+<p>The default value is true. If returning false, the calendar view will make past dates unselectable and will only display past dates for the current week or month, depending on the calendar display mode.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDatesEnabled</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A Boolean value inidicating whether or not the calendar view should enable past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP12pastDateFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDateFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP12pastDateFontSo6UIFontCAA0aB0C08calendarB0_tF">pastDateFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>unselected</strong> font for past dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.systemFont(ofSize: 17)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDateFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The unselected font for past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP24pastDateEnabledTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDateEnabledTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP24pastDateEnabledTextColorSo7UIColorCAA0aB0C08calendarB0_tF">pastDateEnabledTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>enabled</strong> text color for past dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor(white: 0.0, alpha: 0.87)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDateEnabledTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The enabled text color for past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP25pastDateDisabledTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDateDisabledTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP25pastDateDisabledTextColorSo7UIColorCAA0aB0C08calendarB0_tF">pastDateDisabledTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>disabled</strong> text color for past dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor.gray</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDateDisabledTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The disabled text color for past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP20pastDateSelectedFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDateSelectedFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP20pastDateSelectedFontSo6UIFontCAA0aB0C08calendarB0_tF">pastDateSelectedFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> font for past dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.boldSystemFont(ofSize: 17)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDateSelectedFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected font for past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP25pastDateSelectedTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDateSelectedTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP25pastDateSelectedTextColorSo7UIColorCAA0aB0C08calendarB0_tF">pastDateSelectedTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> text color for past dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor.white</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDateSelectedTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected text color for past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP31pastDateSelectedBackgroundColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/pastDateSelectedBackgroundColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP31pastDateSelectedBackgroundColorSo7UIColorCAA0aB0C08calendarB0_tF">pastDateSelectedBackgroundColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> background color for past dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor(white: 0.0, alpha: 0.87)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pastDateSelectedBackgroundColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected background color for past dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Current%20Date"></a>
+                <a name="//apple_ref/swift/Section/Current Date" class="dashAnchor"></a>
+                <a href="#/Current%20Date">
+                  <h3 class="section-name">Current Date</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP15currentDateFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/currentDateFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP15currentDateFontSo6UIFontCAA0aB0C08calendarB0_tF">currentDateFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>unselected</strong> font for the current date.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.boldSystemFont(ofSize: 17)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">currentDateFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The unselected font for the current date.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP20currentDateTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/currentDateTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP20currentDateTextColorSo7UIColorCAA0aB0C08calendarB0_tF">currentDateTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>unselected</strong> text color for the current date.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">currentDateTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The unselected text color for the current date.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP23currentDateSelectedFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/currentDateSelectedFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP23currentDateSelectedFontSo6UIFontCAA0aB0C08calendarB0_tF">currentDateSelectedFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> font for the current date.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.boldSystemFont(ofSize: 17)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">currentDateSelectedFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected font for the current date.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP28currentDateSelectedTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/currentDateSelectedTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP28currentDateSelectedTextColorSo7UIColorCAA0aB0C08calendarB0_tF">currentDateSelectedTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> text color for the current date.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor.white</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">currentDateSelectedTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected text color for the current date.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP34currentDateSelectedBackgroundColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/currentDateSelectedBackgroundColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP34currentDateSelectedBackgroundColorSo7UIColorCAA0aB0C08calendarB0_tF">currentDateSelectedBackgroundColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> background color for the current date.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">currentDateSelectedBackgroundColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected background color for the current date.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Future%20Dates"></a>
+                <a name="//apple_ref/swift/Section/Future Dates" class="dashAnchor"></a>
+                <a href="#/Future%20Dates">
+                  <h3 class="section-name">Future Dates</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP14futureDateFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/futureDateFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP14futureDateFontSo6UIFontCAA0aB0C08calendarB0_tF">futureDateFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>unselected</strong> font for future dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.systemFont(ofSize: 17)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">futureDateFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The unselected font for future dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP19futureDateTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/futureDateTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP19futureDateTextColorSo7UIColorCAA0aB0C08calendarB0_tF">futureDateTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>unselected</strong> text color for future dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor(white: 0.0, alpha: 0.87)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">futureDateTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The unselected text color for future dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP22futureDateSelectedFontSo6UIFontCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/futureDateSelectedFont(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP22futureDateSelectedFontSo6UIFontCAA0aB0C08calendarB0_tF">futureDateSelectedFont(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> font for future dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIFont.boldSystemFont(ofSize: 17)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">futureDateSelectedFont</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIFont</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected font for future dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP27futureDateSelectedTextColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/futureDateSelectedTextColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP27futureDateSelectedTextColorSo7UIColorCAA0aB0C08calendarB0_tF">futureDateSelectedTextColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> text color for future dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor.white</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">futureDateSelectedTextColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected text color for future dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:10GCCalendar0A12ViewDelegateP33futureDateSelectedBackgroundColorSo7UIColorCAA0aB0C08calendarB0_tF"></a>
+                    <a name="//apple_ref/swift/Method/futureDateSelectedBackgroundColor(calendarView:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:10GCCalendar0A12ViewDelegateP33futureDateSelectedBackgroundColorSo7UIColorCAA0aB0C08calendarB0_tF">futureDateSelectedBackgroundColor(calendarView:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Asks the delegate to provide the <strong>selected</strong> background color for future dates.</p>
+
+<hr>
+
+<p><strong>Default Value</strong></p>
+
+<p><code>UIColor(white: 0.0, alpha: 0.87)</code></p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">futureDateSelectedBackgroundColor</span><span class="p">(</span><span class="nv">calendarView</span><span class="p">:</span> <span class="kt"><a href="../Classes/GCCalendarView.html">GCCalendarView</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>calendarView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The calendar view requesting this information.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The selected background color for future dates.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/graycampbell" target="_blank" rel="external">Gray Campbell</a>. All rights reserved. (Last updated: 2017-10-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
