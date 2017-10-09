@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GCCalendar  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="GCCalendar  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">GCCalendar Docs</a></p>
+        <p class="header-right"><a href="https://github.com/graycampbell/GCCalendar"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">GCCalendar Reference</a>
+        <img id="carat" src="img/carat.png" />
+        GCCalendar  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/GCCalendarView.html">GCCalendarView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/GCCalendarDisplayMode.html">GCCalendarDisplayMode</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/GCCalendarViewDelegate.html">GCCalendarViewDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><img src="Resources/README/Assets/Banner.png" alt="banner"></p>
+
+<p><a href="https://github.com/graycampbell/GCCalendar/releases/latest"><img src="https://img.shields.io/github/release/graycampbell/GCCalendar.svg" alt="Release"></a>
+<a href="https://cocoapods.org/pods/GCCalendar"><img src="https://img.shields.io/cocoapods/v/GCCalendar.svg" alt="CocoaPods"></a>
+<a href="http://cocoadocs.org/docsets/GCCalendar"><img src="https://img.shields.io/badge/docs-100%25-brightgreen.svg" alt="CocoaDocs"></a>
+<a href="https://www.codacy.com/app/graycampbell/GCCalendar?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=graycampbell/GCCalendar&amp;utm_campaign=Badge_Grade"><img src="https://img.shields.io/codacy/grade/7ef16773008b4ed9b7798dd3d0da54af.svg" alt="Codacy Code Quality"></a>
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/Swift_4-compatible-4BC51D.svg?style=flat" alt="Swift 4 Compatible"></a>
+<img src="https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat" alt="Platform">
+<a href="https://github.com/graycampbell/GCCalendar/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/GCCalendar.svg" alt="License"></a></p>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+<pre class="highlight plaintext"><code>pod 'GCCalendar'
+</code></pre>
+<h3 id='implementation' class='heading'>Implementation</h3>
+
+<ol>
+<li><p>Add GCCalendar to your file&rsquo;s import statements.</p>
+<pre class="highlight plaintext"><code>import GCCalendar
+</code></pre></li>
+<li><p>Create an instance of GCCalendarView.</p>
+<pre class="highlight plaintext"><code>let calendarView = GCCalendarView()
+</code></pre></li>
+<li><p>Set the delegate and the display mode. If you don&rsquo;t set the delegate and the display mode, the calendar will not appear.</p>
+<pre class="highlight plaintext"><code>calendarView.delegate = self
+calendarView.displayMode = .month
+</code></pre></li>
+<li><p>Implement GCCalendarViewDelegate.</p>
+<pre class="highlight plaintext"><code>func calendarView(_ calendarView: GCCalendarView, didSelectDate date: Date, inCalendar calendar: Calendar)
+</code></pre></li>
+</ol>
+<h3 id='documentation' class='heading'>Documentation</h3>
+
+<ul>
+<li><p><a href="https://graycampbell.github.io/GCCalendar/Classes.html">Classes</a></p>
+
+<ul>
+<li><a href="https://graycampbell.github.io/GCCalendar/Classes/GCCalendarView.html">GCCalendarView</a></li>
+</ul></li>
+<li><p><a href="https://graycampbell.github.io/GCCalendar/Enums.html">Enums</a></p>
+
+<ul>
+<li><a href="https://graycampbell.github.io/GCCalendar/Enums/GCCalendarDisplayMode.html">GCCalendarDisplayMode</a></li>
+</ul></li>
+<li><p><a href="https://graycampbell.github.io/GCCalendar/Protocols.html">Protocols</a></p>
+
+<ul>
+<li><a href="https://graycampbell.github.io/GCCalendar/Protocols/GCCalendarViewDelegate.html">GCCalendarViewDelegate</a></li>
+</ul></li>
+</ul>
+<h3 id='license' class='heading'>License</h3>
+
+<p>GCCalendar is available under the MIT license. See the <a href="https://github.com/graycampbell/GCCalendar/blob/master/LICENSE">LICENSE</a> file for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/graycampbell" target="_blank" rel="external">Gray Campbell</a>. All rights reserved. (Last updated: 2017-10-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

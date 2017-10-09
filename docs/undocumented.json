@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Macintosh/Apps/GCCalendar/GCCalendar/GCCalendarView.swift",
+      "line": 79,
+      "symbol": "GCCalendarView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Macintosh/Apps/GCCalendar/GCCalendar/GCCalendarView.swift",
+      "line": 114,
+      "symbol": "GCCalendarView.layoutSubviews()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Macintosh/Apps/GCCalendar"
+}
