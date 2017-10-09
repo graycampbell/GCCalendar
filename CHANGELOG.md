@@ -1,5 +1,14 @@
 # Change Log
 
+## [Version 2.2.2](https://github.com/graycampbell/GCCalendar/tree/2.2.2) - October 8, 2017
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.1...2.2.2)
+
+**Release Notes**
+
+- Improves documentation.
+- Adds `.swift-version` file.
+
 ## [Version 2.2.1](https://github.com/graycampbell/GCCalendar/tree/2.2.1) - September 22, 2017
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.0...2.2.1)
