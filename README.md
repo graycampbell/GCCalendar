@@ -2,7 +2,7 @@
 
 [![Release](https://img.shields.io/github/release/graycampbell/GCCalendar.svg)](https://github.com/graycampbell/GCCalendar/releases/latest)
 [![CocoaPods](https://img.shields.io/cocoapods/v/GCCalendar.svg)](https://cocoapods.org/pods/GCCalendar)
-[![CocoaDocs](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](http://cocoadocs.org/docsets/GCCalendar)
+[![Documentation](https://img.shields.io/badge/docs-100%25-brightgreen.svg)](https://graycampbell.github.io/GCCalendar)
 [![Codacy Code Quality](https://img.shields.io/codacy/grade/7ef16773008b4ed9b7798dd3d0da54af.svg)](https://www.codacy.com/app/graycampbell/GCCalendar?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=graycampbell/GCCalendar&amp;utm_campaign=Badge_Grade)
 [![Swift 4 Compatible](https://img.shields.io/badge/Swift_4-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
 ![Platform](https://img.shields.io/cocoapods/p/GCCalendar.svg?style=flat)
