@@ -27,7 +27,7 @@
 
 **Release Notes**
 
-- Fixed bugs related to regions with weeks that start on days other than Sunday
+- Fixes bugs related to regions with weeks that start on days other than Sunday.
 
 **Closed Issues**
 
@@ -44,7 +44,7 @@
 
 **Release Notes**
 
-- Updated to Swift 4
+- Updates project to Swift 4.0.
 
 **Merged Pull Requests**
 
@@ -57,7 +57,7 @@
 
 **Release Notes**
 
-- Fixed bugs related to regions with weeks that start on days other than Sunday
+- Fixes bugs related to regions with weeks that start on days other than Sunday.
 
 **Closed Issues**
 
@@ -73,7 +73,7 @@
 
 **Release Notes**
 
-- Updated to Swift 3.1
+- Updates project to Swift 3.1.
 
 **Merged Pull Requests**
 
@@ -85,7 +85,7 @@
 
 **Release Notes**
 
-- Completed documentation
+- Adds completed documentation.
 
 ## [Version 2.0.0](https://github.com/graycampbell/GCCalendar/tree/2.0.0) - March 11, 2017
 
@@ -93,10 +93,10 @@
 
 **Release Notes**
 
-- Updated to Swift 3 (including syntax changes, renamed functions, etc.)
-- Updated to use GCCalendarView with GCCalendarViewDelegate instead of GCCalendarViewController
-- Updated to allow for localized calendars
-- Auto-updating calendar display mode functionality has been removed
+- Updates project to Swift 3.0 (including syntax changes, renamed functions, etc.).
+- Replaces GCCalendarViewController with GCCalendarView and GCCalendarViewDelegate.
+- Adds localized calendar compatibility.
+- Removes auto-updating calendar display mode.
 
 **Implemented Enhancements**
 
@@ -117,7 +117,7 @@
 
 **Release Notes**
 
-- Fixes a bug that caused some previous weeks to be hidden if past days were disabled
+- Fixes a bug that caused some previous weeks to be hidden if past days were disabled.
 
 **Merged Pull Requests**
 
@@ -130,10 +130,10 @@
 
 **Release Notes**
 
-- Clean implementation using GCCalendarViewController
-- Simple today button integration using self.calendarView.today()
-- Extensive customization options including colors, fonts, and past day disabling
-- Two calendar modes (week and month) with optional auto-switching based on device orientation
+- Clean implementation using GCCalendarViewController.
+- Simple today button integration using `self.calendarView.today()`.
+- Extensive customization options including colors, fonts, and past day disabling.
+- Two calendar modes (week and month) with optional auto-switching based on device orientation.
 
 **Merged Pull Requests**
 
