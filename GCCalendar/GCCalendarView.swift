@@ -35,6 +35,8 @@ public final class GCCalendarView: UIView {
     fileprivate var selectedDate = Date()
     fileprivate var selectedDayView: GCCalendarDayView? = nil
     
+    fileprivate var userSelectedDate: Date?
+    
     fileprivate var headerView = UIStackView()
     fileprivate var weekViews: [GCCalendarWeekView] = []
     fileprivate var monthViews: [GCCalendarMonthView] = []
@@ -259,11 +261,11 @@ internal extension GCCalendarView {
             
             if self.previousView.isKind(of: GCCalendarMonthView.self) {
                 
-                return self.currentMonthView.containsToday
+                return self.currentMonthView.contains(date: Date())
             }
             else {
                 
-                return self.currentWeekView.containsToday
+                return self.currentWeekView.contains(date: Date())
             }
         }
         
@@ -395,27 +397,26 @@ internal extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func findTodayInWeekViews() {
+    fileprivate func findDateInWeekViews(date: Date) {
         
-        if self.previousWeekView.containsToday {
+        if self.previousWeekView.contains(date: date) {
             
             UIView.animate(withDuration: 0.15, animations: self.showPreviousView, completion: self.previousWeekViewDidShow)
         }
-        else if self.currentWeekView.containsToday {
+        else if self.currentWeekView.contains(date: date) {
             
-            self.currentWeekView.setSelectedDate(Date())
+            self.currentWeekView.select(date: date)
+            self.userSelectedDate = nil
         }
-        else if self.nextWeekView.containsToday {
+        else if self.nextWeekView.contains(date: date) {
             
             UIView.animate(withDuration: 0.15, animations: self.showNextView, completion: self.nextWeekViewDidShow)
         }
         else {
             
-            let today = Date()
-            
-            if today < self.selectedDate {
+            if date < self.selectedDate {
                 
-                self.show(today: today, animations: self.showPreviousView, weekViewReuse: self.reuseNextWeekView) { finished in
+                self.show(date: date, animations: self.showPreviousView, weekViewReuse: self.reuseNextWeekView) { finished in
                  
                     if finished {
                         
@@ -427,9 +428,9 @@ fileprivate extension GCCalendarView {
                     }
                 }
             }
-            else if today > self.selectedDate {
+            else if date > self.selectedDate {
                 
-                self.show(today: today, animations: self.showNextView, weekViewReuse: self.reusePreviousWeekView) { finished in
+                self.show(date: date, animations: self.showNextView, weekViewReuse: self.reusePreviousWeekView) { finished in
                     
                     if finished {
                         
@@ -444,13 +445,13 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func show(today: Date, animations: @escaping () -> Void, weekViewReuse: @escaping (([Date?]) -> Void), completion: @escaping ((Bool) -> Void)) {
+    fileprivate func show(date: Date, animations: @escaping () -> Void, weekViewReuse: @escaping (([Date?]) -> Void), completion: @escaping ((Bool) -> Void)) {
         
         UIView.animate(withDuration: 0.08, animations: animations) { finished in
             
             if finished {
                 
-                let newDates = self.currentWeekDates(fromDate: today)
+                let newDates = self.currentWeekDates(fromDate: date)
                 
                 weekViewReuse(newDates)
                 
@@ -461,27 +462,26 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func findTodayInMonthViews() {
+    fileprivate func findDateInMonthViews(date: Date) {
         
-        if self.previousMonthView.containsToday {
+        if self.previousMonthView.contains(date: date) {
             
             UIView.animate(withDuration: 0.15, animations: self.showPreviousView, completion: self.previousMonthViewDidShow)
         }
-        else if self.currentMonthView.containsToday {
+        else if self.currentMonthView.contains(date: date) {
             
-            self.currentMonthView.setSelectedDate(Date())
+            self.currentMonthView.select(date: date)
+            self.userSelectedDate = nil
         }
-        else if self.nextMonthView.containsToday {
+        else if self.nextMonthView.contains(date: date) {
             
             UIView.animate(withDuration: 0.15, animations: self.showNextView, completion: self.nextMonthViewDidShow)
         }
         else {
             
-            let today = Date()
-            
-            if today < self.selectedDate {
+            if date < self.selectedDate {
                 
-                self.show(today: today, animations: self.showPreviousView, monthViewReuse: self.reuseNextMonthView) { finished in
+                self.show(date: date, animations: self.showPreviousView, monthViewReuse: self.reuseNextMonthView) { finished in
                     
                     if finished {
                         
@@ -493,9 +493,9 @@ fileprivate extension GCCalendarView {
                     }
                 }
             }
-            else if today > self.selectedDate {
+            else if date > self.selectedDate {
                 
-                self.show(today: today, animations: self.showNextView, monthViewReuse: self.reusePreviousMonthView) { finished in
+                self.show(date: date, animations: self.showNextView, monthViewReuse: self.reusePreviousMonthView) { finished in
                     
                     if finished {
                         
@@ -510,13 +510,13 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func show(today: Date, animations: @escaping () -> Void, monthViewReuse: @escaping ((Date) -> Void), completion: @escaping ((Bool) -> Void)) {
+    fileprivate func show(date: Date, animations: @escaping () -> Void, monthViewReuse: @escaping ((Date) -> Void), completion: @escaping ((Bool) -> Void)) {
         
         UIView.animate(withDuration: 0.08, animations: animations) { finished in
             
             if finished {
                 
-                let newStartDate = self.currentMonthStartDate(fromDate: today)
+                let newStartDate = self.currentMonthStartDate(fromDate: date)
                 
                 monthViewReuse(newStartDate)
                 
@@ -669,7 +669,20 @@ fileprivate extension GCCalendarView {
     fileprivate func weekViewDidShow() {
         
         self.resetLayout()
-        self.currentWeekView.containsToday ? self.currentWeekView.setSelectedDate(Date()) : self.currentWeekView.setSelectedDate()
+        
+        if let userSelectedDate = self.userSelectedDate {
+            
+            self.currentWeekView.select(date: userSelectedDate)
+            self.userSelectedDate = nil
+        }
+        else if self.currentWeekView.contains(date: Date()) {
+            
+            self.currentWeekView.select(date: Date())
+        }
+        else {
+            
+            self.currentWeekView.select(date: nil)
+        }
     }
 }
 
@@ -788,7 +801,20 @@ fileprivate extension GCCalendarView {
     fileprivate func monthViewDidShow() {
         
         self.resetLayout()
-        self.currentMonthView.containsToday ? self.currentMonthView.setSelectedDate(Date()) : self.currentMonthView.setSelectedDate()
+        
+        if let userSelectedDate = self.userSelectedDate {
+            
+            self.currentMonthView.select(date: userSelectedDate)
+            self.userSelectedDate = nil
+        }
+        else if self.currentMonthView.contains(date: Date()) {
+            
+            self.currentMonthView.select(date: Date())
+        }
+        else {
+            
+            self.currentMonthView.select(date: nil)
+        }
     }
 }
 
@@ -800,15 +826,24 @@ public extension GCCalendarView {
     
     public func today() {
         
-        if self.isProperlyConfigured && !self.configuration.calendar.isDateInToday(self.selectedDate) {
+        self.select(date: Date())
+    }
+    
+    /// Tells the calendar view to select the specified date, updating any visible week views or month views if necessary.
+    
+    public func select(date: Date) {
+        
+        if self.isProperlyConfigured && !self.configuration.calendar.isDate(date, inSameDayAs: self.selectedDate) {
+            
+            self.userSelectedDate = date
             
             switch self.displayMode! {
                 
                 case .week:
-                    self.findTodayInWeekViews()
-                    
+                    self.findDateInWeekViews(date: date)
+                
                 case .month:
-                    self.findTodayInMonthViews()
+                    self.findDateInMonthViews(date: date)
             }
         }
     }

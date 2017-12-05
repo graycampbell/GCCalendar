@@ -29,13 +29,13 @@ internal final class GCCalendarWeekView: UIStackView {
         }
     }
     
-    internal var containsToday: Bool {
+    internal func contains(date: Date) -> Bool {
         
         return self.dates.contains(where: { possibleDate in
             
-            guard let date = possibleDate else { return false }
+            guard let unwrappedDate = possibleDate else { return false }
             
-            return self.configuration.calendar.isDate(date, equalTo: Date(), toGranularity: .weekOfYear)
+            return self.configuration.calendar.isDate(unwrappedDate, equalTo: date, toGranularity: .weekOfYear)
         })
     }
     
@@ -98,7 +98,7 @@ internal extension GCCalendarWeekView {
 
 internal extension GCCalendarWeekView {
     
-    internal func setSelectedDate(_ date: Date? = nil) {
+    internal func select(date: Date? = nil) {
         
         if let newDate = date {
             

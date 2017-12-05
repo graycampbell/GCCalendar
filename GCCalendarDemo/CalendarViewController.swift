@@ -55,7 +55,7 @@ extension CalendarViewController {
     
     @objc func today() {
         
-        self.calendarView.today()
+        self.calendarView.select(date: Date())
     }
     
     @objc func displayMode() {
