@@ -1,5 +1,21 @@
 # Change Log
 
+## [Version 2.3.0](https://github.com/graycampbell/GCCalendar/tree/2.3.0) - December 5, 2017
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.3...2.3.0)
+
+**Release Notes**
+
+- Adds option to programmatically select a specific date.
+
+**Closed Issues**
+
+- Select Specific Date [\#35](https://github.com/graycampbell/GCCalendar/issues/35)
+
+**Merged Pull Requests**
+
+- Add option to programmatically select a specific date ([#35](https://github.com/graycampbell/GCCalendar/issues/35)) [\#36](https://github.com/graycampbell/GCCalendar/pull/36) ([graycampbell](https://github.com/graycampbell))
+
 ## [Version 2.2.3](https://github.com/graycampbell/GCCalendar/tree/2.2.3) - October 8, 2017
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.2...2.2.3)
