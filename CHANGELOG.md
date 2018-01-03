@@ -1,5 +1,17 @@
 # Change Log
 
+## [Version 2.3.1](https://github.com/graycampbell/GCCalendar/tree/2.3.1) - January 2, 2018
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.3.0...2.3.1)
+
+**Release Notes**
+
+- Fixes a bug that caused the calendar to incorrectly calculate the dates for the first week of the year when using `GCCalendarDisplayMode.week`.
+
+**Closed Issues**
+
+- Incorrect date after year change [\#37](https://github.com/graycampbell/GCCalendar/issues/37)
+
 ## [Version 2.3.0](https://github.com/graycampbell/GCCalendar/tree/2.3.0) - December 5, 2017
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.2.3...2.3.0)
