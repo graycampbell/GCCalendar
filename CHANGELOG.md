@@ -12,6 +12,10 @@
 
 - Date issue in didselectDate [\#38](https://github.com/graycampbell/GCCalendar/issues/38)
 
+**Merged Pull Requests**
+
+- Update to Swift 4.1 [\#39](https://github.com/graycampbell/GCCalendar/pull/39) ([graycampbell](https://github.com/graycampbell))
+
 ## [Version 2.3.1](https://github.com/graycampbell/GCCalendar/tree/2.3.1) - January 2, 2018
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.3.0...2.3.1)
