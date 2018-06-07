@@ -1,5 +1,17 @@
 # Change Log
 
+## [Version 2.4.0](https://github.com/graycampbell/GCCalendar/tree/2.4.0) - June 7, 2018
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.3.1...2.4.0)
+
+**Release Notes**
+
+- Updates project to Swift 4.1.
+
+**Closed Issues**
+
+- Date issue in didselectDate [\#38](https://github.com/graycampbell/GCCalendar/issues/38)
+
 ## [Version 2.3.1](https://github.com/graycampbell/GCCalendar/tree/2.3.1) - January 2, 2018
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.3.0...2.3.1)
