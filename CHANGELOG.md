@@ -1,5 +1,21 @@
 # Change Log
 
+## [Version 2.4.1](https://github.com/graycampbell/GCCalendar/tree/2.4.1) - November 21, 2018
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.4.0...2.4.1)
+
+**Release Notes**
+
+- Updates project to Swift 4.2.
+
+**Closed Issues**
+
+- To show selected month title without selecting 1st day of the month [\#40](https://github.com/graycampbell/GCCalendar/issues/40)
+
+**Merged Pull Requests**
+
+- Update to Swift 4.2 [\#41](https://github.com/graycampbell/GCCalendar/pull/41) ([graycampbell](https://github.com/graycampbell))
+
 ## [Version 2.4.0](https://github.com/graycampbell/GCCalendar/tree/2.4.0) - June 7, 2018
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.3.1...2.4.0)
