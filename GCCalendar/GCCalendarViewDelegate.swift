@@ -298,110 +298,110 @@ public extension GCCalendarViewDelegate {
     
     // MARK: Calendar
     
-    public func calendar(calendarView: GCCalendarView) -> Calendar {
+    func calendar(calendarView: GCCalendarView) -> Calendar {
         
         return Calendar.current
     }
     
     // MARK: Weekday Labels
     
-    public func weekdayLabelFont(calendarView: GCCalendarView) -> UIFont {
+    func weekdayLabelFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.systemFont(ofSize: 10)
     }
     
-    public func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor {
+    func weekdayLabelTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.gray
     }
     
     // MARK: Past Dates
     
-    public func pastDatesEnabled(calendarView: GCCalendarView) -> Bool {
+    func pastDatesEnabled(calendarView: GCCalendarView) -> Bool {
         
         return true
     }
     
-    public func pastDateFont(calendarView: GCCalendarView) -> UIFont {
+    func pastDateFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.systemFont(ofSize: 17)
     }
     
-    public func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor {
+    func pastDateEnabledTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
-    public func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor {
+    func pastDateDisabledTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.gray
     }
     
-    public func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
+    func pastDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
+    func pastDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.white
     }
     
-    public func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
+    func pastDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
     // MARK: Current Date
     
-    public func currentDateFont(calendarView: GCCalendarView) -> UIFont {
+    func currentDateFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func currentDateTextColor(calendarView: GCCalendarView) -> UIColor {
+    func currentDateTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
-    public func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
+    func currentDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
+    func currentDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.white
     }
     
-    public func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
+    func currentDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(red: 1.0, green: 0.23, blue: 0.19, alpha: 1.0)
     }
     
     // MARK: Future Dates
     
-    public func futureDateFont(calendarView: GCCalendarView) -> UIFont {
+    func futureDateFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.systemFont(ofSize: 17)
     }
     
-    public func futureDateTextColor(calendarView: GCCalendarView) -> UIColor {
+    func futureDateTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }
     
-    public func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
+    func futureDateSelectedFont(calendarView: GCCalendarView) -> UIFont {
         
         return UIFont.boldSystemFont(ofSize: 17)
     }
     
-    public func futureDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
+    func futureDateSelectedTextColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor.white
     }
     
-    public func futureDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
+    func futureDateSelectedBackgroundColor(calendarView: GCCalendarView) -> UIColor {
         
         return UIColor(white: 0.0, alpha: 0.87)
     }

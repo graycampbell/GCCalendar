@@ -84,7 +84,7 @@ internal final class GCCalendarMonthView: UIStackView {
 
 internal extension GCCalendarMonthView {
     
-    internal func addPanGestureRecognizer(target: Any?, action: Selector?) {
+    func addPanGestureRecognizer(target: Any?, action: Selector?) {
         
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
@@ -96,7 +96,7 @@ internal extension GCCalendarMonthView {
 
 fileprivate extension GCCalendarMonthView {
     
-    fileprivate func addWeekViews() {
+    func addWeekViews() {
         
         for dates in self.dates {
             
@@ -108,7 +108,7 @@ fileprivate extension GCCalendarMonthView {
         }
     }
     
-    fileprivate func updateWeekViews() {
+    func updateWeekViews() {
         
         for (index, dates) in self.dates.enumerated() {
             
@@ -121,7 +121,7 @@ fileprivate extension GCCalendarMonthView {
 
 internal extension GCCalendarMonthView {
     
-    internal func select(date: Date? = nil) {
+    func select(date: Date? = nil) {
         
         let newDate: Date = date ?? self.startDate
         var weekOfMonth = self.configuration.calendar.ordinality(of: .weekOfMonth, in: .month, for: newDate)!
