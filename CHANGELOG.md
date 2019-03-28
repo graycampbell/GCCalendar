@@ -1,5 +1,17 @@
 # Change Log
 
+## [Version 2.5.0](https://github.com/graycampbell/GCCalendar/tree/2.5.0) - March 27, 2019
+
+[Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.4.1...2.5.0)
+
+**Release Notes**
+
+- Updates project to Swift 5.0.
+
+**Merged Pull Requests**
+
+- Update to Swift 5 [\#43](https://github.com/graycampbell/GCCalendar/pull/43) ([graycampbell](https://github.com/graycampbell))
+
 ## [Version 2.4.1](https://github.com/graycampbell/GCCalendar/tree/2.4.1) - November 21, 2018
 
 [Full Changelog](https://github.com/graycampbell/GCCalendar/compare/2.4.0...2.4.1)
