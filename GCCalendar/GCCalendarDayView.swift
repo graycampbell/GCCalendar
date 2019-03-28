@@ -192,7 +192,7 @@ internal final class GCCalendarDayView: UIView {
 
 fileprivate extension GCCalendarDayView {
     
-    fileprivate func addTapGestureRecognizer() {
+    func addTapGestureRecognizer() {
         
         self.tapGestureRecognizer.addTarget(self, action: #selector(self.highlight))
         
@@ -204,7 +204,7 @@ fileprivate extension GCCalendarDayView {
 
 fileprivate extension GCCalendarDayView {
     
-    fileprivate func addButton() {
+    func addButton() {
         
         self.button.layer.cornerRadius = self.buttonDimension / 2
         self.button.translatesAutoresizingMaskIntoConstraints = false
@@ -214,7 +214,7 @@ fileprivate extension GCCalendarDayView {
         self.addSubview(self.button)
     }
     
-    fileprivate func formatButton() {
+    func formatButton() {
         
         self.button.setTitle(self.title, for: .normal)
         self.button.setTitleColor(self.textColor, for: .normal)
@@ -244,7 +244,7 @@ fileprivate extension GCCalendarDayView {
 
 fileprivate extension GCCalendarDayView {
     
-    fileprivate func addConstraints() {
+    func addConstraints() {
         
         self.button.widthAnchor.constraint(equalToConstant: self.buttonDimension).isActive = true
         self.button.heightAnchor.constraint(equalToConstant: self.buttonDimension).isActive = true
@@ -257,7 +257,7 @@ fileprivate extension GCCalendarDayView {
 
 internal extension GCCalendarDayView {
     
-    @objc internal func highlight() {
+    @objc func highlight() {
         
         if !(self.dateType == .past && !self.configuration.pastDatesEnabled) {
             
@@ -273,7 +273,7 @@ internal extension GCCalendarDayView {
         }
     }
     
-    internal func unhighlight() {
+    func unhighlight() {
         
         self.button.backgroundColor = nil
         
@@ -288,7 +288,7 @@ internal extension GCCalendarDayView {
 
 fileprivate extension GCCalendarDayView {
     
-    fileprivate func animateSelection() {
+    func animateSelection() {
         
         self.animate(toScale: 0.9) { finished in
             
@@ -305,7 +305,7 @@ fileprivate extension GCCalendarDayView {
         }
     }
     
-    fileprivate func animate(toScale scale: CGFloat, completion: ((Bool) -> Void)? = nil) {
+    func animate(toScale scale: CGFloat, completion: ((Bool) -> Void)? = nil) {
         
         UIView.animate(withDuration: 0.1, animations: {
             

@@ -113,7 +113,7 @@ public final class GCCalendarView: UIView {
 
 public extension GCCalendarView {
     
-    public override func layoutSubviews() {
+    override func layoutSubviews() {
         
         super.layoutSubviews()
         
@@ -135,7 +135,7 @@ public extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func updateConfiguration() {
+    func updateConfiguration() {
         
         self.configuration = GCCalendarConfiguration()
         
@@ -182,7 +182,7 @@ fileprivate extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func refresh() {
+    func refresh() {
         
         self.removeHeaderView()
         self.addHeaderView()
@@ -205,7 +205,7 @@ fileprivate extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func addHeaderView() {
+    func addHeaderView() {
         
         self.headerView = UIStackView()
         
@@ -235,14 +235,14 @@ fileprivate extension GCCalendarView {
         self.addHeaderViewConstraints()
     }
     
-    fileprivate func removeHeaderView() {
+    func removeHeaderView() {
         
         self.headerView.removeFromSuperview()
     }
     
     // MARK: Constraints
     
-    fileprivate func addHeaderViewConstraints() {
+    func addHeaderViewConstraints() {
         
         self.headerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         self.headerView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
@@ -312,7 +312,7 @@ internal extension GCCalendarView {
     
     // MARK: Toggle Views
     
-    @objc internal func toggleCurrentView(_ pan: UIPanGestureRecognizer) {
+    @objc func toggleCurrentView(_ pan: UIPanGestureRecognizer) {
         
         switch pan.state {
             
@@ -397,7 +397,7 @@ internal extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func findDateInWeekViews(date: Date) {
+    func findDateInWeekViews(date: Date) {
         
         if self.previousWeekView.contains(date: date) {
             
@@ -445,7 +445,7 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func show(date: Date, animations: @escaping () -> Void, weekViewReuse: @escaping (([Date?]) -> Void), completion: @escaping ((Bool) -> Void)) {
+    func show(date: Date, animations: @escaping () -> Void, weekViewReuse: @escaping (([Date?]) -> Void), completion: @escaping ((Bool) -> Void)) {
         
         UIView.animate(withDuration: 0.08, animations: animations) { finished in
             
@@ -462,7 +462,7 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func findDateInMonthViews(date: Date) {
+    func findDateInMonthViews(date: Date) {
         
         if self.previousMonthView.contains(date: date) {
             
@@ -510,7 +510,7 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func show(date: Date, animations: @escaping () -> Void, monthViewReuse: @escaping ((Date) -> Void), completion: @escaping ((Bool) -> Void)) {
+    func show(date: Date, animations: @escaping () -> Void, monthViewReuse: @escaping ((Date) -> Void), completion: @escaping ((Bool) -> Void)) {
         
         UIView.animate(withDuration: 0.08, animations: animations) { finished in
             
@@ -532,7 +532,7 @@ fileprivate extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func addWeekViews() {
+    func addWeekViews() {
         
         let currentWeekDates = self.currentWeekDates(fromDate: self.selectedDate)
         let previousWeekDates = self.previousWeekDates(currentWeekDates: currentWeekDates)
@@ -558,7 +558,7 @@ fileprivate extension GCCalendarView {
         self.resetLayout()
     }
     
-    fileprivate func removeWeekViews() {
+    func removeWeekViews() {
         
         self.weekViews.forEach { $0.removeFromSuperview() }
         self.weekViews.removeAll()
@@ -566,31 +566,31 @@ fileprivate extension GCCalendarView {
     
     // MARK: Views
     
-    fileprivate var previousWeekView: GCCalendarWeekView {
+    var previousWeekView: GCCalendarWeekView {
         
         return self.weekViews[0]
     }
     
-    fileprivate var currentWeekView: GCCalendarWeekView {
+    var currentWeekView: GCCalendarWeekView {
         
         return self.weekViews[1]
     }
     
-    fileprivate var nextWeekView: GCCalendarWeekView {
+    var nextWeekView: GCCalendarWeekView {
         
         return self.weekViews[2]
     }
     
     // MARK: Dates
     
-    fileprivate func previousWeekDates(currentWeekDates: [Date?]) -> [Date?] {
+    func previousWeekDates(currentWeekDates: [Date?]) -> [Date?] {
         
         let startDate = self.configuration.calendar.date(byAdding: .weekOfYear, value: -1, to: currentWeekDates[0]!)
         
         return self.weekDates(startDate: startDate!)
     }
     
-    fileprivate func currentWeekDates(fromDate date: Date) -> [Date?] {
+    func currentWeekDates(fromDate date: Date) -> [Date?] {
         
         var components = self.configuration.calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: date)
         
@@ -601,14 +601,14 @@ fileprivate extension GCCalendarView {
         return self.weekDates(startDate: startDate!)
     }
     
-    fileprivate func nextWeekDates(currentWeekDates: [Date?]) -> [Date?] {
+    func nextWeekDates(currentWeekDates: [Date?]) -> [Date?] {
         
         let startDate = self.configuration.calendar.date(byAdding: .weekOfYear, value: 1, to: currentWeekDates[0]!)
         
         return self.weekDates(startDate: startDate!)
     }
     
-    fileprivate func weekDates(startDate: Date) -> [Date?] {
+    func weekDates(startDate: Date) -> [Date?] {
         
         let numberOfWeekdays = self.configuration.calendar.maximumRange(of: .weekday)!.count
         
@@ -630,7 +630,7 @@ fileprivate extension GCCalendarView {
     
     // MARK: Show Week View
     
-    fileprivate func previousWeekViewDidShow(_ finished: Bool) {
+    func previousWeekViewDidShow(_ finished: Bool) {
         
         if finished {
             
@@ -641,14 +641,14 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func reuseNextWeekView(newDates: [Date?]) {
+    func reuseNextWeekView(newDates: [Date?]) {
         
         self.nextWeekView.dates = newDates
         self.weekViews.insert(self.nextWeekView, at: 0)
         self.weekViews.removeLast()
     }
     
-    fileprivate func nextWeekViewDidShow(_ finished: Bool) {
+    func nextWeekViewDidShow(_ finished: Bool) {
         
         if finished {
             
@@ -659,14 +659,14 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func reusePreviousWeekView(newDates: [Date?]) {
+    func reusePreviousWeekView(newDates: [Date?]) {
         
         self.previousWeekView.dates = newDates
         self.weekViews.append(self.previousWeekView)
         self.weekViews.removeFirst()
     }
     
-    fileprivate func weekViewDidShow() {
+    func weekViewDidShow() {
         
         self.resetLayout()
         
@@ -690,7 +690,7 @@ fileprivate extension GCCalendarView {
 
 fileprivate extension GCCalendarView {
     
-    fileprivate func addMonthViews() {
+    func addMonthViews() {
         
         let currentMonthStartDate = self.currentMonthStartDate(fromDate: self.selectedDate)
         let previousMonthStartDate = self.previousMonthStartDate(currentMonthStartDate: currentMonthStartDate)
@@ -716,7 +716,7 @@ fileprivate extension GCCalendarView {
         self.resetLayout()
     }
     
-    fileprivate func removeMonthViews() {
+    func removeMonthViews() {
         
         self.monthViews.forEach { $0.removeFromSuperview() }
         self.monthViews.removeAll()
@@ -724,29 +724,29 @@ fileprivate extension GCCalendarView {
     
     // MARK: Views
     
-    fileprivate var previousMonthView: GCCalendarMonthView {
+    var previousMonthView: GCCalendarMonthView {
         
         return self.monthViews[0]
     }
     
-    fileprivate var currentMonthView: GCCalendarMonthView {
+    var currentMonthView: GCCalendarMonthView {
         
         return self.monthViews[1]
     }
     
-    fileprivate var nextMonthView: GCCalendarMonthView {
+    var nextMonthView: GCCalendarMonthView {
         
         return self.monthViews[2]
     }
     
     // MARK: Start Dates
     
-    fileprivate func previousMonthStartDate(currentMonthStartDate: Date) -> Date {
+    func previousMonthStartDate(currentMonthStartDate: Date) -> Date {
         
         return self.configuration.calendar.date(byAdding: .month, value: -1, to: currentMonthStartDate)!
     }
     
-    fileprivate func currentMonthStartDate(fromDate date: Date) -> Date {
+    func currentMonthStartDate(fromDate date: Date) -> Date {
         
         var components = self.configuration.calendar.dateComponents([.day, .month, .year], from: date)
         
@@ -755,14 +755,14 @@ fileprivate extension GCCalendarView {
         return self.configuration.calendar.date(from: components)!
     }
     
-    fileprivate func nextMonthStartDate(currentMonthStartDate: Date) -> Date {
+    func nextMonthStartDate(currentMonthStartDate: Date) -> Date {
         
         return self.configuration.calendar.date(byAdding: .month, value: 1, to: currentMonthStartDate)!
     }
     
     // MARK: Show Month View
     
-    fileprivate func previousMonthViewDidShow(_ finished: Bool) {
+    func previousMonthViewDidShow(_ finished: Bool) {
         
         if finished {
             
@@ -773,14 +773,14 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func reuseNextMonthView(newStartDate: Date) {
+    func reuseNextMonthView(newStartDate: Date) {
         
         self.nextMonthView.startDate = newStartDate
         self.monthViews.insert(self.nextMonthView, at: 0)
         self.monthViews.removeLast()
     }
     
-    fileprivate func nextMonthViewDidShow(_ finished: Bool) {
+    func nextMonthViewDidShow(_ finished: Bool) {
         
         if finished {
             
@@ -791,14 +791,14 @@ fileprivate extension GCCalendarView {
         }
     }
     
-    fileprivate func reusePreviousMonthView(newStartDate: Date) {
+    func reusePreviousMonthView(newStartDate: Date) {
         
         self.previousMonthView.startDate = newStartDate
         self.monthViews.append(self.previousMonthView)
         self.monthViews.removeFirst()
     }
     
-    fileprivate func monthViewDidShow() {
+    func monthViewDidShow() {
         
         self.resetLayout()
         
@@ -824,14 +824,14 @@ public extension GCCalendarView {
     
     /// Tells the calendar view to select the current date, updating any visible week views or month views if necessary.
     
-    public func today() {
+    func today() {
         
         self.select(date: Date())
     }
     
     /// Tells the calendar view to select the specified date, updating any visible week views or month views if necessary.
     
-    public func select(date: Date) {
+    func select(date: Date) {
         
         if self.isProperlyConfigured && !self.configuration.calendar.isDate(date, inSameDayAs: self.selectedDate) {
             

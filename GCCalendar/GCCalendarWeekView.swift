@@ -61,7 +61,7 @@ internal final class GCCalendarWeekView: UIStackView {
 
 fileprivate extension GCCalendarWeekView {
     
-    fileprivate func addDayViews() {
+    func addDayViews() {
         
         for date in self.dates {
             
@@ -73,7 +73,7 @@ fileprivate extension GCCalendarWeekView {
         }
     }
     
-    fileprivate func updateDayViews() {
+    func updateDayViews() {
         
         for (index, date) in self.dates.enumerated() {
             
@@ -86,7 +86,7 @@ fileprivate extension GCCalendarWeekView {
 
 internal extension GCCalendarWeekView {
     
-    internal func addPanGestureRecognizer(target: Any?, action: Selector?) {
+    func addPanGestureRecognizer(target: Any?, action: Selector?) {
         
         self.panGestureRecognizer = UIPanGestureRecognizer(target: target, action: action)
         
@@ -98,7 +98,7 @@ internal extension GCCalendarWeekView {
 
 internal extension GCCalendarWeekView {
     
-    internal func select(date: Date? = nil) {
+    func select(date: Date? = nil) {
         
         if let newDate = date {
             

@@ -68,7 +68,7 @@ extension CalendarViewController {
 
 fileprivate extension CalendarViewController {
     
-    fileprivate func addCalendarView() {
+    func addCalendarView() {
         
         self.calendarView = GCCalendarView()
         
@@ -85,7 +85,7 @@ fileprivate extension CalendarViewController {
 
 fileprivate extension CalendarViewController {
     
-    fileprivate func addConstraints() {
+    func addConstraints() {
         
         self.calendarView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 12).isActive = true
         self.calendarView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
