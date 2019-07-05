@@ -11,9 +11,9 @@ struct GCCalendarWeekdayLabel: View {
     let title: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Spacer(minLength: 0)
-            HStack {
+            HStack(spacing: 0) {
                 Spacer(minLength: 0)
                 Text(self.title)
                     .color(.gray)
@@ -30,7 +30,9 @@ struct GCCalendarWeekdayLabel: View {
 struct GCCalendarWeekdayLabel_Previews: PreviewProvider {
     static var previews: some View {
         GCCalendarView()
+            .environmentObject(GCCalendarData())
             .frame(maxHeight: 370)
+            .padding(10)
     }
 }
 #endif

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GCCalendar {
+public struct GCCalendar {
     static func weekdaySymbols(forCalendar calendar: Calendar) -> [String] {
         let firstWeekdayIndex = calendar.firstWeekday - 1
         let weekdaySymbols = calendar.veryShortWeekdaySymbols
@@ -45,13 +45,13 @@ struct GCCalendar {
         return newDates
     }
     
-    static func string(fromDate date: Date?, withFormat format: String, inCalendar calendar: Calendar) -> String {
+    public static func string(fromDate date: Date?, withTemplate template: String, inCalendar calendar: Calendar) -> String {
         guard let date = date else { return "" }
         
         let dateFormatter = DateFormatter()
         
         dateFormatter.calendar = calendar
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "d", options: 0, locale: calendar.locale)
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: calendar.locale)
         
         return dateFormatter.string(from: date)
     }

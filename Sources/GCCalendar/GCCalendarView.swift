@@ -8,27 +8,31 @@
 import SwiftUI
 
 public struct GCCalendarView: View {
-    @State var calendar: Calendar = .current
-    @State var selectedDate: Date = Date()
+    @EnvironmentObject var calendarData: GCCalendarData
     
     private var dates: [[Date?]] {
-        return GCCalendar.datesForMonth(withDate: self.selectedDate, inCalendar: .current)
+        return GCCalendar.datesForMonth(withDate: self.calendarData.selectedDate, inCalendar: self.calendarData.calendar)
     }
     
     public var body: some View {
-        VStack(spacing: 10) {
-            GCCalendarHeaderView(calendar: self.$calendar)
-            GCCalendarMonthView(dates: self.dates, calendar: self.$calendar, selectedDate: self.$selectedDate)
+        VStack(spacing: 0) {
+            GCCalendarHeaderView()
+                .environmentObject(self.calendarData)
+            GCCalendarMonthView(dates: self.dates)
+                .environmentObject(self.calendarData)
         }
-        .padding(10)
     }
+    
+    public init() {}
 }
 
 #if DEBUG
 struct GCCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         GCCalendarView()
+            .environmentObject(GCCalendarData())
             .frame(maxHeight: 370)
+            .padding(10)
     }
 }
 #endif

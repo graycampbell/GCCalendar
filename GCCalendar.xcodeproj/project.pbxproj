@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E208A56D22CE9F4500156B9C /* GCCalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208A56C22CE9F4500156B9C /* GCCalendarData.swift */; };
 		E2D1828A22CD6FFE003236D1 /* GCCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D1828922CD6FFE003236D1 /* GCCalendarView.swift */; };
 		E2D1828B22CD7025003236D1 /* GCCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = E2D1828522CD6FD3003236D1 /* GCCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2D1828D22CD7619003236D1 /* GCCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D1828C22CD7619003236D1 /* GCCalendarDayView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E208A56C22CE9F4500156B9C /* GCCalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCCalendarData.swift; sourceTree = "<group>"; };
 		E2A288D822CD6FA500D7C5AF /* GCCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D1828522CD6FD3003236D1 /* GCCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCalendar.h; sourceTree = "<group>"; };
 		E2D1828622CD6FD3003236D1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				E2D1829422CD9420003236D1 /* GCCalendarMonthView.swift */,
 				E2D1829022CD9037003236D1 /* GCCalendarHeaderView.swift */,
 				E2D1829622CD9BB7003236D1 /* GCCalendarWeekdayLabel.swift */,
+				E208A56C22CE9F4500156B9C /* GCCalendarData.swift */,
 				E2D1828622CD6FD3003236D1 /* Info.plist */,
 			);
 			name = GCCalendar;
@@ -158,6 +161,7 @@
 				E2D1829122CD9037003236D1 /* GCCalendarHeaderView.swift in Sources */,
 				E2D1828F22CD7A2A003236D1 /* GCCalendar.swift in Sources */,
 				E2D1829522CD9420003236D1 /* GCCalendarMonthView.swift in Sources */,
+				E208A56D22CE9F4500156B9C /* GCCalendarData.swift in Sources */,
 				E2D1829722CD9BB7003236D1 /* GCCalendarWeekdayLabel.swift in Sources */,
 				E2D1829322CD92E2003236D1 /* GCCalendarWeekView.swift in Sources */,
 				E2D1828D22CD7619003236D1 /* GCCalendarDayView.swift in Sources */,

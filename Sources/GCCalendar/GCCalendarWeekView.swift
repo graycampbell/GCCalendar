@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct GCCalendarWeekView: View {
+    @EnvironmentObject var calendarData: GCCalendarData
+    
     @State var dates: [Date?]
-    @Binding var calendar: Calendar
-    @Binding var selectedDate: Date
     
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 0) {
             ForEach(0..<self.dates.count) { index in
-                GCCalendarDayView(date: self.dates[index], calendar: self.$calendar)
+                GCCalendarDayView(date: self.dates[index])
+                    .environmentObject(self.calendarData)
                     .tag(index)
             }
         }
@@ -26,7 +27,9 @@ struct GCCalendarWeekView: View {
 struct GCCalendarWeekView_Previews: PreviewProvider {
     static var previews: some View {
         GCCalendarView()
+            .environmentObject(GCCalendarData())
             .frame(maxHeight: 370)
+            .padding(10)
     }
 }
 #endif
